@@ -1,9 +1,0 @@
-URLs
-----
-
-Guía de aprendizaje de Python
-8. Errores y excepciones
-http://pyspanishdoc.sourceforge.net/tut/node10.html
-
-Chelin Tutorials
-http://chelintutorials.blogspot.fr/p/python.html

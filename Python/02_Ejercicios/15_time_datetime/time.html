@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- HTML 5! -->
+<!-- http://www.w3schools.com/tags/tag_doctype.asp -->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+	<head>
+		<!-- charset in HTML5 -->
+		<meta charset="UTF-8">
+	    <!-- Cabecera del documento en Unicode UTF-8 español</BR> -->
+
+		<!-- Base contiene la dirección de base de la página web -->
+		<!-- <base href="http://www.w3schools.com/images/" target="_blank|_parent|_self|_top|<framename>"> -->
+
+		<title>Módulos time &amp; datetime</title>
+
+		<!-- Not possible in HTML5 -->
+	    <!-- <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> -->
+
+		<meta name="description" content="Estructura básica de un documento XHTML 1.1">
+		<meta name="keywords" content="XHTML 1.1, CSS, HTML, Javascript">
+		<meta name="author" content="imoren2x">
+		<meta name="copyright" content="imoren2x">
+
+		<!-- Not possible in HTML5 -->
+		<!-- <meta name="date" content="2009-01-02" scheme="YYYY-MM-DD"> -->
+		<!-- <meta name="identifier" content="0-2345-6634-6" scheme="ISBN"> -->
+
+		<!-- The <link> tag defines a link between a document and an external resource. -->
+		<link rel="stylesheet" type="text/css" href="theme.css">
+
+		<!-- The <script> tag is used to define a client-side script (JavaScript) -->
+		<script src="myscripts.js"> </script>
+
+	</head>
+
+	<body>
+
+    <h1>Módulos time &amp; datetime</h1>
+    <p>Table of Contents</p>
+    <ol>
+    <li>Módulos time &amp; datetime</li>
+    <li>Módulo <code>time</code><ol>
+    <li><code>time.time()</code>: hora actual desde Epoch (1970)</li>
+    <li>Hora en formato <code>struct_time</code>: <code>gmtime</code>, <code>localtime</code> and <code>strptime</code></li>
+    <li>Hora en formato <code>string</code>: <code>asctime</code>, <code>ctime</code> and <code>strftime</code></li>
+    <li>Hora en format Epoch: <code>mktime</code> (inversa de <code>gmtime</code> and <code>localtime</code>)</li>
+    </ol>
+    </li>
+    <li>Módulo <code>datetime</code></li>
+    <li>References</li>
+    </ol>
+    <hr />
+    <h2>Módulos time &amp; datetime</h2>
+    <p>El módulo <code>datetime</code> está más pensado para operaciones aritméticas.</p>
+    <h2>Módulo time</h2>
+    <h3><code>time.time()</code>: hora actual desde Epoch (1970)</h3>
+    <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="mf">1520522448.559</span>
+    </pre></div>
+
+
+    <h3>Hora en formato <code>struct_time</code>: <code>gmtime</code>, <code>localtime</code> and <code>strptime</code></h3>
+    <p>Como entrada, segundos desde Epoch.<br />
+    Como salida, <code>time.struct_time</code>.</p>
+    <ul>
+    <li>
+    <p><code>time.gmtime()</code> / <code>time.gmtime(time.time())</code><br />
+        No existe horario de verano (DST, Daylight Saving Time).</p>
+    </li>
+    <li>
+    <p><code>time.localtime()</code> / <code>time.localtime(time.time())</code><br />
+        Sí existe horario de verano.</p>
+    </li>
+    <li>
+    <p><code>time.strptime(date_string, format)</code><br />
+    <code>python
+        &gt;&gt;&gt; time.strptime('2018.03.08.15.10.53', "%Y.%m.%d.%H.%M.%S")</code></p>
+    </li>
+    </ul>
+    <h3>Hora en formato <code>string</code>: <code>time.asctime</code>, <code>ctime</code> and <code>strftime</code></h3>
+    <ul>
+    <li>
+    <p><code>time.asctime()</code> / <code>time.asctime(time.gmtime())</code><br />
+        Como entrada, <code>time.struct_time</code>.<br />
+        Como salida, <code>string</code>.<br />
+        No usa información presente en <code>localtime()</code>.</p>
+    </li>
+    <li>
+    <p><code>time.ctime()# 'Sun Jun 20 23:21:05 1993'</code><br />
+        Como entrada, segundos desde Epoch.<br />
+        Como salida, <code>string</code>.<br />
+        Tiempo provisto por <code>localtime()</code>.</p>
+    </li>
+    <li>
+    <p><code>time.strftime(format[, date_string], )</code><br />
+    <code>python
+        &gt;&gt;&gt; time.strftime("%Y.%m.%d.%H.%M.%S", time.gmtime())
+        &gt;&gt;&gt; time.strftime("%Y.%m.%d.%H.%M.%S", )
+        '2014.03.18.10.29.13'</code></p>
+    </li>
+    </ul>
+    <h3>Hora en format Epoch: <code>mktime</code> (inversa de <code>gmtime</code> and <code>localtime</code>)</h3>
+    <p>Tiempo Epoch a partir de struct.time</p>
+    <ul>
+    <li>time.mktime( time.struct_time )<br />
+        Es la inversa de time.gmtime(), time.localtime().</li>
+    </ul>
+    <p>Current processor time<br />
+        As floating point number expressed in seconds.</p>
+    <h2>Módulo datetime</h2>
+    <ul>
+    <li>
+    <p><code>datetime.datetime.strftime(datetime.datetime.today(), '%Y.%m.%d.%H.%M.%S')</code><br />
+        Como entrada, formato <code>datetime.datetime</code>.<br />
+        Como salida, <code>string</code>.</p>
+    </li>
+    <li>
+    <p><code>datetime.datetime.strptime('2018-03-15 20:38:49', format)</code><br />
+        Como entrada, formato <code>string</code>.<br />
+        Como salida, formato <code>datetime.datetime</code>.</p>
+    </li>
+    </ul>
+    <h3>References</h3>
+    <ul>
+    <li><a href="http://docs.python.org/2/library/time.html#time.localtime"><a href="http://docs.python.org/2/library/time.html#time.localtime">http://docs.python.org/2/library/time.html#time.localtime</a></a></li>
+    <li><a href="http://docs.python.org/2/library/time.html#time.localtime"><a href="http://docs.python.org/2/library/datetime.html">http://docs.python.org/2/library/datetime.html</a></a></li>
+    </ul>
+
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<h1>YAML</h1>
+<p>Table of Contents</p>
+<ol>
+<li>Elements<ol>
+<li>Lists</li>
+<li>Associative arrays</li>
+<li>Combinations</li>
+<li>Relational trees</li>
+<li>Data types</li>
+</ol>
+</li>
+<li>Hierarchy -&gt; indentation + justification</li>
+</ol>
+<hr />
+<h2>1. Elements</h2>
+<h3>Lists</h3>
+<p>Using dashes:
+<code>---#Favorite movies
+  - Casablanca
+  - North by the Northwest
+  - The man that wasn't there</code>
+ Using square brackets:
+<code>---#shopping list
+    [milk, pumpkin pie, meat]</code></p>
+<ol>
+<li>Associative arrays (register, struct)
+ Using colon + space:
+<code>---#Name, age; key: value
+    name: John Smith
+    age: 33</code></li>
+</ol>
+<p>Using inline blocks:
+<code>---#Inline blocks:
+ {name: John Smith, age: 33}</code></p>
+<ol>
+<li>Combinations
+ Lists of registers
+```</li>
+<li>{name: John Smith, age: 33}
+ -
+    name: Mary Smith
+    age: 37
+```</li>
+</ol>
+<p>Register of lists:
+<code>man: [John Smith, Bill Jones]
+    woman:
+        - Mary Smith
+        - Susan Williams</code></p>
+<ol>
+<li>Relational trees
+    &amp; Identifier<ul>
+<li>Reference
+&lt;&lt; Associative Array merges</li>
+</ul>
+</li>
+</ol>
+<p><code>---#relational trees
+  - step: &amp;id1
+    instrument: lasik 20
+  - step: &lt;&lt;: *id1</code></p>

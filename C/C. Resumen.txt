@@ -1,0 +1,189 @@
+El lenguaje C
+-------------
+I Lenguaje: C
+1. Data types, variables and constants (storage type, casting)
+2. Operators, expressions, comments, includes
+3. Flow control, functions, argv (recursivity)
+4. i/o, files
+5. Standard library
+
+II Herramientas: GCC, makefile, GDB
+III Extensiones
+--------~---------
+
+Chapter 1. Data types, variables and constants (storage type, casting)
+---------
+1.1 Data types, variables and constants
+	Simple: int, long, float, double, char (ASCII code), string.
+	Structured: array, pointer, struct, union, enum
+	Pointers: pointers, pointers to pointers, pointers to function
+	Typedef
+	Modificators: const, signed, unsigned, auto, static, register, external, volatile
+	sizeof
+	
+Pointers/Arrays
+	Definition
+	Assignation
+	Argument of a function
+		Formal
+		Actual
+	Reserva/free
+
+	Pointers to pointers
+	Pointers to functions
+
+1.1.1 Simple types and constants
+	Tipo int: 				const a = 1234
+	Tipo long int: 			const a = 12345L 
+	Tipo unsigned long int: const a = 12345UL 
+	Tipo float:				const a = 123.4F
+	Tipo double: 			const a = 1E-2
+	Tipo long double: 		const a = 1.234
+
+	Tipo octal:				const a = 037 (comienza por cero)
+	Tipo oct unsigned long:	const a = 037UL
+	Tipo hexadecimal:		const a = 0x1F
+	Tipo hex unsigned long:	const a = 0x1FUL
+
+1.1.2 strings
+
+Scape sequences:
+	They must be written between '':
+	\a carácter de alarma (campana)		\b retroceso
+	\f avance de hoja					\n nueva línea
+	\r regreso de carro					\t tabulador horizontal
+	\v tabulador vertical				\\ diagonal invertida
+	\? interrogación					\' apóstrofo
+	\" comillas							\ooo número octal (ej \012 = 10 en decimal)
+	\xhh número hexadecimal				\0 carácter nulo (final de un string)
+
+1.3 Pointers
+	Definition:	int* p;
+	
+	Assigment: 	p = &m;
+				p = array;	//Punteros & arrays
+
+	Argument of a function: 
+		Formal:		void swap ( int * px, int* py );
+		Actual:		swap(pa, pb)
+					swap(&a, &b)
+
+	Allocation/free
+		Allocation: 	p = (int*) malloc(n*sizeof(int));
+						p = (int*) calloc(n, sizeof(int));//inicializado a cero//
+						s = (char*)malloc(strlen("Hello, world!"));
+		
+		Free:			free(p);
+
+	Pointers to pointers
+1.3.1 Pointers to functions
+	Definition:		int (*f)(int n, int m);
+
+	Assigment:		int (*f)(int m, int m) = function;
+					f = function;
+					f = &function;
+
+	Call:			(*f)(n, m)
+					(int (*)(int))(*f)(n,m); //importante el casting//
+					int result = (int (*)(int, int)) f(n, m);
+
+	Argument of a function:
+		Formal:		void fex( int(*f)(int n, int m), ...);
+		Actual:		fex( (int (*)(int, int) function, ...);
+
+Casting
+	Sintaxis: (nombre-de-tipo)expresión
+		Ej: sqrt( (double) n ) //n es int y sqrt requiere double
+		
+Storage type:
+ line 389 -- 463
+	Ej 01. Hola, mundo.
+	Ej 02. Celsius to Farenheit
+	Ej 03. Simple menu
+
+Chapter 2. Operators, casting, expressions, comments, includes
+---------
+2.1 Operators
+	Arithmetical, logical, relational, bitwise
+	Operator.?
+	line 210 -- 232
+
+2.2 Comments
+	//		single line
+	/* */ 	multiline
+	/** */	doxygen/javadoc
+
+2.3 Includes
+
+line 505 -- 580
+
+
+	Ej 01. Año bisiesto
+	Ej 02. Conversor binario
+	Ej 03. Entero a doble
+	Ej 04. Entero a hexadecimal y a octeto
+	
+	Ej 01. Manejo de bits
+	
+Chapter 3. Flow control, functions, recursivity, argv
+----------
+If-else:
+	if (expresión) 	{
+		proposición
+	} else if (expresión) {
+		proposición
+	} else {
+		proposición
+	}
+
+switch-case:
+	switch (expresión) {
+		case exp-const: sentencias; break
+		case exp-const: sentencias; break
+		default: sentencias; break
+	}
+NOTA: do not use strings for switch-case
+
+for:
+	for (expr1; expr2; expr3) {
+		proposición
+	}
+
+while:
+	while (expresión) {
+		proposición
+	}
+
+	expr1;
+	while ( expr2 ) {
+		proposición
+		expr3;
+	}
+
+do-while:
+	do {
+		proposición
+	} while (expresión);
+
+break y continue:
+	break sale del ciclo o del switch más interno.
+	continue hace que se ejecute el siguiente ciclo.
+
+goto and labels:
+	for (...) {
+		goto error;
+	}
+	
+	error: arregla el desorden
+
+3.2 Functions
+	<tipo> function(<tipo> <variable>, ...)
+	
+	En C no existe el anidamiento de funciones.
+
+Recursivity: line 482 -- 503
+
+Ej 02. Binary search
+	Ej 03. Reverse
+	Ej 04. Shellsort
+	Te 01. Template
