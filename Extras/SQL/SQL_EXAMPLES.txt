@@ -1,0 +1,36 @@
+SQL EXAMPLES
+------------
+
+SELECT <column>, <column> FROM <table>
+WHERE <column> <op> <value>
+AND/OR/NOR ...
+
+SELECT DISTINCT
+
+SELECT * FROM Customers
+ORDER BY Country;
+
+INSERT INTO Customers (Name, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City = 'Hambourg'
+WHERE CustomerName = 'Alfred Futterkiste';
+
+DELETE FROM
+WHERE <column> = <value>
+
+SELECT TOP => SELECT * FROM Customers WHERE ROWNUM <= 10
+
+SELECT * FROM Customers
+WHERE Country LIKE '%land%'
+
+SELECT * FROM Customers
+WHERE City IN ('Paris', 'London');
+WHERE ProductID BETWEEN Value1 AND Value2;
+WHERE ProductID NOT BETWEEN Value1 AND Value2;
+
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName = "Around the Horn"
+	AND c.CustomerID = o.CustomerID;

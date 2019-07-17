@@ -1,0 +1,33 @@
+Scalars
+-------
+01 Numeric Scalars
+02 String Scalars
+03 Scalar operations
+04 Multiline Strings
+05 V-Strings
+06 Special literals
+
+
+Perl Arrays
+-----------
+01 Definition
+02 Accessing
+03 Add and remove
+04 Slicing
+05 Replacing Array Elements
+06 Transform Strings to Arrays and vice-versa
+07 Sorting Arrays
+08 The $[ Special Variable
+09 Merging arrays
+10 Selecting Elements from lists
+
+Perl Hashes
+-----------
+01 Creating Hashes
+02 Accessing hash elements
+03 Extracting Slices
+04 Extracting Keys and Values
+05 Checking for existence
+06 Getting Hash Size
+07 Add & Remove Elements in Hashes
+

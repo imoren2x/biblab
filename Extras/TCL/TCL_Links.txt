@@ -1,0 +1,19 @@
+Tcl Reserved Words
+http://www.xilinx.com/itp/xilinx10/isehelp/ite_r_tcl_reserved_words.htm
+
+Tcl/Tk Keywords
+http://www.tcl.tk/man/tcl8.4/Keywords/contents.htm
+
+Tcl Commands
+http://www.tcl.tk/man/tcl8.5/TclCmd/contents.htm
+
+Tcl Reference Manual: Keywords
+http://tmml.sourceforge.net/doc/tcl/keyword-index.html
+
+http://www.tcl.tk/man/tcl8.5/tutorial/Tcl14.html
+http://jan.newmarch.name/ProgrammingUnix/tcl/tcl_tut.html
+http://www.tcl.tk/man/tcl8.5/tutorial/Tcl22.html
+http://zetcode.com/lang/tcl/io/
+http://homepages.paradise.net.nz/milhous/tcl.htm
+
+http://en.wikipedia.org/wiki/Tcl

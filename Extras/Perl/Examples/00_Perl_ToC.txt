@@ -1,0 +1,30 @@
+Perl ToC
+--------
+
+ 1 Tipos (constantes, variables, colecciones), operadores (arithmetic, relational, logic, bitwise)
+ 2 Flow control, functions, recursivity, comments, arg, i/o, files, modules, environment
+ 3 OOP
+   3.1 Clase, objeto, attr, metodo, public, private
+   3.2 Constructor, destructor
+   3.3 Herencia, polimorfismo
+
+ 4 Exceptions
+ 5 Regular expressions
+ 6 Testing
+ 7 Deploying
+ 8 Sockets
+ 9 Threads
+10 Debugging
+11 Documenting
+12 YAML, XML
+
+Perl Reserved Words
+http://www.sarand.com/td/ref_perl_reserve.html
+
+______________________________________________
+
+- Control structures
+- 
+http://en.wikipedia.org/wiki/Perl_language_structure
+http://en.wikipedia.org/wiki/Perl_control_structures
+http://www.tutorialspoint.com/perl/perl_oo_perl.htm

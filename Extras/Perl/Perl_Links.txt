@@ -1,0 +1,29 @@
+Perl Tutorials
+--------------
+
+PERL - Practical Extraction and Report Language
+http://www.tizag.com/perlT/
+
+Tutorials point - Perl
+http://www.tutorialspoint.com/perl/perl_oo_perl.htm
+
+Perl Tutorial Hub
+http://perl-tutorial.org/
+
+Tutorial Perl
+http://flanagan.ugr.es/perl/index2.htm
+
+The Perl Maven Perl tutorial
+http://perl5maven.com/perl-tutorial
+
+Learning Perl
+http://learn.perl.org/
+
+The Best Perl Programmers Use Modern Perl
+http://onyxneon.com/books/modern_perl/
+
+Perl Tutorial
+http://www.perltutorial.org/
+
+Beginning Perl (Wrox)
+http://ofps.oreilly.com/titles/9781118013847/

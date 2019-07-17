@@ -1,0 +1,35 @@
+SQL Basic:
+----------
+
+SELECT ... FROM ...
+INSERT INTO ... (..., ..., ...)
+UPDATE ... SET ... WHERE
+DELETE FROM ... WHERE
+--------------------------------
+
+SELECT INTO <Table-name> (column1, column2, column3, ...)
+VALUES ( 'Cardinal', 'Tom B. Ericksen', 'Skagen 21', ... )
+
+UPDATE table-name
+SET column=value, column=value
+WHERE CustomerName='Alfred Futterkiste'
+
+DELETE FROM <Table-name>
+WHERE some-column=some_value
+
+Other SQL commands:
+-------------------
+SELECT
+UPDATE
+DELETE
+INSERT INTO
+
+CREATE DATABASE
+ALTER DATABASE
+
+CREATE TABLE
+ALTER TABLE
+DROP TABLE
+
+CREATE INDEX
+DROP INDEX

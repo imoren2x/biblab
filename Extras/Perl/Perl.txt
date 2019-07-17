@@ -1,0 +1,153 @@
+PERL
+----
+ 1 Tipos (constantes, variables, colecciones), 
+   Operadores (arithmetic, relational, logic, bitwise)
+ 2 Flow control, functions, recursivity, comments, arg, i/o, files, modules, environment
+ 3 OOP
+   3.1 Clase, objeto, attr, metodo, public, private
+   3.2 Constructor, destructor
+   3.3 Herencia, polimorfismo
+
+ 4 Exceptions
+ 5 Regular expressions
+ 6 Testing
+ 7 Deploying
+ 8 Sockets
+ 9 Threads
+10 Debugging
+11 Documenting
+12 YAML, XML
+
+-------------------------------------
+
+Part I. Basic PERL
+
+Chapter 1. Intro, types, operators
+----------
+Intro:
+	$perl -v #Print PERL version
+
+Execution of code
+	$perl  -e <perl code>           # Unix/Linux
+	C:>perl -e <perl code>          # Windows/DOS
+
+Command-line options:
+	Option			Description
+	-d[:debugger]	Run program under debugger
+	-I directory	Specify @INC/#include directory
+	-T				Enable tainting checks
+	-t				Enable tainting warnings
+	-U				Allow unsafe operations
+	-w				Enable many useful warnings
+	-W				Enable all warnings
+	-X				Disable all warnings
+	-e program		run Perl script sent in as program
+	file			run Perl script from a given file
+	
+Comments
+	# This is a comment in perl
+	
+	#!/usr/bin/perl
+	
+	# This is a single line comment
+	print "Hello, world\n";
+
+	=begin comment
+	This is all part of multiline comment.
+	You can use as many lines as you like
+	These comments will be ignored by the 
+	compiler until the next =cut is encountered.
+	=cut
+
+Single & Double quotes
+	Only double quotes interpolate variables and special 
+	characters such as newlines \n where as single quote 
+	does not interpolate any variable or special character.
+
+"Here" Documents
+	You can store or print multiline text with a great comfort.
+	NO space between the << and the identifier.
+	
+	#!/usr/bin/perl
+
+	$a = 10;
+	$var = <<"EOF";
+	This is the syntax for here document and it will continue
+	until it encounters a EOF in the first line.
+	This is case of double quote so variable value will be 
+	interpolated. For example value of a = $a
+	EOF
+	print "$var\n";
+
+	$var = <<'EOF';
+	This is case of single quote so variable value will not be 
+	interpolated. For example value of a = $a
+	EOF
+	print "$var\n";
+
+Escaping Characters: use \
+
+Data types
+	Scalars
+	Arrays
+	Hashes
+
+Numeric literals
+	Type					Value
+	Integer					1234
+	Negative integer		-100
+	Floating point			2000
+	Scientific notation		16.12E14
+	Hexadecimal				0xffff
+	Octal					0577
+
+String Literals
+	Escape sequence	Meaning
+	\\				Backslash
+	\'				Single quote
+	\"				Double quote
+	\a				Alert or bell
+	\b				Backspace
+	\f				Form feed
+	\n				Newline
+	\r				Carriage return
+	\t				Horizontal tab
+	\v				Vertical tab
+	\0nn			Creates Octal formatted numbers
+	\xnn			Creates Hexideciamal formatted numbers
+	\cX				Control characters, x may be any character
+	\u				Force next character to uppercase
+	\l				Force next character to lowercase
+	\U				Force all following characters to uppercase
+	\L				Force all following characters to lowercase
+	\Q				Backslash all following non-alphanumeric characters
+	\E				End \U, \L, or \Q
+
+Creating variables
+	$age = 25;             # An integer assignment
+	$name = "John Paul";   # A string 
+	$salary = 1445.50;     # A floating point
+
+Variable Context
+
+ 1 Scalar: 
+	Assignment to a scalar variable evaluates the right-hand side in a scalar context.
+ 2 List: 
+	Assignment to an array or a hash evaluates the right-hand side in a list context.
+ 3 Boolean:
+	Boolean context is simply any place where an expression is being evaluated to see whether it's true or false
+ 4 Void:
+	This context not only doesn't care what the return value is, it doesn't even want a return value.
+ 5 Interpolative:
+	This context only happens inside quotes, or things that work like quotes.
+
+Special Literals
+	#!/usr/bin/perl
+
+	print "File name ". __FILE__ . "\n";
+	print "Line Number " . __LINE__ ."\n";
+	print "Package " . __PACKAGE__ ."\n";
+
+	# they can not be interpolated
+	print "__FILE__ __LINE__ __PACKAGE__\n";
+

@@ -1,0 +1,69 @@
+SQL ToC
+-------
+
+HOME
+Intro
+Syntax
+SELECT
+SELECT DISTINCT
+WHERE
+AND & OR
+ORDER BY
+INSERT INTO VALUES
+UPDATE/SET/WHERE
+DELETE FROM ... WHERE
+Injection
+----------------------
+SELECT TOP: WHERE ROWNUM <= 5
+LIKE: W
+Wildcards
+IN
+BETWEEN
+Aliases
+Joins
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+FULL JOIN
+UNION
+SELECT INTO
+INSERT INTO SELECT
+CREATE DB
+CREATE TABLE
+Constraints
+NOT NULL
+UNIQUE
+PRIMARY KEY
+FOREIGN KEY
+CHECK
+DEFAULT
+CREATE INDEX
+DROP
+ALTER
+Auto Increment
+Views
+Dates
+NULL:	Values
+		Functions
+Data types:	General
+			DB
+
+SQL Functions
+-------------
+Functions
+AVG()
+COUNT()
+FIRST()
+LAST()
+MAX()
+MIN()
+SUM()
+GROUP BY
+HAVING
+UCASE()
+LCASE()
+MID()
+LEN()
+ROUND()
+NOW()
+FORMAT()
