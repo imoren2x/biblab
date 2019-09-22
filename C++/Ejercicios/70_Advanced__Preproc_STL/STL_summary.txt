@@ -1,0 +1,8 @@
+
+Link: http://www.cplusplus.com/reference/stl/
+
+Arrays are fixed-size sequence containers: they hold a specific number of elements ordered in a strict linear sequence.
+
+Vectors are sequence containers representing arrays that can change in size.
+
+Lists are sequence containers that allow constant time insert and erase operations anywhere within the sequence, and iteration in both directions.

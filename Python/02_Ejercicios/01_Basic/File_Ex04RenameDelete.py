@@ -34,7 +34,7 @@ def main():
 
 	#Borrar fichero#
 	print( "Borrar fichero" )
-	os.remove(newFileStr)	
+	os.remove(newFileStr)
 	#
 	return
 ###End main###

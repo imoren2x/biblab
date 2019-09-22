@@ -1,0 +1,10 @@
+
+
+14.1.6 Static Variables
+http://ee.hawaii.edu/~tep/EE160/Book/chap14/subsection2.1.1.6.html
+
+Static variable - Wikipedia, the free encyclopedia
+http://en.wikipedia.org/wiki/Static_variable
+
+static functions
+http://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/SYNTAX/static.htm

@@ -1,0 +1,30 @@
+Programas para hacer en C++
+---------------------------
+
+Lenguaje C
+	Calendario
+
+Lenguaje C++, Python, Qt
+	Buscaminas
+	Game of Life -> Laboratorio 1, 133
+	Garçon (menú) XML, YAML
+	Ahorcado
+
+Estructura diseño
+	.h	| .c
+	---------
+	.c (client)
+
+Estructura repositorio
+	trunk
+	release/build
+	branch
+	temp
+
+Three-tier model
+
+Pattern Design
+	1 UML
+	2 Dev (TDD)
+	3 Test
+	4 Deploy (.dll, etc., hide pointer)

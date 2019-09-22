@@ -7,7 +7,7 @@ def funcion_1(x):
 funcion_1(x)
 print("Despues de llamar a la funcion", x)
 #Esto no cambia el valor de x
- 
+
 
 #En cambio las listas son mutables
 y = [1, 3, 5]

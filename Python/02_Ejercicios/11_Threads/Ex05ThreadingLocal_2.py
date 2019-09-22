@@ -26,5 +26,5 @@ class T(Thread):
 """
  >> T().start(); T().start()
 I'm called from Thread-2
-I'm called from Thread-1 
+I'm called from Thread-1
 """

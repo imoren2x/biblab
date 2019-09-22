@@ -28,7 +28,7 @@ def obtener():
     obj = lista.pop()
     lock.release()
     return obj
-    
+
 def threadAnyadir():
     for i in range(0, 5):
         print "[threadAnyadir] Obj: %d" %(i)
@@ -40,7 +40,7 @@ def threadObtener():
         try:
             #PUEDE HABER DEADLOCK
             # SI lista.pop() no se ejecuta, no se llega a
-            #  a liberar el lock, luego al re-entrar, se 
+            #  a liberar el lock, luego al re-entrar, se
             #  produce un deadlock
             obtener()
         except:
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     """
     t = threading.Thread(target=threadAnyadir, args=())
     t.start()
-    
+
     t = threading.Thread(target=threadObtener, args=())
     t.start()
 

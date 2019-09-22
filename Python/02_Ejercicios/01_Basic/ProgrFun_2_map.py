@@ -2,12 +2,12 @@
 
 """
  La función map aplica una función a cada elemento de una secuencia y
-devuelve una lista con el resultado de aplicar la función a cada elemento. 
+devuelve una lista con el resultado de aplicar la función a cada elemento.
 
  Si se pasan como parámetros n secuencias, la función tendrá que aceptar n
 argumentos.
- Si alguna de las secuencias es más pequeña que las demás, 
-el valor que le llega a la función function para posiciones mayores que 
+ Si alguna de las secuencias es más pequeña que las demás,
+el valor que le llega a la función function para posiciones mayores que
 el tamaño de dicha secuencia será None.
 """
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 	print "Entrada: ", l
 	l2 = map(cuadrado, l)
 	print "Salida:  ", l2
-	
+
 	print ""
 	print "Funcion producto"
 	l11 = [1, 2, 3]

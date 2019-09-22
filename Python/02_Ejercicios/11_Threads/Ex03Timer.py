@@ -39,7 +39,7 @@ if __name__ == "__main__":
     print("Tiempo consumido: %s segundos \n" % str(t3) )
 
 """
-Métodos interesantes:    
+Métodos interesantes:
     .setDaemon devuelve un booleano si se trata de un demonio.
 """
 

@@ -16,7 +16,7 @@ class MiThread(threading.Thread):
         threading.Thread.__init__(self)
         self.num = num
     #End __init__#
-    
+
     def run(self):
         print "%s : Nazco: Soy el hilo %s"  %(datetime.now(), self.num)
         print "%s : Muero: Soy el hilo %s"  %(datetime.now(), self.num)

@@ -22,7 +22,7 @@ if __name__ == "__main__":
     """
     """
     t = threading.Thread(target = f)
-    t.start()  
+    t.start()
     #t.join()
 
     t = threading.Thread(target = f)

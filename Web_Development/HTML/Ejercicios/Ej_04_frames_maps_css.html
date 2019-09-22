@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- XHTML 1.1, based on SGML -->
+<!-- http://www.w3schools.com/tags/tag_doctype.asp -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+	<head>
+		<!-- Cabecera del documento en Unicode UTF-8 español</BR> -->
+
+		<!-- Base contiene la dirección de base de la página web -->
+		<!-- <base href="http://www.w3schools.com/images/" target="_blank|_parent|_self|_top|<framename>"> -->
+
+		<title>Página con frames</title>
+
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<meta name="description" content="Estructura básica de un documento XHTML 1.1">
+		<meta name="keywords" content="XHTML 1.1, CSS, HTML, Javascript">
+		<meta name="author" content="imoren2x">
+		<meta name="copyright" content="me.tel">
+
+		<!-- Specifies a scheme to be used to interpret the value of the content attribute -->
+		<meta name="date" content="2009-01-02" scheme="YYYY-MM-DD">
+		<meta name="identifier" content="0-2345-6634-6" scheme="ISBN">
+
+		<!-- Style is for CSS styles -->
+		<style>
+			h1 {color:red;}
+			p  {color:blue;}
+		</style>
+
+		<!-- The <link> tag defines a link between a document and an external resource. -->
+		<link rel="stylesheet" type="text/css" href="theme.css">
+
+		<!-- The <script> tag is used to define a client-side script (JavaScript) -->
+		<script src="myscripts.js"> </script>
+ 
+	</head>
+
+
+	<!-- <h1>Frames</h1> -->
+	<!-- <p>Los frames son una forma de dividir el área de la página web.</p> -->
+	<!-- <p>No están permitidos en HTML5.</p> -->
+
+	<frameset cols="20%, 80%">
+		<frame src="Ej_04_frame_menu.html" name="menu">
+		<frame src="Ej_04_frame_principal.html" name="principal">
+	</frameset>
+
+	<!-- FRAMESET: Opciones
+
+	· ROWS Número de filas dentro del conjunto de marcos.
+	Es recomendable usar el símbolo * para indicar el resto de la página.
+	<FRAMESET ROWS=" 75%, *">
+	</FRAMESET>
+
+	· COLS Número de columnas dentro del conjunto de marcos.
+	Funciona equivalentemente a las filas.
+	Los juegos de marcos se pueden anidar.
+	Por ejemplo, una fila con varias columnas de marcos y viceversa.
+
+	· FRAMEBORDER
+	Permite especificar si va a existir un borde de marco o no.
+	El valor 0 supone la no existencia de borde y sirve para los casos en que los marcos comparten un dibujo determinado.
+	
+	· FRAMESPACING
+	Fija el espacio entre marcos.
+	Valor 0, no hay espacio entre marcos.
+
+	· BORDER
+	Especifica el borde del marco en píxeles.
+
+	· BORDERCOLOR:
+	Permite escoger el color del borde. 
+	-->
+
+	<!-- FRAME: Opciones
+
+	· SRC
+		Dirección de la página web que se va a desplegar inicialmente el marco.
+	
+	· NAME
+		Identificador del marco frente a otros.
+		Sirve para identificarlo en caso de interaccionar con el marco.
+	
+	· MARGINWIDTH
+		Espacio en píxeles entre el borde lateral del marco y el contenido.
+	
+	· MARGINHEIGHT
+		Espacio en píxeles entre el borde superior e inferior del marco y el contenido.
+	
+	· SCROLLING
+		Especifica si el marco tendrá o no barra de scroll. 
+	
+	· NORESIZE
+		Evita que el marco cambie de tamaño
+		Se combina con SCROLLING para impedir que el contenido de un marco no se visualice por completo.
+
+	-->
+
+	<!-- 
+	11.3 Manipulación cruzada de marcos
+	Las páginas contenidas en un marco determinado pueden afectar al contenido de cualquier otro en tanto puedan referenciarlo por su nombre.
+	El parámetro TARGET especifica sobre qué marco va a influir una determinada acción.
+		· HREF
+			Permite que la página web a la que se salta se cargue sobre el marco que especifica el parámetro TARGET.
+
+		· AREA
+			Similar al anterior, sólo que en este caso el hipersalto se hace sobre un mapa de imagen.
+		
+		· FORM
+			Permite especificar sobre qué marco tiene efecto la acción.
+
+	Sintaxis:
+	TARGET = "objetivo"
+donde objetivo
+	  i. el nombre de un marco cualquiera de la estructura.
+	 ii. _top se abandone la estructura de marcos y el documento a que se salta se expande a toda la página.
+	iii. _blank hace que el documento enlazado aparezca en una ventana nueva.
+	 iv. _self hace que la página se abra en el propio marco que es la opción por defecto.
+	  v. _parent hace que la página se abra sobre el juego de marcos del que derivó el marco actual.
+				De no existir ninguno, se abriría sobre el navegador completo.
+	-->
+
+
+</html>

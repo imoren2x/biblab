@@ -11,7 +11,7 @@ Accessing attributes
 
  - getattr(obj, name[, default]) : to access the attribute of object.
  - hasattr(obj,name) : to check if an attribute exists or not.
- - setattr(obj,name,value) : to set an attribute. 
+ - setattr(obj,name,value) : to set an attribute.
 	If attribute does not exist, then it would be created.
  - delattr(obj, name) : to delete an attribute.
 
@@ -32,7 +32,7 @@ class Employee:
 		self.name 	= name
 		#Assign salary
 		self.salary = salary
-		
+
 		Employee.empCount += 1
 	### END __init__ ###
 
@@ -53,16 +53,16 @@ def main():
 	emp1 = Employee("Zara", 2000)
 	#This would create second object of Employee class
 	emp2 = Employee("Manni", 5000)
-	
+
 	#Print Employee count
 	emp1.displayCount()
-	
+
 	print "Number of employees: %s " % str(Employee.empCount)
-	
+
 	if not hasattr(emp1, 'salary'):
 		raise Exception("Object has not attribute")
 	#End IF#
-	
+
 	salary = getattr(emp1, 'salary')
 	emp1.displayEmployee()
 	if salary < 2500:

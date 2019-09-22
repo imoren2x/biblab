@@ -1,0 +1,11 @@
+Cálculo de parámetros estadísticos:
+
+\num_1 = \sum({i = 1, n, x_i - \bar(x)}^2)
+\den = n - 1
+
+\sigma_1 = \sqrt(\num_2, \den)
+
+\minuend = \sum(i=1, n, {x_i}^2)
+\subtrahend = \frac{ {\sum(i=1, n, x_i}^2 }{n}
+\num_2 = minuend - subtrahend
+\sigma_2 = \sqrt(\num_2, \den)

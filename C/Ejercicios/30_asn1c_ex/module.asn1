@@ -1,0 +1,14 @@
+/*
+ * This ASN.1 specification is given as an example.
+ * Your own ASN.1 module must be properly formed as well!
+ * (Make sure it has BEGIN/END statements, etc.)
+ */
+TestModule DEFINITIONS ::=
+BEGIN
+
+  TestType ::= SEQUENCE {
+      num [PRIVATE 1] INTEGER,
+      str UTF8String (SIZE(1..20)) OPTIONAL
+  }
+
+END

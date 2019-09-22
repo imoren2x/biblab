@@ -1,0 +1,25 @@
+C++ interfaces - Observer pattern design (José Luis Ojosnegros)
+--------------
+
+Utilizar una clase abstracta en C++ (virtual = 0) permite utilizar el concepto de interface, en el que no hay una definición de los mensajes que se envían por esa interfaz, sino que esos detalles de implementación se hacen en la clase heredada.
+	A ------------> B
+		(mensaje)
+	El mensaje no tiene una definición cerrada, no está implementado, es abstracto.
+
+Un ejemplo deso es el patrón de diseño Observer, en el que existen dos clases virtuales puras (abstractas):
+	Clase Observable:
+		Es observada por otros objetos de la clase observer y tiene un método abstracto "Register"
+		class Observable
+		{
+			public:
+				//El método Register recibe un objeto no implementado (
+				virtual void Register(Observer &a_ob) = 0;
+				virtual ~Observable(void){};
+		}
+
+	Clase Observer:
+		{
+			public:
+				virtual void Notify(const Data &a_data) = 0;
+				virtual ~Observer(void){};
+		}

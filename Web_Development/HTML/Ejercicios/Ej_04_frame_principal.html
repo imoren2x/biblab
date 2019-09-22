@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- XHTML 1.1, based on SGML -->
+<!-- http://www.w3schools.com/tags/tag_doctype.asp -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+	<head>
+	<title>Presentación</title>
+	</head>
+
+	<body color="#000" text="#0000FF">
+		<p>Ésta es la versión con frames de mi página.</p>
+
+		<h1>Mapas de imágenes</h1>
+		<p>Los hay de dos tipos:</p>
+		<ul compact type="disc">
+			<li>Servidor: ISMAP</li>
+			<li>Cliente: USEMAP</li>
+		</ul>
+		<p>Existe un fichero .map que especifica las coordenadas de los puntos de salto.</p>
+		
+		<p>Hay tres tipos de formas:</p>
+		<ul>
+			<li>rectángulos RECT</li>
+			<li>círculos CIRC</li>
+			<li>polígonos POLY</li>
+		</ul>
+
+		<img src="jpg_map.jpg" usemap="#mapa_ej">
+		<map name="mapa_ej">
+			<area shape="rect" coords="0,0,100,100" href="http://www.google.es">
+			<area shape="rect" coords="600,0,800,200" href="http://www.piensasolutions.com">
+			<area shape="default" noref>
+		</map>
+
+		<h1>Las hojas de estilo en cascada (CSS)</h1>
+		<p>Las reglas de estilo pueden definirse de tres formas posibles:</p>
+		<dl>
+			<dt>El estilo interior</dt>
+			<dd>
+				<p>Usando el tag <i>style</i>.</p>
+				<p>Ej: &lt;elemento style="propiedad:valor"&gt;
+			</dd>
+
+			<dt>El estilo incrustado</dt>
+			<dd>
+				<p>Consiste en incluir en la cabecera una serie de reglas que afecten a todos los elementos de un determinado tipo.</p>
+				<p>Dichas reglas van incluidas en el tag <i>style</i></p>
+				<p>Ej: &lt;style type="text/css" ... &gt; &lt;style&gt;
+				</p>
+			</dd>
+
+			<dt>Hojas de estilo enlazadas</dt>
+			<dd>
+				<p>Son ficheros .css que almacenan todas las reglas.</p>
+				<p>Tienen menos prioridad que el estilo incrustado o el interior.</p>
+			</dd>
+		</dl>
+	</body>
+
+</html>

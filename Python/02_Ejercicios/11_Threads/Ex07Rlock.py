@@ -29,7 +29,7 @@ def produce(obj):
             lista.append(obj)
         finally:
             lock.release()
-    #End IF#    
+    #End IF#
     print("[produce] End")
     return
 ### END produce ###
@@ -42,7 +42,7 @@ def consume():
     if lock.acquire():
         try:
             obj = lista.pop()
-            print "[consume] consumido el elemento %s" % str(obj)            
+            print "[consume] consumido el elemento %s" % str(obj)
             result = obj
         except Exception, e:
             print "[consume] There has been an exception."

@@ -1,0 +1,218 @@
+Templates
+---------
+	Function templates are special functions that can operate with generic types.
+	Declare function templates:
+		template <class identifier> function_declaration;
+		template <typename identifier> function_declaration;
+	Use:
+		function_name <type> (parameters);
+
+	Example:
+		//Definition//							//use//
+		template <class myType>					|	int x = 5, y = 6;
+		myType GetMax (myType a, myType b) 		|	GetMax <int>(x,y);
+		{										|
+		 return (a>b?a:b);						|
+		}										|
+
+	Entire example:
+		// function template
+		#include <iostream>
+		using namespace std;
+
+		//Definition//
+		template <class T>
+		T GetMax (T a, T b) {
+		  T result;
+		  result = (a>b)? a : b;
+		  return (result);
+		}
+		//End Definition//
+
+		int main () {
+		  int i=5, j=6, k;
+		  long l=10, m=5, n;
+		  //Use of templates//
+		  k=GetMax<int>(i,j);
+		  n=GetMax<long>(l,m);
+		  //End of Use//
+		  cout << k << endl;
+		  cout << n << endl;
+		  return 0;
+		}
+
+	More flexible example:
+		// function template II//
+		#include <iostream>
+		using namespace std;
+
+		template <class T>
+		T GetMax (T a, T b) {
+		  return (a>b?a:b);
+		}
+
+		int main () {
+		  int i=5, j=6, k;
+		  long l=10, m=5, n;
+		  //NOT explicit use of <int>//
+		  //Compiler automatic detection//
+		  k=GetMax(i,j);
+		  n=GetMax(l,m);
+		  cout << k << endl;
+		  cout << n << endl;
+		  return 0;
+		}
+
+	NOT possible:
+		int i;
+		long j;
+		k = GetMax(i, j); //WRONG!!!//
+
+Class templates
+
+	Example:
+		//Definition//								|	//Use//
+		template <class T>							|	mypair<int> myobject (115, 36);
+		class mypair {								|	mypair<double> myfloats (3.0, 2.18);
+			T values [2];							|
+		  public:									|
+			mypair (T first, T second)				|
+			{										|
+			  values[0]=first; values[1]=second;	|
+			}										|
+		};											|
+
+	In case that we define a function member outside the declaration of the class template, we must always precede that definition with the template <...> prefix:
+	Example:
+		// class templates
+		#include <iostream>
+		using namespace std;
+
+		template <class T>
+		class mypair {
+			T a, b;
+		  public:
+			mypair (T first, T second)
+			  {a=first; b=second;}
+			T getmax ();
+		};
+
+		//Necessary to declare//
+		template <class T>
+		//Necessary to declare//
+		T mypair<T>::getmax ()
+		{
+		  T retval;
+		  retval = a>b? a : b;
+		  return retval;
+		}
+
+		int main () {
+		  mypair <int> myobject (100, 75);
+		  cout << myobject.getmax();
+		  return 0;
+		}
+
+	IMPORTANT:
+		template <class T>
+		T mypair<T>::getmax ()
+
+		There are three T's:
+			· The first one is the template parameter.
+			· The second T refers to the type returned by the function.
+			· And the third T (the one between angle brackets) is also a requirement: It specifies that this function's template parameter is also the class template parameter.
+
+Template specialization
+	Different implementation depending on type passed as template parameter.
+	Example:
+		class mycontainer with increase method.
+		If type is char, better to use uppercase method.
+
+		// template specialization
+		#include <iostream>
+		using namespace std;
+
+		// class template:
+		template <class T>
+		class mycontainer {
+			T element;
+		  public:
+			mycontainer (T arg) {element=arg;}
+			T increase () {return ++element;}
+		};
+
+		// class template specialization:
+		template <>
+		class mycontainer <char> {
+			char element;
+		  public:
+			mycontainer (char arg) {element=arg;}
+			char uppercase ()
+			{
+			  if ((element>='a')&&(element<='z'))
+			  element+='A'-'a';
+			  return element;
+			}
+		};
+
+		int main () {
+		  mycontainer<int> myint (7);
+		  mycontainer<char> mychar ('j');
+		  cout << myint.increase() << endl;
+		  cout << mychar.uppercase() << endl;
+		  return 0;
+		}
+
+	Class template specialization Syntax:
+		template <> class mycontainer <char> { ... };
+
+	Notice the differences between the generic class template and the specialization:
+		template <class T> class mycontainer { ... };
+		template <> class mycontainer <char> { ... };
+
+	Typed parameters for templates (normal parameters)
+		Example:
+			// sequence template
+			#include <iostream>
+			using namespace std;
+
+			template <class T, int N>
+			class mysequence {
+				T memblock [N];
+			  public:
+				void setmember (int x, T value);
+				T getmember (int x);
+			};
+
+			template <class T, int N>
+			void mysequence<T,N>::setmember (int x, T value) {
+			  memblock[x]=value;
+			}
+
+			template <class T, int N>
+			T mysequence<T,N>::getmember (int x) {
+			  return memblock[x];
+			}
+
+			int main ()
+			{
+			  mysequence <int,5> myints;
+			  mysequence <double,5> myfloats;
+			  myints.setmember (0,100);
+			  myfloats.setmember (3,3.1416);
+			  cout << myints.getmember(0) << '\n';
+			  cout << myfloats.getmember(3) << '\n';
+			  return 0;
+			}
+
+	Default values:
+		template <class T=char, int N=10> class mysequence {..};
+		Use:
+			mysequence<> myseq;
+			mysequence<char,10> myseq; //equivalent//
+
+Templates and multiple-file projects
+	· code of a template function is not compiled until an instantiation with specific template arguments
+	· Big projects split into different source files: interface and implementation are separated.
+	· Because templates are compiled when required, there is a restriction for multi-file projects: the implementation (definition) of a template class or function must be in the same file as its declaration.
+

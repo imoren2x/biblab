@@ -2,8 +2,8 @@
 # -*- coding: latin-1 -*-
 
 """
- Un decorador no es es más que una función 
- que recibe una función como parámetro y 
+ Un decorador no es es más que una función
+ que recibe una función como parámetro y
  devuelve otra función como resultado.
 """
 
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 	imp2("hola")
 
 	"""
-	Si quisiéramos aplicar más de un decorador bastaría 
+	Si quisiéramos aplicar más de un decorador bastaría
 	añadir una nueva línea con el nuevo decorador.
 		@otro_decorador
 		@mi_decorador
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 	"""
 
 """
-Referencias: 
+Referencias:
  Clases decoradoras: http://rooteando.com/decoradores-en-python
  Mas ejemplos: http://www.juanjoconti.com.ar/2008/07/11/decoradores-en-python-i/
  Decoradores con parametros: http://www.juanjoconti.com.ar/2009/07/16/decoradores-en-python-ii/

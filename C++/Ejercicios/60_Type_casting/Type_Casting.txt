@@ -1,0 +1,209 @@
+Type Casting
+------------
+Link: http://cplusplus.com/doc/tutorial/typecasting/
+
+Implicit conversion
+	Example:
+		short a = 2000;
+		int b;
+		b = a;
+
+Explicit conversion
+	C++ is a strong-type language.
+	Two notations for explicit conversion:
+		· functional
+		· c-like
+	Example:
+		short a = 2000;
+		int b;
+		b = (int) a; 	//c-like cast notation//
+		b = int(a);		//functional/object notation//
+
+	Beware of syntactically correct code, but causes runtime errors.
+	Example:
+		// class type-casting
+		#include <iostream>
+		using namespace std;
+
+		class CDummy
+		{
+			float i,j;
+		};
+
+		class CAddition
+		{
+			int x,y;
+		  public:
+			CAddition (int a, int b) { x=a; y=b; }
+			int result() { return x+y;}
+		};
+
+		int main ()
+		{
+		  CDummy d;
+		  CAddition * padd;
+		  //Incopatible-type pointing//
+		  //Result: run-time error or unexpected result//
+		  padd = (CAddition*) &d;
+		  cout << padd->result();
+		  return 0;
+		}
+
+	There are four specific casting operators:
+		· dynamic_cast
+		· reinterpret_cast
+		· static_cast
+		· const_cast
+	Syntax:
+		dynamic_cast <new_type> (expression)
+		reinterpret_cast <new_type> (expression)
+		static_cast <new_type> (expression)
+		const_cast <new_type> (expression)
+	Old syntax:
+		(new_type) expression
+		new_type (expression)
+
+Dynamic cast
+	Used only with pointers and references to objects.
+	Example:
+		class CBase { };
+		class CDerived: public CBase { };
+
+		CBase b; CBase* pb;
+		CDerived d; CDerived* pd;
+
+		pb = dynamic_cast<CBase*>(&d);     // ok: derived-to-base
+		pd = dynamic_cast<CDerived*>(&b);  // wrong: base-to-derived
+										   // if polymorphic class, not wrong, ok
+
+		// dynamic_cast
+		#include <iostream>
+		#include <exception>
+		using namespace std;
+
+		class CBase { virtual void dummy() {} };
+		class CDerived: public CBase { int a; };
+
+		int main () {
+		  try {
+			CBase * pba = new CDerived;
+			CBase * pbb = new CBase;
+			CDerived * pd;
+
+			pd = dynamic_cast<CDerived*>(pba);
+			if (pd==0) cout << "Null pointer on first type-cast" << endl;
+
+			pd = dynamic_cast<CDerived*>(pbb);
+			if (pd==0) cout << "Null pointer on second type-cast" << endl;
+
+		  } catch (exception& e) {cout << "Exception: " << e.what();}
+		  return 0;
+		}
+	Result:
+		Null pointer on second type-cast
+
+	Compatibility note:
+		dynamic_cast requires RTTI (Run-Time Type Information)
+
+Static Cast
+	For conversion between pointers to related classes, base to derived, derived to base.
+	Example:
+		class CBase {};
+		class CDerived: public CBase {};
+		CBase * a = new CBase;
+		CDerived * b = static_cast<CDerived*>(a);
+	This would be valid, although b would point to an incomplete object of the class and could lead to runtime errors if dereferenced.
+	It's up to the programmer to ensure that the conversion is safe.
+
+	Also, for any other non-pointer conversion that could also be performed implicitly:
+		double d=3.14159265;
+		int i = static_cast<int>(d);
+
+Reinterpret cast
+	Converts any pointer type to any other pointer type, even of unrelated classes.
+		class A {};
+		class B {};
+		A * a = new A;
+		B * b = reinterpret_cast<B*>(a);
+
+Const cast
+	This type of casting manipulates the constness of an object, either to be set or to be removed. For example, in order to pass a const argument to a function that expects a non-constant parameter:
+	Example:
+		// const_cast
+		#include <iostream>
+		using namespace std;
+
+		void print (char * str)
+		{
+		  cout << str << endl;
+		}
+
+		int main () {
+		  const char * c = "sample text";
+		  print ( const_cast<char *> (c) );
+		  return 0;
+		}
+
+Typeid
+	Typeid allows to check the type of an expression:
+		typeid (expression)
+	Comparation operators:
+		· ==
+		· !=
+		· null-terminated character sequence representing the data type or class name by using its name() member.
+	Example:
+		// typeid
+		#include <iostream>
+		#include <typeinfo>
+		using namespace std;
+
+		int main () {
+		  int * a,b;
+		  a=0; b=0;
+		  if (typeid(a) != typeid(b))
+		  {
+			cout << "a and b are of different types:\n";
+			cout << "a is: " << typeid(a).name() << '\n';
+			cout << "b is: " << typeid(b).name() << '\n';
+		  }
+		  return 0;
+		}
+
+	In classes, typeid uses the RTTI to keep track of the type of dynamic objects.
+	In expressions whose type is a polymorphic classes, the result is the type of the most derived complete object.
+	Example:
+		// typeid, polymorphic class
+		#include <iostream>
+		#include <typeinfo>
+		#include <exception>
+		using namespace std;
+
+		class CBase { virtual void f(){} };
+		class CDerived : public CBase {};
+
+		int main ()
+		{
+		  try {
+			CBase* a = new CBase;
+			CBase* b = new CDerived;
+			cout << "a is: " << typeid(a).name() << '\n';
+			cout << "b is: " << typeid(b).name() << '\n';
+			cout << "*a is: " << typeid(*a).name() << '\n';
+			cout << "*b is: " << typeid(*b).name() << '\n';
+		  } catch (exception& e) { cout << "Exception: " << e.what() << endl; }
+		  return 0;
+		}
+
+	Result:
+		a is: class CBase *
+		b is: class CBase *
+		*a is: class CBase
+		*b is: class CDerived
+
+	Exceptions:
+		If the type typeid evaluates is a pointer preceded by the dereference operator (*), and this pointer has a null value, typeid throws a bad_typeid exception.
+
+	Pointer type/Object type:
+		· pointer type (a and b are of type class CBase *)
+		· object type (*a and *b), returns their dynamic type.
+

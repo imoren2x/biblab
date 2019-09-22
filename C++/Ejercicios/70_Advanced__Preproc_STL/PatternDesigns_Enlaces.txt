@@ -1,0 +1,15 @@
+Pattern Designs
+	C++ Programming/Code/Design Patterns - Wikibooks, open books for an open world
+	http://en.wikibooks.org/wiki/C++_Programming/Code/Design_Patterns#Structural_Patterns
+
+	Singleton Design Pattern in C++
+	http://sourcemaking.com/design_patterns/singleton/cpp/2
+
+	Singleton Design Pattern in C++: Before and after
+	http://sourcemaking.com/design_patterns/singleton/cpp/1
+
+	Singleton - Wikipedia, la enciclopedia libre
+	http://es.wikipedia.org/wiki/Singleton
+
+	Logging in C++
+	http://drdobbs.com/cpp/201804215

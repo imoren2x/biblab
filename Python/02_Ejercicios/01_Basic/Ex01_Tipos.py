@@ -45,7 +45,7 @@ def boolSection():
 	print("Boolean: x = True")
 	x = bool(True)
 	print("Type of x: type(x) = %s" %(type(x)))
-	
+
 def strSection():
 	"""
 	"""

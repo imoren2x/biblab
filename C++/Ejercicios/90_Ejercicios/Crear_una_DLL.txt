@@ -1,0 +1,21 @@
+Crear una DLL
+======
+
+* Building Windows DLLs with MinGW
+http://www.transmissionzero.co.uk/computing/building-dlls-with-mingw/
+
+* HOWTO Create and Deploy a Sample DLL using MinGW
+http://www.mingw.org/wiki/sampleDLL
+
+* Creating a dll with MinGW
+http://www.adp-gmbh.ch/win/misc/mingw/dll.html
+
+* Creación de librerías
+http://arco.esi.uclm.es/~david.villa/doc/repo/librerias/librerias.html
+
+* Librerías estáticas y dinámicas
+http://www.chuidiang.com/clinux/herramientas/librerias.php
+
+* Construir una DLL
+https://www.zator.com/Cpp/E1_4_4b2a.htm
+

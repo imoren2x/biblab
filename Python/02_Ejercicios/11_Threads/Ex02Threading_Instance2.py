@@ -21,7 +21,7 @@ MAX = 1.0
 
 def thread1(maxnum):
     """
-    First Thread: Counts from 0 to maxnum - 1.    
+    First Thread: Counts from 0 to maxnum - 1.
     Between counting, it randomly sleeps for some time.
     """
     #Initialize seed of the random event
@@ -53,11 +53,11 @@ def thread2(thread):
         RandSleepTime *= 10
         #
         print(" ")
-        print("th2: Sleep for: %s seconds." % str(RandSleepTime) )        
+        print("th2: Sleep for: %s seconds." % str(RandSleepTime) )
         time.sleep(RandSleepTime)
-        
+
         try:
-            isAlive = thread.isAlive()            
+            isAlive = thread.isAlive()
             if isAlive:
                 print("th2: The thread is alive.\n")
             else:
@@ -72,7 +72,7 @@ def thread2(thread):
             #threading.activeCount consultar el número de threads ejecutándose.
             print("th2: Numero de threads: %s" %(threading.activeCount()) )
             print("------------------")
-        #End try#    
+        #End try#
         except Exception, e:
             print("th2: There has been an exception.")
             print("th2: Exception: %s" % e)
@@ -85,12 +85,12 @@ def thread2(thread):
 if __name__ == '__main__':
     #
     maxnum = 16
-    
+
     print("Inicio del primer thread.")
     t1 = threading.Thread(target=thread1, args=(maxnum, ), name = "Thread 1")
     print("Arranque.")
     t1.start()
-    
+
     print("Inicio del segundo thread.")
     t2 = threading.Thread(target=thread2, args=(t1, ), name = "Thread 2")
     print("Arranque.")

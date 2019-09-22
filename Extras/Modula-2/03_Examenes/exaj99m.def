@@ -1,0 +1,29 @@
+DEFINITION MODULE EXAJ99M;
+
+FROM FIO IMPORT File;
+
+CONST
+    M = 30;
+
+TYPE
+    TipoCentral;
+    TipoReserva;
+    datosreserva = RECORD
+        DNIcliente: CARDINAL;
+        nombre: ARRAY [1..M] OF CHAR;
+        destino: ARRAY [1..M] OF CHAR;
+        agencia: ARRAY [1..M] OF CHAR;
+        estado: BOOLEAN;
+        sig: POINTER TO datosreserva;
+    END;
+
+    PROCEDURE Crear(VAR cr:TipoCentral);
+    PROCEDURE IngresarReserva(VAR cr: TipoCentral; dr: datosreserva);
+    PROCEDURE BorrarReserva(VAR cr: TipoCentral; DNIcliente: CARDINAL; destino: ARRAY OF CHAR);
+    PROCEDURE TramitarReserva(VAR cr: TipoCentral; destino: ARRAY OF CHAR);
+    PROCEDURE Listar(cr: TipoCentral);
+    PROCEDURE FiltrarReservas(VAR cr: TipoCentral; agencia: ARRAY OF CHAR);
+    PROCEDURE Guardar(cr: TipoCentral; mf: File);
+    PROCEDURE ConsultarDesdeFichero(VAR cr: TipoCentral; mf: File; destino: ARRAY OF CHAR);
+
+END EXAJ99M.

@@ -24,7 +24,7 @@ class Employee:
 		self.name 	= name
 		#Assign salary
 		self.salary = salary
-		
+
 		Employee.empCount += 1
 	### END __init__ ###
 

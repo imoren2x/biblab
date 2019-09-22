@@ -1,0 +1,65 @@
+
+1. Listas Doblemente enlazadas
+	Realizar todas las operaciones del ejercicio 1 con listas doblemente enlazadas.
+	Supondremos la siguiente declaraci´on de tipos:
+	struct TipoNodo
+	{
+		int dato;
+		TipoNodo *sig;
+		TipoNodo *ant;
+	};
+	typedef TipoNodo *TipoListaDob;
+
+2. Representación de números grandes con listas enlazadas
+	Una forma de almacenar un n´umero natural de valor mayor que el permitido en
+una computadora es introducir cada d´igito en un nodo de una lista enlazada. Por
+ejemplo, la siguiente lista representa al n´umero 92578:
+Escribe una funci´on que tome como par´ametro un puntero a una lista enlazada y
+devuelva el n´umero correspondiente en una variable de tipo unsigned int. Dise˜na
+tambi´en una funci´on que lea por teclado una sucesi´on de d´igitos (caracteres) y los
+introduzca como d´igitos (naturales) en una lista enlazada, y otras dos funciones
+que realicen, respectivamente, la suma y el producto de n´umeros representados de
+esta forma.
+
+3. Polinomio de x
+Un polinomio en x de un grado arbitrario se puede representar mediante una lista
+enlazada con punteros, donde cada nodo contiene el coeficiente y el exponente de un
+t´ermino del polinomio, m´as un puntero al siguiente nodo. Por ejemplo el polinomio:
+25x - 14x5 se puede representar como:
+
+a) Escribe una funci´on que eval´ue un polinomio P en un x = valor.
+	int Evaluar (const TipoPolinomio p, const int valor);
+b) Escribe una funci´on que devuelva el coeficiente del t´ermino de grado i de un
+polinomio P.
+	int Obtener (const TipoPolinomio p, const int i);
+c) Escribe una funci´on que sume 2 polinomios P1 y P2:
+	TipoPolinomio Sumar(const TipoPolinomio p1, const TipoPolinomio p2);
+d) Escribe una funci´on que realice la derivada de un polinomio P:
+	TipoPolinomio Derivada (const TipoPolinomio p);
+
+4. Tipo conjunto
+	Supongamos el tipo Conjunto definido mediante una lista enlazada seg´un la siguiente cabecera:
+	struct TipoNodo{
+	int dato;
+	TipoNodo *sig;
+	};
+	typedef TipoNodo *TpConjunto;
+
+	Dise˜nar las siguientes operaciones para la intersecci´on y uni´on de conjuntos:
+	TpConjunto Interseccion (const TpConjunto c1, const TpConjunto c2);
+	TpConjunto Union(const TpConjunto c1, const TpConjunto c2);
+
+5. Matrices dispersas (sparse)
+	Hay muchas aplicaciones en las que se debe almacenar en la memoria un vector de
+grandes dimensiones. Si la mayor´ia de los elementos del vector son ceros, ´este puede
+representarse m´as eficientemente utilizando una lista enlazada con punteros, en la
+que cada nodo es un registro con tres campos: el dato en esa posici´on, si es distinta
+de cero, el ´indice de esa posici´on y un puntero al siguiente nodo. Por ejemplo:
+
+Esto indica que hay s´olo dos elementos distintos de cero en el vector, es decir, ´este
+es: (25, 0, 0, 0, -14, 0, 0) si consideramos los vectores con siete posiciones.
+Escribe un programa que lea dos vectores por teclado, los introduzca en listas
+enlazadas y calcule su producto escalar. Dise˜na tambi´en las funciones para insertar
+y consultar el valor en una determinada posici´on del vector, teniendo en cuenta que
+si introducimos un elemento en una posici´on previamente existente se debe eliminar
+el valor anterior y sustituirlo por el nuevo.

@@ -1,0 +1,1114 @@
+Linux
+======
+
+Índice (rápido)
+1. Usuario
+ 1.1 Comandos del entorno
+ 1.2 Comandos habituales
+ 1.3 vi(m)
+ 1.4 Redes
+ 1.5 Comandos extra
+ 1.6 Bash script tutorial
+2. Administrador
+ 2.1 Comandos habituales
+ 2.2 Sistema de ficheros
+ 2.3 Redes
+ 2.4 Extra
+-----------------------------------------
+
+Índice (detallado)
+1. Usuario
+1.1 Comandos del entorno
+    Apagar el equipo        Ayuda en línea: man
+    Buscar ayuda            Shell bash configuration
+    Variables de entorno    Información del usuario:
+    Alias                    Fecha, Calendario
+    Separadores                Versiones del núcleo
+    Jerarquía del sistema de ficheros, usr, var
+    Control commands        Configuración del boot manager
+
+1.2 Comandos habituales
+    login/logout                Completar texto
+    Consolas virtuales, screen    Comandos básicos
+    Comandos intermedios        Filtros
+    Procesos                    Buscar y encontrar archivos:
+    Expresiones regulares        History
+    Redireccionamiento, Pipes    Comprimir/descomprimir archivos
+
+1.3 vi(m)
+    Comandos básicos    Deshacer/rehacer    Búsqueda    Cortar/borrar/copiar
+    Ventanas            Guardar/salir        Lista de comandos
+
+1.4 Redes
+    Servicio DNS (daemons)
+    Diagnostic message:
+    ifconfig, route, if, ip
+
+1.5 Comandos extra
+
+1.6 Bash Scripting tutorial
+    Configuración de sesión        El entorno de trabajo
+    Variables locales            Variables globales
+    Parámetros                    Control de flujo
+
+2. Administrador
+2.1 Parte básica
+    Ficheros    Dispositivos            Jerarquía del sistema de ficheros, usr, var
+    Particiones: Montar y desmontar        Montar automáticamente sistemas de ficheros
+    Particiones: Crear y verificar        Particiones swap
+    Inicio del sistema y niveles de ejecución
+    Gestión de usuarios y grupos        El inicio del sistema
+    Hacer copias de seguridad
+
+2.2 Redes
+    scp        RPM        VLAN    IP
+    Route    Configurar interfaces de red VMware Player
+    Averiguar interfaces de red VMware Player -- Linux interfaces
+    Servidor inetd        Servidores de red
+    tcp-wrapper            Configuración automática de red
+    Establecer nombre del host
+    Servidor FTP        Network File System
+
+2.4 Extra
+
+-----------------------------------------
+
+1. Usuario
+1.1 Comandos del entorno
+Apagar el equipo:
+    $> shutdown [-hr] now/19:30/10 #(min)
+
+Ayuda en línea: man
+    Sección    Tema
+     1 Comandos del usuario
+     2 Llamadas al sistema (syscal)    6 Juegos
+     3 Bibliotecas                    7 Miscelánea
+     4 Dispositivos                    8 Administración del sistema
+     5 Formatos de ficheros            9 Nuevos elementos
+
+Buscar ayuda:
+    $ man -K "change color"
+    $ apropos "change color"
+
+Shell bash configuration:
+    /etc/bash.bashrc
+        Común para todos los usuarios
+    ~/.bashrc
+        Personal de cada usuario.
+
+Variables de entorno:
+    · HOME
+        Guarda la ruta del directorio personal del usuario.
+    · PATH
+        Directorios donde se buscan comandos o archivos ejecutables.
+        Los directorios se separan por dos puntos (:).
+        Para incluir el directorio actual, se añade un punto (.).
+    · ~ (ruta del directorio local)
+    · Definir variables locales:
+        $> VARIABLE="valor" (o Variable, o variable)
+        (no dejar espacios antes y después del signo igual)
+    · Imprimir variables de entorno locales:
+        $> printenv
+    · Mostrar variables de entorno globales:
+        $> set
+    · Exportar variables locales a todo el entorno:
+        $> export VARIABLE (ya definida localmente previamente)
+
+Información del usuario: w, who, whoami
+    $> w -sf
+    $> who
+    $> whoami
+    $> finger [user]
+
+Alias:
+    Comandos a partir de otros comandos, normalmente para agilizar su uso.
+    $> alias #muestra la lista de alias#
+    $> alias j='jobs' #importante el igual sin espacios#
+
+    $> unalias <nom_alias> Borra el alias creado.
+    $> \<comando> Ejecuta el comando original.
+
+Fecha, Calendario: date, cal
+    $> date
+    $> cal [1981] | [4 1981]
+
+Separadores: ; \
+    ; Separar comandos secuencialmente.
+    \ Continuar un comando en la siguiente línea.
+
+Jerarquía del sistema de ficheros
+    /boot    p.ej., MBR, vmlinuz
+
+    /bin    Programas esenciales
+    /lib    Binarios de librerías
+            p.ej., libc.so
+    /sbin    Ficheros para configuración inicial del sistema y admón.
+
+    /dev    Dispositivos físicos (también en /media)
+    /media    Montaje de dispositivos
+    /mnt    Montaje de dispositivos
+            /mnt/cdrom
+            /mnt/floppy
+
+    /home    Directorios personales de usuarios (tb bajo /users/
+    /root    Home del root
+
+    /proc    Stma. de ficheros virtual creado por el kernel
+
+    /usr    Datos que deberán ser estáticos y compartibles en red. (jerarquía /usr)
+    /var    Datos variables y cambiantes (p.ej., buzón de correo). (jerarquía /var)
+    /opt    Programas optativos del sistema.
+    /etc    Ficheros de configuración
+    /tmp    Directorio temporal
+
+Jerarquía /usr
+    /usr/include    Headers de C y C++
+    /usr/lib        Librerías de funciones dinámicas como librerías estáticas.
+    /usr/sbin        Ejecutables no esenciales.
+                    /usr/sbin/inetd
+                    /usr/sbin/in.telnetd
+    /usr/src        Fuentes.
+    /usr/share        Datos no dependientes del hardware: documentación, info, etc.
+    /usr/man
+    /usr/doc
+
+Jerarquía /var
+    /var/cache/        Caché de las aplicaciones.
+    /var/log        Almacenamiento de logs.
+    /var/mail/        Buzones de usuario.
+    /var/tmp        Archivos temporales.
+
+Versiones del núcleo:
+    $> uname -a
+    Numeración de las versiones
+        mayor.menor.parche
+          1     2     3
+        1 mayor
+        2 menor
+            Depende de subsistemas
+            Si es par, versión estable.
+            Si es impar, versión de desarrollo.
+        3 parche
+            Número de parches añadidos.
+
+Configuración del boot manager:
+    Para ver la partición que ha de montar como sistema de ficheros raíz.
+        $ rdev /vmlinuz
+    LiLO se sitúa en
+        /etc/lilo.conf
+    Para actualizarlo
+        $ lilo
+
+Comandos de control:
+    stop         CTRL+s,     start         CTRL+q,
+    interrupt    CTRL+c,     erase         CTRL+h | DEL,
+    eof          CTRL+d
+
+1.2 Comandos habituales
+Login/logout:
+    $> login
+    $> logout
+
+Completar de texto
+    Tecla Tab
+    Teclas Alt+Tab
+
+Consolas virtuales, screen
+    Alt+F1
+    Alt+F2
+    etc.
+
+    screen:
+        Crea varias pantallas, attacheadas o no, y se attachea a la que le interesa en cada momento.
+        Mostrar pantallas disponibles:
+            $> screen [-ls|-list]
+        Desattachear de la actual:
+            $> screen -d
+        Reattachear a la pantalla deseada:
+            $> screen -r <id>
+
+Comandos básicos:
+    ls: listar archivos:
+        $> ls    $> ll    $> l
+        Opciones
+            -a Muestra también los archivos ocultos.
+            -s Muestra el tamaño (en bloques) de cada archivo.
+            -F: Distingue ficheros y directorios por categoría de importancia.
+                / detrás de los directorios.
+                * detrás de los archivos ejecutables.
+            -S Ordena los archivo por tamaño.
+            --color Distingue directorios y ficheros ejecutables añadiendo colores distintos a cada uno.
+            -t Ordena los archivos por fecha de última modificación (por orden de antigüedad creciente). Muestra cuál es esa fecha.
+            -l Muestra los ficheros en formato largo.
+            -tu Ordena los archivos por fecha de último acceso en orden de antigüedad creciente. Muestra
+            cuál es esa fecha.
+            -i Muestra el número de inode que utiliza (número de índice).
+            -tc Ordena los archivos por fecha de creación en orden de antigüedad creciente. Muestra cuál es    esa fecha.
+            -r Muestra los archivos en orden inverso.
+            -R Muestra un directorio y todos sus subdirectorios recursivamente.
+    cd: cambia el directorio actual.
+    cat: escribir por pantalla.
+        $> cat <file>
+    mv: mover o renombrar archivos
+        $> mv <file> <new_file>
+        $> mv [-fviu] <origin> <destination>
+            -f Si existe un archivo en el destino con el mismo nombre,
+                fuerza a que se sobreescriba.
+            -v Muestra por pantalla todas las operaciones que se realicen.
+                Siempre es necesario tener permisos de escritura y lectura.
+            -i Si existe un archivo en el destino con el mismo nombre,
+                pregunta si debe ser sobreescrito.
+            -u Si existe un archivo en el destino con el mismo nombre,
+                sólo lo sobreescribe si está actualizándolo (update).
+    cp: copiar archivos
+        $> cp [-frivu] origen destino
+            -f Si existe un archivo en el destino con el mismo nombre, fuerza a que se sobreescriba.
+            -r Copia también directorios y subdirectorios.
+            -i Si existe un archivo en el destino con el mismo nombre, pregunta si debe ser sobreescrito.
+            -u Si existe un archivo en el destino con el mismo nombre, sólo lo sobreescribe si está actualizándolo (update).
+            -v Muestra por pantalla todas las operaciones que realiza. En cualquier caso, sólo copiará aquellos archivos sobre los que tengamos acceso de lectura.
+    rm: borrar archivos
+        $> rm [-friv] nombre
+            -f Fuerza el borrado de un archivo sin pedir confirmación.
+            -r Borra de manera recursiva todo el árbol de ficheros y directorios.
+            -i Pide confirmación para cada uno de los archivos y directorios.
+            -v Muestra por pantalla todas las operaciones que se realicen. Siempre es necesario tener permisos de escritura y lectura.
+    mkdir: Crear un directorio
+    rmdir: borrar un directorio
+
+Comandos intermedios:
+    wc: Word Counting
+        $> wc [file]
+        a b c    a: nº de líneas, b: nº de palabras, c: nº de letras (sin contar retornos)
+    pwd: Print Working Directory
+    ssh: para conectar a una máquina remota.
+    chmod: cambiar permisos de un fichero
+        [SO Tel@lac-22 $ ~] chmod [ugoa+-=rwxugo] <fichero>
+        [SO Tel@lac-22 $ ~] chmod <código binario> <fichero>
+            Opciones del comando chmod
+                u Propietario del archivo.
+                g Grupo al que pertenece el propietario del archivo.
+                o Resto de usuarios del sistema.
+                a Todos los usuarios del sistema.
+                + Añade permisos.
+                - Quita permisos.
+                = Asigna los permisos especificados.
+                r Permiso de lectura.
+                w Permiso de escritura.
+                x Permiso de ejecución.
+        Máscara por defecto: umask
+            $ umask <máscara>
+    chgrp: cambiar grupo de un fichero
+        $> chgrp <new_user> <dir>
+    chown: cambiar propietario de un fichero
+        $> chown <new_user> <dir>
+    chfn: cambiar información de un usuario
+    ln -s: crear un soft-link.
+        $> ln -s <FicheroOrigen> <Enlace>
+    du: ver el tamaño de un directorio
+        $> du -h #human-readable
+    df -h: ver el uso de las particiones.
+
+Filtros:
+    more: pagina los resultados mostrados por pantalla
+    less: pagina línea a línea los resultados por pantalla
+    tail: muestra las diez últimas líneas
+        $> tail -f <file> #followea el archivo conforme crece#
+    tee: muestra por pantalla texto y lo redirecciona a un fichero.
+        $> tee -a <file> #apenda el fichero#
+    diff: crea la diferencia de dos archivos.
+    sort: Ordena la entrada estándar y la escribe por la salida estándar. Por
+        defecto, en orden ascendente. Su ayuda está en man sort.
+            -d Ordena alfabéticamente (dictionary).
+            -n Ordena numéricamente.
+            -r Ordena en orden inverso.
+    pr: Formatea el contenido de un fichero en páginas, columnas,
+            fechas, etc.
+    grep: Filtra resultados (también para buscar por contenido)
+        $> grep [opciones] <patrón_a_filtrar> <ficheros_donde_buscar>
+        Opciones
+            -i Ignora caracteres en mayúscula
+            -r Busca recursivamente.
+            -v Busca el inverso del patrón
+    cut: Presenta a la salida estándar secciones de la entrada estándar.
+    paste: Pega líneas de distintos ficheros.
+
+Expresiones regulares
+    .         Cualquier carácter simple.
+    [ - ]     Rango de caracteres válidos.
+    [^ - ]     Rango de caracteres no admisibles.
+    ^         Comienzo de la cadena.
+    $         Final de la cadena.
+    ( )     Delimita un grupo o expresión regular.
+    |         OR Lógico.
+    *         Operador que actúa 0 ó más veces el operando anterior.
+    +         Operador que actúa 1 ó más veces el operando anterior.
+    \         Carácter de escape. Especifica cadenas que contengan ^, $, *, etc.
+    {n}     El ítem anterior se tiene que repetir n veces.
+    {n,}     El ítem anterior se tiene que repetir n ó más veces.
+    {n, m}     El ítem anterior se tiene que repetir entre n y m veces.
+    Ejemplo: ^#.*\.[a-z]+ca
+        Cadena que tiene una # al comienzo de la línea, después cualquier
+            número de caracteres, después un punto seguido de
+            minúscula una o más veces antes de una c y una a.
+Inhibición de metacaracteres:
+    Se emplean dos símbolos,
+    " " Comillas dobles.
+    ' ' Comillas simples.
+
+Procesos:
+    &    Lanza un proceso paralelamente.
+    ()    Asocia procesos en el prompt.
+        $> (sleep 20; date) &
+    Ctrl+z    Detiene la ejecución de un comando.
+    jobs    Lista los procesos en background.
+            Identifica un Nº de proceso (1, 2, 3...).
+    bg n    Lanza en background el proceso n.
+    fg n    Lanza en foreground el proceso n.
+    ps: muestra los procesos que se están ejecutando
+        $> ps [axlu]
+            a muestra todos los procesos
+            x muestra los ejecutables
+            l muestra info en modo long
+            u user id
+        Gestión de procesos
+            USER    Quién es el usuario propietario del proceso.
+            PID     Muestra el número de proceso. Tienen orden cronológico.
+            %CPU     Indica porcentaje consumido de CPU.
+            %MEM     Indica un porcentaje consumido de Memoria.
+            SIZE     Tamaño (Kbytes) de memoria virtual ocupado por el código, datos y
+                        pila (stack) del proceso.
+            RSS     Memoria física (Kbytes) ocupada por el programa.
+            TTY     Terminal asociado al proceso.
+            STAT     Estado en que se halla el proceso.
+                        R Running S Sleeping T Stopped Z zombie
+            START     Hora, minutos y segundos en que se lanzó la ejecución del proceso.
+            TIME     Tiempo de CPU consumido por el proceso en minutos y segundos.
+            COMMAND    Nombre del comando con sus argumentos.
+            PPID     Identificador del proceso padre.
+            NI         Prioridad asignada con el comando nice,
+    top: muestra los procesos actualmente y los refresca periódicamente.
+    kill: se comunica con un proceso.
+        $ kill -SIGTSTP %2
+        $ kill -1|-HUP para reiniciar un proceso.
+    time: Muestra el tiempo que tarda un proceso en terminar desde que se lanza.
+        Distingue tres tiempos:
+            (1) Tiempo de proceso como usuario.
+            (2) Tiempo de proceso en modo master.
+            (3) Tiempo de retorno.
+            (4) Tiempo de espera (wait).
+
+Buscar y encontrar archivos:
+    find: busca archivos
+        $> find <directorio> -name <file/patrón>
+    grep: busca por el contenido.
+        $> grep [-irv] <patrón_a_filtrar> <ficheros_donde_buscar>
+    whereis: para buscar un fichero binario, un fichero fuente o un manual de uso (man)
+        $> whereis amarok
+    which: busca ficheros binarios, pero con la peculiaridad de que permite autocompletar el nombre del programa que estamos buscando.
+        $> which ls
+    updatedb+locate: comando uptadedb con privilegios de superusuario. Una vez hecho esto ejecutamos el comando locate seguido de la cadena que deseamos busca
+        $> locate bash | grep /home
+
+Expresiones regulares
+    Comodín:         *
+    Interrogante:     ?
+    Rango:         [.-.] (p.ej., [A-Z])
+
+History
+    $> history 100
+    $> set history 5000
+    Búsqueda hacia adelante:    Ctrl+S
+    Búsqueda hacia atrás:        Ctrl+R
+    Opciones:
+        !<número>         Invoca el comando cuyo número se indica.
+        ^<viejo>^nuevo    Substituye la cadena <viejo> por la cadena <nuevo>.
+        !!                Invoca el último comando.
+        :p                Recupera el comando indicado sin ejecutarlo.
+                        Ejemplo: [SO $ ~] !15:p    #Añade el comando número 15 como último comando.
+        !-n                Invoca el n-ésimo comando anterior.
+        :<número>        Selecciona tan solo el argumento n-ésimo del comando indicado.
+        !<cadena>        Invoca el último comando que comienza por la cadena indicada.
+
+Redireccionamiento
+Salida: > >>
+    Ejemplos:
+        $ cat lunes martes miercoles > semana
+        $ cat jueves viernes >> semana
+
+Entrada: <
+    Ejemplos:
+        $ mail felipe < carta.txt
+        $ sort < lista > lista.ord
+
+La salida de error
+    Segunda salida para notificar errores o avisos durante la ejecución.
+    Se utiliza mucho cuando se compilan programas: el compilador y el programa make
+        · salida estándar: qué están tratando
+        · salida de error: qué errores se general
+    Para redireccionar la salida de error:
+        $ make >& errores
+    Aplicaciones:
+        $ comando_a_ejecutar | tee fichero
+        $ comando_a_ejecutar 2>&1 | tee -a fichero
+        $ comando_a_ejecutar 2> error.log
+        $ ((( comando_a_ejecutar | tee salida.log ) 3>&2 2>&1 1>&3 | tee errores.log ) 3>&2 2>&1 1>&3 ) 2>&1 | tee todojunto.log
+
+Pipes, la fontanería
+    Los pipes interconectan la salida de un comando con la entrada de otro.
+    Ejemplo: $ ls | sort
+    Los comandos se ejecutan concurrentemente, a la vez.
+    Por ejemplo:
+        $ date; sleep 2 | sleep 2 | sleep 2 ; date
+            Tiempo total de ejecución: 2 segundos.
+        $ date; sleep 2 ; sleep 2 ; sleep 2 ; date
+            Tiempo total de ejecución: 6 segundos.
+    Para comandos ejecutados de forma secuencial usar ;
+
+Comprimir/descomprimir archivos
+    tar:
+        $ tar cvf file.tar <files>
+        $ tar xzvf file.tar -C <dir_destino>
+    gzip
+        $ tar czvf file.tar.gz <files> (tiene que haber más de uno)
+        $ gzip file.tar # elimina el tar original (ahorra espacio)
+        Para descomprimir, dos opciones
+        $ gzip -d file.gz
+        $ gunzip file.gz
+        $ tar xzvf file.tar.gz -C <dir_destino>
+
+Mensajería: mail.
+Hay dos tipos de mensajería,
+    · write <usuario> [terminal] Envía un mensaje directamente al terminal de otro usuario que tenga
+            una sesión abierta actualmente
+    · mail [usuario] Envía mensajes a otros usuarios y permite examinar los mensajes
+            recibidos hasta ahora.
+Para enviar correo a un usuario,
+    [SO Tel@lac-22 $ ~] Mail <usuario> <mensaje>
+Opciones del programa Mail
+    d [#] Borra el mensaje especificado, por defecto el actual.
+    h Imprime un listado de cabeceras de los mensajes recibidos.
+    m <usuario> Crea un mensaje nuevo y se lo envía al usuario especificado.
+    n ó RETURN Pasa al siguiente mensaje.
+    q Sale salvando los mensajes leídos en el fichero mbox y eliminando los mensajes borrados.
+    x Sale sin hacer ningún cambio.
+    r Crea un mensaje de respuesta para el remitente del mensaje actual.
+    s [fichero] Salva y borra el mensaje actual en fichero especificado (defecto, mbox).
+    u [#] Recupera un mensaje borrado en estea ejecución del comando Mail.
+    w [fichero] Salva el mensaje actual en el fichero especificado eliminando la cabecera (defecto, mbox).
+
+1.3 vi(m)
+
+ * [Graphical vi-vim Cheat Sheet and Tutorial](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
+
+ * [VIM Quick reference card](http://tnerual.eriogerg.free.fr/vim.html)
+
+ * [vim Quick Reference Card](http://tnerual.eriogerg.free.fr/vimqrc.pdf)
+
+Comandos básicos:
+    i Inserta texto a la izquierda de la posición actual del cursor.
+    o Abre una nueva línea debajo de la actual e inicia la inserción.
+    : Muestra el prompt del vi en la línea inferior.
+    :set number Muestra los números de línea a la izquierda.
+    :set nonumber Desactiva los números de línea.
+    :set hlsearch activa las palabras buscadas.
+Deshacer/rehacer
+    u Deshace el último cambio realizado.
+    CTRL+R Rehace el último cambio deshecho
+Búsqueda:
+    :n Va a la línea n
+    :$ Va a la última línea
+    / Busca hacia adelante.
+    ? Busca hacia atrás.
+    n Repite la búsqueda.
+    N Invierte el sentido de la búsqueda.
+Cortar/borrar/Copiar
+    ndd Borra la línea actual (n = 1, 2, 3...).
+    nyy Copia (yank) una/n línea a un buffer (n = 1, 2, 3...).
+Ventanas:
+    :vs Vertical split
+    :split Horizontal split
+    CTRL+w izq/der: se mueve de ventana.
+    q: Muestra el menú histórico
+Guardar/salir
+    :w Guarda el fichero en el archivo.
+    :x Sale el editor vi guardando los cambios.
+    :q! Sale del editor vi descartando todos los cambios.
+    :qa Cierra todas las ventanas abiertas
+Lista de comandos:
+    i Inserta texto a la izquierda de la posición actual del cursor.
+    a Inserta texto a la derecha de la posición actual del cursor.
+    I Inserta texto al principio de la línea actual.
+    A Inserta texto al final de la línea actual.
+    o Abre una nueva línea debajo de la actual e inicia la inserción.
+    O Abre una nueva línea encima de la actual e inicia la inserción.
+    : Muestra el prompt del vi en la línea inferior.
+    :set number Muestra los números de línea a la izquierda.
+    :set nonumber Desactiva los números de línea.
+    ^u Se mueve una página arriba.
+    ^d Se mueve una página abajo.
+    dd Borra la línea actual.
+    x Borra el carácter que haya bajo el cursor.
+    D Borra desde el carácter actual hasta el final de la línea, incluídos.
+    u Deshace el último cambio realizado.
+    / Busca hacia adelante.
+    ? Busca hacia atrás.
+    n Repite la búsqueda.
+    N Invierte el sentido de la búsqueda.
+    yy Copia (yank) una línea a un buffer.
+    P Coloca el texto del buffer antes del cursor.
+    p Coloca el texto del buffer después del cursor.
+    :w Guarda el fichero en el archivo.
+    :x Sale el editor vi guardando los cambios.
+    :q! Sale del editor vi descartando todos los cambios.
+
+1.4 Redes
+Servicio DNS (daemons)
+    FQDN: Fully Qualified Domain Name
+    Archivo de hosts:
+        $ /etc/hosts #abrible con el vi
+    Servidores DNS:
+        /etc/resolv.conf
+
+Diagnostic message:
+    dmesg
+        lista el buffer de mensajes del núcleo. Este buffer contiene una gran variedad de mensajes importantes generados durante el arranque del sistema y durante la depuración de aplicaciones. La información ofrecida por dmesg puede guardarse en el disco duro mediante un demonio de registro, como syslog.
+
+Configuración de los dispositivos de red
+    ifconfig
+    route
+    if
+    ip
+
+ifconfig
+    Añadir:
+        ifconfig <interface> add <address> netmask <address> up|down
+    Listar:
+        ifconfig -a #lista todas las interfaces
+    Borrar:
+        ifconfig <interface> del <address> down
+
+route
+    route add [-netl|-host] <address> [netmask <address>] [gw <gateway>] interfaz
+
+    Ejemplo:
+        IP:     192.168.31.27
+        Mask:     255.255.255.0
+        gw:        192.168.31.1
+
+        Añadir IP a interfaz
+            ifconfig eth0 192.168.31.27 netmask 255.255.255.0 up
+        Indicar ruta para los paquetes dentro de la subred vayan por eth0 (máscara y dir de red)
+            route add -net 192.168.31.0 netmask 255.255.255.0 eth0
+        Indicar que el resto de paquetes vaya por el gateway por defecto
+            route add default gw 192.168.31.1 eth0
+
+        Kernel IP routing table
+        Destination        Gateway            Genmask            Flags    Metric    Ref     Use    Iface
+        192.168.31.0    *                255.255.255.0    U        0        0     14        eth0
+        127.0.0.0        *                255.0.0.0        U        0        0     16        lo
+        default            192.168.31.1    0.0.0.0            UG        0        0     1        eth0
+
+1.5 Bash script tutorial
+Archivos de configuración de sesión:
+    /etc/profile
+        Común para todos los usuarios
+    /etc/bash.bashrc
+        Común para todos los usuarios
+    ~/.bash_profile
+        Personal de cada usuario
+    ~/.bashrc
+        Personal de cada usuario
+    ~/.bash_logout
+
+El entorno de trabajo
+Las variables de entorno
+    · HOME
+        Guarda la ruta del directorio personal del usuario.
+    · IFS
+        Caracteres que se pueden utilizar para separar las palabras dentro de la línea de comandos.
+        Siempre aparece vacía, normalmente espacio, tabulador y fin de línea.
+    · MAIL
+        Establece el archivo donde se guarda el correo del usuario
+    · PATH
+        Directorios donde se buscan comandos o archivos ejecutables.
+        Los directorios se separan por dos puntos (:).
+        Para incluir el directorio actual, se añade un punto (.).
+        $> PATH=$PATH:/home/imoren2x
+        $> export PATH??
+    · PS1
+        Define el prompt.
+    · PS2
+        Define el prompt auxiliar: cuando se pulsa intro sin terminar la línea de comandos.
+        P.ej., por unas comillas o paréntesis sin cerrar o por continuación de línea '\'.
+    · TERM
+        Identifica el tipo de terminal.
+
+    Los nombres de las variables suelen estar en mayúsculas.
+    En bash, las variables son locales al entorno excepto si se exportan con el comando export.
+    Por ejemplo:
+        bash $ export VARIABLE="valor"
+    NOTA: no dejar espacios antes y después del signo igual.
+
+Variables locales
+    $> variable=valor
+    tipos: entero (2, 3), string ("hola", "adios")
+
+    Comillas simples: cadena literal, no se puede aplicar $.
+        Ej:    lac-22_% color= azul
+            lac-22_% echo ´Me gusta el color $color´
+            > Me gusta el color $color
+    Comilla invertida: comando con argumentos que se ejecuta, mostrando el resultado de la ejecución.
+        $> variable=`perl perlExample.pl`
+        $> echo $variable
+        hola
+    Comando expr: evalúa una expresión.
+        i=`expr $i -1`
+
+Variables globales
+    $> variable=valor
+    $> export variable
+    tipos: entero (2, 3), string ("hola", "adios")
+
+Parámetros
+    Para indicar los parámetros se usa el símbolo $.
+        $0 Nombre del programa en Bourne Shell.
+        $1 Primer argumento que se le introduce al Bourne Shell.
+        ...
+        $9 Noveno argumento que se le introduce al Bourne Shell.
+        $# Número de argumentos.
+        $* Todos los argumentos juntos.
+        shift: desplaza todos los argumentos una posición ($0:=$1, $1:=$2, ..., $9:=$10).
+    Ejemplo:
+        Ejemplo:
+        lac-22_% cat prueba             lac-22_% prueba a b c d e f
+        > echo el comando se llama $0     > el comando se llama prueba
+        > echo y tiene $# argumentos     > y tiene 6 argumentos
+        > echo que son $*                 > que son a b c d e f
+        > echo el primero es \($1\)     > el primero es (a)
+        > echo y el segundo es \($2\)     > y el segundo es (b)
+
+Control de flujo
+    Sentencia if:
+        if <condición>;
+        then
+        <comandos>
+        [elif <condición>
+        then
+        <comandos>]
+        fi
+    Bucle for:
+        for <variable> in <lista_valores>
+        do
+        <comandos>
+        done
+    Bucle while
+        while <condición>;
+        do
+        <comandos>
+        done
+    Sentencia case
+        case <variable> in
+        expresión1)
+        comandos1;;
+        expresión2)
+        comandos2;;
+        ... ... ...
+        *)
+        comandos3;;
+        esac
+
+    Comando test []
+    Si se quiere comprobar comparaciones entre cadenas o números, consultas sobre la existencia de ficheros o sus permisos, etc., está el comando test o [].
+
+1.6 A
+_________________________________________________________________________
+2. Administrador
+2.1 Parte básica
+Ficheros
+    Tipos
+        · Ficheros ordinarios
+        · Devices (disp. físicos)
+        · FIFO (canales de comunicación)
+        · Directorios
+        · Soft-links
+    Nombres:
+        · Máximo: 256 caracteres
+        · Prohibidos: ? * ' " / | \ $
+    Atributos:
+        d Directorio.
+        b Dispositivos orientados a I/O de bloques.
+            Requieren ser montados.
+        c Dispositivos orientados a I/O de caracteres (p.ej., terminal).
+        l Enlace simbólico a otro fichero: soft link.
+        s Socket asociado al sistema de ficheros (named socket).
+        p FiFo asociada al sistema de ficheros (named pipe).
+        - Fichero ordinario.
+
+    Permisos de acceso (permission modes):
+        r w x Lectura, escritura y ejecución.
+        · Permisos de propietario del archivo.
+        · Permisos de grupo.
+        · Resto de usuarios.
+    Permisos de acceso a ficheros
+        r Permiso de lectura.
+            cat, ls ...
+        w Permiso de modificación.
+            vi, rm, mv
+        x Permiso de ejecución.
+    Permisos de acceso a directorios
+        r Permiso de lectura del
+            contenido del directorio.
+        w Permiso de modificación y borrado.
+        x Permiso de entrar en el directorio.
+        t Permiso de modificación de ficheros
+            para el propietario de éstos (bit steaky).
+
+Dispositivos virtuales
+    /dev/null
+    /dev/zero
+
+Dispositivos (devices):
+    A los dispositivos en UNIX se accede como ficheros, permitiendo un grado de abstracción muy potente.
+    Todos los dispositivos están en el directorio /dev y tienen asociados varios identificadores
+    (1) Tipo bloque (b) o tipo carácter (c):
+        Según el tipo de dispositivo que represente el archivo.
+    (2) Major Device Number:
+        Lo comparten todos los dispositivos del mismo tipo (hda, tty...)
+        y emplean el mismo driver en el kernel.
+    (3) Minor Device Number:
+
+    /dev/console     Consola del sistema.
+    /dev/mouse         Ratón.
+    /dev/hda         Primer disco duro.
+    /dev/hda1         Primera partición del primer disco duro.
+    /dev/hda2         Segunda partición del primer disco duro.
+    /dev/hdb         Segundo disco duro.
+    /dev/hdb1         Primera partición del segundo disco.
+    /dev/fd0         Primera unidad floppy.
+    /dev/sda         Primer disco SCSI.
+    /dev/sdb         Segundo disco SCSI.
+    /dev/lp0         Primer puerto paralelo (impresora).
+    /dev/null         Dispositivo vacío.
+    /dev/ttyN         Consola virtual N-ésima.
+    /dev/ptyN         Pseudoterminal para entrar desde la red.
+    /dev/ttySN         Puertos serie.
+
+Jerarquía del sistema de ficheros
+    /boot    p.ej., MBR, vmlinuz
+
+    /bin    Programas esenciales
+    /lib    Binarios de librerías
+            p.ej., libc.so
+    /sbin    Ficheros para configuración inicial del sistema y admón.
+
+    /dev    Dispositivos físicos
+    /media    Montaje de dispositivos (también en /media)
+    /mnt    Montaje de dispositivos
+            /mnt/cdrom
+            /mnt/floppy
+
+    /home    Directorios personales de usuarios (tb bajo /users/
+    /root    Home del root
+
+    /proc    Stma. de ficheros virtual creado por el kernel
+
+    /usr    Datos que deberán ser estáticos y compartibles en red. (jerarquía /usr)
+    /var    Datos variables y cambiantes (p.ej., buzón de correo). (jerarquía /var)
+    /opt    Programas optativos del sistema.
+    /etc    Ficheros de configuración
+    /tmp    Directorio temporal
+
+Jerarquía /usr
+    /usr/X11R6        Entorno gráfico X Window.
+                    /usr/X11 /usr/X386 son enlaces simbólicos
+    /usr/X11R6/bin    Programas ejecutables para el entorno gráfico.
+                    Ficheros de configuración de X Window en /etc/X11
+    /usr/include    Headers de C y C++
+    /usr/lib        Librerías de funciones dinámicas como librerías estáticas.
+    /usr/sbin        Ejecutables no esenciales.
+                    /usr/sbin/inetd
+                    /usr/sbin/in.telnetd
+    /usr/src        Fuentes.
+    /usr/share        Datos no dependientes del hardware: documentación, info, etc.
+    /usr/man
+    /usr/doc
+    /usr/local
+
+Jerarquía /var
+    /var/cache/        Caché de las aplicaciones.
+    /var/lock        Ficheros de bloqueo para indicar que el dispositivo está bloqueado.
+    /var/log        Almacenamiento de logs.
+    /var/spool        Datos que se espera transferir.
+    /var/spool/lpd    Spooler de la impresora.
+    /var/mail/        Buzones de usuario
+    /var/spool/mail
+    /var/tmp
+
+Particiones: Montar y desmontar
+    Listar dispositivos montados:
+        $ mount
+    Montar partición FAT
+        $ mount /dev/hdb1 /mnt -t msdos
+    Montar CD-ROM
+        $ mount /dev/hdc /cdrom -t iso9660 -o ro
+    Desmontar
+        $ umount /dev/hdb1
+        $ umount /mnt
+
+Montar automáticamente sistemas de ficheros
+    /etc/rc.d
+        mount -a -t nonfs
+            -a automático
+                /etc/fstab
+
+    /etc/fstab
+        /dev/hda1    /        ext2        defaults
+        /dev/cdrom    /cdrom    iso9660        ro,user,noauto
+          1              2           3                4
+
+Particiones: Crear y verificar
+    Crear:
+        $ mkfs -t <tipofs> [-c] <dispositivo>
+        Ej:    mkfs -t ext2 /dev/fd0
+    Verificar
+        $ fsck -t ext2 /dev/hda3
+        Typically it puts the recovery files at /lost+found
+    Información de particiones
+        $ df -h
+
+Particiones swap
+    Crear partición swap
+        $ mkswap [-c] <device> [size]
+        Ejemplo:
+            mkswap -c /dev/hda2
+    Activarla
+        $ swapon /dev/hda2
+    Ver estado
+        $ free
+    Eliminarlas
+        $swapoff /dev/hda2
+
+Gestión de usuarios y grupos
+    /etc/passwd
+        brigitte:wWYaWDsJqrPtE:1501:500:Brigitte Kieffer,,4972,:/home/brigitte:/bin/bash
+            1            2         3     4            5                        6            7
+        1 login
+        2 password encriptada
+        3 UID: User Id
+        4 GID: Group Id
+        5 Nombre completo y otros datos
+        6 Directorio personal
+        7 El shell asignado al usuario
+    /etc/shadow
+        Archivo para acceder a las contraseñas por el root.
+
+    /etc/group
+        nsadms:!:1002:
+        nsusers:!:1001:
+        users:x:100:nsadm
+          1   2   3   4
+        1 Nombre del grupo
+        2 Pass del grupo: normalmente no se utiliza por seguridad
+        3 GID
+        4 Lista de usuarios, separados por comas, que pertenecen al grupo.
+
+El inicio del sistema
+    El arranque:
+        1 Power On Self Test
+        2 MBR: arranque (LiLO)
+        3 Carga del kernel
+            3.1 Descomprimirse en memoria
+            3.2 Inicio de funciones básicas: vídeo, dispositivos
+                dmesg muestra esta información
+            3.3 Montaje del sistemad e ficheros raíz en modo sólo lectura.
+        4 Proceso sbin/init (PID 0)
+    init y los niveles de ejecución (0 al 6)
+        init inicia el resto de procesos para el sistema y usuarios.
+            p.ej., getty inicia la sesión de los usuarios.
+        Niveles:
+            0        Detener el sistema
+            1         Modo monousuario
+            2-5        Niveles de ejecución normal (multiusuario)
+            6        Reinicio del sistema
+        /etc/inittab
+            Configuración de init.
+            identificador:niveles_de_exe:accion:programa
+
+            Nivel de ejecución por defecto:
+                id:3:initdefault:
+                 1 2  3
+            Resto de niveles de ejecución:
+                l0:0:wait:/etc/init.d/rc 0
+                 1 2   3   4
+            Niveles de ejecución vacíos:
+                ud::once:/sbin/update
+                ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+                Se ejecutan a todos los niveles
+            Niveles de ejecución tty
+    Pasar a otro nivel de ejecución: telinit
+            $ telinit <nivel de ejecución>
+        Al cambiar un nivel de ejecución:
+            · Se matan los procesos que no estén especificados.
+            · Se ejecutan los programas que sí estén especificados.
+            · Aquellos programas que estén en ambos niveles, se mantienen.
+        Aplicación: pasar a monousuario con funciones básicas.
+
+    Estilo de inicio:
+        /etc/rc.d
+            Está el programa rc y subdirectorios que definen los programas que se inician en cada nivel: rc0.d rc1.d ...
+            Son enlaces simbólicos a programas contenidos bajo /etc/rc.d/init.d
+
+Hacer copias de seguridad
+    Utilidades:
+        tar
+        dump y restore
+        cpio
+
+2.3 Redes
+scp <OriginUser>@<OriginMachine>:<OriginPath> <DestinationUser>@<DestinationMachine>:<DestinationPath>
+    e.g., scp vm1@4170-40:/opt/igntest/etc/pla.tar.gz .
+
+RPM:
+    To see the packages installed on the system:
+        rpm -qa | grep -i <name> #lists packets (query all)
+    To query a file to know which packet owns a file:
+        rpm -qf /opt/ignfw/modules/secman.mod # (query packet associated to file)
+    To query the dependencies between packages:
+        rpm -qpil <fichero.rpm>
+
+VLAN:
+    vconfig set_name_type DEV_PLUS_VID
+    vconfig add <ethx> <vid>; ifconfig <dev> up
+    vconfig rem <ethx> <vid>
+
+    sudo /sbin/vconfig add eth4 2006
+    sudo /sbin/ifconfig eth4.2006 up
+
+IP:
+    sudo ip addr add/del <ip/mask> dev <dev>
+    sudo ip a add/del <ip/mask> dev <dev>
+
+    sudo ip addr add 10.50.50.15/16 dev eth1
+    sudo ip addr del 10.50.50.15/16 dev eth1
+
+Route:
+    Mostrar tabla de rutas:
+        $ ip route
+        $ route (tabulado, pero necesita root)
+    Añadir una entrada a la tabla de rutas
+        $ ip route add <destination/mask> via <gateway ip> dev <dev>
+        $ ip route add 10.150.140.0/24 via 10.15.140.1 dev vlan180
+
+        $ route add -net <net bc ip> netmask <netmask> dev <dev>
+        $ route add/del/replace -net 192.56.76.0 netmask 255.255.255.0 dev eth0
+        NOTA: el gateway es el de por defecto, no especifica gateway.
+
+        $ route add -net 192.168.211.0 netmask 255.255.255.255 gw 192.168.211.12 dev vlan2002
+    Borrar una entrada de la tabla de rutas:
+        $ ip route del <destination>
+        $ ip route del <destination/mask> via <gateway ip> dev <dev>
+
+        $ route del -net 192.168.211.0 netmask 255.255.255.255 gw 192.168.211.12 dev vlan2002
+        APLICACIÓN: hacer que los paquetes de una vlan vayan a un switch concreto.
+    Ruta de un paquete
+        $ ip r get <ip>
+        $ ip route get <ip>
+
+Configurar interfaces de red VMware Player:
+    /etc/udev/rules.d/70-persistent-net.rules
+        /var/log/boot.msg                             -> log del arranque
+        /etc/udev/rules.d/70-persistent-net.rules     -> configurar la interfaz de red
+
+Averiguar interfaces de red VMware Player -- Linux interfaces:
+    $> watch -n1 'd "ip a"
+        click on/off each interface
+    To load configuration:
+        /etc/init.d/network restart
+    To set up eth4:
+        $> ifconfig eth4 192.168.139.128
+
+El servidor inetd
+    Configuración:
+
+    Formato:
+        servicio     tipoSocket     protocolo       indicador    usuario      programa      argumentos
+
+    Servicio:
+        Nombre del servicio.
+    Tipo de socket:
+        stream    TCP
+        dgram    UDP
+    Protocolo
+        tcp/udp
+    Indicador
+        Indica qué hacer una vez establecida la conexión:
+            · nowait: inetd sigue atendiendo peticiones
+            · wait: el programa ejecutado (talk, etc.) será el que atienda
+        En general,
+            wait = UDP
+            nowait = TCP
+    Usuario
+        root/
+
+    Ejemplo:
+        ftp  stream  tcp  nowait  root   /usr/sbin/tcpd in.ftpd -u022
+
+Servidores de red
+    Se suelen situar en /usr/sbin/ y terminan con la letra d (de daemon).
+    Permanecen a la escucha de peticiones en puertos.
+    Se ejecutan en segundo plano.
+    Hay dos tipos de servidores de red según el modo de ejecución:
+        · Servidores independientes.
+            Servidor Web: httpd
+            Servidor de nombres: named
+        · Servidores basados en inetd
+            Servidor genérico Internet Daemon.
+    Listado de los servicios que existen:
+            $ vi /etc/services
+        Formato:
+            nombre puerto/protocolo alias #comentario
+
+tcp-wrapper
+    /usr/sbin/tcpd
+    Se utiliza para restringir y controlar el acceso a los servicios: hosts autorizados, etc.
+
+Configuración automática de red
+    Datos de configuración:
+        /etc/sysconfig/network
+    Programa que realiza la configuración
+        /etc/rc.d/network
+
+Establecer nombre del host
+    $ hostname <hostname>
+    Para consultar el nombre:
+    $ hostname
+
+Servidor FTP
+    $ ftp <servername/IP>
+
+Network File System
+    Funciona sobre UDP.
+    Demonios  asociados:
+        · portmap
+            Convierte las llamadas a RPC a puertos TCP/UDP.
+        · mountd y nfsd
+            Aceptan una petición remota para montar un sistema de ficheros y comprueban autorización.
+    Localización:
+        /usr/sbin
+            /usr/sbin/rpc.portmap
+            /usr/sbin/rpc.mountd
+            /usr/sbin/rpc.nfsd
+    Sistemas de ficheros a exportar
+        /etc/exports
+            # exportar correcaminos:/usr/local a coyote sólo lectura
+            /usr/local    coyote(ro)
+            # exportar correcaminos:/home a astt lectura y escritura
+            /home        astt (rw)
+    Hay más explicaciones; con tener una idea en general es suficiente.
+
+
+Links
+------
+
+ * [Curso Básico de Linux](https://iie.fing.edu.uy/personal/vagonbar/sample-page/curso-basico-de-linux/)

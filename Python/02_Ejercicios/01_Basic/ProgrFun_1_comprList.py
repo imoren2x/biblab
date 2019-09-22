@@ -3,10 +3,10 @@
 
 """
  La comprensión de listas es una construcción que permite crear listas
-a partir de otras listas. 
+a partir de otras listas.
 
- Cada una de estas construcciones consta de una expresión que determina 
-cómo modificar el elemento de la lista original, seguida de una o 
+ Cada una de estas construcciones consta de una expresión que determina
+cómo modificar el elemento de la lista original, seguida de una o
 varias clausulas for y opcionalmente una o varias clausulas if.
 """
 

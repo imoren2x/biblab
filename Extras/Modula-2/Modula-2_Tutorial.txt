@@ -1,0 +1,35 @@
+Modula-2 Tutorial
+-----------------
+
+1. Tipos, variables, operadores, comentarios
+2. Control de flujo, argumentos, i/o, ficheros, módulos
+
+1. Tipos, variables, operadores, comentarios
+Tipos:
+	CARDINAL
+	INTEGER
+	REAL
+	BOOLEAN
+	CHAR
+	FLOAT
+
+Control de Flujo:
+	REPEAT ... UNTIL
+	WHILE
+	FOR
+	LOOP
+	IF ELSE ELSIF
+	CASE
+Value and Reference
+Recursion
+
+Arrays
+i/o, args
+Scalars, Subranges & sets
+Records
+POINTERS
+Modules
+
+Operators
+
+Regex

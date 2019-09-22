@@ -1,0 +1,44 @@
+Thread Table of Contents:
+-------------------------
+
+1 Thread Creation and Termination
+2 Thread Synchronization
+    - Mutexes
+	- joins - Make a thread wait till others are complete (terminated).
+	- condition variables - data type pthread_cond_t
+
+Mutexes
+ They prevent:
+	- Data inconsistencies
+	- Contention or race condition
+
+Thread Links
+    POSIX Threads Programming
+    https://computing.llnl.gov/tutorials/pthreads/
+
+    POSIX thread (pthread) libraries
+    http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html
+
+    POSIX threads tutorial
+    http://www.mobydisk.com/softdev/techinfo/pthreads_tutorial/
+
+    POSIX Threads Tutorial
+    http://math.arizona.edu/~swig/documentation/pthreads/#pthreads
+
+    Algunos detalles sobre los Threads
+    http://www.chuidiang.com/clinux/procesos/mashilos.php
+
+    Threads (Procesos ligeros) c++ y linux - MUTEX -
+    http://www.svcommunity.org/forum/cc/threads-%28procesos-ligeros%29-c-y-linux-mutex/
+
+    C++ Misc: Creating a Thread
+    http://www.youtube.com/watch?v=8C4wLzp5lK4
+
+    Grupo 12 - Video Linux - Procesos y Threads (parte 2).avi
+    http://www.youtube.com/watch?v=eeXP6iVHnzE
+
+    Introduction to Multi-threaded Code - CodeProject.url (Windows)
+    http://www.codeproject.com/KB/threads/sync.aspx
+
+    thread (C++) (Windows)
+    http://msdn.microsoft.com/en-us/library/9w1sdazb%28VS.80%29.aspx

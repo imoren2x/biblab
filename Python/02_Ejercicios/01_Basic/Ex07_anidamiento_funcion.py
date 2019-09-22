@@ -6,13 +6,13 @@ def saludar(lang):
 
 	def saludar_en():
 		print "Hello"
-	
+
 	def saludar_fr():
 		print "Salut"
-	
+
 	def saludar_lt():
 		print "Salutem"
-	
+
 	lang_func = {"es": saludar_es,
 		"en": saludar_en,
 		"fr": saludar_fr}

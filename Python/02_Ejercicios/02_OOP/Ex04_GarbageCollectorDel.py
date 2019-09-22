@@ -13,7 +13,7 @@ class Point:
 		self.x = x
 		self.y = y
 	# End __init__ #
-	
+
 	def __del__(self):
 		class_name = self.__class__.__name__
 		print class_name, "destroyed"

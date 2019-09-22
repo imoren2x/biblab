@@ -1,0 +1,94 @@
+ ------------
+| Calendario |
+ ------------
+ Tabla de contenidos
+ 1. Datos básicos
+ 2. Especificación de requisitos y notas de implementación
+
+
+1. Datos básicos
+ Título: 	Calendario
+ Autor: 	imoren2x
+ Fecha:		2011-04-22
+ Resumen:	Programa que desde el prompt recibe el año o año y mes como argumento y muestra el calendario completo de ese año o el del mes solicitado.
+ Lenguajes de programación:	C, C++, Python, Qt
+
+ Sintaxis:
+	calendar <year> [month] [-h|--help] [-c <n>] [-s <filename>]
+
+	Argumentos obligatorios:
+		<year> año a mostrar
+
+	Argumentos opcionales:
+		[month]	mes a mostrar.
+
+		[-h|--help] ayuda del comando.
+
+		[-c <n>] Sólo si no se usa [month], columnas a mostrar en el calendario anual.
+
+		[-s <filename>]	Fichero donde salvar el calendario mostrado.
+
+2. Especificación de requisitos y notas de implementación
+2.1 Funciones básicas
+	Hay cinco funciones básicas:
+	1. Obtener día de la semana (congruencia de Zeller)
+		Cabecera:	iFDayOfWeek(iYear, iMonth, iDay)
+		Implementación:
+			Usar la relación de congruencia de Zeller:
+				iDayOfWeek = ( 700 + ( 26 * A - 2) DIV 10 + iDay + B + B DIV 4 + C DIV 4 - 2 *C )
+			donde los valores A, B y C vienen dados por:
+							mes <= 2				mes >= 3
+				A		iMonth + 10				    iMonth - 2
+				B		(iYear - 1) MOD 100			iYear MOD 100
+				C		(iYear - 1) DIV 100			iYear DIV 100
+			y el resultado corresponde
+				0 = Domingo
+				1 = Lunes
+				...
+				6 = Sábado
+	2. Saber si el año es bisiesto (leap year)
+		Cabecera:	bFIsLeapYear(iYear)
+		Implementación:
+			Tengo hecho un programa que lo calcula.
+			if ( ( ( year % 4 == 0 ) && ( year % 100 != 0 ) ) || ( year % 400 == 0) )
+			 {
+				printf("Year %d is leap.\n", year);
+			 }
+			 else
+			 {
+				printf("Year %d is not leap.\n",year);
+			 }
+
+	3. Imprimir línea
+		A partir de un origen, imprime una línea del calendario
+
+	4. Imprimir mes
+		A partir de un origen, imprime un mes del calendario
+		Cabecera:	sFMonthPrinthMonth(iIniPos)
+					sFMonthPrinthMonth(DayOfWeek, eMonth, iYear)
+		Ejemplo:
+			Lu  Ma  Mi  Ju  Vi  Sá  Do
+			--------------------------
+		1	01  02  03
+		2
+		3
+		4
+		5
+		6
+
+	5. Imprimir año
+		Cabecera:	PrintYear(iYear)
+		Implementación:
+			iCol = 3 default
+			for i in iCol
+				PrintLineYear(iCol = 3) --------------------------
+
+2.2 Estructura modular
+2.2.1 Desde el prompt (primer enfoque)
+2.2.2 Desde el menú
+	Módulo Menú
+	Módulo de funciones (librería)
+
+	En cualquier caso, dos módulos:
+		· Módulo debug con testcases y
+		· Módulo de producción

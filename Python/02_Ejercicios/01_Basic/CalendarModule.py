@@ -8,16 +8,16 @@ class Calendar:
         self._iMonth = iMonth
         self._iDay = iDay
         self._iColumns = iColumns
-        
+
     def iGetYear(self):
         return self._iYear
-    
+
     def iGetMonth(self):
         return self._iMonth
-    
+
     def iGetDay(self):
         return self._iDay
-    
+
     def sDayOfWeek(self):
         """Returns day of the week taking the date as argument
             @rtype string = {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
@@ -38,7 +38,7 @@ class Calendar:
         k6 = kc // 4
         k7 = - 2 * kc
         iDayOfWeek = (k1 + k2 + k3 + k4 + k5 + k6 + k7) % 7
-        
+
         if iDayOfWeek == 0:
             return "Sunday"
         elif iDayOfWeek == 1:
@@ -56,13 +56,13 @@ class Calendar:
         else:
             print "%d, k1 = %d, k2 = %d, k3 = %d, k4 = %d, k5 = %d, k6 = %d, k7 = %d" % iDayOfWeek, k1, k2, k3, k4, k5, k6, k7
             return "ERROR!"
-    
+
     def bIsLeapYear(self):
         if ( ( ( self._iYear % 4 == 0 ) and ( self._iYear % 100 != 0 ) ) or ( self._iYear % 400 == 0) ):
             return True
         else:
             return False
-    
+
     def __sPrintMonthHead(self):
         if ( self.iGetMonth() == 1 ):
             sMonth = "January"
@@ -90,15 +90,15 @@ class Calendar:
             sMonth = "December"
         else:
             "ERROR: !!!!"
-            
+
         print "|                          ", sMonth, "                                |"
         print "| Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |"
-        
-        
-        
+
+
+
     def vPrintMonth(self):
         self.__sPrintMonthHead()
         pass
-    
+
     def vPrintYear(self):
         pass

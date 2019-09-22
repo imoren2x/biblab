@@ -1,0 +1,93 @@
+/**
+  * \title Calculadora Postfija
+  * \description Se pretende implementar una calculadora de números reales en notación postfija. Para ello, el usuario dispone de una pila donde almacenar los operandos y los resultados de las operaciones parciales, conforme éstas se realizan. Además, el usuario debe disponer de una serie de memorias de los resultados, donde podrá almacenar, en cada momento, el contenido de la cabeza de la pila de operandos. El número de memorias almacenadas puede ir variando a lo largo de la ejecución de la calculadora. Se trata de que el usuario pueda introducir por teclado una serie de comandos que le permitan operar con la calculadora y las memorias.
+  * Básicamente, estos comandos serían:
+  *  · num <numero>, que permite intruducir un operando en la pila,
+  *  · opr <operador>, que permite realizar la operación binaria indicada en <operador> con los operandos almacenados en la pila, desapilándolos y apilando en su lugar el resultado de la operación; las operaciones disponibles deben ser: sumar (+), restar (-), multiplicar (*) y dividir n´umeros reales (/),
+  *  · ver, que permite sacar por pantalla el contenido de la cabeza de la pila de operandos,
+  *  · eli, que permite eliminar (desapilar) la cabeza de la pila de operandos,
+  *  · mem <memoria>, que permite almacenar en la memoria indicada (un número > 0) el contenido de la cabeza de la pila de operandos,
+  *  · del <memoria>, que permite borrar la memoria indicada,
+  *  · loa <memoria>, que permite apilar la memoria indicada en la pila de operandos,
+  *  · fin, que permite finalizar la operación con la calculadora.
+  *
+  * Para la realización de la práctica deben usarse las clases Pila y Lista Posicional que se han explicado en la asignatura de Programación Modular. La clase Pila nos permitirá almacenar operandos y resultados parciales de operaciones, así como la consulta de los resultados de las mismas. Por otra parte, la clase Lista Posicional nos servirá para el almacenamiento de las memorias, tantas como el usuario disponga, que deberán poderse insertar, consultar y eliminar en cualquier posición de la lista posicional.
+  *
+  * La clase Pila
+  * La clase Pila nos servirá para el almacenamiento y la consulta de operandos y resultados parciales de las operaciones. Su especificación será la siguiente:
+  * 	#ifndef CPILA_H
+  * 	#define CPILA_H
+  * 		class CPila
+  *			{
+  *				public:
+  *					typedef double TElem;
+  *					// Constructor
+  *					CPila();
+  *					// Destructor
+  *					~CPila();
+  *					// Apila un elemento por la cabeza
+  *					void Apilar(const TElem elem);
+  *					// Desapila un elemento por la cabeza
+  *					void Desapilar();
+  *					// Comprueba si hay elementos en la pila
+  *					bool EstaVacia() const;
+  *					// Devuelve el valor almacenado en la cabeza
+  *					TElem Valor() const;
+  *				private:
+  *					struct Nodo
+  *					{
+  *						TElem elem;
+  *						Nodo *sig;
+  *					};
+  *					Nodo *cabeza;
+  *					};
+  *		#endif
+  *
+  *
+  * Implementación:
+  *		1. Mediante una lista enlazada con punteros.
+  *		2. Opcionalmente, mediante la STL vector, para lo cual:
+  *			· deberá incluirse la librería vector, mediante la directiva #include <vector>,
+  *			· la declaración de la estructura de datos de la pila de operandos debe hacerse mediante la instrucción vector <TElem>pila, con lo que se dispone de una estructura de datos que se comporta como una pila de números reales (justo lo que necesitamos) y para la que disponemos de las siguientes operaciones (siendo elem de tipo TElem y vacia de tipo bool):
+  *				• pila.push back(elem): apila elem en la pila,
+  *				• pila.pop back(): desapila el elemento de la cabeza de la pila,
+  *				• elem = pila.back(): devuelve el valor del elemento almacenado en la cabeza de la pila,
+  *				• vacia = pila.empty(): indica si la pila está vacía.
+  *
+  *
+  * La clase Lista Posicional
+  * La clase Lista Posicional servirá para el almacenamiento (y su posterior consulta o eliminación) de memorias de los datos almacenados en la cabeza de la pila de operandos. Las operaciones básicas que nos permite esta clase (cuya especificación más exacta puede consultarse en los apuntes de la asignatura de Programación Modular) se reflejan en la definición siguiente:
+  * 	#ifndef CLISTAPOS_H
+  *			#define CLISTAPOS_H
+  *			class CListaPos
+  *			{
+  *				public:
+  *					typedef double TElem;
+  *					// Constructor
+  *					CListaPos();
+  *					// Destructor
+  *					~CListaPos();
+  *					// Inserta un elemento en una posicion determinada
+  *					void Insertar(const unsigned int pos, const TElem elem);
+  *					// Elimina un elemento de una posicion determinada
+  *					void Eliminar(const unsigned int pos);
+  *					// Devuelve el elemento almacenado en una posicion determinada
+  *					TElem Consultar(const unsigned int pos) const;
+  *					// Devuelve la longitud de la lista
+  *					unsigned int Longitud() const;
+  *				private:
+  *					struct Nodo
+  *					{
+  *						TElem elem;
+  *						Nodo *sig;
+  *						Nodo *ant;
+  *					};
+  *					Nodo *cabeza; // Lista doblemente enlazada
+  *			};
+  *		#endif
+  *
+  * Implementación:
+  *		1. Mediante una lista enlazada con punteros.
+  *		2. Opcionalmente, se propone una implementación alternativa de esta clase mediante una lista doblemente enlazada con punteros. En este tipo de listas cada nodo contiene un puntero que apunta al siguiente nodo de la lista y, además, un segundo puntero que apunta al nodo anterior; a su vez, el primer elemento de la lista doblemente enlazada tiene como elemento anterior al último elemento de la lista, mientras que el último elemento de la lista tiene como nodo siguiente al primer elemento de la lista. La implementación del TAD Lista Posicional mediante una lista doblemente enlazada con punteros permite simplificar las operaciones de inserción y eliminación de una determinada posición de la lista. En la figura 1 se representa gráficamente un ejemplo de este tipo de listas.
+  *			En los apuntes del tema 2 de la asignatura de Laboratorio de Programación II puede encontrarse una explicación más exhaustiva de las listas doblemente enlazadas. En las figuras 2 y 3 se representan gráficamente las operaciones de inserción y eliminación de nodos en este tipo de listas, respectivamente.
+  */

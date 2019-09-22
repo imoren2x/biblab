@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 
 """
- La función reduce aplica una función a pares de elementos 
+ La función reduce aplica una función a pares de elementos
 de una secuencia hasta dejarla en un solo valor.
 
  A continuación podemos ver un ejemplo en el que se utiliza

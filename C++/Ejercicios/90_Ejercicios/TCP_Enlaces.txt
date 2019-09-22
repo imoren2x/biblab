@@ -1,0 +1,12 @@
+Re: packet interceptor
+	you can use pcap library to write a one.
+	http://en.wikipedia.org/wiki/Pcap
+	two semesters ago I had done a project related to this, under network programming.
+
+	This may be those example samples that you looking for.
+	http://www.tcpdump.org/pcap.htm
+
+	not sure precisely. Just I don't think I get your question precisely.anyway
+	see around it may be useful or ignore if offtopic.
+
+	Pegado de <http://www.daniweb.com/software-development/cpp/threads/264200>

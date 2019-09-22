@@ -29,7 +29,7 @@ def main():
         t = threading.Thread(target=imprime, args=(i, ))
         t.start()
         t.join()
-        
+
         print "Estado: %s" %(t.isAlive())
         #threading.enumerate lista de objetos threads que se están ejecutando.
         print "Threads: %s" %(threading.enumerate())

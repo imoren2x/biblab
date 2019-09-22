@@ -1,13 +1,13 @@
 {
     "Address": [
-        "Calle", 
-        "Ancha", 
+        "Calle",
+        "Ancha",
         "del doble"
-    ], 
+    ],
     "Address2": {
-        "Direccion": "Chemin de Chapitre", 
+        "Direccion": "Chemin de Chapitre",
         "calle": "Ancha"
-    }, 
-    "Name": "Troncho", 
+    },
+    "Name": "Troncho",
     "Surname": "Mocho"
 }

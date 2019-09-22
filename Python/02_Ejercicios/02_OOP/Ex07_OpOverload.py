@@ -18,7 +18,7 @@ class Vector(object):
 	def __str__(self):
 		return 'Vector (%d, %d)' % (self.a, self.b)
 	# End __str__ #
-	
+
 	def __add__(self,other):
 		"""
 		Operator overload.
@@ -35,6 +35,6 @@ if __name__ == '__main__':
 	print "Vector v1 = %s" % str(v1)
 	v2 = Vector(5, -2)
 	print "Vector v2 = %s" % str(v2)
-	
+
 	print "Vector v3 =", v1 + v2
 ### END ###

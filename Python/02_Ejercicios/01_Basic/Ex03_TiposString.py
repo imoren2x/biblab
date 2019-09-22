@@ -5,7 +5,7 @@
 """
 
 import os, sys, time, math
-	
+
 def strSection():
 	"""
 	"""
@@ -25,7 +25,7 @@ def strSection():
 	print("Count of string characters.\n")
 	print("%s \n" %( str(s1) ) )
 	print("Count: %s \n" %( str( s1.count() ) ) )
-	
+
 ##End strSection###
 
 if __name__ == "__main__":

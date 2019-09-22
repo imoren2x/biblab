@@ -1,0 +1,22 @@
+Para la obtención de minas se realiza un bucle
+	for (i = 0; i < iBombas; i++)
+	{
+		//iDim mide la longitud la fila o la columna//
+		//(0 .. iDim)//
+		fila = genera(iDim);
+		columna = genera(iDim);
+		p[i].fila
+		p[i].columna
+	}
+
+Para la generación de fila y columna
+	x = rand()/RAND_MAX;
+  [0 .. 1]
+
+//Para obtener la funcion de discriminacion al obtener el valor entre 0 y 1//
+//vector con los valores frontera//
+if ( (x > q[0]) && (x < q[1]) )
+{
+	//
+}
+...

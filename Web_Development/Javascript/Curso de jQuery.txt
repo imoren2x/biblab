@@ -1,0 +1,37 @@
+Curso de jQuery, Código facilito
+--------------------------------
+
+ 1 Introducción/Hola mundo/Variables y Operadores
+ 2 Condicionales: if, switch
+ 3 Funciones
+ 4 (no existe)
+ 5 For y while
+ 6 Arreglos
+ 7 Objetos en Javascript
+ 8 jQuery: primeros pasos
+ 9 Selectores en jQuery
+10 Selectores en jQuery
+11 jQuery: getters y setters
+12 Métodos CSS
+13 Clases CSS
+14 Dimensiones
+15 Método Attr
+16 Crear, Copiar y remover
+17 Recorrer documento HTML
+18 Métodos utilitarios
+19 Método Data
+20 Características del navegador
+21 Eventos
+22 Vincular y desvincular eventos
+23 Eventos personalizados
+24 Efectos
+25 Duración y acciones después de un efecto
+26 Efectos personalizados con método animate
+27 Easing, velocidad de una animación
+28 Completar efectos
+29 AJAX
+30 Peticiones
+31 Método GET
+32 Método POST
+33 Método get script
+34 Método get JSON

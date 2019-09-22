@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*- 
+# -*- coding: latin-1 -*-
 
 """
 @title Ejemplo sencillo de unittest.

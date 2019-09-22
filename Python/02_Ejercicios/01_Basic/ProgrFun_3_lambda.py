@@ -2,13 +2,13 @@
 # -*- coding: latin-1 -*-
 
 """
- El operador lambda sirve para crear funciones anónimas en 
-línea. Al ser funciones anónimas, es decir, sin nombre, 
+ El operador lambda sirve para crear funciones anónimas en
+línea. Al ser funciones anónimas, es decir, sin nombre,
 estas no podrán ser referenciadas más tarde.
 
  Las funciones lambda se construyen mediante el operador
-lambda, los parámetros de la función separados por comas 
-(atención, SIN paréntesis), dos puntos (:) y el código 
+lambda, los parámetros de la función separados por comas
+(atención, SIN paréntesis), dos puntos (:) y el código
 de la función.
 """
 

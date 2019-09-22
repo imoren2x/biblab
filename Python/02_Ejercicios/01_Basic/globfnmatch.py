@@ -11,7 +11,7 @@ import glob
 import fnmatch
 import re
 
-# 
+#
 CWD = os.getcwd()
 PWD = os.path.abspath(os.path.join(CWD, r'.\..\ '))
 print("Parent working directory: %s" % PWD)

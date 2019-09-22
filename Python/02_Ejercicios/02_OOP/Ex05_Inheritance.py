@@ -11,7 +11,7 @@ class Parent:
 	"""
 	# define parent class
 	parentAttr = 100
-	
+
 	def __init__(self):
 		"""
 		Constructor.
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	c.parentMethod()     # calls parent's method
 	c.setAttr(200)       # again call parent's method
 	c.getAttr()          # again call parent's method
-	
+
 	# d = Parent()
 	# d.childMethod()      # child calls its method
 	# d.parentMethod()     # calls parent's method

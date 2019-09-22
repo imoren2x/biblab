@@ -1,0 +1,126 @@
+Preprocessor directives
+-----------------------
+
+Link: http://cplusplus.com/doc/tutorial/preprocessor/
+
+1 Macro definitions (#define, #undef)
+2 Conditional inclusions (#ifdef, #ifndef, #if, #endif, #else and #elif)
+3 Line control (#line)
+4 Error directive (#error)
+5 Source file inclusion (#include)
+6 Pragma directive (#pragma)
+7 Predefined macro names
+
+	Preceded by sharp sign.
+	No semicolon (;)
+	Newline by writing backslash (\)
+
+1 Macro definitions (#define, #undef)
+	#define TABLE_SIZE 100
+	int table1[TABLE_SIZE];
+	int table2[TABLE_SIZE];
+
+	// function macro
+	#include <iostream>
+	using namespace std;
+
+	#define getmax(a,b) ((a)>(b)?(a):(b))
+
+	int main()
+	{
+	  int x=5, y;
+	  y= getmax(x,2);
+	  cout << y << endl;
+	  cout << getmax(7,x) << endl;
+	  return 0;
+	}
+
+	#:
+		#define str(x) #x
+		cout << str(test);		|	out << "test";
+
+	##:
+		#define glue(a,b) a ## b
+		glue(c,out) << "test";		|	cout << "test";
+
+2 Conditional inclusions (#ifdef, #ifndef, #if, #endif, #else and #elif)
+	#ifdef
+		#ifdef TABLE_SIZE
+		int table[TABLE_SIZE];
+		#endif
+
+	#ifndef
+		#ifndef TABLE_SIZE
+		#define TABLE_SIZE 100
+		#endif
+		int table[TABLE_SIZE];
+
+	#if, #else and #elif
+		#if TABLE_SIZE>200
+		#undef TABLE_SIZE
+		#define TABLE_SIZE 200
+
+		#elif TABLE_SIZE<50
+		#undef TABLE_SIZE
+		#define TABLE_SIZE 50
+
+		#else
+		#undef TABLE_SIZE
+		#define TABLE_SIZE 100
+		#endif
+
+		int table[TABLE_SIZE];
+
+	defined !defined
+		#if !defined TABLE_SIZE
+		#define TABLE_SIZE 100
+		#elif defined ARRAY_SIZE
+		#define TABLE_SIZE ARRAY_SIZE
+		int table[TABLE_SIZE];
+		#endif
+
+3 Line control (#line)
+	When we compile a program and some error happens during the compiling process, the compiler shows an error message with references to the name of the file where the error happened and a line number, so it is easier to find the code generating the error.
+
+	The #line directive allows us to control both things, the line numbers within the code files as well as the file name that we want that appears when an error takes place. Its format is:
+		#line number "filename"
+	Where number is the new line number that will be assigned to the next code line. The line numbers of successive lines will be increased one by one from this point on.
+
+		#line 20 "assigning variable"
+		int a?;
+
+		This code will generate an error that will be shown as error in file "assigning variable", line 20.
+
+4 Error directive (#error)
+	Aborts the compilation process
+		#ifndef __cplusplus
+		#error A C++ compiler is required!
+		#endif
+
+5 Source file inclusion (#include)
+
+6 Pragma directive (#pragma)
+
+7 Predefined macro names
+
+	__LINE__		Integer value representing the current line in the source code file being compiled.
+	__FILE__		A string literal containing the presumed name of the source file being compiled.
+	__DATE__		A string literal in the form "Mmm dd yyyy" containing the date in which the compilation process began.
+	__TIME__		A string literal in the form "hh:mm:ss" containing the time at which the compilation process began.
+	__cplusplus		An integer value. All C++ compilers have this constant defined to some value. If the compiler is fully compliant with the C++ standard its value is equal or greater than 199711L depending on the version of the standard they comply.
+
+	Example:
+		// standard macro names
+		#include <iostream>
+		using namespace std;
+
+		int main()
+		{
+		  cout << "This is the line number " << __LINE__;			| This is the line number 7 of file /home/jay/stdmacronames.cpp.
+		  cout << " of file " << __FILE__ << ".\n";					| Its compilation began Nov  1 2005 at 10:12:29.
+		  cout << "Its compilation began " << __DATE__;				| The compiler gives a __cplusplus va
+		  cout << " at " << __TIME__ << ".\n";
+		  cout << "The compiler gives a __cplusplus value of "
+		       << __cplusplus;
+		  return 0;
+		}

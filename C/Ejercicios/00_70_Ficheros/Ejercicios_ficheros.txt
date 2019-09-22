@@ -1,0 +1,35 @@
+1. Escribir un programa que cuente el número de letras minúsculas, de letras mayúsculas y de cifras de un fichero.
+Nota: en la biblioteca cctype hay funciones que se pueden usar para este ejercicio.
+
+2. Escribir un programa que copie el contenido de un fichero en otro.
+
+3. Escribir una función que copie una línea de un flujo en otro. La función tendrá como parámetros el flujo en entrada, el flujo de salida y un unsigned int que indica cuál es el número de la línea que se va a copiar.
+
+4. Escribir un programa con la opción de encriptar y de desencriptar un fichero de texto. La encriptación (codificación) consiste en que dado un fichero de texto de entrada genere otro fichero de salida de extensión <nombre>.COD donde el texto estará codificado (encriptado). Esta codificación consiste reemplazar cada carácter por el tercero siguiente (ej. ’a’ ! ’d’). Si el carácter resultante es no imprimible éste no se cambia. La opción de desencriptado consiste en leer un fichero <nombre>.COD y recuperar la información original.
+
+5. Escribir un programa para procesar información sobre los clientes de una agencia matrimonial. El programa debe crear un fichero de texto llamado "PERSONAS.DAT" en el que se guarde la información de un número indeterminado de personas. La información que se guardará por cada persona será:
+	Nombre: De 1 a 30 caracteres.
+	Edad unsigned int.
+	Sexo char (M/F).
+	Arte char (S/N).
+	Deporte char (S/N).
+	Libros char (S/N).
+	Musica char (S/N).
+La información correspondiente a cada persona se leerá del teclado. El proceso finalizará cuando se teclee un campo Nombre que esté vacío.
+
+6. Ampliar el programa que procesa clientes de una agencia matrimonial para que tome los datos de todos los candidatos a estudiar del fichero PERSONAS.DAT del ejercicio anterior, lea el cliente del teclado y finalmente genere como resultado un listado por pantalla con los nombres de los candidatos aceptados y un fichero llamado ACEPTADOS.DAT con toda la información correspondiente a los candidatos aceptados. Una persona del fichero PERSONAS.DAT se considerará aceptable como candidato si tiene diferente sexo y por lo menos tres aficiones comunes con respecto al aspirante introducido por pantalla. (El programa debe ser capaz de trabajar con cualquier número de personas en el fichero PERSONAS.DAT).
+
+7. Codifique un programa que cree un fichero para contener los datos relativos a los artículos de un almacén. Para cada artículo habrá de guardar la siguiente información:
+	Código del artículo (Numérico)
+	Nombre del artículo (Cadena de caracteres)
+	Existencias actuales (Numérico)
+	Precio (Numérico)
+Se deberán pedir datos de cada artículo por teclado hasta que como c´odigo se teclee 0. El fichero se habrá de crear ordenado por el código del artículo.
+
+8. Escriba un programa que dados dos ficheros generados por el programa anterior y ordenados genere un tercer fichero que sea el resultado de mezclar de formar ordenada los dos primeros.
+
+9. Escriba un programa que tome como entrada el fichero del ejercicio 4 y una condición sobre los campos Existencias actuales o Precio. La condición podrá ser:
+	<campo> [<,<=,>,>=, <>] <número>
+Este programa debe generar como salida un fichero llamado salida.dat que contenga todos aquellos art´iculos para los que se cumple la condición de entrada.
+
+10. Escriba un programa que tenga como entrada un fichero que contenga un texto y dé como resultado una estadística de las palabras que hay de cada longitud, así como de los caracteres especiales (”,”, ”.”, ”:”, ”;”).

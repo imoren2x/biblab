@@ -1,0 +1,66 @@
+/* This is Standard CSS file */
+
+body {
+	background-color: #EEE;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: red;
+}
+
+h1 {
+	margin: 0;	
+}
+
+#container {
+	background-color: white;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container_header {
+	
+	background-color: #66CCFF;
+	color: white;
+	text-align: center;
+	padding: 10px;
+
+}
+
+#container_content {
+	padding: 10px;
+
+}
+
+#container_content_nav {
+	width: 180px;
+	float: left;
+
+}
+
+#container_content_nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#container_content_nav .selected {
+	font-weight: bold;
+
+}
+
+#container_content_main {
+	width: 600px;	
+	float: right;
+}	
+
+#container_footer {
+	clear: both;
+	padding: 10px;
+	background-color: #999999;
+	color: white;
+	text-align: right;
+
+}

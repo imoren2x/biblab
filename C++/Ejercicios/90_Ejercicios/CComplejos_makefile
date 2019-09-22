@@ -1,0 +1,47 @@
+##makefile##
+##mingw32-make##
+
+###############################
+MAINAME = main
+MAINSRC = $(MAINAME).cpp
+BIN = $(MAINAME).exe
+
+ADTNAME = CComplejos
+ADTHDR = $(ADTNAME).h
+ADTSRC = $(ADTNAME).cpp
+ADTOBJ = $(ADTNAME).o
+
+OBJETOS = $(ADTOBJ)
+CC = g++
+OPCIONES = -g -W -Wall -I.
+CFLAGS += -I.
+###############################
+
+all: $(BIN) clean
+
+$(BIN): $(ADTOBJ)
+	$(CC) $(OPCIONES) -o $@ $(MAINSRC) $(ADTOBJ)
+
+$(ADTOBJ):
+	$(CC) $(OPCIONES) -c $(ADTSRC)
+
+clean:
+	rm -f *.o
+
+
+#####################
+# OBJETOS = arbol.o pinta.o
+# CC = gcc
+# OPCIONES = -g -W -Wall
+
+# arbol: $(OBJETOS)
+	# $(CC) $(OPCIONES) -o arbol $(OBJETOS)
+
+# arbol.o: arbol.c pinta.h
+	# $(CC) $(OPCIONES) -c arbol.c
+
+# pinta.o: pinta.c pinta.h
+	# $(CC) $(OPCIONES) -c pinta.c
+
+# clean:
+	# rm *.o

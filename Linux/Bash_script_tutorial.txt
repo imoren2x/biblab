@@ -1,0 +1,663 @@
+Bash scripting Tutorial
+======
+
+
+Table of Contents
+------
+
+1. Hello World Bash Shell script
+2. Local and global variables
+3. Passing arguments to the bash script
+4. Executing shell commands with bash
+5. Reading user input
+6. Bash Trap command
+7. Arrays
+  7.1 Declare simple bash array
+  7.2 Read file into bash array
+8. Flow control
+  8.1 if / else / fi statement
+    8.1.1 Bash comparisons
+    8.1.2 String comparisons
+    8.1.3 Bash File Testing
+  8.2 Bash select
+  8.3 Case statement conditional
+  8.4 for loop
+  8.5 while loop
+  8.6 until loop
+  8.7 Control bash loop with
+  8.8 Bash function
+  8.9 Bash quotes and quotations
+    8.9.1 Escaping meta characters
+    8.9.2 Single quotes
+    8.9.3 Double quotes
+    8.9.4 Bash quoting with ANSI C-Style
+9. Arithmetic Operations
+  9.1 Bash Arithmetics
+  9.2 Round floating point number
+  9.3 Bash floating point calculations
+10. Redirections
+
+Links
+_________________________________________
+
+1. Hello World Bash Shell Script
+    $ which bash > script.sh
+    $ vi script.sh #and edit vi file
+    $ shcmod +x script.sh
+    $ ./script.sh
+
+2. Local and global variables
+    variables.sh
+        #!/bin/bash
+        #Define bash global variable
+        #This variable is global and can be used anywhere in this bash script
+        VAR="global variable"
+        function bash {
+        #Define bash local variable
+        #This variable is local to bash function only
+        local VAR="local variable"
+        echo $VAR
+        }
+        echo $VAR
+        bash
+        # Note the bash global variable did not change
+        # "local" is bash reserved word
+        echo $VAR
+
+    $ ./variables.sh
+        global variable
+        local variable
+        global variable
+
+    Date and time
+        $ echo (date +%Y-%m-%d)
+        $ 2011-07-12
+
+    Default variable:
+        VARIABLE=${1:-DEFAULTVALUE}
+        Example:
+            tmpdir=/tmp
+            defvalue=1
+
+            DIR=${1:-$tmpdir}   # Defaults to /tmp dir.
+            VALUE=${2:-$defvalue}           # Default value is 1.
+
+            echo $DIR
+            echo $VALUE
+
+3. Passing arguments to the bash script: $0 $1 ... $@ $#
+    arguments.sh:
+        #!/bin/bash
+        # use predefined variables to access passed arguments
+        #echo arguments to the shell
+        echo $1 $2 $3 ' -> echo $1 $2 $3'
+
+        # We can also store arguments from bash command line in special array
+        args=("$@") # () to identify an array
+        #echo arguments to the shell
+        echo ${args[0]} ${args[1]} ${args[2]} ' -> args=("$@"); echo ${args[0]} ${args[1]} ${args[2]}'
+
+        #use $@ to print out all arguments at once
+        echo $@ ' -> echo $@'
+
+        # use $# variable to print out
+        # number of arguments passed to the bash script
+        echo Number of arguments passed: $# ' -> echo Number of arguments passed: $#'
+
+    $ ./arguments.sh Bash Scripting Tutorial
+        Bash Scripting Tutorial -> echo $1 $2 $3
+        Bash Scripting Tutorial -> args=("$@"); echo ${args[0]} ${args[1]} ${args[2]}
+        Bash Scripting Tutorial -> echo $@
+
+4. Executing shell commands with bash: ` `
+    bash_backticks.sh
+        #!/bin/bash
+        # use backticks " ` ` " to execute shell command
+        echo `uname -o`
+        # executing bash command without backticks
+        echo uname -o
+
+    $ ./bash_backticks.sh
+        GNU/Linux
+        uname -o
+
+5. Reading user input: read
+    read.sh:
+        #!/bin/bash
+
+        echo -e "Hi, please type the word: \c "
+        read  word
+        echo "The word you entered is: $word"
+        #backslash-escaped characters enable.
+        echo -e "Can you please enter two words? "
+        read word1 word2
+        echo "Here is your input: \"$word1\" \"$word2\""
+        echo -e "How do you feel about bash scripting? "
+        # read command now stores a reply into the default build-in variable $REPLY
+        read
+        echo "You said $REPLY, I'm glad to hear that! "
+        echo -e "What are your favorite colours ? "
+        # -a makes read command to read into an array
+        read -a colours
+        echo "My favorite colours are also ${colours[0]}, ${colours[1]} and ${colours[2]}(:-)"
+
+6. Bash Trap Command
+
+        #!/bin/bash
+        # bash trap command
+        # bashtrap: callback to execute under INT signal
+        # INT signal to monitor
+        trap bashtrap INT
+        # bash clear screen command
+        clear;
+        # bash trap function is executed when CTRL-C is pressed:
+        # bash prints message => Executing bash trap subrutine !
+        bashtrap()
+        {
+            echo "CTRL+C Detected !...executing bash trap !"
+        }
+        # for loop from 1/10 to 10/10
+        for a in `seq 1 10`; do
+            echo "$a/10 to Exit."
+            sleep 1;
+        done
+        echo "Exit Bash Trap Example!!!"
+
+7. Arrays
+7.1 Declare simple bash array
+    arrays.sh
+        #!/bin/bash
+        #Declare array with 4 elements
+        ARRAY=( 'Debian Linux' 'Redhat Linux' Ubuntu Linux )
+        # get number of elements in the array
+        ELEMENTS=${#ARRAY[@]}
+
+        # echo each element in array
+        # for loop
+        for (( i=0;i<$ELEMENTS;i++)); do
+            echo ${ARRAY[${i}]}
+        done
+
+7.2 Read file into bash array
+    #!/bin/bash
+    # Declare array
+    declare -a ARRAY
+    # Link filedescriptor 10 with stdin
+    exec 10<&0
+    # stdin replaced with a file supplied as a first argument
+    exec < $1
+    let count=0
+
+    while read LINE; do
+
+        ARRAY[$count]=$LINE
+        ((count++))
+    done
+
+    echo Number of elements: ${#ARRAY[@]}
+    # echo array's content
+    echo ${ARRAY[@]}
+    # restore stdin from filedescriptor 10
+    # and close filedescriptor 10
+    exec 0<&10 10<&-
+
+    linuxconfig.org $ cat bash.txt
+    Bash
+    Scripting
+    Tutorial
+    Guide
+    linuxconfig.org $ ./bash-script.sh bash.txt
+    Number of elements: 4
+    Bash Scripting Tutorial Guide
+    linuxconfig.org $
+
+8. Flow control
+8.1 if / else / fi statement
+    bash_if_else.sh
+        #!/bin/bash
+        directory="./BashScripting"
+
+        # bash check if directory exists
+        if [ -d $directory ]; then
+            echo "Directory exists"
+        else
+            echo "Directory does not exists"
+        fi
+
+    nested_if_else.sh
+        #!/bin/bash
+
+        # Declare variable choice and assign value 4
+        choice=4
+        # Print to stdout
+         echo "1. Bash"
+         echo "2. Scripting"
+         echo "3. Tutorial"
+         echo -n "Please choose a word [1,2 or 3]? "
+        # Loop while the variable choice is equal 4
+        # bash while loop
+        while [ $choice -eq 4 ]; do
+
+        # read user input
+        read choice
+        # bash nested if/else
+        if [ $choice -eq 1 ] ; then
+            echo "You have chosen word: Bash"
+        else
+            if [ $choice -eq 2 ] ; then
+                echo "You have chosen word: Scripting"
+            else
+                if [ $choice -eq 3 ] ; then
+                    echo "You have chosen word: Tutorial"
+                else
+                    echo "Please make a choice between 1-3 !"
+                    echo "1. Bash"
+                    echo "2. Scripting"
+                    echo "3. Tutorial"
+                    echo -n "Please choose a word [1,2 or 3]? "
+                    choice=4
+                fi
+            fi
+        fi
+        done
+
+8.1.1 Bash comparisons
+    -lt     <
+    -gt     >
+    -le     <=
+    -ge     >=
+    -eq     ==
+    -ne     !=
+
+    statement.sh
+        #!/bin/bash
+        # declare integers
+        NUM1=2
+        NUM2=2
+        if [ $NUM1 -eq $NUM2 ]; then
+            echo "Both Values are equal"
+        else
+            echo "Values are NOT equal"
+        fi
+
+        #!/bin/bash
+        # declare integers
+        NUM1=2
+        NUM2=1
+        if   [ $NUM1 -eq $NUM2 ]; then
+            echo "Both Values are equal"
+        elif [ $NUM1 -gt $NUM2 ]; then
+            echo "NUM1 is greater then NUM2"
+        else
+            echo "NUM2 is greater then NUM1"
+        fi
+
+8.1.2 String comparisons
+    =     equal
+    !=     not equal
+    <     less then
+    >     greater then
+    -n s1     string s1 is not empty
+    -z s1     string s1 is empty
+
+    statement.sh
+        #!/bin/bash
+        #Declare string S1
+        S1="Bash"
+        #Declare string S2
+        S2="Scripting"
+        if [ $S1 = $S2 ]; then
+            echo "Both Strings are equal"
+        else
+            echo "Strings are NOT equal"
+        fi
+
+8.1.3 Bash File Testing
+    -b filename     Block special file
+    -c filename     Special character file
+    -d directoryname     Check for directory existence
+    -e filename     Check for file existence
+    -f filename     Check for regular file existence not a directory
+    -G filename     Check if file exists and is owned by effective group ID.
+    -g filename     true if file exists and is set-group-id.
+    -k filename     Sticky bit
+    -L filename     Symbolic link
+    -O filename     True if file exists and is owned by the effective user id.
+    -r filename     Check if file is a readable
+    -S filename     Check if file is socket
+    -s filename     Check if file is nonzero size
+    -u filename     Check if file set-ser-id bit is set
+    -w filename     Check if file is writable
+    -x filename     Check if file is executable
+
+    #!/bin/bash
+    file="./file"
+    if [ -e $file ]; then
+        echo "File exists"
+    else
+        echo "File does not exists"
+    fi
+
+    #!/bin/bash
+
+    while [ ! -e myfile ]; do
+    # Sleep until file does exists/is created
+    sleep 1
+    done
+
+8.2 Bash select
+    select.sh
+        #!/bin/bash
+
+        PS3='Choose one word: '
+
+        # bash select
+        select word in "linux" "bash" "scripting" "tutorial"
+        do
+          echo "The word you have selected is: $word"
+        # Break, otherwise endless loop
+          break
+        done
+
+        exit 0
+
+8.3 Case statement conditional
+    case.sh
+        #!/bin/bash
+        echo "What is your preferred programming / scripting language"
+        echo "1) bash"
+        echo "2) perl"
+        echo "3) phyton"
+        echo "4) c++"
+        echo "5) I do not know !"
+        read case;
+        #simple case bash structure
+        # note in this case $case is variable and does not have to
+        # be named case this is just an example
+        case $case in
+            1) echo "You selected bash";;
+            2) echo "You selected perl";;
+            3) echo "You selected phyton";;
+            4) echo "You selected c++";;
+            5) exit
+        esac
+
+8.4 for loop
+    for_loop.sh
+        #!/bin/bash
+
+        # bash for loop
+        for f in $( ls /var/ ); do
+            echo $f
+        done
+
+    $ for f in $( ls /var/ ); do echo $f; done
+
+8.5 while loop
+    while_loop.sh
+        #!/bin/bash
+        COUNT=6
+        # bash while loop
+        while [ $COUNT -gt 0 ]; do
+            echo Value of count is: $COUNT
+            let COUNT=COUNT-1
+        done
+
+8.6 until loop
+    until_loop.sh
+        #!/bin/bash
+        COUNT=0
+        # bash until loop
+        until [ $COUNT -gt 5 ]; do
+                echo Value of count is: $COUNT
+                let COUNT=COUNT+1
+        done
+
+8.7 Control bash loop with
+    script.sh
+        #!/bin/bash
+        # This bash script will locate and replace spaces
+        # in the filenames
+        DIR="."
+        # Controlling a loop with bash read command by redirecting STDOUT as
+        # a STDIN to while loop
+        # find will not truncate filenames containing spaces
+        find $DIR -type f | while read file; do
+        # using POSIX class [:space:] to find space in the filename
+        if [[ "$file" = *[[:space:]]* ]]; then
+        # substitute space with "_" character and consequently rename the file
+        mv "$file" `echo $file | tr ' ' '_'`
+        fi;
+        # end of while loop
+        done
+
+8.8 Bash function
+    functions.sh
+        #!/bin/bash
+        # BASH FUNCTIONS CAN BE DECLARED IN ANY ORDER
+        function function_B {
+                echo Function B.
+        }
+        function function_A {
+                echo $1
+        }
+        function function_D {
+                echo Function D.
+        }
+        function function_C {
+                echo $1
+        }
+        # FUNCTION CALLS
+        # Pass parameter to function A
+        function_A "Function A."
+        function_B
+        # Pass parameter to function C
+        function_C "Function C."
+        function_D
+
+8.9 Bash quotes and quotations
+8.9.1 Escaping meta characters
+    escape_meta.sh
+        #!/bin/bash
+
+        #Declare bash string variable
+        BASH_VAR="Bash Script"
+
+        # echo variable BASH_VAR
+        echo $BASH_VAR
+
+        #when meta character such us "$" is escaped with "\" it will be read literally
+        echo \$BASH_VAR
+
+        # backslash has also special meaning and it can be suppressed with yet another "\"
+        echo "\\"
+
+8.9.2 Single quotes
+    single_quotes.sh
+        #!/bin/bash
+
+        #Declare bash string variable
+        BASH_VAR="Bash Script"
+
+        # echo variable BASH_VAR
+        echo $BASH_VAR
+
+        # meta characters special meaning in bash is suppressed when  using single quotes
+        echo '$BASH_VAR  "$BASH_VAR"'
+
+8.9.3 Double quotes
+    double_quotes.sh
+        #!/bin/bash
+
+        #Declare bash string variable
+        BASH_VAR="Bash Script"
+
+        # echo variable BASH_VAR
+        echo $BASH_VAR
+
+        # meta characters and its special meaning in bash is
+        # suppressed when using double quotes except "$", "\" and "`"
+
+        echo "It's $BASH_VAR  and \"$BASH_VAR\" using backticks: `date`"
+
+8.9.4 Bash quoting with ANSI C-Style
+    \a     alert (bell)                                     \b     backspace
+    \e     an escape character                             \f     form feed
+    \n     newline                                         \r     carriage return
+    \t     horizontal tab                                     \v     vertical tab
+    \\     backslash                                         \`     single quote
+    \nnn     octal value of characters                     \xnn     hexadecimal value of characters
+    ( see [http://www.asciitable.com/ ASCII table] )      ( see [http://www.asciitable.com/ ASCII table] )
+
+9. Arithmetic Operations
+    bash_addition_calc.sh 88 12
+        #!/bin/bash
+
+        let RESULT1=$1+$2
+        echo $1+$2=$RESULT1 ' -> # let RESULT1=$1+$2'
+        declare -i RESULT2
+        RESULT2=$1+$2
+        echo $1+$2=$RESULT2 ' -> # declare -i RESULT2; RESULT2=$1+$2'
+        echo $1+$2=$(($1 + $2)) ' -> # $(($1 + $2))'
+
+9.1 Bash Arithmetics
+    arithmetic_operations.sh
+        #!/bin/bash
+
+        echo '### let ###'
+        # bash addition
+        let ADDITION=3+5
+        echo "3 + 5 =" $ADDITION
+
+        # bash subtraction
+        let SUBTRACTION=7-8
+        echo "7 - 8 =" $SUBTRACTION
+
+        # bash multiplication
+        let MULTIPLICATION=5*8
+        echo "5 * 8 =" $MULTIPLICATION
+
+        # bash division
+        let DIVISION=4/2
+        echo "4 / 2 =" $DIVISION
+
+        # bash modulus
+        let MODULUS=9%4
+        echo "9 % 4 =" $MODULUS
+
+        # bash power of two
+        let POWEROFTWO=2**2
+        echo "2 ^ 2 =" $POWEROFTWO
+
+
+        echo '### Bash Arithmetic Expansion ###'
+        # There are two formats for arithmetic expansion: $[ expression ]
+        # and $(( expression #)) its your choice which you use
+
+        echo 4 + 5 = $((4 + 5))
+        echo 7 - 7 = $[ 7 - 7 ]
+        echo 4 x 6 = $((3 * 2))
+        echo 6 / 3 = $((6 / 3))
+        echo 8 % 7 = $((8 % 7))
+        echo 2 ^ 8 = $[ 2 ** 8 ]
+
+
+        echo '### Declare ###'
+
+        echo -e "Please enter two numbers \c"
+        # read user input
+        read num1 num2
+        declare -i result
+        result=$num1+$num2
+        echo "Result is:$result "
+
+        # bash convert binary number 10001
+        result=2#10001
+        echo $result
+
+        # bash convert octal number 16
+        result=8#16
+        echo $result
+
+        # bash convert hex number 0xE6A
+        result=16#E6A
+        echo $result
+
+9.2 Round floating point number
+    round.sh
+        #!/bin/bash
+        # get floating point number
+        floating_point_number=3.3446
+        echo $floating_point_number
+        # round floating point number with bash
+        for bash_rounded_number in $(printf %.0f $floating_point_number); do
+        echo "Rounded number with bash:" $bash_rounded_number
+        done
+
+9.3 Bash floating point calculations
+    simple_bash_calc.sh
+        #!/bin/bash
+        # Simple linux bash calculator
+        echo "Enter input:"
+        read userinput
+        echo "Result with 2 digits after decimal point:"
+        echo "scale=2; ${userinput}" | bc
+        echo "Result with 10 digits after decimal point:"
+        echo "scale=10; ${userinput}" | bc
+        echo "Result as rounded integer:"
+        echo $userinput | bc
+
+10. Redirections
+STDOUT from bash script to STDERR
+    #!/bin/bash
+
+    echo "Redirect this STDOUT to STDERR" 1>&2
+
+STDERR from bash script to STDOUT
+    #!/bin/bash
+
+    cat $1 2>&1
+
+stderr to file
+    $ ls
+    file1  STDOUT
+    $ ls file1 file2 2> STDERR
+    file1
+    $ cat STDERR
+    ls: cannot access file2: No such file or directory
+
+stderr to stdout
+    $ ls
+    file1  STDERR  STDOUT
+    $ ls file1 file2 > STDERR_STDOUT 2>&1
+    $ cat STDERR_STDOUT
+    ls: cannot access file2: No such file or directory
+    file1
+
+stderr and stdout to file
+    $ ls
+    file1  STDERR  STDOUT
+    $ ls file1 file2 &> STDERR_STDOUT
+    $ cat STDERR_STDOUT
+    ls: cannot access file2: No such file or directory
+    file1
+ OR
+    ls file1 file2 >& STDERR_STDOUT
+    $ cat STDERR_STDOUT
+    ls: cannot access file2: No such file or directory
+    file1
+
+Links
+------
+
+ * [GNU Bash manual](https://www.gnu.org/software/bash/manual/)
+
+ * [Linux Shell Scripting Tutorial (LSST) v2.0](http://bash.cyberciti.biz/guide/Main_Page)
+
+ * [Bash scripting tutorial](http://linuxconfig.org/bash-scripting-tutorial)
+
+ * [Advanced Bash-Scripting Guide](http://www.tldp.org/LDP/abs/html/)
+
+ * [BASH Programming - Introduction HOW-TO](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html)
+
+ * [Tutorials point: bash](http://www.tutorialspoint.com/unix_commands/bash.htm)

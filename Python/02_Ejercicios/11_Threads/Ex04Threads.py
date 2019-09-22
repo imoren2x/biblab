@@ -21,7 +21,7 @@ if __name__ == "__main__":
     s = "Soy el thread"
     thread = threading.Thread(target=imprimir_mensaje, args = (s, ))
     thread.start()
-    
+
     main()
 
 """
