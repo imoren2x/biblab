@@ -1,0 +1,81 @@
+GregorianCalendar Class:
+
+GregorianCalendar is a concrete implementation of a Calendar class that implements the normal Gregorian calendar with which you are familiar. I did not discuss Calendar class in this tutorial, you can look standard Java documentation for this.
+
+The getInstance( ) method of Calendar returns a GregorianCalendar initialized with the current date and time in the default locale and time zone. GregorianCalendar defines two fields: AD and BC. These represent the two eras defined by the Gregorian calendar.
+
+There are also several constructors for GregorianCalendar objects:
+
+SN	Constructor with Description
+1	GregorianCalendar()
+Constructs a default GregorianCalendar using the current time in the default time zone with the default locale.
+2	GregorianCalendar(int year, int month, int date)
+Constructs a GregorianCalendar with the given date set in the default time zone with the default locale.
+3	GregorianCalendar(int year, int month, int date, int hour, int minute)
+Constructs a GregorianCalendar with the given date and time set for the default time zone with the default locale.
+4	GregorianCalendar(int year, int month, int date, int hour, int minute, int second)
+Constructs a GregorianCalendar with the given date and time set for the default time zone with the default locale.
+5	GregorianCalendar(Locale aLocale)
+Constructs a GregorianCalendar based on the current time in the default time zone with the given locale.
+6	GregorianCalendar(TimeZone zone)
+Constructs a GregorianCalendar based on the current time in the given time zone with the default locale.
+7	GregorianCalendar(TimeZone zone, Locale aLocale)
+Constructs a GregorianCalendar based on the current time in the given time zone with the given locale.
+
+Here is the list of few useful support methods provided by GregorianCalendar class:
+SN	Methods with Description
+1	void add(int field, int amount)
+Adds the specified (signed) amount of time to the given time field, based on the calendar's rules.
+2	protected void computeFields()
+Converts UTC as milliseconds to time field values.
+3	protected void computeTime()
+Overrides Calendar Converts time field values to UTC as milliseconds.
+4	boolean equals(Object obj)
+Compares this GregorianCalendar to an object reference.
+5	int get(int field)
+Gets the value for a given time field.
+6	int getActualMaximum(int field)
+Return the maximum value that this field could have, given the current date.
+7	int getActualMinimum(int field)
+Return the minimum value that this field could have, given the current date.
+8	int getGreatestMinimum(int field)
+Returns highest minimum value for the given field if varies.
+9	Date getGregorianChange()
+Gets the Gregorian Calendar change date.
+10	int getLeastMaximum(int field)
+Returns lowest maximum value for the given field if varies.
+11	int getMaximum(int field)
+Returns maximum value for the given field.
+12	Date getTime()
+Gets this Calendar's current time.
+13	long getTimeInMillis()
+Gets this Calendar's current time as a long.
+14	TimeZone getTimeZone()
+Gets the time zone.
+15	int getMinimum(int field)
+Returns minimum value for the given field.
+16	int hashCode()
+Override hashCode.
+17	boolean isLeapYear(int year)
+Determines if the given year is a leap year.
+18	void roll(int field, boolean up)
+Adds or subtracts (up/down) a single unit of time on the given time field without changing larger fields.
+19	void set(int field, int value)
+Sets the time field with the given value.
+20	void set(int year, int month, int date)
+Sets the values for the fields year, month, and date.
+21	void set(int year, int month, int date, int hour, int minute)
+Sets the values for the fields year, month, date, hour, and minute.
+22	void set(int year, int month, int date, int hour, int minute, int second)
+Sets the values for the fields year, month, date, hour, minute, and second.
+23	void setGregorianChange(Date date)
+Sets the GregorianCalendar change date.
+24	void setTime(Date date)
+Sets this Calendar's current time with the given Date.
+25	void setTimeInMillis(long millis)
+Sets this Calendar's current time from the given long value.
+26	void setTimeZone(TimeZone value)
+Sets the time zone with the given time zone value.
+27	String toString()
+Return a string representation of this calendar.
+

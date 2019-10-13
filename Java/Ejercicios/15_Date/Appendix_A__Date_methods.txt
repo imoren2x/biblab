@@ -1,0 +1,21 @@
+SN	Methods with Description
+1	boolean after(Date date)
+Returns true if the invoking Date object contains a date that is later than the one specified by date, otherwise, it returns false.
+2	boolean before(Date date)
+Returns true if the invoking Date object contains a date that is earlier than the one specified by date, otherwise, it returns false.
+3	Object clone( )
+Duplicates the invoking Date object.
+4	int compareTo(Date date)
+Compares the value of the invoking object with that of date. Returns 0 if the values are equal. Returns a negative value if the invoking object is earlier than date. Returns a positive value if the invoking object is later than date.
+5	int compareTo(Object obj)
+Operates identically to compareTo(Date) if obj is of class Date. Otherwise, it throws a ClassCastException.
+6	boolean equals(Object date)
+Returns true if the invoking Date object contains the same time and date as the one specified by date, otherwise, it returns false.
+7	long getTime( )
+Returns the number of milliseconds that have elapsed since January 1, 1970.
+8	int hashCode( )
+Returns a hash code for the invoking object.
+9	void setTime(long time)
+Sets the time and date as specified by time, which represents an elapsed time in milliseconds from midnight, January 1, 1970
+10	String toString( )
+Converts the invoking Date object into a string and returns the result.
