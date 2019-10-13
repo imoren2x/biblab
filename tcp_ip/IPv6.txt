@@ -1,0 +1,197 @@
+IPv6
+----
+
+ 1. Main features
+ 2. Packet Format
+ 3. Addressing
+ 4. Transition mechanisms
+ 5. Changes in IPv6 protocol suite: ARP, FTP, ICMPv6, DHCP
+----------------------------------------------------------------
+
+1. Main features
+	1 Larger address space
+		The longer addresses 
+			· simplify allocation of addresses, 
+			· enable efficient route aggregation, 
+			· and allow implementation of special addressing features.
+		In IPv4, complex Classless Inter-Domain Routing (CIDR) methods were developed to make the best use of the small address space.
+		Standard Subnets of 64 bits, automatically self-assigned addresses through ICMPv6 discovery.
+
+	2 Multicasting
+		Multicast provided.
+		Broadcast-equivalent functionality by sending link-local all nodes multicast group at address ff02::1.
+		Also, rendez-vous point addresses in an IPv6 multicast group address.
+		NAT does not longer exist.
+		Anycast also provided.
+
+	3 Stateless address autoconfiguration (SLAAC)
+		IPv6 hosts can configure themselves automatically when connected to a routed IPv6 network using Internet Control Message Protocol version 6 (ICMPv6) router discovery messages.
+
+	4 Mandatory network-layer security
+		IPsec was an integral part of the base IPv6 protocol suite.
+
+	5 Simplified processing by routers
+		In IPv6, the packet header and the process of packet forwarding have been simplified.
+		· IPv6 header is simpler than IPv4,
+		· IPv6 routers do not perform fragmentation.
+		· IPv6 header is not protected by a checksum.
+		· IPv6 TTL field as Hop Limit.
+
+	6 Mobility
+		Mobile IPv6 avoids triangular routing.
+
+	7 Options extensibility
+		Fixed header 40 bits.
+		Optional header for quality of service, security, mobility, and others to be added without redesign of the basic protocol.
+
+	8 Jumbograms
+		High-MTU links: up to 2^32 - 1 bytes.
+
+	9 Privacy
+		Ephemeral IP addresses.
+
+2. Packet Format
+											0							 	1 								2 								3
+								-----------------------------   ------------------------------  ------------------------------  ------------------------------
+	Byte-Offset	| Bit Offset	0 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	13 	14 	15 	16 	17 	18 	19 	20 	21 	22 	23 	24 	25 	26 	27 	28 	29 	30 	31
+		 0 		|	  0 		| Version(4 b)|		Traffic Class (8 b)		  | 					Flow label (20 b)										  |
+		 4 		|	 32 		| 				Payload length (16 b)						   | 		Next header (8 b) 	   | 	Hop Limit (8 b)			  |
+		 8 		|	 64 		|																															  |
+		12 		|	 96			|											Source address (128 b = 32 B)													  |
+		16 		|	128			|																															  |
+		20 		|	160			|_____________________________________________________________________________________________________________________________|
+		24 		|	192 		|																															  |
+		28 		|	224			|											Destination address (128 b = 32 B)												  |
+		32 		|	256			|																															  |
+		40 		|	288			|																															  |
+								|_____________________________________________________________________________________________________________________________|
+
+	Version (4 b):
+		110 = 6.
+	Traffic Class (8 b):
+		6 bits = DSCP: diffserv, classified packets.
+		2 bits = ECN (Explicit Congestion Notification).
+	Flow label (20 b):
+		Real-time applications.
+	Payload length (16 b):
+		Length in bytes, including any extension header.
+		Zero when hop-by-hop header carries a Jumbopayload option.
+	Next Header (8 b):
+		Extension header (codes).
+		Transport header.
+	Hop limit (8 b):
+		Equivalent to IPv4 TTL.
+	Source Address (128 b)
+	Destination Address (128 b)
+
+Extended Header
+	· Hop-by-Hop Options 	Next header = 0 (in previous header)
+		Options that need to be examined by all devices on the path.
+	· Destination Options (before routing header) 	Next header = 60
+		Options that need to be examined only by the destination of the packet.
+	· Routing 	Next Header = 43 (in previous header)
+		Methods to specify the route for a datagram (used with Mobile IPv6).
+	· Fragment 	Next Header = 44 (in previous header)
+		Contains parameters for fragmentation of datagrams.
+	· Authentication Header (AH) Next Header = 51
+		Contains information used to verify the authenticity of most parts of the packet.
+	· Encapsulating Security Payload (ESP) 	Next Header = 50
+		Carries encrypted data for secure communication.
+	· Destination Options (before upper-layer header) Next Header = 60
+		Options that need to be examined only by the destination of the packet.
+	· Mobility (currently without upper-layer header) Next Header = 135
+		Parameters used with Mobile IPv6.
+
+3 Addressing
+	IPv6 addresses in 8 groups of 4-hexadecimal digits separated by colons
+	Example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+	Other that do not start with binary 000 are logically divided into two parts:
+		· 64-bit (sub-)network prefix
+		· 64-bit interface identifier
+	For stateless address autoconfiguration (SLAAC) to work, subnets require a /64 address block.
+	IPv6 addresses are classified by three types of networking methodologies:
+		· unicast
+		· multicast (broadcast)
+		· anycast
+	In DNS for IPv6, the resource records are identified as AAAA.
+	Address format:
+		2001:0db8:85a3:0000:0000:8a2e:0370:7334
+		2001:0db8:85a3::8a2e:0370:7334
+	
+	IPv4 mapped in IPv6
+		::ffff:192.168.89.9
+		::ffff:c0a8:5909
+	IPv4-compatible
+		::192.168.89.9
+	Identifying subnets:
+		2001:0DB8::1428:57AB/96 (los 96 bits más significativos)
+		2001:0DB8::
+	Types of addresses:
+		· ::/128 All-zero address
+			Never assigned.
+		· ::1/128 loopback address
+			Never assigned to a node.
+		· ::1.2.3.4/96 IPv4 compatible address
+			Transition between IPv4 and IPv6.
+		· ::ffff:0:0/96 IPv6 mapped address
+			
+		· fe80::/10 (1111 1110 1000) Link local address
+			Only valid address in the local physical device.
+		· fec0:: Site-local prefix
+			Only valid address inside a local organization.
+		· ff00::/8
+			Multicast prefix.
+	
+	Unicast and anycast address format:
+		| routing prefix (48 bits or more) | subnet id (16 bits) | interface identifier (64 bits) |
+		<------------------ 64 bits ----------------------------> 
+
+		Subnet id
+			Controlled by administrator to assign subnets.
+		Interface identifier
+			Assigned by
+				· MAC address, modified EUI-64
+				· DHCPv6
+				· automatically-randomly assigned
+				· manually assigned
+	
+	Link-local address format:
+		| fixed prefix (10 bits) | zeroes (54 bits) | interface identifier (64 bits) |
+
+		Fixed prefix
+			1111111010
+	
+	Multicast address format
+		| prefix (8 bits) | flag (4 bits) | scope (4 bits) | group ID (112 bits) |
+		
+		Prefix = 1111 1111
+		Flag: XRPT
+			X Reserved
+			R Rendezvous
+			P Prefix
+			T Transient (0: well-known multicast address; 1: dynamically assigned multicast address)
+	
+	Solicited-Node multicast address format
+		| prefix (8 bits) | flag (4 bits) | scope (4 bits) | zeroes (79 bits) | ones (9 bits) | unicast address (24 bits) |
+
+	Stateless address autoconfiguration
+		A 64-bit interface identifier is most commonly derived from its 48-bit MAC address. 
+		A MAC address 00:1D:BA:06:37:64 is turned into a 64-bit EUI-64 by inserting FF:FE in the middle: 00:1D:BA:FF:FE:06:37:64.
+
+	Routing prefix:
+	The leading set of bits of the addresses are identical for all hosts in a given network.
+	
+	Network
+	Network address ranges are written in CIDR notation.
+	A network is denoted by the first address in the block (ending in all zeroes), a slash (/), and a decimal value equal to the size in bits of the prefix. For example, the network written as 
+	2001:db8:1234::/48 
+		starts at address 2001:db8:1234:0000:0000:0000:0000:0000 and 
+		ends at 2001:db8:1234:ffff:ffff:ffff:ffff:ffff.
+
+	The routing prefix of an interface address may be directly indicated with the address by CIDR notation. For example, the configuration of an interface with address 2001:db8:a::123 connected to subnet 2001:db8:a::/64 is written as 2001:db8:a::123/64.
+
+	Literal IPv6 addresses in network resource identifiers
+	IPv6 addresses are enclosed in square brackets in such resource identifiers, for example:
+		http://[2001:db8:85a3:8d3:1319:8a2e:370:7348]/
+	When the URL also contains a port number the notation is:
+		https://[2001:db8:85a3:8d3:1319:8a2e:370:7348]:443/ 

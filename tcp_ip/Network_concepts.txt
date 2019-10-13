@@ -1,0 +1,58 @@
+Network concepts
+----------------
+
+Three main concepts: 
+	Interfaces and Network/protocol
+	Routing table
+	Route of a packet
+
+Interfaces and protocol status
+	netstat: network status (ports, addresses)
+		netstat -a 
+		netstat -p [tcp | udp]
+	ipconfig Windows | ifconfig Linux (also if)
+		Show interfaces configuration and information
+Routing table
+	route - Shows routing table 
+	route add/change/del | ip r add/del/modify
+Route of a packet
+	Interfaces: ip r get <ip_address>
+	Trace route: traceroute
+
+Protocol commands
+	DNS:
+		nslookup: name inspection
+		nslookup <DNS> (e.g., nslookup www.google.es)
+	ARP:
+		arp -a (Windows)
+		arp (Linux)
+	ICMP:
+		ping
+
+Enrutamiento dinámico: RIP, EIGRP, OSPF
+ICMP
+
+Useful tools
+	wireshark
+	PCAP
+	BitTwist - traffic generator
+	nmap - (Network Mapper) is a security scanner
+	ipchains
+	iptables - configure the tables (IPv4, IPv6, ARP)
+	socklist - display a list of open sockets
+	Cygwin
+
+	http://www.yolinux.com/TUTORIALS/LinuxTutorialNetworking.html
+____________________________________________________
+Protocols:
+DHCP:
+	Discovery
+	Offer
+	Request
+	Confirm
+El protocolo Gnutella define cinco tipos de paquetes diferentes:
+	• ping: para descubrir un dispositivo,
+	• pong: como respuesta a un ping,
+	• consulta: para ubicar un archivo,
+	• query hit: como respuesta a una consulta, y
+	• push: como una solicitud de descarga.
