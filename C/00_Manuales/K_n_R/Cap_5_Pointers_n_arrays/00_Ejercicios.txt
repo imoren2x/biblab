@@ -1,0 +1,18 @@
+	En este capítulo es necesario practicar con varios aspectos de los punteros en C
+	
+1. Punteros simples
+	C5e01.c Intercambia dos variables (función swap)
+	C5e02.c Intercambia dos variables (función swap), pero con punteros
+	C5e03.c Captura un valor de entrada desde el teclado como tipo char 
+			y lo convierte en tipo int.
+
+2. Punteros dobles
+	C5e04 Este programa trabaja los punteros y los punteros a punteros (dobles punteros)
+	C5e05 Este programa reserva punteros dobles (punteros a punteros)
+	
+3. Argumentos en la línea de comandos
+	C5e06 Este programa indica cuántos argumentos tiene el comando y cuáles son
+
+4. Punteros a funciones
+	C5e07 Este programa implementa el algoritmo de Fibonacci de forma iterativa y recursiva.
+			Usa punteros a funciones para escoger cada función.

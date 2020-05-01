@@ -1,0 +1,48 @@
+Palabras reservadas en C:
+
+auto	break	case	char	const	 continue default
+do		double	else	enum	extern	 float	  for	
+goto	if		int		long	register return	  short
+signed	sizeof	static	struct	typedef	 union	  unsigned
+void	volatile 		while
+
+Clases de almacenamiento de datos:
+	auto
+	extern
+	register
+	static
+	volatile
+
+Tipos de datos:
+	char
+	int
+	float
+	enum
+	struct
+	union
+	typedef
+	void
+
+Propiedades del tipo de datos
+	const
+	double
+	float
+	long
+	signed
+	sizeof
+	unsigned
+
+Estructuras de control
+	break
+	case
+	continue
+	default
+	do
+	else
+	for
+	goto
+	if
+	return
+	switch
+	while
+

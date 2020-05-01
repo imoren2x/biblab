@@ -1,0 +1,116 @@
+Capítulo 05. Punteros y arrays
+
+Índice
+    5.1 Punteros y direcciones
+    5.2 Punteros y argumentos de funciones
+    5.3 Punteros y arrays
+    5.4 Aritmética de direcciones
+    5.5 Punteros a caracteres y funciones
+    5.7 Arrays multidimensinales
+    5.9 Punteros contra arrays multidimensionales
+    5.10 Argumentos en la línea de comandos
+    5.11 Punteros a funciones
+
+Referencias:
+    * Punteros a funciones: aclaración y ejemplo:
+        https://www.zator.com/Cpp/E4_2_4a1.htm
+    * 4.2.4b  Invocar funciones mediante punteros
+        https://www.zator.com/Cpp/E4_2_4b.htm
+    * 4.2.4 Puntero a función
+        https://www.zator.com/Cpp/E4_2_4.htm
+    * Punteros dobles
+        https://www.uv.es/eees/archivo/PON-C-13.pdf
+
+_____________________________
+
+
+5.1 Punteros y direcciones
+    Nomenclatura básica de los punteros
+    int *p; //definición de puntero a int
+    & es el símbolo ampersand para obtener la dirección de un puntero
+    ejemplo: &p = 1024 p = 2048 *p = 7
+    * es el operador de indirección o desreferencia
+    *p es el contenido de la posición de memoria apuntada por p.
+    (*p)++  ++*p *p+=1
+
+5.2 Punteros y argumentos de funciones
+    Paso de argumentos por referencia:
+    void swap(int *px, int *py)
+    swap(&a, &b)
+    swap(pa, pb)
+
+5.3 Punteros y arrays
+    Definición de punteros y arrays:
+    int a[10];
+    int *pa; //sin memoria reservada
+    pa = a; // el puntero apunta al array
+    pa = &a[0] // el puntero apunta a la primera posición del array (equivalente al anterior)
+    int x;
+    x = *pa; //x = a[0];
+    (pa + i) //apuntar a la i-ésima posición del array
+    *(pa + i) //contenido de la i-ésima posición del array
+    Las siguientes expresiones son equivalentes:
+    &a[i] = (a + i) //equivalente
+    pa[i] = *(pa + i) //equivalente
+    a[i] = *(pa + i) //equivalente
+
+    Arrays como argumentos de funciones: se pasa un puntero a la posición  inicial del array
+    Strings:
+        strlen("hola, mundo"); //constante cadena//
+        strlen(array);    //char array[100]//
+        strlen(&array[0]);    //igual que el anterior//
+        strlen(ptrarray);    //char *ptr//
+
+    Los dos argumentos son equivalentes:
+    f(int arr[]) {...}
+    f(int *arr ) {...}
+
+5.4 Aritmética de direcciones
+    Funciones de reserva y liberación de memoria (biblioteca stdlib):
+    void *malloc(size_t size);
+    ptr = (int*)malloc(sizeof(int));
+    void* calloc(size_t nmemb, size_t size);
+    int *ptr;
+    ptr = (int*)calloc(7, sizeof(int));
+
+
+5.5 Punteros a caracteres y funciones
+    char* pmessage;
+    pmessage = (char*)malloc(strlen("hello, world")*sizeof(char));
+
+    Librería <string.h>
+        void strcpy(char *s, const char*t);
+        int strcmp(char *s, char *t);
+              0 sii son iguales
+            > 0 sii s > t
+            < 0 sii s < t
+
+    *p++ = val; //primero asigna, luego incrementa
+    val = *--p; //primero decrementa, luego asigna
+
+5.7 Arrays multidimensinales
+    f(int daytab[][13]) {...}
+    f(int (*daytab)[13]) {...}    //equivalente al anterior
+
+    Warning:
+    int (*daytab)[13]     //puntero a un array de punteros a int repetido 13 veces
+    int *daytab[13]        //array de 13 posiciones de punteros a int
+
+5.9 Punteros contra arrays multidimensionales
+    char *name[] = {"Mes ilegal","Enero","Febrero","Marzo"};
+    c = (char**)malloc(7*sizeof(char*));
+
+5.10 Argumentos en la línea de comandos
+int main(int argc, char *argv[]);
+    int argc: argument count
+        Número de argumentos con los que se invocó desde el prompt.
+
+    char *argv[]: argument vector
+        Puntero a array de punteros a string
+
+5.11 Punteros a funciones
+    int (*comp)(void *, void *) //puntero a función
+
+    Warning:
+        int *comp(void *, void *) //puntero a int
+        int (*comp)(void *, void *) //puntero a función

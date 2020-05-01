@@ -1,0 +1,117 @@
+2.1 Nombre de las variables
+
+
+2.2 Tipos y tamaños de datos en C
+	char 1 byte
+	int  4 u 8 bytes
+	float 
+	double
+	
+	Propiedades:
+	short/long/signed/unsigned
+
+	array
+	struct
+	union
+	enum
+
+2.3 Constantes
+	ej const a = 1234 (tipo int)
+	ej const a = 12345L (long int)
+	ej const a = 12345UL (unsigned long int)
+	ej const a = 123.4F (tipo float)
+	ej const a = 1E-2 (tipo double)
+	ej const a = 1.234 (tipo long double)
+
+	ej const a = 037 (tipo octal al empezar por cero)
+	ej const a = 037UL (tipo octal unsigned long al empezar por cero)
+	ej const a = 0x1F (tipo hexadecimal)
+	ej const a = 0x1FUL (tipo hexadecimal)
+
+	Conjunto completo de secuencias de escape:
+	(Deben escribirse entre comillas simples '')
+	(Tienen un valor de constante numérico entero)
+	\a carácter de alarma (campana)
+	\b retroceso
+	\f avance de hoja
+	\n nueva línea
+	\r regreso de carro
+	\t tabulador horizontal
+	\v tabulador vertical
+	\\ diagonal invertida
+	\? interrogación
+	\' apóstrofo
+	\" comillas
+	\ooo número octal (ej \012 = 10 en decimal)
+	\xhh número hexadecimal
+	\0 carácter nulo (final de un string)
+
+
+2.7 Conversiones de tipo
+	función int lower( int c )
+	función bool isdigit( char c )
+
+	Casting: (nombre-de-tipo)expresión
+	ej: sqrt( (double) n )
+
+2.8 Operadores de incremento y decremento
+	(i + j)++ es una operación ilegal
+	void squeeze ( char s[], int c )
+
+2.9 Operadores para manejo de bits
+	& AND de bits 
+
+	ejemplo: n = n & 0177 hace cero todos los bits de n, menos los 7 de menor orden
+
+	| OR de bits
+	x = x | SET_ON fija en uno a todos los bits de x que son uno en SET_ON
+
+	<< 
+	x << 1 un desplazamiento de un bit
+
+	~ complemento a uno (unario)
+
+
+	//getbits: obtiene n bits desde la posición p//
+	unsigned getbits ( unsigned x, int p, int n )
+	{
+		return ( x >> (p + 1 -n)) & ~(~0 << n);
+	}
+	Declarar x como unsigned asegura que cuando se desplaza a la dcha, los bits vacantes se llenarán con ceros, no con bits de signo.
+
+2.10 Operadores de asignación y expresiones
+	Los operadores
+	 + - * / % << >> & ^ |
+	permiten ser usados como operadores al lado del =
+	ejemplo: i += 1; // equivale a i = i + 1;
+
+	Si expr1 y expr2 son expresiones, entonces
+	 expr1 op= expr2
+	es equivalente a 
+	 expr1 = (expr1) op (expr2)
+
+2.11 Expresiones condicionales
+	En la expresión
+	 expr1 ? expr2 : expr3
+	Si tras la evaluación de expr1 es diferente de cero (es decir, verdadero), entonces la expresión expr2 es evaluada y ése es el valor de la expresión condicional. De otra forma, expr3 se evalúa y ése es el valor. Sólo uno de los dos se evalúa.
+
+2.12 Precedencia y orden de evaluación.
+
+	Precedencia y asociatividad de operadores
+	-----------------------------------------
+	( ) [] ->  (izq a dcha)
+	! - ++ -- + - * & (tipo) sizeof ( dcha a izq )
+	* /  % (izq a dcha)
+	+ - (izq a dcha)
+	<< >> (izq a dcha)
+	< <= > >= (izq a dcha)
+	== != (izq a dcha)
+	& (izq a dcha)
+	^ (izq a dcha)
+	| (izq a dcha)
+	&& (izq a dcha)
+	|| ( dcha a izq )
+	?: ( dcha a izq )
+	= += -= *= /= %= &= ^= |= <<= >>= (izq a dcha)
+
+	La moraleja es que escribir un código que dependa del orden de evaluación es una mala práctica de programación en cualquier lenguaje. Naturalmente, es necesario conocer qué cosas evitar, pero si no sabe cómo se hacen las cosas en varias máquinas, no debe intentar aprovechar una implantación en particular.
