@@ -1,0 +1,69 @@
+Use-case diagrams (UML)
+-----------------------
+Behavioral diagram
+
+Basic approach: it expresses the functionality provided by a system (actors, goals (use cases) and dependencies).
+
+Shows what system functions are performed for which actor
+
+TOC
+---
+1. Diagram Building blocks
+2. Use case relationships
+----------------------------------
+
+1. Diagram building blocks
+
+	1. Use case:
+		Sequence of actions that provide something of measurement value.
+		(circle with use case)
+	
+	2. Actors:
+		Person/organization/system which plays a role in one or more interactions.
+		(actor character)
+	
+	3. System boundary boxes (optional)
+		Scope of the system.
+		Within the box represents functionality.
+		----
+		|	|
+		|	------------
+		|				|
+		|				|
+		 ---------------
+
+2. Use case relationships
+	2.1 Include 
+	2.2 Extend
+	2.3 Generalization
+	2.4 Association
+
+2.1 Include
+One use case includes another use case.
+
+						<<include>>
+	including use-case -------------> included use-case
+
+2.2 Extend
+The extension use case may be inserted in the extended use case under some conditions.
+
+						<<extend>>
+	extension use-case -------------> extended use-case
+						{if ... }
+
+
+	Usually, extend eq 'optional'
+					eq 'potentially not executed with the base use case.
+					eq not required to achieve the base use case goal.
+
+2.3 Generalization/specialization
+
+	General <_____________ Specific
+
+2.4 Associations
+	A __________________ B
+
+2.5 Uses
+
+				<<use>>
+	using use-case -------------> use case used

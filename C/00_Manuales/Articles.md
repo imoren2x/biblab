@@ -12,6 +12,8 @@ Articles
 * [Debug C Programs using DDD (Data Display Debugger)](https://www.youtube.com/watch?v=VF7IBEAA8Ig)
 * [GDB Debugger](https://www.youtube.com/watch?v=k-zAgbDq5pk)
 
+* [Almacenamiento, aspectos físicos y lógicos (parte 1)](https://www.zator.com/Cpp/E1_3_2.htm)
+* [Almacenamiento, aspectos físicos y lógicos (parte 2)](https://www.zator.com/Cpp/E2_2_6.htm)
 
 BiBTeX
 ===

@@ -1,0 +1,123 @@
+Capítulo 6. Estructuras
+-----------------------
+
+Índice
+    6.1 Conceptos básicos sobre estructuras
+    6.2 Estructuras y funciones
+    6.3 Arreglos a estructuras
+    6.4 Apuntadores a estructuras
+    6.7 Typedef
+    6.8 Uniones
+______________________
+
+6.1 Conceptos básicos sobre estructuras
+    struct point
+     {
+       int x;
+       int y;
+     };
+
+    struct {...} x, y, z;
+
+Una declaración de estructura que no está seguida por una lista de variables no reserva espacio de almacenamiento sino que simplemente describe una plantilla o la forma de una estructura.
+
+    struct point pt;
+
+ Inicialización,
+struct point x = {0, 0};
+
+Las estructuras pueden anidarse:
+ struct rect
+  {
+    struct point p1;
+    struct point p2;
+  };
+ struct rect screen;
+ screen.p1.x = 0 //coord x del elemento p1 de screen
+
+6.2 Estructuras y funciones
+ Operaciones legales sobre las estructuras:
+	- copiarla (incluido pasarlas como argumentos y regresar valores a funciones)
+	- asignarla como unidad
+	- tomar su dirección con &
+	- tener acceso a sus elementos
+	x No se pueden comparar estructuras
+
+struct point makepoint(int x, int y)
+{
+ struct point temp;
+
+ temp.x = x;
+ temp.y = y;
+
+ return temp;
+}
+
+ Apuntadores a estructuras:
+	struct point *pp
+ Referenciar un apuntador a una estructura
+	(*pp).x
+ya que la precedencia de . es mayor que la de *
+	*pp.x = *(pp.x) (x tendría que ser un puntero)
+ Otra opción es usar el operador ->
+	p->miembro de la estructura
+
+6.3 Arreglos a estructuras
+ struct key{
+  char *keyword,
+  int count
+ } keytab[NKEYS] = {{"auto",0},{"break",0},{"case",1}};
+
+El lenguage C proporciona un operador unario en tiempo de compilación llamado sizeof que se puede emplear para calcular el tamaño de cualquier objeto:
+	sizeof <objeto> // objeto puede ser variable, array o estructura.
+	sizeof(nombre de tipo) // tipo básico (int, double, char) o definido
+dan un entero igual al tamaño en bytes del tipo u objeto especificado (retorna un tipo size_t definido en el header <stddef.h>).
+
+ #define NKEYS (sizeof keytab / sizeof(struct key))
+ #define NKEYS (sizeof keytab / sizeof keytab[0])
+
+ Un sizeof no se puede utilizar en una línea #if, debido a que l preprocesador no analiza nombres de tipos. #define no es evaluada por el preprocesador y aquí el código es legal.
+
+6.4 Apuntadores a estructuras
+	Si p es un puntero a una estructura, la aritmética con p toma en cuenta el tamaño de la estructura, así que p++ incrementa p con la cantidad correcta para obtener el siguiente elemento del array de estructuras y la prueba detiene el ciclo en el momento correcto.
+
+Sin embargo, no hay que suponer que el tamaño de una estructura es la suma de los tamaños de sus miembros. Debido a requisitos de alineación para diferentes objetos, podría haber "huecos" no identificados dentro de una estructura.
+ Por ejemplo, si un char es de 1 B y un int de 4 B, la estructura
+ struct{
+  char c;
+  int i;
+};
+bien podría requerir 8 B, no 5 B. El operador sizeof regresa el valor apropiado.
+
+6.7 Typedef
+ (véase Tema 5 C++ Lab. Programacion 1 para más info)
+ Tipo de dato definido para funciones con dos parámetros char* y que devuelven un int.
+   typedef int (*AAF)(char *, char *);
+el cual se puede usar en contextos como
+   AAF strcmp, numcmp;
+
+6.8 Uniones
+  Una unión es una variable que puede contener (en momentos diferentes) objetos de diferentes tipos y tamaños, y el compilador hace el seguimiento del tamaño y requisitos de alineación. Las uniones proporcionan una forma de manipular diferentes clases de datos dentro de una sola área de almacenamiento, sin incluir en el programa ninguna información dependiente de la máquina.
+
+union u_tag{
+  int ival;
+  float fval;
+  char *sval;
+} u;
+
+Sintácticamente, se tiene acceso a los miembros de una unión con
+  nombre-union.elemento
+  apuntador-union->miembro
+Igual que las estructuras
+
+Una unión puede representarse dentro de estructuras y arrays:
+struct{
+  char *name;
+  int flags;
+  int utype;
+  union {
+    int ival;
+    float fval;
+    char *sval;
+   } u;
+} symtab[NSYM];

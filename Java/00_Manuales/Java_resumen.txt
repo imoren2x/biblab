@@ -1,0 +1,739 @@
+Java
+----
+
+ 1 Lo básico de Java
+ 2 OOP + java STL
+ 3 Excepciones
+ 4 Threads
+ 5 Sockets
+ 6 Documentación: javadoc
+ 7 Testing: jUnit, TestNG
+ 8 Deployment: ant, Maven
+11 Databases
+
+Java Examples:
+http://www.tutorialspoint.com/javaexamples/index.htm
+____________________________________
+
+Capítulo 1. Lo básico de Java
+-----------------------------
+1.1 Clases básicas
+1.2 Clases compuestas: Arrays y Strings.
+	1.2.1 Arrays:
+	1.2.2 Strings:
+	1.2.3 Array de Strings:
+1.3 Clases compuestas: Lists (queues y stacks) y Maps.
+1.4 Reglas de variables
+	1.4.1 Ámbito de la variable
+	1.4.2 Variables finales (constantes)
+1.5 Operadores
+	1.5.1 Operadores de asignación
+	1.5.2 Operadores aritméticos
+	1.5.3 Operadores de concatenación en Strings
+	1.5.4 Operadores relacionales y condicionales
+	1.5.5 Operador ternario
+	1.5.6 Operadores de bit
+	1.5.6 Precedencia de operadores
+1.6 Control de flujo
+	1.6.1 If-else
+	1.6.2 switch
+	1.6.3 bucles: for, while, do-while, repeat
+1.7 Entrada y salida básicas
+1.8 Funciones y parámetros
+1.9 Argumentos
+1.10 Ficheros y i/o/e std
+1.11 Packages
+	4.6.1 Creación de paquetes
+	4.6.2 Uso de los paquetes
+	4.6.3 Paquetes y nombres de fichero: el CLASSPATH
+1.12 Comentarios
+1.13 Clase Properties
+1.14 Entorno de ejecución del sistema. La clase System.
+________________________________________________________
+
+
+1.1 Clases básicas
+	Números:
+		enteros: byte, short, int/Integer, long/Longs
+		reales: float/Float, double/Double
+	Caracteres: char
+	Booleano: boolean/Boolean
+	
+	Declaración y asignación:
+		int i;
+		long n = 10;
+		long l = new Long(5);
+		Long l2 = new Long(5);
+	
+	Asignación de Null: ningún valor
+		i = null;
+	
+	Casting: métodos más comunes:
+		Casting básico: De int a long:
+			int i = 5;
+			long n = (long) i;
+		De int a String: ( .toString() )
+			int i = 5;
+			String str = Integer.toString(i);
+			String str2 = String.valueOf(i);
+		De String a Int:
+			String str = "5";
+			int i = Integer.valueOf(str);
+			int i = <Integer>.parseInt(<String>)
+	
+	El tamaño básico es de 1 byte (8 bits).
+	Java utiliza el juego de caracteres Unicode.
+
+1.2 Clases compuestas: Arrays, Strings, enumeraciones (enum).
+1.2.1 Arrays:
+	Declaración:
+		int[] arrayDeInts;		//Estilo java//
+		int arrayDeInts[]; 		//Estilo C//
+	Reserva de memoria: new
+		int[] arrayDeInts = new int[10];
+	Declaración y asignación
+		dataType[] arrayRefVar = {value0, value1, ..., valuek};
+	Asignación:
+		0 < indice < longitud - 1
+		arrayDeInts[i] = 3;
+	Métodos más comunes:
+		arrayDeInts.length 
+		arrayDeInts.toString()
+		...
+
+1.2.2 Strings:
+Conjunto de caracteres.
+Declaración:
+	String str;
+	String str2 = "Hola, caracola.";
+Reserva de memoria:
+	String str = new String("hola, caracola");
+Asignación:
+	0 < indice < longitud - 1
+	arrayDeInts[i] = 3;
+Métodos más comunes:
+	arrayDeInts.length 
+	arrayDeInts.toString()
+	Clone para clonar
+
+Los objetos String son inmutables: no se pueden cambiar una vez se crean.
+StringBuffer está para crear y manipular cadenas dinámicamente.
+Enlace: <buscarlo>
+
+Función printf:
+	System.out.printf("The value of the float variable is " +
+                  "%f, while the value of the integer " +
+                  "variable is %d, and the string " +
+                  "is %s", floatVar, intVar, stringVar);
+Equivalente a:
+	String fs;
+	fs = String.format("The value of the float variable is " +
+					   "%f, while the value of the integer " +
+					   "variable is %d, and the string " +
+					   "is %s", floatVar, intVar, stringVar);
+	System.out.println(fs);
+
+1.2.3 Array de Strings:
+	Declaración:
+		String[] str;
+		String[] str = {"esto", "es", "un", "ejemplo", "sencillo"};
+	Reserva de memoria:
+		String[] str = new String[5];
+	Asignación:
+		0 < indice < longitud - 1
+		arrayDeInts[i] = 3;
+	Métodos más comunes:
+		arrayDeInts.length 
+		//arrayDeInts.toString() //No lo tengo claro//
+		Clone para clonar.
+
+1.2.4 Enumeraciones (enum)
+TODO
+
+1.3 Clases compuestas: Lists (queues y stacks) y Maps.
+Lists:
+	import java.util.Arraylist;
+	
+	ArrayList<Integer> intList = new ArrayList<Integer>();
+	intList.add(index, object);
+	intList.set(1, 5);
+	intList.get(1);
+	intList.remove(1);
+	intList.indexOf(object) //-1 si no lo encuentra//
+	
+HashMap:
+	import java.util.HashMap;
+
+	HashMap<Integer> hashMap = new HashMap<Integer>();
+	hashMap.add(index, object);
+	hashMap.set(1, 5);
+	hashMap.get(1);
+	hashMap.remove(1);
+	hashMap.indexOf(object) //-1 si no lo encuentra//
+
+
+1.4 Reglas de variables
+1.4.1 Ámbito de la variable
+Hay cuatro tipos de ámbito:
+	· Variable miembro (atributo):
+		Declarada dentro de la clase, no dentro de un método.
+		Visible a todo el código de la clase.
+	· Variable local
+		Visible localmente en su ámbito.
+	· Parámetro de un método
+		Visible en su método.
+	· Parámetro de manejador de excepción
+		Visible en la excepción.
+
+1.4.2 Variables finales (constantes):
+	final int unaVariableFinal = 0;
+	final int bFinal;
+	...
+	bFinal = 0;
+
+1.5 Operadores
+Clasificación:
+		Operadores unarios: ++
+		Operadores binarios: +-, */, ^
+		Operadores ternarios: expr ? op1: op2;
+
+1.5.1 Operadores de asignación
+	= 		+=		-=		*=	
+	%=		&=		|=		^=
+	>>=		<<=		>>>=	/=
+
+1.5.2 Operadores aritméticos
+	+	Suma		*	Multiplicación
+	-	Resta		/	División
+	%	Resto
+
+1.5.3 Operadores de concatenación en Strings
+	+ System.out.println("Hay " + cuenta + " caracteres.");
+
+1.5.4 Operadores relacionales y condicionales
+	Retornan true si se cumplen
+	<	menor que
+	<=	menor o igual que
+	>	mayor que
+	>=	mayor o igual que 
+	==	igual que
+	!=	diferente que
+	
+	&&	AND (evalúa de izquierda a derecha)
+	&	AND (evalúa ambos operandos)
+	||	OR (evalúa de izquierda a derecha)
+	|	OR (evalúa ambos operandos)
+	!	NOT
+
+1.5.5 Operador ternario: ?
+	expresión ? op1 : op2
+		Retorna op1 si expresión es true, eoc op2.
+	Ejemplo: valor absoluto.
+		y = ( x > 0 ) ? x : -x;
+
+1.5.6 Operadores de bit:
+	operando1 >> n	Desplaza los bits n posiciones hacia la derecha
+	operando1 >>> n	Desplaza los bits n posiciones hacia la derecha (sin signo)
+	operando1 << n	Desplaza los bits n posiciones hacia la izquierda
+	&	AND
+	|	OR
+	^	XOR
+	~	NOT (booleano)
+	
+Aplicación: FLAGS
+	final int VISIBLE = 1;
+	final int MOVIL = 2;
+	final int SELECCIONABLE = 4;
+	final int EDITABLE = 8;
+	int flag = 0;
+	
+	Activar flag:
+		flag = flag | VISIBLE;
+	Comprobar el flag:
+		flag = flag & VISIBLE;
+
+1.5.6 Operador instanceof
+ Devuelve true of false si se cumple la instancia o no.
+ Syntax: ( Object reference variable ) instanceof  (class/interface type)
+
+1.5.7 Precedencia de operadores
+
+1.6 Control de flujo
+1.6.1 If-else
+	if ( expresion ) {
+		sentencia
+	} else if {
+		...
+	} else {
+		...
+	}
+1.6.2 switch
+	switch ( <int variable> ) {
+	case <valor1>:
+		...
+		break;
+	case <valor2>:
+		...
+		break;
+	default:
+		...
+	}
+	Escribir reglas de switch.
+
+1.6.3 bucles: for, while, do-while, repeat
+	for (inicialización; fin_condicion; incremento)	{
+	}
+	
+	inicialización
+	while (fin_condicion) {
+		...
+		incremento
+	}
+	
+	do {
+		sentencias
+	}
+	while (expresionBooleana)
+
+1.7 Entrada y salida básica
+	System.in
+	System.out
+	System.error
+	
+	Entrada estándar:
+		System.in
+		InputStreamReader iSR = new InputStreamReader(System.in);//
+		BufferedReader stdIn = new BufferedReader( iSR );
+		
+
+	Salida estándar:
+		System.out.println("hola, mundo."); //syso+<space>
+	
+	Ejemplo: Ej0107StdInputOutput.class
+
+1.8 Funciones y parámetros
+(Hay que añadir la estructura de un programa java)
+Clase static main.
+
+En java, los parámetros se pasan por valor, por valor a la referencia, cuidadito, que es diferente de C y de C++.
+En Python es equivalente.
+
+Ver ejemplo de internet importante.
+
+1.8.1 Reglas de declaración de ficheros fuente:
+ Estas reglas son esenciales cuando se declaran 
+  · class
+  · import package
+  · package
+ Las reglas son:
+ · Sólo puede haber una clase pública por fichero.
+	1 clase = 1 fichero
+ · Un fichero puede tener varias clases no-públicas.
+ · El nombre de la clase pública y el del fichero deben coincidir.
+	p.ej., public class Empleado{...} y fichero Empleado.java
+ · Si la clase se define dentro de un package, éste debe aparecer primero en el fichero fuente.
+ · Si hay declaraciones import, se deben escribir entre el package y la declaración class.
+   Si no hay declaraciones package, los import deben aparecer al principio.
+ · Import and package afectan a todas las clases presentes en el fichero.
+   No es posible diferentes import/package para cada clase de un fichero.
+
+
+
+1.9 Argumentos
+Cuando un programa se le llama desde consola:
+	$ miPrograma arg1 arg2
+quedan almacenados los argumentos en el parámetro args como un array de Strings:
+	public static void main(String[] args)
+	arg[0] -> primer argumento
+	arg[1] -> segundo
+	...
+
+Para referir al programa que llama: arg[-1]???? (hay que buscarlo).
+
+
+1.10 Ficheros
+Ficheros básicos:
+	File file = new File("/home/ignacio/fichero.txt");
+	File file = new File("/home/ignacio/", "fichero.txt");
+	Reader reader = new Reader(file);//Lector directo
+	Writer writer = new Writer(file);//Escritor directo/
+	falta mkfile(s)
+	Ej: Ej0110Files.java
+
+1.11 Packages
+	En Java, todo se estructura en módulos.
+	Los paquetes evitan las colisiones de espacios de nombres.
+	Los módulos son jerárquicos, estableciéndose en submódulos, hasta el nivel más bajo que son las clases que lo componen.
+	Por ejemplo:
+		java.Lang.
+		package.subpackage.subsubpackage.class
+	
+Visibilidad de paquetes: el CLASSPATH de Java.
+	En Java, todos los directorios que están en el classpath son visibles y por tanto utilizables.
+	
+	Importación y utilización:
+		· Importación de todo el paquete:
+			import package.subpackage; //No olvidar el punto y coma//
+			
+			ClaseDelPaquete objeto;
+			
+		· Importación de todos los subpaquetes:
+			import package.*;
+			
+			subpackage.ClaseDelPaquete objeto;
+			
+		· Sin importación:
+			package.subpackage.ClaseDelPaquete objeto;
+
+Metodo 1:
+es.cica.graficos.Rectangulo rect = new es.cica.graficos.Rectangulo();
+
+Metodo 2:
+import es.cica.graficos.Circulo
+
+Circulo circ = new Circulo();
+
+Metodo 3:
+import es.cica.graficos.*;
+
+Circulo circ = new Circulo();
+Rectangulo rect = new Rectangulo();
+
+import es.cica.graficos.A*; // Da un error de compilación
+Por defecto, la máquina Java importa automáticamente siempre tres paquetes:
+• El paquete por defecto (sin nombre).
+• El paquete java.lang.
+• El paquete al que pertenezca la clase con la que es está trabajando.
+
+1.12 Comentarios
+	Comentarios de línea:
+		//comentario de una linea
+	Comentarios de bloque:
+		/*
+		*/
+	comentarios de javadoc
+		/**
+		 * title
+		 * author
+		 * date
+		 * param <param> <explanation>
+		 */
+
+1.13 Clase Properties
+Clase: java.util.Properties
+	· Contiene pares clave-valor en un objeto Properties.
+
+Lectura de propiedades:
+	Properties prProps = new Properties();
+	FileInputStream pin = new FileInputStream("Propiedades");
+	prProps.load(pin); //Los datos del fichero "Propiedades" se cargan
+	pin.close();		// en el objeto prProps//
+
+Escritura de propiedades:
+	FileOutputStream pout = new FileOutputStream("ultimaEjecucion");
+	prProps.save(out, "Propiedades de la ultima ejecución");
+	pout.close();
+	
+Acceso a la clase Properties:
+	• getProperty(String key), getProperty(String  key, String default) 
+		Esta segunda versión retorna el valor por defecto si la clave no es encontrada.
+	• list(PrintStream s), list(PrintWriter w).
+	• propertyNames() retorna una Enumeration que contiene las claves disponibles.
+	• size() retorna el número de pares clave/valor disponibles.
+	• put(Object key, Object value) incluye el par clave/valor.
+		Sólo objetos de clase String.
+	• remove(Object key) elimina el par clave/valor correspondiente a la clave.
+	• load(FileInputStream pin);
+	• save(FileOutputStream, String title);
+
+1.14 Entorno de ejecución del sistema. La clase System.
+	file.separator	 	Separador entre ficheros (p.ej: ‘/’)
+	java.class.path		Valor del CLASSPATH
+	java.class.version	Versión de las clases en java.*
+	java.home			Directorio de instalación de Java
+	java.vendor			Identificador del fabricante de la JVM
+	java.vendor.url		URL del fabricante
+	java.version		Versión de la JVM
+	line.separator		Separador de líneas en un fichero
+	os.arch				Arquitectura del sistema operativo
+	os.name				Nombre del sistema operativo
+	os.version			Versión del sistema operativo
+	path.separator		Separador entre componentes de un path (p.ej: ‘ :’)
+	user.dir			Directorio de trabajo actual
+	user.home			Directorio por defecto del usuario
+	user.name			Nombre del usuario
+
+Métodos de acceso:
+	getProperty
+	getProperties
+	setProperties sus cambios no son persistentes en la JVM.
+
+Java annotations (@Override)
+
+Apéndice A. Ficheros y Streams en Java
+--------------------------------------
+ - Streams de caracteres (Reader, Writer)
+ - Streams de bytes
+ - Streams directos
+ - Streams con proceso
+
+Streams de caracteres: Reader / Writer (caracteres de 16 bits)
+  - Reader
+  - Writer
+Se usan para archivos de texto, con caracteres de 16 bits.
+
+Streams de bytes:
+  - InputStream: lectura
+  - OutputStream: escritura
+Leen o escriten símbolos de 1 byte (8 bits).
+Se usa para archivos binarios o conexiones a través de la red.
+
+Streams directos:
+  Escriben directamente en ficheros o pipes.
+	Ficheros:
+		Caracteres:
+			- FileReader
+			- FileWriter
+		Bytes:
+			- FileInputStream
+			- FileOutputStream
+	Pipes:
+		Caracteres:
+			- PipedReader
+			- PipedWriter
+		Bytes:
+			- PipedInputStream
+			- PipedOutputStream
+
+Streams con proceso:
+	Buffering
+		Caracteres:
+			- BufferedReader 
+			- BufferedWriter
+		Bytes:
+			- BufferedInputStream
+			- BufferedOutputStream
+	Filtrado
+		Caracteres:
+			- FilterReader 
+			- FilterWriter
+		Bytes:
+			- FilterInputStream
+			- FilterOutputStream
+	Conexión byte-texto
+		- InputStreamReader: lee bytes y los convierte a caracteres.
+		- OutputStreamWriter: Convierte caracteres a bits y los escribe en el OutputStream.
+__________________________________________________________________________________________________
+
+Capítulo 2. Programación orientada a Objetos (clases e interfaces).
+---------------------------------------------
+2.1 Clases
+	2.1.1 Clase pública, privada, abstracta y final.
+	2.1.2 Atributos
+	2.1.3 Métodos
+		Constructor vacío, parametrizado/overloaded, constructor copia
+		Destructor: método finalize
+		Sobrecarga de métodos
+	2.1.4 Miscelánea 
+		2.1.4.1 El objeto "this".
+		2.1.4.2 La clase Object
+		2.1.4.3 static
+			Clase static
+			Atributos static
+			Métodos static
+		2.1.4.4 Clases anidadas
+	2.1.5 Herencia
+		2.1.5.1 Clases y métodos abstractos.
+		2.1.5.2 Constructor heredado.
+		2.1.5.3 Destructor heredado.
+		2.1.5.4 Override methods (@Override)
+		2.1.5.4 Clases estáticas y herencia (no es posible)
+		2.1.5.5 Polimorfismo
+		2.1.5.6 Herencia múltiple: interfaces.
+
+2.2 Interfaces
+	2.2.1 Definir un interfaz
+	2.2.2 Implementar un interfaz
+	2.2.3 Interfaces para herencia múltiple.
+	2.2.4 Aplicación: 
+		Patrón de diseño observer.
+		Activación de determinados métodos.
+		
+
+-----------------------@---------------------------
+
+2.1 Clases:
+2.1.1 Clase pública, privada, abstracta y final.
+	public	la clase es usable desde cualquier paquete que la necesite.
+	private (por defecto): la clase es privada dentro de su paquete.
+	abstract	Declara la clase como abstracta, no es instanciable.
+	final		No puede crearse subclase desa clase.
+
+	extends		Se usa en la herencia.
+	implements	Se una en los interfaces.
+
+2.1.2 Atributos
+	public		Es accesible desde cualquier clase.
+	private		Sólo es accesible dentro de la propia clase.
+	protected	Sólo es accesible por la propia clase y las subclases.
+	(vacío)		(por defecto) Sólo es accesible dentro del paquete.
+	
+	final		Una vez tenga un valor asignado, no puede variar.
+	
+	static		Atributo de clase, no de instancia.
+				Se crea en tiempo de compilación.
+				Existe en todo el ciclo de vida de la clase, es persistente.
+				Es común a todas las instancias de la clase.
+	
+2.1.3 Métodos
+	public		Es accesible desde cualquier clase.
+	private		Sólo es accesible dentro de la propia clase.
+	protected	Sólo es accesible por la propia clase y las subclases.
+	(vacío)		(por defecto) Sólo es accesible dentro del paquete.
+	
+	final		método que no puede ser sobreescrito por las subclases.
+	
+	static		Atributo de clase, no de instancia.
+				Se crea en tiempo de compilación.
+				Existe en todo el ciclo de vida de la clase, es persistente.
+				Es común a todas las instancias de la clase.
+
+	native: método no implementado en lenguaje Java.
+	
+	synchronized: evita concurrencias en caso de threads llamando al mismo método.
+	
+	throws <excepciones>: si lanza excepciones, deben aparecer una lista dellas separadas por comas.
+
+2.1.3.1 Constructor
+	Método llamado al instanciar la clase con new.
+	
+	public	Visible siempre.
+	private	Ninguna otra clase puede instanciar esta clase.
+			Patrón factory, métodos factory.
+	protected	Visible en las sub-clases
+	(vacío)		(por defecto) Visible en el paquete.
+	(sin declaración)
+	
+	Constructor vacío, paramétrico y copia (sobrecarga de método constructor).
+
+2.1.3.2 Destructor: método finalize:
+	En java existe el "garbage collector".
+	protected void finalize() throws Throwable {
+			origen = null;
+			super.finalize();
+	}
+	
+2.1.3.3 Sobrecarga de métodos
+
+
+2.1.4 Miscelánea de OOP:
+Modificador static: miembros de clase y de instancia
+	Miembros de instancia: variables y métodos:
+		La JVM crea una copia por cada variable y método.
+	Miembros de clase: variables y métodos:
+		La JVM crea una única copia para todas las instancias, en método y clase.
+
+	Clase static
+	Atributos static
+	Métodos static
+	
+	Lo static es en tiempo de compilación, sólo ve otros elementos static.
+
+2.1.4.2 La clase Object
+Es la base de toda la jerarquía de clases de Java, permite operaciones como
+	· compararse entre sí
+	· convertir contenido en cadena de caracteres
+	· retornar la clase de la que son instancia.
+Métodos rescribibles de la clase Object:
+	· clone: Permite crear objetos a partir de objetos del mismo tipo.
+	· equals: compara dos objetos para comprobar si son iguales.
+	· finalize: 
+	· toString: Convierte el contenido de un objeto a una cadena de caracteres.
+Métodos finales:
+	· getClass: Retorna una referencia a la clase del objeto
+	· notify, notifyAll, wait: sincronización con múltiples threads.
+	· hashCode: asigna id único dentro del sistema al objeto.
+
+2.1.4.3 El objeto "this".
+
+2.1.4.4 Clases anidadas
+	En java, las clases anidadas son posibles.
+	Su visibilidad está restringida a la clase que la contiene:
+		· Para la clase que la contiene, ésta es la única que puede hacer uso de ella.
+		· Para la clase anidada, ésta tiene acceso a los elementos (métodos y atributos) de la clase contenedora, igual que cualquier elemento de la clase contenedora.
+	Si la clase anidada es static, tendrá acceso sólo a los elementos static.
+
+2.1.5 Herencia
+
+2.1.5.1 Herencia: Clases y métodos abstractos
+	Hay casos en los que un método está hecho para no ser instanciado como tal, sino para ser heredado, implementado e instanciar a sus herederos.
+	Ése es el caso de las clases abstractas.
+	Por ejemplo: ObjetoGráfico se extiende en recta, círculo, poliedro, etc.
+	No se requiere que una clase abstracta tenga métodos abstractos.
+
+2.1.5.2 Constructor heredado.
+2.1.5.3 Destructor heredado.
+2.1.5.4 Override methods (@Override)
+2.1.5.4 Clases estáticas y herencia (no es posible)
+2.1.5.5 Polimorfismo
+2.1.5.6 Herencia múltiple: interfaces.
+
+
+2.2 Interfaces
+Interfaces, clases abstractas y herencia múltiple
+No se requiere que una clase abstracta tenga métodos abstractos, pero cualquier clase con al menos un método abstracto debe ser declarada abstracta.
+
+
+
+Diferencia clase e interface:
+	• Una clase únicamente hereda constantes de un interface.
+	• Una clase no puede heredar implementaciones de métodos de un interface.
+	• La jerarquía de interfaces es totalmente independiente de la jerarquía de clases.
+Clases que implementan el mismo interface pueden o no estar relacionadas a través de la jerarquía de clases.
+
+Aplicación: su empleo para controlar si se
+desea que se active una cierta característica que ya está disponible en la superclase. Estas
+características están incluidas en métodos que, al principio de su cuerpo, comprueban si la
+clase del objeto implementa el interface en cuestión. Si es así, el método se activa. Si no es así,
+el método no hace nada o lanza una excepción. Este es el caso, por ejemplo, del interface
+Cloneable y el método clone() de la clase Object.
+
+__________________________________________________________________
+{
+ 3 Los componentes del lenguaje
+ 4 Objetos y clases
+	Algunas clases esenciales
+	Generics (~templates) 
+	Data types (list, queues, stacks, vectors, sets, maps)
+}
+
+Eclipse environment tools
+-------------------------
+	Export jar
+	Quickfix -> Ctrl + 1
+	Content Assist -> Ctrl + Space
+	syso -> system.out
+	Open a class -> F3 / Ctrl + S + T
+	ide / Implement methods
+			Generate Getters / Setters
+	Refactor:     Extract Method
+			Extract Constant
+	Add jar/lib
+	Source Attachment
+	Javadoc
+	Dropin folder
+	Share plugin: File/export/Install/Installed software
+	Template
+	Working set
+	Debugging:     F5 -> Next step into
+			F6 -> Next step over
+			F7 -> Go to Cell
+			F8 -> Next breakpoint
+
+Capítulo 3. Expresiones Regulares
+---------------------------------
+3.1 Main Concepts: compile, matcher, RegEx Exception.
+3.2 Compile and Regular Expression syntax
+3.3 Matcher, Groups, Find, Replace, 
+3.4 RegEx exception
+-------------&-------------

@@ -1,0 +1,636 @@
+El lenguaje Java - UMA
+----------------------
+
+TOC:
+ 1 Básica: 1 Intro, 2 OOP, 3 Java, 4 Objetos y clases, 5 Algunas clases esenciales, 
+ 2 Intermedia: 6 Excepciones
+ 3 Avanzada: 7 Threads y concurrencia, 8 Applets (web), 9 Comunicaciones (sockets), 10 Bases de datos: JDBC, (11 Tests: jUnit, TestNG)
+
+ 1 Intro: características de Java
+	 1 Simple						|  7 Portable
+	 2 Orientado a objetos			|  8 Concurrente
+	 3 Distribuido					|  9 Dinámico
+	 4 Robusto						| 10 Interpretado
+	 5 Seguro						| 11 Alto rendimiento
+	 6 Arquitecturalmente neutro (independiente de la plataforma)
+ 2 OOP
+	2.1 Objetos
+	2.2 Clases
+	2.3 Herencia
+ 3 Los componentes del lenguaje
+	3.1 Variables y tipos
+		Tipos     Nombres de variables    Ámbito    Inicialización    Variables finales
+	3.2 Operadores
+		Operadores aritméticos
+			"	   relacionales y condicionales
+			"	   lógicos
+			"	   de bit
+			"	   de asignación
+	3.3 Expresiones
+	3.4 Control de flujo
+		3.4.1 If-else
+		3.4.2 switch
+		3.4.3 bucles: for, while, repeat
+		3.4.4 Manejo de excepciones
+		3.4.5 Saltos
+	3.5 Arrays y strings
+		3.5.1 Arrays
+		3.5.2 Strings
+ 4 Objetos y clases
+		4.1 Intro a las clases
+		4.2 El ciclo de vida del objeto
+			4.2.1 Creación
+			4.2.2 Utilización
+			4.2.3 Eliminación de objetos
+		4.3 Definición de clases
+			4.3.1 Declaración				| 4.3.5 Métodos
+			4.3.2 El cuerpo de la clase		| 4.3.6 Miembros de instancia y miembros de clase
+			4.3.3 Constructores				| 4.3.7 La clase Object
+			4.3.4 Variables					| 4.3.8 Clases y métodos abstractos
+		4.4 Interfaces
+			Interfaces, clases abstractas y herencia múltiple
+		4.5 Clases anidadas
+		4.6 Packages
+			4.6.1 Creación de paquetes
+			4.6.2 Uso de los paquetes
+			4.6.3 Paquetes y nombres de fichero: el CLASSPATH
+ 5 Algunas clases esenciales
+	5.1 Java Runtime Environment
+		5.1.1 Configuración de un programa Java. Propiedades
+		5.1.2 Invocando un programa Java. Argumentos
+		5.1.3 El entorno del sistema. La clase System
+	5.2 Entrada y salida estándar
+	5.3 Las clases String y StringBuffer
+		Conversiones entre objetos y String
+	5.4 Lectura y escritura
+		Streams de caracteres y streams de bytes
+		Streams directos
+		Streams con proceso
+		Otras clases
+ 6 Manejo de errores: excepciones
+	6.1 Capturar o especificar
+	6.2 Manejadores de excepciones
+	6.3 Excepciones lanzadas por un método
+		6.3.1 Declaración de las excepciones
+		6.3.2 La sentencia throw
+	6.4 La Throwable y sus subclases
+ 7 Threads y concurrencia
+	7.1 El método run
+	7.2 El ciclo de vida de un thread
+		7.2.1 Creación 
+		7.2.2 Arranque
+		7.2.3 Suspensión
+		7.2.4 Parada
+		7.2.5 El método isAlive
+		7.2.6 Prioridades
+	7.3 Sincronización entre threads
+		7.3.1 El ejemplo Productor/Consumidor
+		7.3.2 Bloqueos de un objeto: secciones críticas
+		7.3.3 notifyAll y wait
+	7.4 Grupos de threads
+ 8 Applets (web)
+	8.1 Cómo se implementa y se ejecuta un applet
+	8.2 Métodos básicos de applet
+		8.2.1 Métodos asociados al ciclo de vida
+		8.2.2 Métodos gráficos y manejo de eventos
+		8.2.3 Restricciones de seguridad
+		8.2.4 La marca <APPLET> en HTML
+		8.2.5 Otros métodos en el API de un applet
+			8.2.5.1 Carga de ficheros
+			8.2.5.2 Mostrar información del estado
+			8.2.5.3 Cargar otros documentos en el browser
+			8.2.5.4 Sonido
+			8.2.5.5 Parámetros de un applet
+	8.3 Threads y applets
+ 9 Comunicaciones
+	9.1 Conceptos básicos
+		9.1.1 TCP
+		9.1.2 UDP
+		9.1.3 Puertos
+		9.1.4 URL
+	9.2 Clases en el paquete java.net
+		9.2.1 URL
+		9.2.2 Sockets
+		9.2.3 Datagramas
+10 Bases de datos: JDBC
+	10.1 El package java.sql
+	10.2 Uso de JDBC
+		10.2.1 Conexiones
+		10.2.2 Sentencias SQL
+		10.2.3 Resultados
+	10.3 Tipos de drivers JDBC
+(11 Tests: jUnit, TestNG)
+(JEE, spring)
+Apéndice A. Nociones sobre GUI
+	A.1 Eventos
+		Manejo de eventos en JDK 1.0
+		El objeto Event
+		Manejo de eventos en JDK 1.1
+	A.2 JFC (Java Foundation Classes)
+		Swing
+___________________________________________________________
+
+Capítulo 1 Intro: características de Java
+-----------------------------------------
+
+	 1 Simple						|  7 Portable
+	 2 Orientado a objetos			|  8 Concurrente
+	 3 Distribuido					|  9 Dinámico
+	 4 Robusto						| 10 Interpretado
+	 5 Seguro						| 11 Alto rendimiento
+	 6 Arquitecturalmente neutro (independiente de la plataforma)
+
+
+Capítulo 3 Los componentes del lenguaje
+---------------------------------------
+	3.1 Variables y tipos
+		Tipos     Nombres de variables    Ámbito    Inicialización    Variables finales
+	3.2 Operadores
+		Operadores aritméticos
+			"	   relacionales y condicionales
+			"	   de bit
+			"	   de asignación
+	3.3 Expresiones
+	3.4 Control de flujo
+		3.4.1 If-else
+		3.4.2 switch
+		3.4.3 bucles: for, while, repeat
+		3.4.4 Manejo de excepciones
+		3.4.5 Saltos
+	3.5 Arrays y strings
+		3.5.1 Arrays
+		3.5.2 Strings
+
+Dos programas sencillos en Java:
+/* Contador */
+	import java.io.*;
+	public class Contador 
+	{
+		public static void cuentaCaracs (Lector in) throws IOException 
+		{
+			int cuenta = 0;
+			while (in.lee() != -1)
+			cuenta++;
+			System.out.println("Contados " + cuenta + " caracteres.");
+		}
+	// ... Otros metodos omitidos ...
+	}
+
+/* Hello, World! */
+	public class HelloWorld 
+	{
+		public static void main(String args[])
+		{	
+			System.out.println("Hello, World!");
+			System.out.println("Orbis, te saluto!");
+		}
+	}
+
+3.1 Variables y tipos
+	Tipos, variables, declaración de variables y ámbito.
+3.1.1 Tipos
+	<tipo> <nombre_variable>
+	int i
+	
+Dos categorías de tipos:
+	· Tipos primitivos
+	· Tipos de referencia
+
+Tipos primitivos:
+	Números 
+		enteros: byte, short, int, long
+		reales: float, double
+	Caracteres: char
+	Booleano: boolean
+
+Tipos de referencia:
+	Arrays, clases e interfaces.
+	El valor de la variable es una referencia, no un valor aislado (diferencia con C).
+
+3.1.2 Nombres de variable
+Debe cumplir tres reglas:
+	· Identificador legal en Unicode
+	· No es palabra reservada
+	· No tiene colisión dentro de su ámbito (scope)
+
+3.1.3 Ámbito
+La localización de una variable define su ámbito.
+Hay cuatro tipos de ámbito:
+	· Variable miembro:
+		Declarada dentro de la clase, no dentro de un método.
+		Visible a todo el código de la clase.
+	· Variable local
+		Visible localmente en su ámbito.
+	· Parámetro de un método
+		Visible en su método.
+	· Parámetro de manejador de excepción
+		Visible en la excepción.
+3.1.4 Inicialización
+Inicialización de una variable:
+	int cuenta = 0;
+3.1.5 Variables finales
+Una variable final no puede cambiarse una vez inicializada, sea en su declaración o después della.
+Ejemplo:
+	final int unaVariableFinal = 0;
+	final int bFinal;
+	...
+	bFinal = 0;
+
+3.2 Operadores
+	Operadores unarios: ++
+	Operadores binarios: +-, */, ^
+	Operadores ternarios: expr ? op1: op2
+	
+3.2.1 Operadores aritméticos
+	+	Suma
+	-	Resta
+	*	Multiplicación
+	/	División
+	%	Resto
+
+Operador + en strings (cadenas de caracteres)
+	Hace concatenación:
+	Ejemplo:
+		System.out.println("Hay " + cuenta + " caracteres.");
+
+3.2.2 Operadores relacionales y condicionales
+	Retornan true si se cumplen
+	<	menor que
+	<=	menor o igual que
+	>	mayor que
+	>=	mayor o igual que 
+	==	igual que
+	!=	diferente que
+	
+	&&	AND (evalúa de izquierda a derecha)
+	&	AND (evalúa ambos operandos)
+	||	OR (evalúa de izquierda a derecha)
+	|	OR (evalúa ambos operandos)
+	!	NOT
+
+	expresión ? op1 : op2
+		Retorna op1 si expresión es true, eoc op2.
+
+3.2.3 Operadores de bit
+	operando1 >> n	Desplaza los bits n posiciones hacia la derecha
+	operando1 >>> n	Desplaza los bits n posiciones hacia la derecha (sin signo)
+	operando1 << n	Desplaza los bits n posiciones hacia la izquierda
+	&	AND
+	|	OR
+	^	XOR
+	~	NOT (booleano)
+	
+Aplicación: FLAGS
+	final int VISIBLE = 1;
+	final int MOVIL = 2;
+	final int SELECCIONABLE = 4;
+	final int EDITABLE = 8;
+	int flag = 0;
+	
+	Activar flag:
+		flag = flag | VISIBLE;
+	Comprobar el flag:
+		flag = flag & VISIBLE;
+
+3.2.4 Operadores de asignación
+	+=
+	-=
+	*=
+	/=
+	%=
+	&=
+	|=
+	^=
+	>>=
+	<<=
+	>>>=
+
+3.3 Expresiones
+	Precedencia de operadores
+
+3.4 Control de flujo
+3.4.1 If-else
+	if (expresion)
+		sentencia
+	else if
+		...
+	else
+
+3.4.2 switch
+	switch(mes) //int// //no sé si long, double, boolean, expresión//
+	{
+		case 1:
+			return "Enero":
+			break; //CUIDADO CON EL FALL-THROUGH
+		...
+	}
+
+3.4.3 bucles: for, while, repeat
+	for (inicialización; fin_condicion; incremento)
+	{
+	}
+	
+	inicialización
+	while (fin_condicion)
+	{
+		...
+		incremento
+	}
+	
+	do 
+	{
+		sentencias
+	}
+	while (expresionBooleana)
+	
+3.4.4 Manejo de excepciones
+	try
+	catch
+	finally
+
+3.4.5 Saltos: break, continue, return
+Etiquetas:
+	EjemploEtiqueta: sentencia
+	...
+	break EjemploEtiqueta;
+
+El resto es igual que en C++.
+
+3.5 Arrays y strings
+3.5.1 Arrays
+Declaración:
+	int [] aiArray;	/Estilo java//
+	int iArray[]; //Estilo C//
+Reserva de memoria: new
+	int[] arrayDeInts = new int[10]
+Asignación: 0 ... n-1
+	for (int j = 0; j < arrayDeInts.length; j ++) 
+	{
+		arrayDeInts[j] = j;
+		System.out.println("[j] = " + arrayDeInts[j]);
+	}
+
+Arrays de arrays:
+	String[] arrayDeStrings = new String[10]
+Reserva de memoria:
+	for (int i = 0; i < arrayDeStrings.length; i ++) 
+	{
+		arrayDeStrings[i] = new String("Hola " + i);
+	}
+
+3.5.2 Strings
+	Los objetos String son inmutables: no se pueden cambiar una vez se crean.
+	StringBuffer está para crear y manipular cadenas dinámicamente.
+
+Capítulo 4. Objetos y clases
+---------------------------
+4.1 Intro a las clases
+4.2 El ciclo de vida del objeto
+	4.2.1 Creación
+	4.2.2 Utilización
+	4.2.3 Eliminación de objetos
+4.3 Definición de clases
+	4.3.1 Declaración				| 4.3.5 Métodos
+	4.3.2 El cuerpo de la clase		| 4.3.6 Miembros de instancia y miembros de clase
+	4.3.3 Constructores				| 4.3.7 La clase Object
+	4.3.4 Variables					| 4.3.8 Clases y métodos abstractos
+4.4 Interfaces
+	Interfaces, clases abstractas y herencia múltiple
+4.5 Clases anidadas
+4.6 Packages
+	4.6.1 Creación de paquetes
+	4.6.2 Uso de los paquetes
+	4.6.3 Paquetes y nombres de fichero: el CLASSPATH
+
+4.1 Intro a las clases
+Clase Punto:
+	public class Punto 
+	{
+		public int x = 0;
+		public int y = 0;
+		
+		// Un constructor
+		public Punto(int x, int y) 
+		{
+			this.x = x;
+			this.y = y;
+		}
+	}
+
+	new Punto(44, 78)
+
+	public class Rectángulo 
+	{
+		public int base = 0;
+		public int altura = 0;
+		public Punto origen;
+
+		// Cuatro constructores
+		public Rectángulo() 
+		{
+			origen = new Punto(0, 0);
+		}
+
+		public Rectángulo(Punto p) 
+		{
+			origen = p;
+		}
+
+		public Rectángulo(int b, int a) 
+		{
+			this(new Punto(0, 0), b, a);
+		}
+
+		public Rectángulo(Punto p, int b, int a) 
+		{
+			origen = p;
+			base = b;
+			altura = a;
+		}
+
+		// Mover el rectángulo
+		public void mover(int x, int y) 
+		{
+			origen.x = x;
+			origen.y = y;
+		}
+
+		// Calcular el área
+		public int área() 
+		{
+			return base * altura;
+		}
+
+		// Limpieza
+		protected void finalize() throws Throwable 
+		{
+			origen = null;
+			super.finalize();
+		}
+	}
+
+4.2 El ciclo de vida del objeto
+4.2.1 Creación
+La sentencia
+	Rectángulo rect = new Rectángulo();
+hace tres cosas:
+	1. Declaración:
+	2. Instanciación:
+		Reserva de memoria.
+	3. Inicialización:
+		Llamada a un constructor.
+
+4.2.2 Utilización
+Declaración de los constructores de Rectángulo:
+	public Rectángulo(Punto p)
+	public Rectángulo(int b, int a)
+	public Rectángulo(Punto p, int b, int a)
+	public Rectángulo()
+
+Utilización:
+	Rectángulo rect = new Rectángulo(100, 200);
+	Rectángulo rect = new Rectángulo(new Punto(44,78));
+	Rectángulo rect = new Rectángulo();
+
+4.2.3 Eliminación de objetos
+	Garbage collector.
+
+Finalización de objetos:
+	Para ser recolectado limpiamente.
+	Ejemplo:
+		protected void finalize() throws Throwable 
+		{
+			origen = null;
+			super.finalize();
+		}
+	El método finalize es un miembro de la clase Object.
+	La clase Object es la raíz de la jerarquía de clases Java y el padre de todos los objetos.
+	Al final, super.finalize() permite que la clase Object también finalice.
+
+4.3 Definición de clases
+4.3.1 Declaración
+Declaración de una clase en java:
+	public 
+	abstract 
+	final 
+	class Nombre //Único obligatorio
+	extends Super
+	implements Interfaces
+	
+	public		Establece una clase como pública: usable desde cualquier paquete que la necesite.
+				Si no está presente, la clase es privada dentro de su paquete.
+	abstract	Declara la clase como abstracta, no es instanciable.
+	final		No puede crearse una subclase desa clase.
+	extends		Identifica la superclase.
+	implements	La clase implementa una o más interfaces.
+
+4.3.2 El cuerpo de la clase
+	Contiene todo el contenido de la clase.
+
+4.3.3 Constructores
+Contiene:
+	· declaraciones de variables locales, 
+	· bucles y 
+	· otras sentencias.
+También debe contener el constructor de la superclase si la contiene.
+	super(parametros);
+Especificadores de acceso de los constructores:
+	private: Ninguna otra clase puede instanciar esta clase.
+		Métodos públicos = métodos factory para construir un objeto de la clase y retornarlo.
+	protected: Sólo las subclases pueden instanciarlo.
+	public: cualquier clase puede instanciarlo.
+	package: sólo las clases del paquete pueden instanciarla.
+
+4.3.4 Variables
+Especificadores:
+	tipo, nombre y constante.
+Especificadores de acceso:
+	· public, private, protected, package.
+	· static: variable de clase.
+	· final: valor inmutable. (Escribir en mayúsculas los nombres de las constantes).
+
+4.3.5 Métodos
+	<tipo> <nombre>(<argumentos>)
+	{
+		...
+	}
+Si no retorna ningún tipo, usar void como tipo de retorno.
+Especificadores:
+	· Nivel de acceso: public, protected, private, package.
+	· static: método de clase.
+	· abstract: método sin implementación, genera una clase abstracta.
+	· final: método que no puede ser sobrescrito por las subclases.
+	· native: método no implementado en lenguaje Java.
+	· synchronized: evita concurrencias en caso de threads llamando al mismo método.
+	· throws <excepciones>: si lanza excepciones, deben aparecer una lista dellas separadas por comas.
+
+En Java hay sobrecarga de métodos.
+
+	class Punto
+	{
+		int x, y;
+
+		Punto (int x, int y)
+		{
+			this.x = x;
+			this.y = y;
+		}
+	}
+Rescritura de métodos en una clase + herencia:
+	class UnaClase 
+	{
+		boolean unaVariable;
+		void unMetodo()
+		{	unaVariable = true;	}
+	}
+	
+	class OtraClase extends UnaClase 
+	{
+		boolean unaVariable;
+		void unMetodo()
+		{
+		unaVariable = false; //super.unaVariable no se sobrescribe//
+		super.unMetodo();
+		System.out.println(unaVariable);
+		System.out.println(super.unaVariable);
+		}
+	}
+La salida sería la invocación de los métodos en la clase heredada y de la subclase:
+	false
+	true
+
+4.3.6 Miembros de instancia y miembros de clase
+Miembros de instancia: variables y métodos:
+	La JVM crea una copia por cada variable y método.
+Miembros de clase: variables y métodos:
+	La JVM crea una única copia para todas las instancias, en método y clase.
+
+4.3.7 La clase Object
+Es la base de toda la jerarquía de clases de Java, permite operaciones como
+	· compararse entre sí
+	· convertir contenido en cadena de caracteres
+	· retornar la clase de la que son instancia.
+Métodos rescribibles de la clase Object:
+	· clone: Permite crear objetos a partir de objetos del mismo tipo.
+	· equals: compara dos objetos para comprobar si son iguales.
+	· finalize: 
+	· toString: Convierte el contenido de un objeto a una cadena de caracteres.
+Métodos finales:
+	· getClass: Retorna una referencia a la clase del objeto
+	· notify, notifyAll, wait: sincronización con múltiples threads.
+	· hashCode: asigna id único dentro del sistema al objeto.
+
+4.3.8 Clases y métodos abstractos
+Hay casos en los que un método está hecho para no ser instanciado como tal, sino para ser heredado, implementado e instanciar a sus herederos.
+Ése es el caso de las clases abstractas.
+Por ejemplo: ObjetoGráfico se extiende en recta, círculo, poliedro, etc.
+No se requiere que una clase abstracta tenga métodos abstractos.
+
+4.4 Interfaces
+Interfaces, clases abstractas y herencia múltiple
+
+4.5 Clases anidadas
+4.6 Packages
+4.6.1 Creación de paquetes
+4.6.2 Uso de los paquetes
+4.6.3 Paquetes y nombres de fichero: el CLASSPATH

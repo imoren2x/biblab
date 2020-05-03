@@ -1,4 +1,4 @@
-C++ interfaces - Observer pattern design (José Luis Ojosnegros)
+C++ interfaces - Observer pattern design (José Luis blackeyes)
 --------------
 
 Utilizar una clase abstracta en C++ (virtual = 0) permite utilizar el concepto de interface, en el que no hay una definición de los mensajes que se envían por esa interfaz, sino que esos detalles de implementación se hacen en la clase heredada.

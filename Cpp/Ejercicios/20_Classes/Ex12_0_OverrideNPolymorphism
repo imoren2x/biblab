@@ -1,0 +1,80 @@
+#include <iostream>
+#include "Ex12_1_MethodOverride.cpp"   // Simple Method override
+#include "Ex12_2_StdPolymorphism.cpp"  // Standard Polymorphism
+#include "Ex12_3_PurePolymorphism.cpp" // Pure polymorphism
+
+
+using namespace std;
+
+int main(int n, char *arg[]) {
+    // Pointer to Override parent class
+    OverrideParent* overrideParentPtr;
+    // Pointer to Standard Polymorphism class
+    StdPolyParent* stdPolyParentPtr;
+    // Pointer to pure polymorphic class
+    PurePolyParent* purePolyParentPtr;
+
+    // Parent classes
+    cout << "= Parent class pointer instantiation and use =" << endl;
+    overrideParentPtr = new OverrideParent("Override parent");
+    cout << "Name:    " << overrideParentPtr->getName() << endl;
+    delete overrideParentPtr;
+    // overrideParentPtr->getSurName();  // ERROR: Method doesn't exist
+    stdPolyParentPtr = new StdPolyParent("Standard Polymorphic Parent");
+    cout << "Name:    " << stdPolyParentPtr->getName() << endl;
+    cout << "Surname: " << stdPolyParentPtr->getSurName() << endl;
+    delete stdPolyParentPtr;
+    // purePolyParentPtr = new PurePolyParent("Pure Polymorphic Parent");
+    // cout << "Name:    " << purePolyParentPtr->getName() << endl;
+    // cout << "Surname: " << purePolyParentPtr->getSurName() << endl;
+    // delete purePolyParentPtr;
+    cout << endl;
+
+    // Child classes
+    cout << "= Child classes instantiation and use =" << endl;
+    string name, surname;
+    // Override
+    name = "override parent";
+    surname = "override child";
+    OverrideChild overrideChild(name, surname);
+    cout << "Name:    " << overrideChild.getName() << endl;
+    cout << "Surname: " << overrideChild.getSurName() << endl;
+    cout << "Age:     " << overrideChild.getAge() << endl;
+    // Standard Polymorphism
+    name = "Standard Polymorphic parent";
+    surname = "Standard Polymorphic child";
+    StdPolyChild stdPolyChild(name, surname);
+    cout << "Name:    " << stdPolyChild.getName() << endl;
+    cout << "Surname: " << stdPolyChild.getSurName() << endl;
+    cout << "Age:     " << stdPolyChild.getAge() << endl;
+    // Pure Polymorphism
+    name = "Pure Polymorphic Parent";
+    surname = "Pure Polymorphic Child";
+    PurePolyChild purePolyChild(name, surname);
+    cout << "Name:    " << purePolyChild.getName() << endl;
+    cout << "Surname: " << purePolyChild.getSurName() << endl;
+    cout << "Age:     " << purePolyChild.getAge() << endl;
+    cout << endl;
+
+    // Parent pointer references to child objects
+    cout << "= Parent class pointer use =" << endl;
+    // Override
+    overrideParentPtr = &overrideChild;
+    cout << "Name:    " << overrideParentPtr->getName() << endl; // Override (not Polymorphism) writes the method of the parent
+    cout << "Surname: " << overrideParentPtr->getSurName() << endl; // Override (not Polymorphism) writes the method of the parent
+    // cout << "Age:     " << overrideParentPtr->getAge() << endl; // ERROR: Method doesn't exist in parent
+
+    // Standard Polymorphism
+    stdPolyParentPtr = &stdPolyChild;
+    cout << "Name:    " << stdPolyParentPtr->getName() << endl;
+    cout << "Surname: " << stdPolyParentPtr->getSurName() << endl; // Polymorphism writes the method of the child (runtime)
+    // cout << "Age:     " << stdPolyParentPtr->getAge() << endl; // ERROR: Method doesn't exist in parent
+
+    // Standard Polymorphism
+    purePolyParentPtr = &purePolyChild;
+    cout << "Name:    " << purePolyParentPtr->getName() << endl;
+    cout << "Surname: " << purePolyParentPtr->getSurName() << endl;
+    // cout << "Age:     " << purePolyParentPtr->getAge() << endl; // ERROR: Method doesn't exist in parent
+
+    return EXIT_SUCCESS;
+}

@@ -1,0 +1,1183 @@
+Luis Joyanes - Borland C++
+--------------------------
+
+Índice rápido:
+--------------
+	Estructura general de un programa en C
+	Capítulo  8. Archivos
+	Capítulo  9. El precompilador
+	Capítulo 10. entrada/salida por streams
+	Capítulo 12. Clases, herencia y polimorfismo
+	Capítulo 13. Sobrecarga y administración dinámica de la memoria
+	Capítulo 14. Clases abstractas, templates y excepciones
+	Capítulo 15. Flujos (streams) avanzados en C++
+
+
+Índice
+------
+Capítulo  8. Archivos
+	8.1 Entrada/salida por archivos
+		Apertura y cierre de un archivo
+		Ejemplos
+		Reglas
+	8.2 Archivos de texto
+		Ejemplos
+	8.3 Archivos binarios
+		EOF
+		Archivos de datos aleatorios
+
+Capítulo  9. El precompilador
+	9.3 Compilación condicional
+	9.5 #error
+	9.10 #line
+
+Capítulo 10. entrada/salida por streams
+	10.1 cout
+		Tipos incorporados
+		Manipuladores de salida
+		Argumentos de setf
+	10.2 cin
+		Abrir y cerrar un archivo
+
+Capítulo 12. Clases, herencia y polimorfismo
+	12.1 Clases y objetos
+		Creación de un objeto
+		Funciones miembro
+		Constructores y destructores
+		Funciones inline
+		Funciones amigas
+		Uniones como clases
+		Punteros de miembros de una clase
+		Arrays de objetos
+	12.2 Herencia y polimorfismo
+		Clases derivadas
+		Especificaciones de acceso
+		Constructores y destructores en herencia
+		Herencia múltiple
+		Funciones virtuales
+		Polimorfismo
+
+Capítulo 13. Sobrecarga y administración dinámica de la memoria
+	13.1 Sobrecarga de operadores y funciones
+		Sobrecarga de operadores
+		La palabra reservada 'operator'
+		Sobrecarga de funciones
+		Funciones operator
+		Operadores sobrecargados
+		Conversiones de tipos de datos
+		
+	13.2 Administración dinámica de la memoria
+		Operador new
+		Operador delete
+		Memoria agotada
+		Constructores y destructores new y delete
+		Reserva de memoria compatible con ANSI C (malloc y calloc)
+
+Capítulo 14. Clases abstractas, templates y excepciones
+	14.1 Clases abstractas
+	14.2 Templates
+		Templates de funciones
+		Templates de clases
+	14.3 Excepciones
+		Lanzamiento de excepciones
+		Bloques try
+		Manejadores
+		Manejadores terminate y unexpected
+		Especificación de excepciones
+	14.4 Ejemplo de manejo de excepciones
+
+Capítulo 15. Flujos (streams) avanzados en C++
+	15.1 Streams
+	15.2 Jerarquía de clases de entrada/salida
+	15.3 La clase streambuf
+	15.4 La jerarquía de clases iostream
+	15.5 Los manipuladores
+	15.6 Indicadores de formato en iostream
+	15.7 Tratamiento de errores de flujo
+
+/**************************************************/
+
+Estructura general de un programa en C:
+---------------------------------------
+		---------------------------------
+		| #include						|
+		| #define						|
+		---------------------------------
+		| Doxygen						|
+		---------------------------------
+		| Datos y f(x) externas			|
+		---------------------------------
+		| Datos y f(x) globales			|
+		---------------------------------
+		| main()						|
+		| {								|
+		| ...							|
+		| }								|
+		---------------------------------
+
+Estructura de una aplicación
+
+			 (#include "uses.h")
+			 (#include <demo.h>)
+Demo.h		Prueba.cpp				Uses.h
+Demo.dll
+
+					Compilador
+						|
+		---------------------------------
+		|				|				|
+	 Demo.obj		 Prueba.obj		Uses.lib
+		|				|				|
+		--------------------------------
+					  |
+					Linker
+					  |
+				  Prueba.exe
+				  Prueba.out (Linux)
+
+
+The reserved words of C++ may be conveniently placed into several groups. In the first group we put those that were also present in the C programming language and have been carried over into C++. There are 32 of these, and here they are:
+
+auto   const     double  float  int       short   struct   unsigned
+break  continue  else    for    long      signed  switch   void
+case   default   enum    goto   register  sizeof  typedef  volatile
+char   do        extern  if     return    static  union    while
+
+There are another 30 reserved words that were not in C, are therefore new to C++, and here they are:
+
+asm         dynamic_cast  namespace  reinterpret_cast  try
+bool        explicit      new        static_cast       typeid
+catch       false         operator   template          typename
+class       friend        private    this              using
+const_cast  inline        public     throw             virtual
+delete      mutable       protected  true              wchar_t
+
+The following 11 C++ reserved words are not essential when the standard ASCII character set is being used, but they have been added to provide more readable alternatives for some of the C++ operators, and also to facilitate programming with character sets that lack characters needed by C++.
+
+and      bitand   compl   not_eq   or_eq   xor_eq
+and_eq   bitor    not     or       xor
+
+Note that your particular compiler may not be completely up-to-date, which means that some (and possibly many) of the reserved words in the preceding two groups may not yet be implemented. 
+				
+7.2 Punteros. Uso de const en declaración de punteros
+	Dos opciones:
+		1. Puntero constante.
+			int m, n;			//declara p como una constante
+			int *const p = &m;	// puntero de valor &m//
+		
+		2. Valor apuntado como constante
+			int m, n;			//declara p como un puntero a
+			const int *p = &m;	//objeto a dato constante
+								//de tipo int//
+			
+
+Capítulo 8. Archivos
+--------------------
+8.1 Entrada/salida por archivos
+	Apertura y cierre de un archivo
+	Ejemplos
+	Reglas
+8.2 Archivos de texto
+	Ejemplos
+8.3 Archivos binarios
+	EOF
+	Archivos de datos aleatorios
+	
+8.1 Entrada/salida por archivos
+	El esquema de entrada y salida por archivos es el siguiente:
+	cout = monitor = ofstream cout
+	cin = teclado = istream cin
+Apertura y cierre de un archivo
+	Lo primero es asociar un flujo de datos (stream) con un objeto de tipo ofstream (output), ifstream (input) o fstream (input/output), tanto para archivos binarios como de texto.
+	Ejemplo:
+		Creación de objetos de entrada, salida y entrada/salida.
+		ifstream f_entrada;
+		ofstream f_salida;
+		fstream f_en_sal;
+	Para abrir un fichero se usa open:
+		void open(char *filename, int modo, int acceso);
+			char *filename	Nombre de archivo.
+			int modo		Modo de apertura del fichero.
+			int acceso		Modo de acceso al fichero.
+		
+		Modos de Acceso
+			ios::in		Abre el archivo para entrada (lectura)
+			ios::out	Abre el archivo para salida (escritura)
+			ios::app	Append
+			ios::ate	Se posiciona al final de fichero, cuando se abre.
+			ios::trunc	Si el archivo ya existe, destruye su contenido.
+						Si no existe, se crea un nuevo archivo.
+			ios::binary	Abre el archivo en modo binario
+			ios::nocreate	Abre un archivo existente.
+							Si no existe, la apertura falla.
+			ios::in|ios::out	Abre para entrada y salida.
+			ios::out|ios::binary	Abre el archivo para salida binaria.
+			ios::in|ios::binary		Abre el archivo para entrada binaria.
+
+	Otra forma es utilizar el constructor de una clase:
+		fstream();	//crea un fstream que no está asociando a ningún fichero//
+		fstream(const char *name, int mode = ios::in, int = filebuf::openprot);	//crea un fstream, abre un fichero con el acceso especificado por mode y se conecta a él//
+		fstream(int fd);	//constructor de copia, con descriptor de fichero ya creado//
+		fstream(int fd, char *buf, int buf_len);	//crea un fstream conectado a un fichero abierto especificado mediante su descriptor, fd. 
+													//El fstream usa el buffer especificado por buf de longitud buf_len. 
+													//Si buf es NULL o n no es positivo, el fstream será sin buffer.//
+
+	Conexión de un flujo de salida a un archivo
+		ofstream salida("demo1.dat", ios::out);
+		salida << "ejemplo"
+		salida.write()	//métodos del objeto//
+		if (salida) //estado de error de un flujo//
+	
+	Conexión de un flujo de entrada a un archivo
+		ifstream entrada("demo2.dat", ios::in);
+		entrada >> string //entrada de datos en un string//
+		entrada.read(...)
+		
+	Cierre de un flujo
+		Se usa el método close()
+		Ejemplo:
+			ofstream salida("demo1.dat", ios::out);
+			salida.close();
+
+8.3 Archivos de datos binarios
+	Para acceso a ficheros binarios, hay varios métodos:
+		1. Acceso a un byte (lectura o escritura):
+			istream &get(char &car)
+			ostream &put(char &car)
+		2. Acceso a un número de bytes:
+			istream &read(unsigned char *buf, int num);
+			ostream &write(const unsigned char *buf, int num);
+		
+El final de archivo (eof)
+	Método eof()
+	
+Método gcount()	Devuelve el número de caracteres leídos durante la última operación de lectura binaria.
+
+Acceso a datos aleatoriamente: seekg y seekp
+	istream &seekg(streamoff offset, seek_dir origin);
+	ostream &seekp(streamoff offset, seek_dir origin);
+		streamoff offset	Valor entero (positivo o negativo) que indica cuántos bytes se desea acceder en relación a un origen representado por el argumento origen.
+		seek_dir origen		Punto desde donde parte la función.
+							ios::beg	Principio del archivo.
+							ios::cur	Posición actual del archivo.
+							ios::end	Posición final del archivo.
+
+Conocer la posición actual del puntero
+	tellg para ifstream
+	tellp para ofstream
+
+Métodos ante problemas
+
+clear	Borra el estado de error en el caso de que desee volver a intentar la i/o.
+eof()	Devuelve true si se alcanza el final del fichero
+fail()	Devuelve true si se ha producido un error
+good()	Devuelve true si la última operación de i/o ha sido correcta
+
+Manejar la impresora
+
+#include <fstream.h>
+
+void main()
+{
+	ofstream prnt;
+	
+	prnt.open("LPT1:"); //puede ser también PRN:, LPT1:, LPT2:, AUX:, COM1:, COM2
+	
+	
+	char *cad = "Mensaje a la impresora \n";
+	prnt << cad;
+}
+
+Capítulo  9. El precompilador
+-----------------------------
+9.3 Compilación condicional
+	#if defined(id)	 )<	#ifdef(id)
+	#if !defined(id) )< #ifndef(id)
+	
+9.5 #error
+	Permite poner mensajes de diagnóstico en sus sentencias del preprocesador.
+	#error Este programa sólo funciona en C++.
+
+9.10 #line
+	Proporciona número de línea a un programa para referencias cruzadas e informes de error.
+	#line <nuevo_num_linea> "nom_archivo"
+	#line 100 "test.c"
+
+Capítulo 10. entrada/salida por streams
+---------------------------------------
+10.1 cout
+	Tipos incorporados
+	Manipuladores de salida
+	Argumentos de setf
+10.2 cin
+	Abrir y cerrar un archivo
+---------------------------------------
+Tipos de flujos
+	cin 	Flujo estándar de entrada
+	cout	Flujo estándar de salida
+	cerr	Flujo estándar de salida de errores
+	clog	Versión con memoria intermedia (buffered) de cerr; más adecuado para grandes cantidades de error.
+	
+10.1 Salida (cout)
+	Hay manipuladores de salida (setw(n), setfill(ch), etc.)
+	
+	Para manipuladores con parámetros se debe usar <iomanip.h>
+
+10.2 Entrada (cin)
+
+10.3 Entrada/salida con archivos
+
+
+Capítulo 12. Clases, herencia y polimorfismo
+--------------------------------------------
+12.1 Clases y objetos
+	Creación de un objeto
+	Funciones miembro
+	Constructores y destructores
+	Funciones inline
+	Funciones amigas
+	Uniones como clases
+	Punteros de miembros de una clase
+	Arrays de objetos
+	
+12.2 Herencia y polimorfismo
+	Clases derivadas
+	Especificaciones de acceso
+	Constructores y destructores en herencia
+	Herencia múltiple
+	Funciones virtuales
+	Polimorfismo
+
+12.1 Clases y objetos
+	Los tres conceptos claves de la orientación a objetos es:
+		· Clases
+		· Herencia
+		· Polimorfismo (funciones virtuales + punteros + herencia)
+	Ejemplo:
+		class
+		{
+			private:
+				//miembros privados//
+				//sólo accesibles desde la propia clase//
+			public:
+				//miembros públicos//
+				//accesibles para la propia clase, derivadas y externas//
+			protected:
+				//miembros protegidos//
+				//accesible para la propia clase, clases derivadas, pero NO externas//
+		}
+	
+	Las clases son equivalentes a los structs en C:
+		struct				class
+		{					{
+			//elementos			//
+		}					}
+		
+Creación de un objeto
+	Un objeto es una instancia de ese tipo o clase.
+
+Funciones miembro
+	Se debe usar el operador de ámbito ::
+
+Constructores y destructores
+	Es una función que se ejecuta en la instanciación de la clase.
+	Hay tres tipos de constructores:
+		· Constructor vacío
+			circulo();
+		· Constructor con parámetros
+			circulo(int x, int y, double r)
+		· Constructor de copia
+			circulo(const circulo &c) : a(c.a), b(c.b) {}
+	Ejemplo:
+		class circulo
+		{
+			private:
+				int centro_x, centro_y;
+				double radio;
+			public:
+				//constructor con parámetros//
+				circulo(int x, int y, double r)
+				{
+					radio = r;
+					centro_x = x;
+					centro_y = y;
+				}
+				//constructor de copia//
+				circulo(const circulo &c)
+				{
+					datos = c.datos;
+					cout << "Constructor de copia invocado";
+				}
+		}
+
+	Definición del constructor copia:
+		pareja::pareja(const pareja &p) : a(p.a), b(p.b) {}
+
+	Para crear objetos usando el constructor copia se procede como sigue:
+	Ejemplo:
+		int main() 
+		{
+		   pareja par1(12, 32)
+		   pareja par2(par1); // Uso del constructor copia: par2 = par1
+		   int x, y;
+		   
+		   par2.Lee(x, y);
+		   cout << "Valor de par2.a: " << x << endl;
+		   cout << "Valor de par2.b: " << y << endl;
+
+		   return 0;
+		}
+
+Funciones inline
+	Las funciones inline son más rápidas que las normales.
+	Hay dos formas de definirlos:
+		1. Aplicando la palabra reservada inline a la función.
+		2. Definiéndola dentro de la definición de la clase.
+
+Funciones amigas
+	Las funciones amigas consiguen acceder a los miembros privados de una clase.
+	Ejemplos:
+		class empleado
+		{
+			private:
+			 int sueldo;
+			public:
+			 friend void nomina(cosas t, int x); //debería usarse const?//
+		};
+
+		//Funcion amiga nomina//
+		void nomina(cosas t, int x)
+		{
+			t.sueldo;
+		}
+
+	Una clase completa puede hacerse amiga de otra clase:
+	Ejemplo:
+		class raices;
+		class pollos
+		{
+			public:
+				friend class raices;
+		};
+
+		class raices
+		{
+		 //sentencias
+		};
+
+Uniones como clases:
+	Se utiliza la misma posición de memoria para todos los tipos.
+	union un_tipo
+	{
+		int i;
+		double d;
+		char *p;
+	}
+
+Unión anónima
+	union 
+	{
+		int i;
+		float t;
+	}
+	i = 10;
+	f = 2.5;
+
+
+Punteros a miembros de una clase
+ Sintaxis:
+  tipo o_clase::*
+  int notas::*p //p, puntero a un miembro de la clase notas
+		//no tiene argumentos y no devuelve resultado
+ void(calculo::*ptr)(void) //ptr es un puntero en una funcion miembro
+				//de la clase calculo, no tiene argumento y no devuelve
+				// resultado
+
+Arrays de objetos
+	Dada una clase es posible crear un array de objetos.
+	Ejemplo:
+		class empleado{ ...	}
+			//Array de empleados//
+			emp_ptr = new empleado[num_emp];
+			//Para referenciarlo//
+			emp_ptr[i].leer_datos();
+
+12.2 Herencia y polimorfismo
+Clases derivadas:
+	Dada una clase, es posible heredar los atributos y métodos de la misma a otra clase (herencia):
+	Sintaxis:
+		class nombreclase:[(public|private)] clase_base
+		{
+			declaraciones de miembros
+		}
+	Ejemplo: 
+		class estudiante{ ... }
+		class calificaciones:public estudiante{ ... }
+	
+	Modificador [(public|private)]
+		· public los miembros heredados conservan el acceso publico y protegido
+		· private los miembros heredados pasan a ser miembros privados
+
+Constructores y destructores en herencia
+	Los constructores de las clases derivadas deben contener información de parámetros de los constructores de la clase.
+	Ejemplo:
+		class A 
+		{
+		}
+
+		class B
+		{
+		}
+
+		//Clase AB, hereda de A y de B//
+		class AB:public A, public B
+		{
+		}
+
+	La creación de un objeto de clase AB hace que los tres constructores de A, B y AB sean llamados en ese orden:
+	Ejemplo:
+		//Constructor de clase AB//
+		AB::AB( (int n=0), float x=0, char car='A'):A(n,car), B(n,x)
+		{
+		}
+
+Funciones virtuales
+	Permite definir funciones en la clase base y en la clase derivada
+	Se usa la palabra reservada virtual sólo en la clase base.
+	Ejemplo:
+		class B
+		{
+			public:
+			  int i;
+			  virtual void imprimir()
+			  {
+			   cout << i << "dentro B\n";
+			  }
+		};
+
+Polimorfismo
+	Se realiza por uno de los dos métodos siguientes:
+	  - Sobrecarga de operadores
+	  - Funciones virtuales
+
+Capítulo 13. Sobrecarga y administración dinámica de la memoria
+----------------------------------------------------------------
+13.1 Sobrecarga de operadores y funciones
+	Sobrecarga de operadores
+	La palabra reservada 'operator'
+	Sobrecarga de funciones
+	Funciones operator
+	Operadores sobrecargados
+	Conversiones de tipos de datos
+	
+13.2 Administración dinámica de la memoria
+	Operador new
+	Operador delete
+	Memoria agotada
+	Constructores y destructores new y delete
+	Reserva de memoria compatible con ANSI C (malloc y calloc)
+	
+13.1 Sobrecarga de operadores y funciones
+	C++ permite que una función u operador se defina de diferente forma.
+Sobrecarga de operadores
+	Se pueden sobrecargar todos los operadores excepto los siguientes:
+		.	.*	::	?:
+	Si un operador tiene un formato unitario y binario (p.ej., - o &), ambos son sobrecargables.
+	
+	Todos los operadores que se pueden sobrecargar cumplen las propiedades siguientes:
+		· Sobrecargados, siguen siendo unitarios o binarios.
+		· Sobrecargados, no cambiarán de prioridad.
+		· Sobrecargados, los operadores ++ y -- no podrán diferenciar la situación de postfijo o prefijo.
+		· No se pueden inventar operadores que no existan.
+	
+La palabra reservada 'operator'
+	Para hacer que un operador normal C++ actúe como un operando definido por el usuario, se debe utilizar la palabra reservada operator.
+	Sintaxis
+		<tipo> operator <op>(lista de argumentos)
+	Ejemplos:
+		C = operator + (a, b);
+		a.operator + (b);
+		friend XX operator*(XX a, XX b);
+		
+Sobrecarga de funciones
+	Una función sobrecargada es aquella que tiene más de una definición.
+	Ejemplos:
+		int suma(int a, int b);				//de enteros
+		string suma(string a, string b);	//de cadena
+	
+Funciones operator y Operadores sobrecargados
+	Sintaxis:
+		<tipo> operator <op>(<arg1, arg2, ...>)
+		{
+			//Cuerpo de la función//
+		}
+	Ejemplo:
+		typedef char *string;
+		string operator+(string a, string b)
+		{
+			string c = strcat(a,b);
+			if ( c ) //!=NULL
+			{
+				return strcat(a, b); //No control de errores//
+			}
+			else
+			{
+				cerr << "Hey, there is an error!!" << endl;
+			}
+		}
+
+Conversiones de tipos de clases
+	Las conversiones de tipo son esenciales para sobrecarga efectiva de operadores.
+	Sintaxis:
+		operator tipo();
+			tipo representa el tipo destino de una clase determinada.
+		Ejemplo:
+			El tipo distancia
+			distancia(float metros)
+			{
+				float longpies = 3.200833 * metros;
+				pies = int(longpies);
+				pulgadas = 12 * (longpies - pies);
+			}
+
+	El operador float toma el valor del objeto distancia y convierte este valor en un valor float, que representa su equivalente en metros y devuelve este valor:
+		operator float()
+		{
+			float piesdecimales = pulgadas / 12;
+			piesdecimales += float(pies);
+			return piesdecimales / 3.200833;
+		}
+	Para utilizarlo:
+		mtrs = float(dist2);
+		mtrs = dist2;
+	
+13.2 Administración dinámica de la memoria
+	C++ define variables dinámicas (la zona de memoria apuntada) que se almacenan en el bloque de memoria "heap", cuyas posiciones no son conocidas hasta el momento de su ejecución.
+	
+Operador new
+	Reserva memoria del sistema operativo y proporciona un puntero a su dirección inicial.
+	Sintaxis:
+		<variable> = new <tipo>[<longitud>]
+	Ejemplo:
+		char *s;
+		s = new char;
+	
+Operador delete
+	Libera memoria reservada con new, con el objeto de dejarla disponible.
+	Sintaxis:
+		delete <variable>;
+Memoria agotada
+	Para prevenir la falta de memoria:
+		cadena new char[long+1];
+		if (cadena == NULL)
+		{
+			cout << "\n falta memoria !";
+			exit(1);
+		}
+
+Constructores y destructores new y delete
+	Cuando se utiliza new con una clase, se llama al constructor de clases.
+	Cuando se utiliza delete con una clase, se llama al destructor de clases.
+
+	#include <iostream.h>
+	
+	class fecha
+	{
+		private:
+			int dia, mes, anyo;
+		public:
+			fecha();
+			~fecha();
+	};
+	
+	//Constructor//
+	fecha::fecha() 
+	{
+		cout << "\n Constructor de fecha";
+	}
+	
+	//Destructor//
+	fecha::~fecha()
+	{
+		cout << "\n destructor de fecha";
+	}
+	
+	main()
+	{
+		fecha *fe = new fecha;
+		cout << "\n procesar la fecha";
+		delete fe;
+	}
+	
+Reserva de memoria compatible con ANSI C (malloc y calloc)
+	En C la memoria se reserva de la siguiente manera:
+		void *malloc(unsigned nbytes) //recomendable sizeof(<tipo>)//
+		void *calloc(int n, unsigned size)
+  
+Capítulo 14. Clases abstractas, templates y excepciones
+-------------------------------------------------------
+14.1 Clases abstractas
+14.2 Templates
+	Templates de funciones
+	Templates de clases
+14.3 Excepciones
+	Lanzamiento de excepciones
+	Bloques try
+	Manejadores
+	Manejadores terminate y unexpected
+	Especificación de excepciones
+14.4 Ejemplo de manejo de excepciones
+
+14.1 Clases abstractas
+	Una clase abstracta sirve para definir otras clases concretas, las cuales son clases derivadas por herencia.
+	Las clases abstractas no se pueden instanciar, pero sí pueden apuntarse y referenciarse (&).
+	Las clases abstractas utilizan, al menos, una función virtual pura (su definición es igual a cero).
+	
+	class ClaseAbstracta
+	{
+		protected:
+		virtual TipoRetorno funcion1(arg1_t arg1, ...) = 0;
+		...
+	}
+	Ejemplo:
+		Se define una clase abstracta PilaAbs como
+		class PilaAbs
+		{
+			public:
+				//Constructor//
+				PilaAbs(void){}
+				//Destructor virtual porque depende de la clase concreta//
+				virtual ~PilaAbs(void){}
+				//Ni constructor ni destructor virtuales puros//
+				
+				//Funciones virtuales puras//
+				virtual int meter(int) = 0;
+				virtual int quitar(int &) = 0;
+				virtual int cima() = 0;
+				virtual int esvacia() = 0;
+				virtual int esllena() = 0;
+		};
+
+14.2 Templates
+	C++ permite implementar dos herramientas muy importantes:
+		· plantillas de funciones (funciones genéricas)
+		· plantillas de clases (tipos parametrizados)
+
+Plantillas de funciones
+	Las funciones plantilla (funciones template, templates de funciones) permiten crear una función genérica que puede soportar simultáneamente diferentes tipos de datos para sus parámetros.
+	Sintaxis:
+		template <param1, param2, ...>
+	
+	Ejemplo:
+		template <class T>
+		template <int LongTabla, int LongElem>
+		template <class TipoElem, longLongitud, class TipoComparador>
+
+	NOTA: no se especifica el tipo, sino que se reserva su zona de almacenamiento.
+	
+	Ejemplo:
+		//Tipo template TIPO//
+		template <class TIPO>
+		//Función template abs//
+		TIPO abs(TIPO x)
+		{
+			return(x < 0) ? -x : x;
+		}
+		
+	Ejemplo 2:
+		//Función máximo de dos valores independientemente del tipo//
+		
+		//Tipo template Tipo//
+		template <class Tipo>
+		
+		//Función template max2//
+		Tipo max2(Tipo primero, Tipo segundo)
+		{
+			return ( primero > segundo ) ? primero : segundo;
+		}
+		
+		template <class Tipo>
+		Tipo max3(Tipo primero, Tipo segundo, Tipo tercero)
+		{
+			return max2(max2(primero, segundo), tercero);
+		}
+	
+		//Las llamadas a funciones serían las siguientes//
+		void main()
+		{
+			cout << max2(9, 5) << '\n'; //Resultado: 9
+			cout << max3(100, 400, 200) << '\n'; //Resultado: 400
+			cout << max3(18.75, 5.75, 3.1416) << '\n'; //Resultado: 18.75
+			cout << max3('L', 'U', 'I', 'S') << endl; //Resultado: U
+		}
+		
+	Ejemplo 3:
+		template <class Tipo1, class Tipo2>
+		Tipo1 maximo(Tipo1 primero, Tipo2 segundo)
+		{
+			return ( primero > (Tipo2) segundo ) ? primero : (Tipo1) segundo;
+		}
+		
+		void main()
+		{
+			cout << maximo(12, 15.9) << '\n'; 	//Resultado: 15//
+			cout << maximo('A', 67) << '\n';	//Resultado C//
+		}
+	
+Plantillas de clase / Clases plantilla
+	Las plantillas de clase permiten definir clases genéricas o tipos parametrizados para después ser instanciadas por un tipo específico.
+	template <class Tipo>
+	
+	template <class Tipo1, class Tipo2, ...>
+	
+	Ejemplo:
+		Pila con contenido genérico.
+		template <class Tipo>
+		class Pila
+		{
+			public:
+				Pila();
+				Boolean meter(const Tipo);
+				Boolean sacar(Tipo&);
+			private:
+				TipoElementos[MaxElementos]; 	//Items de la pila//
+				int la_cima;					//Cima de la pila//
+		}
+		
+		Para instanciar la pila:
+		//Pila con elementos enteros//
+		Pila<int> pila_int;
+		//Pila con elementos caracteres//
+		Pila<char> pila_char;
+		
+		Para implementar la clase:
+		//Constructor//
+		template <class Tipo>
+		Pila <Tipo>::Pila()
+		{
+			la_cima = -1;
+		}
+		
+		template <class Tipo>
+		Boolean Pila<Tipo>::meter(const Tipo item)
+		{
+			if (la_cima < MaxElementos - 1)
+			{
+				Elementos[++la_cima] = item;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		template <class Tipo>
+		Boolean Pila<Tipo>::sacar(Tipo &item)
+		{
+			if (la_cima < 0)
+			{
+				return false;
+			}
+			else
+			{
+				item = Elementos[la_cima--];
+				return true;
+			}
+		}
+		
+		Para usar la clase genérica:
+		void main()
+		{
+			Pila<int> s1;
+			Pila<float> s2;
+			Pila<char> s3;
+			
+			s1.meter(1);
+			s2.meter(1.001);
+			s3.meter("Carchelejo");
+		}
+
+14.3 Excepciones
+	C++ introduce un mecanismo para manejar excepciones, condiciones de error no esperadas, p.ej., división por cero, sobrepasar límites, etc.
+	Procesos en el tratamiento de excepciones:
+	1. TRY: Una excepción se lanza siempre dentro de un bloque try.
+	2. CATCH: El control del programa se interrumpe y se transfiere a un manejador de excepciones. 
+		Los manejadores se declaran al final de un bloque try mediante catch.
+	3. THROW: C++ puede levantar una excepción en un bloque try utilizando la expresión throw.
+		La expresión se maneja invocando un manejador apropiado, seleccionado de la lista encontrada inmediatamente después del bloque try del manejador.
+	
+Bloque try
+	Sintaxis:
+		Sentencias que son factibles de producirse una excepción. Dentro dellas debe haber un throw que lance la excepción.
+		Lista de manejadores para cada excepción, que son los bloques catch.
+	Ejemplo:
+		try
+		{
+			m();
+			n();
+			throw("SOS");
+		}
+		catch(const char*){...}
+		catch(ErrorDeMemoria &x){...}
+	
+	Los bloques try pueden estar anidados y las excepciones se lanzan dentro del try más anidado.
+		
+Bloques catch—manejadores de la excepción
+	Sintaxis:
+		catch(argumentos formales)
+		sentencia compuesta
+	
+	El manejador se selecciona basándose en el tipo de excepción lanzada.
+	Se evalúan de uno a uno en el mismo orden en que aparecen a continuación del bloque try.
+	
+	Una expresión throw se trata por un manejador catch de la forma siguiente:
+		· Ambos tipos coinciden exactamente (throw con catch).
+		· El tipo asociado a catch es una clase base pública del objeto del tipo de la expresión de la cláusula throw.
+	Al terminar de ejecutar el bloque catch, la excepción queda tratada y el flujo de programa sigue por la siguiente sentencia try que la levantó.
+	
+	Ejemplo:
+		try 
+		{
+			throw 'x'; // valor de tipo char
+		}
+		catch(char c) 
+		{
+			cout << "El valor de c es: " << c << endl;
+		}
+		
+Manejadores terminate() y unexpected()
+	El manejador proporcionado por el sistema terminate() se llama cuando no se ha proporcionado ningún manejador para tratar una excepción.
+	Por defecto, se llama a la función abort(), si no, se puede utilizar a set_unexpected() para proveer un manejador.
+	El manejador de unexpected es equivalente.
+
+Especificación de excepciones
+	Sintaxis:
+		<cabecera función> throw(<lista de tipos>)
+		void zona() throw(int, desborde)
+
+14.4 Ejemplo de manejo de excepciones
+	La clase Pila manipula un máximo de diez elementos. Esta clase declara dos clases públicas anidadas, Desborde y DesbordeNegativo, que se utilizarán para manejar esas condiciones de error. Cuando se producen los desbordamientos en un sentido o en otro, se lanzan las excepciones adecuadas.
+	
+	#include <iostream.h>
+	
+	const MAXPILA = 5; //Máximo tamaño de la Pila//
+	
+	class Pila
+	{
+		public:
+			class Desborde //Clase excepción//
+			{
+				public:
+					int val_desborde;
+					Desborde(int i):valdesborde(i){}
+			};
+			
+			class DesbordeNegativo //Clase excepción//
+			{
+				public:
+					DesbordeNegativo(){}
+			}
+			
+			Pila(){cima = -1;}
+			
+			void meter(int item)
+			{
+				if ( cima tab < (MAXPILA - 1) )
+				{	lapila[++cima] = item;	}
+				else 
+				{	throw Desborde(item);	}
+			}
+			
+			int quitar()
+			{
+				if ( cima > -1 ) return lapila[cima--];
+				else throw DesbordeNegativo();
+			}
+
+		private:
+			int lapila[MAXPILA];
+			int cima;
+	}
+
+El siguiente main() declara una pila y manejadores de excepción para las condiciones de desbordamiento de pila.
+El programa fuerza a la pila para que se invoque al manejador de excepciones cuando se produce un desbordamiento.
+
+	#include <iostream.h>
+
+	void main()
+	{
+		Pila mipila;
+		
+		int i = 5, j = 25;
+		
+		//Bloque try con main//
+		try
+		{
+			mipila.meter(i);
+			mipila.meter(j);
+			mipila.meter(1);
+			mipila.meter(1234);
+			mipila.meter(999);
+			
+			//Pila llena, se fuerza una excepción//
+			mipila.meter(50); //se lanza Pila::Desborde//
+		}
+		
+		//Manejadores de excepciones//
+		catch(Pila::Desborde &p)
+		{
+			cout << "Se ha desbordado la pila al tratar de meter:" << s.valdesborde << endl;
+		}
+		
+		catch(Pila::DesbordeNegativo &p)
+		{
+			cout << "Desborde negativo" << endl;
+		}
+	}
+	Al ejecutarse el programa se visualiza el siguiente mensaje:
+		Se ha desbordado la pila al tratar de meter 50.
+	
+	
+Capítulo 15. Flujos (streams) avanzados en C++
+----------------------------------------------
+15.1 Streams
+15.2 Jerarquía de clases de entrada/salida
+15.3 La clase streambuf
+15.4 La jerarquía de clases iostream
+15.5 Los manipuladores
+15.6 Indicadores de formato en iostream
+15.7 Tratamiento de errores de flujo
+
+15.1 Streams
+	Un flujo (stream) representa un canal o corriente de datos entre una fuente y su destino.
+	La ventaja respecto de C es que se utilizan con clases y objetos, que están integradas en una jerarquía de clases.
+	Las cabeceras para trabajar con los streams son los siguientes:
+		iostream.h
+		fstream.h
+		strstream.h
+		
+Flujos predefinidos
+	Un flujo es equivalente a un canal
+		· que recibe información, flujo de salida.
+		· que proporciona información, flujo de entrada.
+	Los operadores son << y >>
+		· Operador de inserción <<
+		· Operador de extracción >>
+	Los flujos predefinidos son 
+		· cin (console input)
+		· cout (console output)
+		· cerr (console error)
+		· clog (console logs)
+		
+15.2 La jerarquía de clases de entrada/salida
+	La jerarquía de clases reside en el archivo de cabecera iostream.h.
+	La clase de nivel más bajo es "streambuf", con las operaciones básicas de entrada y salidas.
+	La clase ios es la base que soporta i/o con formato, verificación de errores e información de estado.
+	Ésta se divide en diversos grupos:
+		· Entrada/salidas fundamentales ios, istream, ostream, iostream.
+		· Entrada/salidas asociadas a los periféricos estándar: cin, cout, cerr y clog
+		· Entrada/salidas en archivos de disco
+		· Entrada/salidas orientadas a cadenas de caracteres
+	Jerarquía de clases
+															ios
+															 |
+										------------------------------------------------
+										|												|
+									istream 										ostream
+										|												|
+		-----------------------------------------------------------------------------------------------------
+		|					|					|			|			|				|					|
+	istrstream		istream_withassign 		ifstream 	iostream 	ostrstream 		ofstream 		ostream_withassign
+															|
+											-----------------------------
+											|			|				|
+										ifstream 	strstream 		stdiostream
+	
+		Clase		Propósito
+	----------------------------------
+		ios			Clase base de flujos
+		istream		Flujo de entrada
+		ostream		Flujo de salida
+		iostream	Flujo de entrada y salida
+		ifstream	Entrada de archivo
+		ofstream	Salida de archivo
+		fstream		Entrada/salida de archivos
+		istrstream	Entrada basada en arrays
+		ostrstream	Salida basada en arrays
+		strstream	Entrada/salida basada en arrays
+		
+15.3 La clase streambuf
+	La clase streambuf, clase base de jerarquía de i/o sin formato, tiene tres subclases:
+		· filebuf
+			Proporciona entrada y salida de archivos.
+		· strstreambuf
+			Proporciona un buffer para la entrada y salida de arrays en cadena
+		· stdiobuf
+			Proporciona un buffer que es compatible con las funciones de i/o estilo C, definidas en stdio.h.
+		
+				streambuf
+					|
+		-----------------------------
+		|			|				|
+	filebuf		strstreambuf	stdiobuf
+
+15.4 La jerarquía de clases iostream
+
+15.5 Los manipuladores
+	Un manipulador es una función especial que puede modificar el estado de un flujo.
+	Se utiliza situándolo en la secuencia de operaciones de inserción en cascada.
+	Hay dos ficheros de cabecera:
+		· iomanip.h para los que tienen argumentos
+		· iostream.h para el resto
+	Manipuladores:
+		dec		hex		oct		ws
+		endl	ends	flush	resetiosflags(long)
+		setbase(int)	setfill(int)	setiosflags(long)
+		setprecision(int)		setw(int)
+		
+15.6 Indicadores de formato en iostream
+	El objeto de flujo cout
+	
+15.7 Tratamiento de errores de flujo
+Detectar un error de flujo
+	if (!cout)
+	{
+		//se ha producido un error
+	}
+	
+	if (cout)
+	{
+		//Ningún error ha ocurrido
+	}
+
+Métodos good() y bad()
+	int .good() devuelve distinto de cero (verdadero) si no existe ninguna condición de error pendiente.
+	int .bad() devuelve verdadero si existe un error.
+
+Detectar la condición de fin de archivo (eof)
+	bool .eof()	si el stream alcanza el fin de archivo.
+
+Detectar condiciones específicas de error
+	Los sistemas de flujo mantienen un byte cuya configuración de bits indica el tipo general de error que se ha producido.
+	Se accede a ellos por rdstate()
+	int .rdsate()
+	
+	if (CodigoError & ios::eofbit)
+	{
+		...
+	}
+	Condiciones de error de flujos de ios
+	Identificador		Significado
+		goodbit			Ningún bit se activa, ninguna condición de error existe
+		eofbit			El flujo de entrada está al final de la posición del archivo
+		failbit			La última operación de entrada o salida con fallos
+		badbit			Se intentó una operación no válida de algún tipo
+		hardfail		El error que se ha producido no es recuperable
+	
+	
+
+Borrar la condición de error
+	Al 
+	
+http://www.espaciolinux.com/foros/

@@ -1,0 +1,27 @@
+En este capítulo se practica con la redirección de entrada y salida y con los archivos (sobretodo de texto)
+
+1. Redirección de entrada-salida
+	C7e01 Redirección de entrada y salida.
+		Los ficheros
+			C7e01_FibonacciInOut.c
+			C7e01_FibonacciInData.txt
+			C7e01_FibonacciOutData.txt
+		se pueden automatizar con los comandos:
+			FibonacciInOut.exe < FibonacciInData.txt
+				Toma como entrada los datos que hay en el fichero de texto (redirección de la entrada estándar).
+			FibonacciInOut.exe > FibonacciOutData.txt
+				Escribe la salida del programa en el fichero de salida (redirección de la stdout).
+			FibonacciInOut.exe > FibonacciOutData.txt < FibonacciInData.txt
+				Combina ambas acciones anteriores.
+
+2. Acceso a archivos
+	C7e02 Acceso a archivos.
+		FILE *fopen(char *nombre, char *modo);
+		int fclose(FILE *f)
+		Escritura y lectura de archivos con formato: fprintf y fscanf
+		Lectura:	int fscanf(FILE *fp, char* formato, ...) //Variable deben ser PUNTEROS//
+		Escritura:	int fprintf(FILE *fp, char* formato, ...)
+
+Bibliografía
+    * Archivos en C/C++:
+      http://conclase.net/?id=descargas
