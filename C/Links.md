@@ -1,6 +1,7 @@
 C Links
 ======
 
+Online compilers
 General
 Memory
 TCP/IP
@@ -9,13 +10,21 @@ Tools
 Call graph
 Pattern designs
 
+Online compilers
+* [Cpp shell](http://cpp.sh/)
+* [Online C++ compiler](https://www.onlinegdb.com/online_c++_compiler)
+* [Paiza C++ online](https://paiza.io/es/projects/new?language=cpp)
+
 General
 * [Yo Linux](http://www.yolinux.com)
 * [C con clase](http://c.conclase.net)
 * http://publications.gbdirect.co.uk/c_book/
 * http://www.elrincondelc.com/nuevorincon/index.php
+* [Jonathan Boccara's blog: Fluent C++](https://www.fluentcpp.com)
 
 Pattern Designs
+* [C++ Patterns](https://cpppatterns.com)
+* [Refactoring Guru Design patterns](https://refactoring.guru/design-patterns/cpp)
 * [Why use double pointer?](http://stackoverflow.com/questions/5580761/why-use-double-pointer-or-why-use-pointers-to-pointers)
 * [Wikipedia - Opaque Pointer](http://en.wikipedia.org/wiki/Opaque_pointer#C)
 * [hiding private member in header file](http://cboard.cprogramming.com/cplusplus-programming/51227-hiding-private-member-header-file.html)

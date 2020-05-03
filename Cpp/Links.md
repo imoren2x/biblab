@@ -10,6 +10,7 @@ Libraries
 Process/threads
 Databases
 Channels (video tutorial and such)
+Polymorphism
 Memory Leaks
 Tools
 Misc
@@ -121,6 +122,13 @@ Channels
 
     YouTube - Canal de ProgrammingVideos
     http://www.youtube.com/user/ProgrammingVideos
+
+## Polymorphism
+* [Polimorfismo vs sobrecarga](https://www.zator.com/Cpp/E4_11_8aw1.htm)
+
+* [Polimorfismo](https://www.zator.com/Cpp/E4_11_8.htm)
+
+* https://es.cppreference.com/w/cpp/language/override 
 
 Memory leaks
     How to prevent memory leaks
