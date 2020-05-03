@@ -1,0 +1,112 @@
+Capítulo 7. Threads
+-------------------
+7.1 El método run y su llamada con start
+7.2 El ciclo de vida de un thread
+    7.2.1 Creación
+    7.2.2 Arranque
+    7.2.3 Suspensión
+    7.2.4 Parada
+    7.2.5 El método isAlive
+    7.2.6 Prioridades
+7.3 Sincronización entre threads
+    7.3.1 El ejemplo Productor/Consumidor
+    7.3.2 Bloqueos de un objeto: secciones críticas
+    7.3.3 notifyAll y wait
+7.4 Grupos de threads
+
+7.1 El método run y su llamada con start
+Java ofrece dos mecanismos para los threads:
+    · la clase thread
+    · el interface Runnable
+ambos proporcionan el método run.
+
+Existen dos técnicas para proporcionar el método run de un thread:
+    · extender la clase Thread (que a su vez implementa Runnable) y reescribir el método run o
+    · implementar el interface Runnable.
+
+Ejemplo:
+ ThreadSimple
+
+7.2 El ciclo de vida de un thread
+7.2.1 Creación
+    Estado de un thread instanciado y construido.
+    Preparado para recibir arranque con start.
+
+    Invocar otro método que no sea start provoca una IllegalThreadStateException.
+
+7.2.2 Arranque
+    Un vez el método start retorna, el thread se encuentra en el estado de "ejetabilidad", i.e., puede entrar en el procesador cuando éste lo permita.
+
+7.2.3 Suspensión
+Un thread queda en estado "suspendido" cuando ocurre alguno de estos eventos:
+    • Su método sleep es invocado.
+        Saldrá de este estado cuando haya transcurrido el tiempo.
+    • El thread llama al método wait para esperar a que se satisfaga una cierta condición.
+        Saldrá de este estado con notify o notifyAll
+    • El thread se encuentra bloqueado esperando a que termine una operación de entrada/salida.
+        Saldrá de este estado cuando termine esta operación.
+
+7.2.4 Parada
+    Dos formas:
+        · Muerte natural
+        · Método stop
+    Ejemplo: El10ThreadStopClassDef.java
+
+7.2.5 El método isAlive
+Retorna un booleano:
+    · true: está en arrancado o suspendido
+    · false: está parado o sólo creado (no arrancado)
+
+7.3 Ejecución compartida entre threads, prioridades
+    La JVM ejecuta el thread con más prioridad.
+    El método yield en un thread hace que éste ceda su ejecución a otro thread.
+
+7.3 (bis) Sincronización entre threads
+7.3.1 Modelo productor-consumidor
+    Ejemplo
+    Cuidado con las race conditions (condición de carrera)
+
+http://www.janeg.ca/scjp/threads/notify.html
+http://stackoverflow.com/questions/6574218/how-can-i-get-a-specific-thread-to-be-the-next-one-to-enter-a-synchronized-block
+http://stackoverflow.com/questions/37026/java-notify-vs-notifyall-all-over-again
+
+7.3.2 Bloqueos sobre un objeto: secciones críticas
+
+public class Reentrante {
+public synchronized void a() {
+b();
+. . .
+}
+public synchronized void b(){
+. . .
+}
+}
+
+Si JVM no admitiera re-entrante, causaría un deadlock (bloqueo fatal).
+
+7.3.3 notifyAll y wait
+Ejemplo Productor-consumidor
+
+La clase Object contiene otras dos versiones de wait, que permiten especificar el
+tiempo máximo de espera:
+• wait(long timeout): Espera hasta que se produce la notificación o hasta que el
+tiempo especificado en timeout ha pasado. timeout se expresa en milisegundos.
+• wait(long timeout, int nanos): Espera hasta que se produce la notificación
+o hasta que transcurren timeout milisegundos más nanos nanosegundos.
+
+7.4 Grupos de threads
+ una sola invocación de un método. Los grupos de tha clase ThreadGroup del paquete java.lang.
+
+ La máquina virtual coloca un thread dentro de un grupo durante la construcción del
+thread. Cuando un thread es creado, el sistema lo coloca en un grupo por defecto a menos que
+
+Cuando una aplicación Java se empieza a ejecutar, la JVM crea un ThreadGroup llamado
+main. A menos que se especifique explícitamente, todos los nuevos threads que se creen son
+miembros del grupo de threads main.
+
+• public Thread(ThreadGroup group, Runnable target)
+• public Thread(ThreadGroup group, String name)
+• public Thread(ThreadGroup group, Runnable target,String name)
+
+Para saber a qué grupo pertenece un thread se puede llamar al método getThreadGroup:
+grupo = unThread.getThreadGroup();

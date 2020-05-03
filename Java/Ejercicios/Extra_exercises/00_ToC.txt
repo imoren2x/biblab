@@ -1,0 +1,85 @@
+Table of Contents
+-----------------
+
+HighLow Card, Deck
+RollTwoPairs PairsOfDice
+BirthdayProblemDemo
+ReverseInputNumbers
+ReverseWithDynamicArray
+LengthConverter2
+LengthConverter3
+TowersOfHanoi
+StringList ListDemo
+PostfixEval StackOfDouble
+SortTreeDemo
+SimpleParser1
+SimpleParser2
+SimpleParser3
+WordListWithTreeSet
+SimpleInterpreter
+WordCount
+ReverseFile TextReader
+ReverseFileWithScanner
+DirectoryList
+CopyFile
+PhoneDirectoryFileDemo
+ReadURL
+ReadURLApplet
+ShowMyNetwork
+DateClient DateServer
+CLChatClient CLChatServer
+ThreadTest1
+ThreadTest2
+DateServerWithThreads
+DateServerWithThreadPool
+DateServer
+DateClient
+CLMandelbrotMaster: CLMandelbrotWorker.java, CLMandelbrotTask.java,
+
+Interest
+TimeComputation
+EnumDemo
+PrintSquare
+Interest2
+CreateProfile
+Interest2WithScanner
+Interest3
+ThreeN1
+ComputeAverage
+CountDivisors
+ListLetters
+LengthConverter
+ReadNumbersFromFile
+GuessingGame
+GuessingGame2
+RowsOfChars
+ThreeN2
+
+• Interest.java, from Section 2.2, computes the interest on a specific amount of money over a period of one year.
+	
+• TimedComputation.java, from Section 2.3, demonstrates a few basic built-in subroutines
+and functions.
+• EnumDemo.java, from Section 2.3, a very simple first demonstration of enum types.
+• PrintSquare.java, from Section 2.4, reads an integer typed in by the user and prints the
+square of that integer. This program depends on TextIO.java. The same is true
+for almost all of the programs in the rest of this list.
+• Interest2.java, from Section 2.4, calculates interest on an investment for one year, based
+on user input.
+• CreateProfile.java, from Section 2.4, a simple demo of output to a file, using TextIO.
+• Interest2WithScanner.java, from Section 2.4, is a version of Interest2.java that uses Scanner
+instead of TextIO to read input from the user.
+• Interest3.java, from Section 3.1, the first example that uses control statements.
+• ThreeN1.java, from Section 3.2, outputs a 3N+1 sequence for a given stating value.
+• ComputeAverage.java, from Section 3.3, computes the average value of some integers
+entered by the user.
+• CountDivisors.java, from Section 3.4, counts the number of divisors of an integer entered
+by the user.
+• ListLetters.java, from Section 3.4, lists all the distinct letters in a string entered by the
+user.
+• LengthConverter.java, from Section 3.5, converts length measurements input by the user
+into different units of measure.
+• ReadNumbersFromFile.java, from Section 3.7, finds the sum and the average of numbers
+read from a file. Demonstrates try..catch statements.
+• GuessingGame.java, from Section 4.2, lets the user play guessing games where the com-
+puter picks a number and the user tries to guess it. A slight variation of this program,
+which reports the number of games won by the user, is GuessingGame2.java.

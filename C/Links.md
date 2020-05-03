@@ -51,6 +51,8 @@ Threads
 	Grupo 12 - Video Linux - Procesos y Threads (parte 2).avi
 	http://www.youtube.com/watch?v=eeXP6iVHnzE
 
+* [Tema 5. Comunicacion entre procesos I.](http://www.oocities.org/gusdelact/progsis/tema5.txt)
+
 Memory leaks
 	how to prevent memory leaks - Buscar con Google
 	http://www.google.es/#sclient=psy&hl=es&q=how+to+prevent+memory+leaks&aq=f&aqi=&aql=&oq=&pbx=1&fp=1&bav=on.2,or.r_gc.r_pw.,cf.osb&cad=b
