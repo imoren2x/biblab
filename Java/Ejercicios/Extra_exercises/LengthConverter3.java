@@ -1,4 +1,4 @@
-/** 
+/**
  * This program will convert measurements expressed in inches,
  * feet, yards, or miles into each of the possible units of
  * measure.  The measurement is input by the user, followed by
@@ -6,12 +6,12 @@
  * "2.73 mi".  Several measurements can be combined on
  * one line of input.  For example:  "2 miles 5 yards 1 inch".
  * In this case, the measurements are combined into one total.
- * Abbreviations in, ft, yd, and mi are accepted.  Negative 
+ * Abbreviations in, ft, yd, and mi are accepted.  Negative
  * measurements are not allowed.
- * 
+ *
  * The program will continue to read and convert measurements
  * until the user enters an empty line.
- * 
+ *
  * This version of the program uses exception handling.
  */
 public class LengthConverter3 {
@@ -44,7 +44,7 @@ public class LengthConverter3 {
          System.out.println();
          System.out.println("Enter your measurement, or press return to end:");
 
-         skipBlanks();  
+         skipBlanks();
 
          if (TextIO.peek() == '\n')  // End if there is nothing on the line.
             break;
@@ -107,7 +107,7 @@ public class LengthConverter3 {
     * Reads the user's input measurement from one line of input.
     * Precondition:  The input line is not empty.
     * Postcondition:  If the user's input is legal, the measurement
-    *                 is converted to inches and returned. 
+    *                 is converted to inches and returned.
     * @throws ParseError if the user's input is not legal.
     */
    static double readMeasurement() throws ParseError {

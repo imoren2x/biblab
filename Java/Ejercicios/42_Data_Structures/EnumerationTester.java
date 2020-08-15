@@ -15,7 +15,7 @@ public class EnumerationTester {
       dayNames.add("Saturday");
       days = dayNames.elements();
       while (days.hasMoreElements()){
-         System.out.println(days.nextElement()); 
+         System.out.println(days.nextElement());
       }
    }
 }

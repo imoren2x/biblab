@@ -11,7 +11,7 @@ namespace ParsingXml {
                 if (xmlReader.NodeType == XmlNodeType.Element) &&
                    (xmlReader.Name == "Cube") {
                     if (xmlReader.HasAttributes)
-                        Console.WriteLine(xmlReader.GetAttribute("currency") + ": " + xmlReader.GetAttribute("rate"));                    
+                        Console.WriteLine(xmlReader.GetAttribute("currency") + ": " + xmlReader.GetAttribute("rate"));
                 }
             }
             Console.ReadKey();

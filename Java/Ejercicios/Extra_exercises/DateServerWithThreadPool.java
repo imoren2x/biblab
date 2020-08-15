@@ -9,19 +9,19 @@ import java.util.concurrent.ArrayBlockingQueue;
  * connection is opened, the program sends the current time to
  * the connected socket.  The program will continue to receive
  * and process connections until it is killed (by a CONTROL-C,
- * for example). 
- * 
+ * for example).
+ *
  * This version of the program uses a thread pool of worker
  * threads that handle the connections.
  */
 public class DateServerWithThreadPool {
 
    public static final int LISTENING_PORT = 32007;
-   
+
    private static final int THREAD_POOL_SIZE = 5;
-   
+
    private static final int QUEUE_CAPACITY = 10;
-   
+
    /**
     * The connectionQueue is used to send connected sockets from the
     * main program to the worker threads.  When a connection request
@@ -38,7 +38,7 @@ public class DateServerWithThreadPool {
       ServerSocket listener;  // Listens for incoming connections.
       Socket connection;      // For communication with the connecting program.
 
-      /* Create a listening socket, create the thread pool, then accept and 
+      /* Create a listening socket, create the thread pool, then accept and
        * process connection requests forever.  Note that the connection queue
        * MUST be created before the threads are created, since a thread tries
        * to use the queue as soon as it is started.  Once created, the thread
@@ -46,14 +46,14 @@ public class DateServerWithThreadPool {
        */
 
       try {
-         
+
          listener = new ServerSocket(LISTENING_PORT);
 
          connectionQueue = new ArrayBlockingQueue<Socket>(QUEUE_CAPACITY);
          for (int i = 0; i < THREAD_POOL_SIZE; i++) {
             new ConnectionHandler();  // Create the thread; it starts itself.
          }
-         
+
          System.out.println("Listening on port " + LISTENING_PORT);
          while (true) {
                 // Accept next connection request and put it in the queue.
@@ -108,12 +108,12 @@ public class DateServerWithThreadPool {
                client.close();
             }
             catch (Exception e){
-               System.out.println("Error on connection with: " 
+               System.out.println("Error on connection with: "
                      + clientAddress + ": " + e);
             }
          }
       }
    }
-   
+
 
 } //end class DateServerWithThreadPool

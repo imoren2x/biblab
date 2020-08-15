@@ -6,11 +6,11 @@
  * Numbers must begin with a digit.  That is, you have to say
  * 0.7 rather than just .7.  The value of an expression might
  * be given as infinity or NaN.
- * 
+ *
  * A stack is used to evaluate the expression.  The stack is represented
  * by an object of type StackOfDouble.  This program depends on the non-standard
  * classes StackOfDouble and TextIO.
- * 
+ *
  * For demonstration purposes, the stack operations are reported as
  * they are performed.
  */
@@ -94,19 +94,19 @@ public class PostfixEval {
             }
             x = stack.pop();
             switch (op) {
-            case '+':  
-               answer = x + y; 
+            case '+':
+               answer = x + y;
                break;
-            case '-':  
-               answer = x - y;  
+            case '-':
+               answer = x - y;
                break;
-            case '*':  
-               answer = x * y;  
+            case '*':
+               answer = x * y;
                break;
-            case '/':  
-               answer = x / y;  
+            case '/':
+               answer = x / y;
                break;
-            default:   
+            default:
                answer = Math.pow(x,y);  // (op must be '^'.)
             }
             stack.push(answer);

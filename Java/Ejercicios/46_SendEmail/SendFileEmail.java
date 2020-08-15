@@ -9,7 +9,7 @@ public class SendFileEmail
 {
    public static void main(String [] args)
    {
-      
+
       // Recipient's email ID needs to be mentioned.
       String to = "abcd@gmail.com";
 
@@ -42,12 +42,12 @@ public class SendFileEmail
          // Set Subject: header field
          message.setSubject("This is the Subject Line!");
 
-         // Create the message part 
+         // Create the message part
          BodyPart messageBodyPart = new MimeBodyPart();
 
          // Fill the message
          messageBodyPart.setText("This is message body");
-         
+
          // Create a multipar message
          Multipart multipart = new MimeMultipart();
 

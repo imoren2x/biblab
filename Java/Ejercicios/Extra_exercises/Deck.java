@@ -4,19 +4,19 @@
  *  also optionally include two Jokers.
  */
 public class Deck {
-   
+
    /**
     * An array of 52 or 54 cards.  A 54-card deck contains two Jokers,
     * in addition to the 52 cards of a regular poker deck.
     */
    private Card[] deck;
-   
+
    /**
     * Keeps track of the number of cards that have been dealt from
     * the deck so far.
     */
    private int cardsUsed;
-   
+
    /**
     * Constructs a regular 52-card poker deck.  Initially, the cards
     * are in a sorted order.  The shuffle() method can be called to
@@ -26,7 +26,7 @@ public class Deck {
    public Deck() {
       this(false);  // Just call the other constructor in this class.
    }
-   
+
    /**
     * Constructs a poker deck of playing cards, The deck contains
     * the usual 52 cards and can optionally contain two Jokers
@@ -54,7 +54,7 @@ public class Deck {
       }
       cardsUsed = 0;
    }
-   
+
    /**
     * Put all the used cards back into the deck (if any), and
     * shuffle the deck into a random order.
@@ -68,7 +68,7 @@ public class Deck {
       }
       cardsUsed = 0;
    }
-   
+
    /**
     * As cards are dealt from the deck, the number of cards left
     * decreases.  This function returns the number of cards that
@@ -81,7 +81,7 @@ public class Deck {
    public int cardsLeft() {
       return deck.length - cardsUsed;
    }
-   
+
    /**
     * Removes the next card from the deck and return it.  It is illegal
     * to call this method if there are no more cards in the deck.  You can
@@ -98,7 +98,7 @@ public class Deck {
       // that represents the deck.  We just keep track of how many cards
       // have been used.
    }
-   
+
    /**
     * Test whether the deck contains Jokers.
     * @return true, if this is a 54-card deck containing two jokers, or false if
@@ -107,5 +107,5 @@ public class Deck {
    public boolean hasJokers() {
       return (deck.length == 54);
    }
-   
+
 } // end class Deck

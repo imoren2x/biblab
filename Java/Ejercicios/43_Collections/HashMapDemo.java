@@ -3,7 +3,7 @@ import java.util.*;
 public class HashMapDemo {
 
    public static void main(String args[]) {
-   
+
       // Create a hash map
       HashMap hm = new HashMap();
       // Put elements to the map
@@ -12,7 +12,7 @@ public class HashMapDemo {
       hm.put("Ayan", new Double(1378.00));
       hm.put("Daisy", new Double(99.22));
       hm.put("Qadir", new Double(-19.08));
-      
+
       // Get a set of the entries
       Set set = hm.entrySet();
       // Get an iterator

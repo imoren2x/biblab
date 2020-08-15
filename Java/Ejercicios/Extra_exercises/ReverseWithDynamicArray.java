@@ -11,14 +11,14 @@
 public class ReverseWithDynamicArray {
 
    public static void main(String[] args) {
-  
+
       DynamicArrayOfInt numbers;  // To hold the input numbers.
       int numCount;  // The number of numbers stored in the array.
       int num;    // One of the numbers input by the user.
-    
+
       numbers = new DynamicArrayOfInt();
       numCount = 0;
-    
+
       TextIO.putln("Enter some positive integers; Enter 0 to end");
       while (true) {  // Get numbers and put them in the dynamic array.
          TextIO.put("? ");
@@ -28,13 +28,13 @@ public class ReverseWithDynamicArray {
          numbers.put(numCount, num);  // Store num in the dynamic array.
          numCount++;
       }
-    
+
       TextIO.putln("\nYour numbers in reverse order are:\n");
-    
+
       for (int i = numCount - 1; i >= 0; i--) {
           TextIO.putln( numbers.get(i) );  // Print the i-th number.
       }
-    
+
    } // end main();
-  
+
 }  // end class ReverseWithDynamicArray

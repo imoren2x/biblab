@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package FileWriterAndList;
 
@@ -16,7 +16,7 @@ public class FileWriterAndList {
 	 */
 	public static void main(String[] args) {
 		String id = Long.toString(System.currentTimeMillis()/1000);
-		
+
 		try {
 			System.out.println("Identificador del fichero: " + id);
 			TestResults testResults = new TestResults(id);
@@ -26,8 +26,8 @@ public class FileWriterAndList {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 
 	}
 

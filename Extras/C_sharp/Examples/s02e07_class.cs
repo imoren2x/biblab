@@ -26,7 +26,7 @@ namespace RectangleApplication {
             Console.WriteLine("Area: {0}", GetArea());
         }
 
-    }//end class Rectangle  
+    }//end class Rectangle
 
     class Tabletop : Rectangle {
         private double cost;

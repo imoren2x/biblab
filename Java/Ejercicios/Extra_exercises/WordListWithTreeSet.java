@@ -2,16 +2,16 @@ import java.util.TreeSet;
 
 /**
  * Makes an alphabetical list of all the words in a file selected
- * by the user.  All words are converted to lower case.  The list 
- * of words can be written to a file.  The words from the input 
- * file are stored in a TreeSet, which means that duplicates are 
+ * by the user.  All words are converted to lower case.  The list
+ * of words can be written to a file.  The words from the input
+ * file are stored in a TreeSet, which means that duplicates are
  * removed and the words are output in alphabetical order.
  */
 public class WordListWithTreeSet {
-   
-   
+
+
    public static void main(String[] args) {
-      
+
       System.out.println("\n\nThis program will ask you to select an input file");
       System.out.println("It will read that file and make an alphabetical");
       System.out.println("list of all the words in the file.  After reading");
@@ -22,7 +22,7 @@ public class WordListWithTreeSet {
       System.out.println("lower case, and duplicates are elimated from the list.\n\n");
       System.out.print("Press return to begin.");
       TextIO.getln();  // Wait for user to press return.
-      
+
       try {
          if (TextIO.readUserSelectedFile() == false) {
             System.out.println("No input file selected.  Exiting.");
@@ -35,7 +35,7 @@ public class WordListWithTreeSet {
             wordSet.add(word);  // Adds word to set only if it is not already present.
             word = readNextWord();
          }
-         System.out.println("Number of different words found in file:  " 
+         System.out.println("Number of different words found in file:  "
                + wordSet.size());
          System.out.println();
          if (wordSet.size() == 0) {
@@ -60,7 +60,7 @@ public class WordListWithTreeSet {
 
    /**
     * Read the next word from TextIO, if there is one.  First, skip past
-    * and non-letters in the input.  If an end-of-file is encountered before 
+    * and non-letters in the input.  If an end-of-file is encountered before
     * a word is found, return null.  Otherwise, read and return the word.
     * A word is defined as a sequence of letters.  Also, a word can include
     * an apostrophe if the apostrophe is surrounded by letters on each side.
@@ -103,5 +103,5 @@ public class WordListWithTreeSet {
       }
       return word;  // Return the word that has been read.
    }
-   
+
 }

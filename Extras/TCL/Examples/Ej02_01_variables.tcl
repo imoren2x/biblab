@@ -14,8 +14,8 @@ parray earnings
 
 set monthList [list "Jan" "Feb" "Mar" "Apr"]
 
-#foreach month {Jan Feb Mar Apr} { 
-foreach month [array get monthList] { 
+#foreach month {Jan Feb Mar Apr} {
+foreach month [array get monthList] {
   set yearTotal [expr $yearTotal+$earnings($month)]
   puts "yearTotal: $yearTotal"
 }

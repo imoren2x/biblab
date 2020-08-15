@@ -2,7 +2,7 @@
 /**
  *  This program demonstrates a few routines for processing binary
  *  sort trees.  It uses a binary sort tree of strings.  The user
- *  types in strings.  The user's string is converted to lower case, and -- 
+ *  types in strings.  The user's string is converted to lower case, and --
  *  if it is not already in the tree -- it is inserted into the tree.
  *  Then the number of nodes in the tree and a list of items in the tree
  *  are output.  The program ends when the user enters an empty string.
@@ -26,8 +26,8 @@ public class SortTreeDemo {
 
 
    private static TreeNode root;  // Pointer to the root node in a binary tree.
-                                  // This tree is used in this program as a 
-                                  // binary sort tree.  When the tree is empty, 
+                                  // This tree is used in this program as a
+                                  // binary sort tree.  When the tree is empty,
                                   // root is null (as it is initially).
 
 
@@ -47,7 +47,7 @@ public class SortTreeDemo {
          TextIO.putln("\n\nEnter a string to be inserted, or press return to end.");
          TextIO.put("?  ");
          String item;  // The user's input.
-         item = TextIO.getln().trim().toLowerCase(); 
+         item = TextIO.getln().trim().toLowerCase();
          if (item.length() == 0)
             break;
          if (treeContains(root,item)) {
@@ -69,9 +69,9 @@ public class SortTreeDemo {
 
 
    /**
-    * Add the item to the binary sort tree to which the global variable 
-    * "root" refers.  (Note that root can't be passed as a parameter to 
-    * this routine because the value of root might change, and a change 
+    * Add the item to the binary sort tree to which the global variable
+    * "root" refers.  (Note that root can't be passed as a parameter to
+    * this routine because the value of root might change, and a change
     * in the value of a formal parameter does not change the actual parameter.)
     */
    private static void treeInsert(String newItem) {
@@ -137,7 +137,7 @@ public class SortTreeDemo {
 
 
    /**
-    * Print the items in the tree in inorder, one item to a line.  
+    * Print the items in the tree in inorder, one item to a line.
     * Since the tree is a sort tree, the output will be in increasing order.
     */
    private static void treeList(TreeNode node) {
@@ -165,7 +165,7 @@ public class SortTreeDemo {
             // Add up the root node and the nodes in its two subtrees.
          int leftCount = countNodes( node.left );
          int rightCount = countNodes( node.right );
-         return  1 + leftCount + rightCount;  
+         return  1 + leftCount + rightCount;
       }
    } // end countNodes()
 

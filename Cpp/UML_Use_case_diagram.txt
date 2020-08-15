@@ -17,11 +17,11 @@ TOC
 	1. Use case:
 		Sequence of actions that provide something of measurement value.
 		(circle with use case)
-	
+
 	2. Actors:
 		Person/organization/system which plays a role in one or more interactions.
 		(actor character)
-	
+
 	3. System boundary boxes (optional)
 		Scope of the system.
 		Within the box represents functionality.
@@ -33,7 +33,7 @@ TOC
 		 ---------------
 
 2. Use case relationships
-	2.1 Include 
+	2.1 Include
 	2.2 Extend
 	2.3 Generalization
 	2.4 Association

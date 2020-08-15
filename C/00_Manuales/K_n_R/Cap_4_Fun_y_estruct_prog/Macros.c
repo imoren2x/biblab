@@ -57,15 +57,15 @@ int main()
 {
  int i;
  int z= 1, x;
- 
+
  BUCLE;
 
  x = square(z + 2);
  printf("\nThe right result should be %d\n",x); // You can't use square directly.
  dprintf(x);
- 
- 
- 
+
+
+
  printf("\n");
  system("pause");
  return 0;

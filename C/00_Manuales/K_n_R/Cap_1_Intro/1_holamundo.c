@@ -7,8 +7,8 @@ void main()
   printf("hola, ");
   printf("mundo!!!");
   printf("\n");
-  
+
       printf("\n");
       system("PAUSE");
-      
+
 }

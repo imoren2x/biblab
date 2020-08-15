@@ -32,7 +32,7 @@ namespace RegExApplication {
             string result = rgx.Replace(input, replacement);
 
             Console.WriteLine("Original String: {0}", input);
-            Console.WriteLine("Replacement String: {0}", result);    
+            Console.WriteLine("Replacement String: {0}", result);
             Console.ReadKey();
         }
     }

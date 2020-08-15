@@ -21,7 +21,7 @@ public class SimpleParser2 {
 
 
    /**
-    * An object of type ParseError represents a syntax error found in 
+    * An object of type ParseError represents a syntax error found in
     * the user's input.
     */
    private static class ParseError extends Exception {
@@ -89,7 +89,7 @@ public class SimpleParser2 {
       return val;
    } // end expressionValue()
 
-   
+
    /**
     * Read a term from the current line of input and return its value.
     * @throws ParseError if the input contains a syntax error

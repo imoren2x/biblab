@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 /**
  * This class is part of a part of a demonstration of distributed computing.
  * It is to be used with CLMandelbrotTask.java on the master computer.
- * Before starting CLMandelbrotMaster on the master computer, 
+ * Before starting CLMandelbrotMaster on the master computer,
  * CLMandelbrotWorker should be started as a command-line program on each
  * worker computer involved in the distributed computation.  See
  * CLMandelbrotWorker.java for more information.  (It is possible to
@@ -22,34 +22,34 @@ import java.awt.image.BufferedImage;
  * to run the master and one or more copies of the worker on the same
  * computer.  In that case, the host name for the workers would be
  * localhost.)
- * 
+ *
  * If CLMandelbrotMaster is run with no command line arguments, it will run
  * without using the network at all.  The complete computation will be
- * done locally (using just one processor.  You can do this to test how 
+ * done locally (using just one processor.  You can do this to test how
  * long the computation takes when distributed computing is not used.
- * 
+ *
  * Otherwise, the location of all the CLMandelbrotWorker programs must be
  * specified as command line arguments when CLMandelbrotMaster is run.  Each
  * command line argument gives the host name or IP address of a computer
- * on which a worker is running.  If that worker is not listening on the 
+ * on which a worker is running.  If that worker is not listening on the
  * default port, then the listening port number must also be included.
  * The form for specifying a computer with a port number is, for example,
  * math.hws.edu:1501 or 127.0.0.1:18881, that is, the computer name or
  * IP, followed by a colon, followed by the port number, with NO SPACES.
- * 
+ *
  * When CLMandlebrotMaster runs, it creates a list of tasks (of type
  * CLMandelbrotTask) that have to be performed, and it creates a thread
  * for communicating with each copy of CLMandelbrotWorker.  Each thread
  * sends a sequence of tasks to the connected worker, which does the
  * actual work involved in performing the task and sends back the
  * results.
- * 
+ *
  * Although this program is meant as a demonstration of distributed
  * computing, it does compute an interesting picture.  If you want to
  * see that picture, uncomment the call to saveImage() at the end of
  * the main() routine.  The program computes the same picture every
  * time it is run.
- * 
+ *
  * Note that data sent over the network is encoded as text.  The first
  * word on a line of text identifies the type of data.
  */
@@ -59,7 +59,7 @@ public class CLMandelbrotMaster {
     * Default listening port, if none is specified on the command line.
     */
    private static final int DEFAULT_PORT = 13572;
-   
+
    /**
     * The first and only word on a message representing a close command.
     */
@@ -73,7 +73,7 @@ public class CLMandelbrotMaster {
 
    /**
     * The first word on a message representing a CLMandelbrotTask.  This
-    * is followed by the incoming data (id, maxIterations, y, xmin, dx, and 
+    * is followed by the incoming data (id, maxIterations, y, xmin, dx, and
     * count) for the task. Items on the line are separated by spaces.
     */
    private static final String TASK_COMMAND = "task";
@@ -88,7 +88,7 @@ public class CLMandelbrotMaster {
 
    /**
     * The list of tasks that must be performed to complete the computation.
-    * This list is created by createJob().  The tasks are sent out to 
+    * This list is created by createJob().  The tasks are sent out to
     * workers to be performed.  Each task represents the computation of
     * one row of an image of part of the Mandelbrot set.
     */
@@ -105,7 +105,7 @@ public class CLMandelbrotMaster {
     * Number of rows and columns in the image; set by computeJob().
     */
    private static int rows, columns;
-   
+
    /**
     * Maximum number of iterations for the Mandelbrot computation;
     * set by computeJob().  For the purposes of this computation, it
@@ -118,8 +118,8 @@ public class CLMandelbrotMaster {
     * the tasks.  mandelbrotData[c][r] is the data for row r,
     * column c in the image.
     */
-   private static int[][] mandelbrotData;  
-      
+   private static int[][] mandelbrotData;
+
 
 
    /**
@@ -133,13 +133,13 @@ public class CLMandelbrotMaster {
     * (See the main comment on this class for more information.)
     */
    public static void main(String[] args) {
-      
+
       long startTime = System.currentTimeMillis();
-      
+
       createJob();  // Create the list of tasks that need to be computed.
-      
+
       if (args.length == 0) { // Run non-distributed computation.
-         
+
          System.out.println("Running on this computer only...");
          while (true) {
             CLMandelbrotTask task = tasks.poll();
@@ -148,12 +148,12 @@ public class CLMandelbrotMaster {
             task.compute();
             finishTask(task);
          }
-         
+
       }
       else {  // Run a distributed computation.
-      
+
          WorkerConnection[] workers = new WorkerConnection[args.length];
-         
+
          for (int i = 0; i < args.length; i++) {
                // Create the worker threads that communicate with the
                // CLMandelbrotWorker programs.  The threads start automatically
@@ -174,7 +174,7 @@ public class CLMandelbrotMaster {
             }
             workers[i] = new WorkerConnection(i+1, host, port);
          }
-         
+
          for (int i = 0; i < args.length; i++) {
                 // Wait for all the threads to terminate.
             while (workers[i].isAlive()) {
@@ -185,7 +185,7 @@ public class CLMandelbrotMaster {
                }
             }
          }
-   
+
          if (tasksCompleted != rows) {
                // Not all of the tasks were completed.  (Note: for a more robust
                // program, the remaining tasks could be executed here directly.)
@@ -193,18 +193,18 @@ public class CLMandelbrotMaster {
             System.out.println("out of " + rows + " tasks were completed");
             System.exit(1);
          }
-         
+
       }
-      
+
       long elapsedTime = System.currentTimeMillis() - startTime;
       System.out.println("Finished in " + (elapsedTime/1000.0) + " seconds ");
-      
+
       // saveImage();  // Uncomment this line if you would like to save the
                        // image that was computed by this program to a file.
-   
+
    } // end main()
-   
-   
+
+
    /**
     * Creates the data needed for the computation and the list of tasks that
     * will perform parts of the computation.  For the purposes of this
@@ -234,8 +234,8 @@ public class CLMandelbrotMaster {
          tasks.add(task);
       }
    }
-   
-   
+
+
    /**
     * We allow for the possibility that a thread might fail while it is
     * performing a task.  When that happens, the thread drops the task
@@ -249,8 +249,8 @@ public class CLMandelbrotMaster {
    private static void reassignTask(CLMandelbrotTask task) {
       tasks.add(task);
    }
-   
-   
+
+
    /**
     * Add the data from a finished task to the array where the complete
     * set of data is collected.  Also increments tasksCompleted.  This
@@ -286,8 +286,8 @@ public class CLMandelbrotMaster {
       buffer.append(' ');
       return buffer.toString();
    }
-   
-   
+
+
    /**
     * Decode a message received over the network from one of the worker threads.
     * The message contains the results from a task.
@@ -312,18 +312,18 @@ public class CLMandelbrotMaster {
          task.results[i] = scanner.nextInt();
    }
 
-   
+
    /**
     * This class represents one worker thread.  The job of a worker threads
     * is to send out tasks to a CLMandelbrotWorker program over a network
     * connection, and to get back the results computed by that program.
     */
    private static class WorkerConnection extends Thread {
-      
+
       int id;        // Identifies this thread in output statements.
       String host;   // The host to which this thread will connect.
       int port;      // The port number to which this thread will connect.
-      
+
       /**
        * The constructor just sets the values of the instance
        * variables id, host, and port and starts the thread.
@@ -334,7 +334,7 @@ public class CLMandelbrotMaster {
          this.port = port;
          start();
       }
-      
+
       /**
        * The run() method of the thread opens a connection to the host and
        * port specified in the constructor, then sends tasks to the
@@ -344,10 +344,10 @@ public class CLMandelbrotMaster {
        * an error message.
        */
       public void run() {
-         
+
          int tasksCompleted = 0; // How many tasks has this thread handled.
          Socket socket;  // The socket for the connection.
-         
+
          try {
             socket = new Socket(host,port);  // open the connection.
          }
@@ -357,7 +357,7 @@ public class CLMandelbrotMaster {
             System.out.println("   Error: " + e);
             return;
          }
-                  
+
          CLMandelbrotTask currentTask = null;
          CLMandelbrotTask nextTask = null;
 
@@ -380,14 +380,14 @@ public class CLMandelbrotMaster {
                   throw new IOException("Illegal string received from worker.");
                nextTask = tasks.poll();  // Get next task and send it to worker.
                if (nextTask != null) {
-                     // Send nextTask to worker before processing results for 
+                     // Send nextTask to worker before processing results for
                      // currentTask, so that the worker can work on nextTask
                      // while the currentTask results are processed.
                   String taskString = writeTask(nextTask);
                   out.println(taskString);
                   out.flush();
                }
-               readResults(resultString, currentTask); 
+               readResults(resultString, currentTask);
                finishTask(currentTask);  // Process results from currentTask.
                tasksCompleted++;
                currentTask = nextTask;   // We are finished with old currentTask.
@@ -407,7 +407,7 @@ public class CLMandelbrotMaster {
                reassignTask(nextTask);
          }
          finally {
-            System.out.println("Thread " + id + " ending after completing " + 
+            System.out.println("Thread " + id + " ending after completing " +
                   tasksCompleted + " tasks");
             try {
                socket.close();
@@ -415,12 +415,12 @@ public class CLMandelbrotMaster {
             catch (Exception e) {
             }
          }
-         
+
       } //end run()
-      
+
    } // end nested class WorkerConnection
 
-   
+
    /**
     * Although this program is meant as a demonstration of distributed computing,
     * it does compute something interesting.  This method will save the image
@@ -440,7 +440,7 @@ public class CLMandelbrotMaster {
             break;
          else if (line.equals("yes") || line.equals("y")) {
             JFileChooser fileDialog = new JFileChooser();
-            fileDialog.setSelectedFile(new File("CLMandelbrot_image.png")); 
+            fileDialog.setSelectedFile(new File("CLMandelbrot_image.png"));
             fileDialog.setDialogTitle("Select File to be Saved");
             int option = fileDialog.showSaveDialog(null);
             if (option != JFileChooser.APPROVE_OPTION)
@@ -449,9 +449,9 @@ public class CLMandelbrotMaster {
             if (selectedFile.exists()) {  // Ask the user whether to replace the file.
                int response = JOptionPane.showConfirmDialog( null,
                      "The file \"" + selectedFile.getName()
-                     + "\" already exists.\nDo you want to replace it?", 
+                     + "\" already exists.\nDo you want to replace it?",
                      "Confirm Save",
-                     JOptionPane.YES_NO_OPTION, 
+                     JOptionPane.YES_NO_OPTION,
                      JOptionPane.WARNING_MESSAGE );
                if (response != JOptionPane.YES_OPTION)
                   return;  // User does not want to replace the file.

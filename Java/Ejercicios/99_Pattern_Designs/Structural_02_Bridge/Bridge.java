@@ -38,11 +38,11 @@ public class GreenCircle implements DrawAPI {
 //Shape.java
 public abstract class Shape {
    protected DrawAPI drawAPI;
-   
+
    protected Shape(DrawAPI drawAPI){
       this.drawAPI = drawAPI;
    }
-   public abstract void draw();	
+   public abstract void draw();
 }
 
 //Circle.java
@@ -51,8 +51,8 @@ public class Circle extends Shape {
 
    public Circle(int x, int y, int radius, DrawAPI drawAPI) {
       super(drawAPI);
-      this.x = x;  
-      this.y = y;  
+      this.x = x;
+      this.y = y;
       this.radius = radius;
    }
 

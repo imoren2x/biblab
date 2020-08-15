@@ -9,7 +9,7 @@ public class Ej01HelloWorld2 {
 	public static void main(String[] args) {
 		String string = "Orbis, te saluto!!!";
 		System.out.println(" HOLA MUNDO\n ");
-		
+
 		//Different variable definitions
 		long l = new Long(4);						//int long
 		int i = new Integer(5);						//int
@@ -26,7 +26,7 @@ public class Ej01HelloWorld2 {
 		String[] str5 = new String[5];				//String
 		ArrayList<Integer> intList = new ArrayList<Integer>();	//ArrayList
 		intList.add(5);
-		
+
 		System.out.println( "intList.toString(): " + intList.toString() );
 		//switch(b):
 

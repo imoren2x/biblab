@@ -26,7 +26,7 @@ public class Circle implements Shape {
    private int radius;
 
    public Circle(String color){
-      this.color = color;		
+      this.color = color;
    }
 
    public void setX(int x) {

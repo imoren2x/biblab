@@ -9,7 +9,7 @@ import java.util.Scanner;
  * This program lets the user keep a persistent "phone book" that
  * contains names and phone numbers.  The data for the phone book
  * is stored in a file in the user's home directory.
- * 
+ *
  * The program is meant only as a demonstration of file use.  The phone
  * book data is stored is the form of Name/Number pairs, with
  * little error checking.  In particular, the "phone directory"
@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 
 public class PhoneDirectoryFileDemo {
-   
+
    /**
     * The name of the file in which the phone book data is kept.  The
     * file is stored in the user's home directory.  The "." at the
@@ -27,27 +27,27 @@ public class PhoneDirectoryFileDemo {
     * Mac OS X.
     */
    private static String DATA_FILE_NAME = ".phone_book_demo";
-   
-   
+
+
    public static void main(String[] args) {
-      
+
       String name, number;  // Name and number of an entry in the directory
                             // (used at various places in the program).
 
       TreeMap<String,String>  phoneBook;   // Phone directory data structure.
                                            // Entries are name/number pairs.
-      
+
       phoneBook = new TreeMap<String,String>();
-      
-      
+
+
       /* Create a dataFile variable of type File to represent the
        * data file that is stored in the user's home directory.
        */
-      
+
       File userHomeDirectory = new File( System.getProperty("user.home") );
       File dataFile = new File( userHomeDirectory, DATA_FILE_NAME );
-      
-      
+
+
       /* If the data file already exists, then the data in the file is
        * read and is used to initialize the phone directory.  The format
        * of the file must be as follows:  Each line of the file represents
@@ -56,7 +56,7 @@ public class PhoneDirectoryFileDemo {
        * have this format, then the program terminates; this is done to
        * avoid overwriting a file that is being used for another purpose.
        */
-      
+
       if ( ! dataFile.exists() ) {
          System.out.println("No phone book data file found.");
          System.out.println("A new one will be created.");
@@ -83,15 +83,15 @@ public class PhoneDirectoryFileDemo {
             System.exit(1);
          }
       }
-      
-      
+
+
       /* Read commands from the user and carry them out, until the
        * user gives the "Exit from program" command.
        */
-      
+
       Scanner in = new Scanner( System.in );
       boolean changed = false;  // Have any changes been made to the directory?
-      
+
       mainLoop: while (true) {
          System.out.println("\nSelect the action that you want to perform:");
          System.out.println("   1.  Look up a phone number.");
@@ -127,7 +127,7 @@ public class PhoneDirectoryFileDemo {
                System.out.println("\nNAME CANNOT BE BLANK.");
             else if (name.indexOf('%') >= 0)
                System.out.println("\nNAME CANNOT CONTAIN THE CHARACTER \"%\".");
-            else { 
+            else {
                System.out.print("Enter phone number: ");
                number = in.nextLine().trim();
                if (number.length() == 0)
@@ -162,15 +162,15 @@ public class PhoneDirectoryFileDemo {
             System.out.println("\nILLEGAL ACTION NUMBER.");
          }
       }
-      
-      
+
+
       /* Before ending the program, write the current contents of the
        * phone directory, but only if some changes have been made to
        * the directory.
        */
-      
+
       if (changed) {
-         System.out.println("Saving phone directory changes to file " + 
+         System.out.println("Saving phone directory changes to file " +
                dataFile.getAbsolutePath() + " ...");
          PrintWriter out;
          try {
@@ -188,7 +188,7 @@ public class PhoneDirectoryFileDemo {
          else
             System.out.println("Done.");
       }
-   
+
    }
 
 }

@@ -6,7 +6,7 @@ print "content-type: text/html \n\n"; #The header
 
 # Create:Checks to see if the file exists, if not, perl creates a new file.
 # Append:Sets the pointer to the end of the file, all output following will be added onto the tail end of the file.
-# Truncate:Overwrites your existing file with a new one, this means all data in the old file will be lost. 
+# Truncate:Overwrites your existing file with a new one, this means all data in the old file will be lost.
 
 # Shorthand Flags:
 # Entities	Definition
@@ -37,13 +37,13 @@ $filepath = "myhtml.html";
 sysopen (HTML, $filepath, O_RDWR|O_EXCL|O_CREAT, 0755) or die "$filepath cannot be opened.";
 # open FILEHANDLE, MODE, EXPR
 # open HTML, ">", $filepath or die $!;
-printf HTML "<html>\n"; 
-printf HTML "<head>\n"; 
-printf HTML "<title>My Home Page</title>"; 
-printf HTML "</head>\n"; 
-printf HTML "<body>\n"; 
-printf HTML "<p align='center'>Here we have an HTML 
+printf HTML "<html>\n";
+printf HTML "<head>\n";
+printf HTML "<title>My Home Page</title>";
+printf HTML "</head>\n";
+printf HTML "<body>\n";
+printf HTML "<p align='center'>Here we have an HTML
 page with a paragraph.</p>";
-printf HTML "</body>\n"; 
-printf HTML "</html>\n"; 
+printf HTML "</body>\n";
+printf HTML "</html>\n";
 close (HTML);

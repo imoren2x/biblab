@@ -5,31 +5,31 @@
  * can be spades, hearts, diamonds, clubs, or joker.  A space, heart,
  * diamond, or club has one of the 13 values: ace, 2, 3, 4, 5, 6, 7,
  * 8, 9, 10, jack, queen, or king.  Note that "ace" is considered to be
- * the smallest value.  A joker can also have an associated value; 
+ * the smallest value.  A joker can also have an associated value;
  * this value can be anything and can be used to keep track of several
  * different jokers.
  */
 
 public class Card {
-   
+
    public final static int SPADES = 0;       // Codes for the 4 suits, plus Joker.
    public final static int HEARTS = 1;
    public final static int DIAMONDS = 2;
    public final static int CLUBS = 3;
    public final static int JOKER = 4;
-   
+
    public final static int ACE = 1;          // Codes for the non-numeric cards.
-   public final static int JACK = 11;        //   Cards 2 through 10 have their 
+   public final static int JACK = 11;        //   Cards 2 through 10 have their
    public final static int QUEEN = 12;       //   numerical values for their codes.
    public final static int KING = 13;
-   
+
    /**
     * This card's suit, one of the constants SPADES, HEARTS, DIAMONDS,
     * CLUBS, or JOKER.  The suit cannot be changed after the card is
     * constructed.
     */
-   private final int suit; 
-   
+   private final int suit;
+
    /**
     * The card's value.  For a normal cards, this is one of the values
     * 1 through 13, with 1 representing ACE.  For a JOKER, the value
@@ -37,7 +37,7 @@ public class Card {
     * is constructed.
     */
    private final int value;
-   
+
    /**
     * Creates a Joker, with 1 as the associated value.  (Note that
     * "new Card()" is equivalent to "new Card(1,Card.JOKER)".)
@@ -46,12 +46,12 @@ public class Card {
       suit = JOKER;
       value = 1;
    }
-   
+
    /**
     * Creates a card with a specified suit and value.
     * @param theValue the value of the new card.  For a regular card (non-joker),
     * the value must be in the range 1 through 13, with 1 representing an Ace.
-    * You can use the constants Card.ACE, Card.JACK, Card.QUEEN, and Card.KING.  
+    * You can use the constants Card.ACE, Card.JACK, Card.QUEEN, and Card.KING.
     * For a Joker, the value can be anything.
     * @param theSuit the suit of the new card.  This must be one of the values
     * Card.SPADES, Card.HEARTS, Card.DIAMONDS, Card.CLUBS, or Card.JOKER.
@@ -59,7 +59,7 @@ public class Card {
     * Permissible ranges
     */
    public Card(int theValue, int theSuit) {
-      if (theSuit != SPADES && theSuit != HEARTS && theSuit != DIAMONDS && 
+      if (theSuit != SPADES && theSuit != HEARTS && theSuit != DIAMONDS &&
             theSuit != CLUBS && theSuit != JOKER)
          throw new IllegalArgumentException("Illegal playing card suit");
       if (theSuit != JOKER && (theValue < 1 || theValue > 13))
@@ -70,13 +70,13 @@ public class Card {
 
    /**
     * Returns the suit of this card.
-    * @returns the suit, which is one of the constants Card.SPADES, 
+    * @returns the suit, which is one of the constants Card.SPADES,
     * Card.HEARTS, Card.DIAMONDS, Card.CLUBS, or Card.JOKER
     */
    public int getSuit() {
       return suit;
    }
-   
+
    /**
     * Returns the value of this card.
     * @return the value, which is one the numbers 1 through 13, inclusive for
@@ -85,7 +85,7 @@ public class Card {
    public int getValue() {
       return value;
    }
-   
+
    /**
     * Returns a String representation of the card's suit.
     * @return one of the strings "Spades", "Hearts", "Diamonds", "Clubs"
@@ -100,11 +100,11 @@ public class Card {
       default:       return "Joker";
       }
    }
-   
+
    /**
     * Returns a String representation of the card's value.
     * @return for a regular card, one of the strings "Ace", "2",
-    * "3", ..., "10", "Jack", "Queen", or "King".  For a Joker, the 
+    * "3", ..., "10", "Jack", "Queen", or "King".  For a Joker, the
     * string is always numerical.
     */
    public String getValueAsString() {
@@ -128,7 +128,7 @@ public class Card {
          }
       }
    }
-   
+
    /**
     * Returns a string representation of this card, including both
     * its suit and its value (except that for a Joker with value 1,
@@ -146,6 +146,6 @@ public class Card {
       else
          return getValueAsString() + " of " + getSuitAsString();
    }
-   
+
 
 } // end class Card

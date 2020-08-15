@@ -12,9 +12,9 @@ public class CopyFile {
 
    public static void main(String[] args) {
 
-      String sourceName;   // Name of the source file, 
+      String sourceName;   // Name of the source file,
                            //    as specified on the command line.
-      String copyName;     // Name of the copy, 
+      String copyName;     // Name of the copy,
                            //    as specified on the command line.
       InputStream source;  // Stream for reading from the source file.
       OutputStream copy;   // Stream for writing the copy.
@@ -22,9 +22,9 @@ public class CopyFile {
                       //    is specified on the command line.
       int byteCount;  // Number of bytes copied from the source file.
 
-      /* Get file names from the command line and check for the 
+      /* Get file names from the command line and check for the
             presence of the -f option.  If the command line is not one
-            of the two possible legal forms, print an error message and 
+            of the two possible legal forms, print an error message and
             end this program. */
 
       if (args.length == 3 && args[0].equalsIgnoreCase("-f")) {
@@ -62,7 +62,7 @@ public class CopyFile {
       if (file.exists() && force == false) {
          System.out.println(
                "Output file exists.  Use the -f option to replace it.");
-         return;  
+         return;
       }
 
       /* Create the output stream.  If an error occurs, end the program. */
@@ -76,9 +76,9 @@ public class CopyFile {
       }
 
       /* Copy one byte at a time from the input stream to the output
-            stream, ending when the read() method returns -1 (which is 
-            the signal that the end of the stream has been reached).  If any 
-            error occurs, print an error message.  Also print a message if 
+            stream, ending when the read() method returns -1 (which is
+            the signal that the end of the stream has been reached).  If any
+            error occurs, print an error message.  Also print a message if
             the file has been copied successfully.  */
 
       byteCount = 0;

@@ -1,5 +1,5 @@
 /*
- * Esta función reserva punteros dobles (punteros a punteros) 
+ * Esta función reserva punteros dobles (punteros a punteros)
  */
 // Inclusions list
 #include <stdio.h>
@@ -14,13 +14,13 @@ int main()
 {
  // variables
  char **c;
- 
+
  c = (char**)malloc(sizeof(char*));
- 
+
  *c = (char*)malloc(strlen("ya es hora")*sizeof(char));
- 
+
  strcpy(*c,"ya es hora");
- 
+
  // body
 
 

@@ -5,8 +5,8 @@
  * point is to see that the threads finish in an indeterminate order.
  */
 public class ThreadTest1 {
-   
-   
+
+
    /**
     * When a thread belonging to this class is run it will count the
     * number of primes between 2 and 1000000.  It will print the result
@@ -22,12 +22,12 @@ public class ThreadTest1 {
          long startTime = System.currentTimeMillis();
          int count = countPrimes(2,1000000);
          long elapsedTime = System.currentTimeMillis() - startTime;
-         System.out.println("Thread " + id + " counted " + 
+         System.out.println("Thread " + id + " counted " +
                count + " primes in " + (elapsedTime/1000.0) + " seconds.");
       }
    }
-   
-   
+
+
    /**
     * Start several CountPrimesThreads.  The number of threads, between 1 and 25,
     * is specified by the user.
@@ -48,8 +48,8 @@ public class ThreadTest1 {
          worker[i].start();
       System.out.println("Threads have been created and started.");
    }
-   
-   
+
+
    /**
     * Compute and return the number of prime numbers in the range
     * min to max, inclusive.
@@ -61,10 +61,10 @@ public class ThreadTest1 {
             count++;
       return count;
    }
-   
-   
+
+
    /**
-    * Test whether x is a prime number.  
+    * Test whether x is a prime number.
     * x is assumed to be greater than 1.
     */
    private static boolean isPrime(int x) {

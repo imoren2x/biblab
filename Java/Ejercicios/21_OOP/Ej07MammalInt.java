@@ -7,7 +7,7 @@ public class MammalInt implements Animal{
 
    public void travel(){
       System.out.println("Mammal travels");
-   } 
+   }
 
    public int noOfLegs(){
       return 0;
@@ -18,4 +18,4 @@ public class MammalInt implements Animal{
       m.eat();
       m.travel();
    }
-} 
+}

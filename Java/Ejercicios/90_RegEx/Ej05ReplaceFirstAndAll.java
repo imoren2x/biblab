@@ -10,8 +10,8 @@ public class Ej05ReplaceFirstAndAll {
     public static void main(String[] args) {
        Pattern p = Pattern.compile(REGEX);
        // get a matcher object
-       Matcher m = p.matcher(INPUT); 
-	   
+       Matcher m = p.matcher(INPUT);
+
 	   //
 	   System.out.println(" ");
 	   System.out.println("Original string: " + INPUT);
@@ -19,7 +19,7 @@ public class Ej05ReplaceFirstAndAll {
        INPUT = m.replaceFirst(REPLACE);
 	   System.out.println("INPUT = m.replaceFirst(REPLACE);");
        System.out.println("OUTPUT = " + INPUT);
-	   
+
 	   //Replace All
        INPUT = m.replaceAll(REPLACE);
 	   System.out.println("INPUT = m.replaceAll(REPLACE);");

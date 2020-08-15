@@ -3,11 +3,11 @@
  * The applet URLExampleApplet demonstrates how to read data from
  * a url over the Internet using classes from the packages java.net
  * and java.io.  If the data from the url is of type text, then
- * the data is displayed. 
+ * the data is displayed.
  * The user can specify the url to load by typing the url
  * into an input box.  An initial URL to load can also be specified
  * in an applet parameter with the name "URL".
- * 
+ *
  * (Note that this program uses a thread, although threads are not
  * covered until after this example has been given.)
  */
@@ -34,58 +34,58 @@ public class ReadURLApplet extends JApplet  implements Runnable, ActionListener 
 
 
    /**
-    * Lays out the applet when it is first created. If there is an applet parameter 
+    * Lays out the applet when it is first created. If there is an applet parameter
     * named "URL", then that parameter is read and loaded into the input box.
     * the user can then load the url by clicking on load.
     */
-   public void init() { 
-   
+   public void init() {
+
       JPanel content = new JPanel();
       setContentPane(content);
-      
+
       content.setBackground(Color.GRAY);
-   
+
       textDisplay = new JTextArea();
       textDisplay.setEditable(false);
-   
+
       loadButton = new JButton("Load");
       loadButton.addActionListener(this);
-   
+
       String url = getParameter("URL");
-      if (url == null) 
+      if (url == null)
          inputBox = new JTextField();
       else
          inputBox = new JTextField(url);
       inputBox.addActionListener(this);
-   
+
       JPanel bottom = new JPanel();
       bottom.setBackground(Color.GRAY);
       bottom.setLayout(new BorderLayout(3,3));
       bottom.add(inputBox, BorderLayout.CENTER);
       bottom.add(loadButton, BorderLayout.EAST);
       bottom.add(new JLabel("Enter URL:"), BorderLayout.WEST);
-   
+
       content.setLayout(new BorderLayout(3,3));
       content.add(new JScrollPane(textDisplay), BorderLayout.CENTER);
       content.add(bottom, BorderLayout.SOUTH);
-      
+
       content.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
-   
+
       inputBox.requestFocus();
-   
+
    }
 
 
 
    /**
     * This method is called by actionPerformed() to load a url.
-    * The interface elements are "turned off" so they can't be used while the 
-    * url is loading.  Then a separate thread is started to do the loading.  
-    * The interface elements will be turned back on when that thread finishes 
+    * The interface elements are "turned off" so they can't be used while the
+    * url is loading.  Then a separate thread is started to do the loading.
+    * The interface elements will be turned back on when that thread finishes
     * its execution.
-    * <p>NOTE:  I use a thread to do the loading so that the loading can take 
-    * place asynchronously, while other things are going on in the applet.  
-    * (For this simple example, there really isn't anything else to do, but 
+    * <p>NOTE:  I use a thread to do the loading so that the loading can take
+    * place asynchronously, while other things are going on in the applet.
+    * (For this simple example, there really isn't anything else to do, but
     * the technique is useful to know.  Furthermore, it can take some time
     * to load the data -- or to discover an error -- and it's not a good idea
     * to block the graphical user interface completely while waiting.)
@@ -116,9 +116,9 @@ public class ReadURLApplet extends JApplet  implements Runnable, ActionListener 
 
 
    /**
-    * Loads the data in the url specified by an instance variable named 
-    * urlName.  The data is displayed in a TextArea named textDisplay.  
-    * Exception handling is used to detect and respond to errors that might 
+    * Loads the data in the url specified by an instance variable named
+    * urlName.  The data is displayed in a TextArea named textDisplay.
+    * Exception handling is used to detect and respond to errors that might
     * occur.  This method is run in a separate thread to avoid blocking the
     * graphical user interface.
     */
@@ -166,10 +166,10 @@ public class ReadURLApplet extends JApplet  implements Runnable, ActionListener 
          }
          in.close();
 
-         /* Finally, put the text that has been received into the 
+         /* Finally, put the text that has been received into the
                text area. */
 
-         textDisplay.setText(chars.toString()); 
+         textDisplay.setText(chars.toString());
 
       }
       catch (MalformedURLException e) {
@@ -177,17 +177,17 @@ public class ReadURLApplet extends JApplet  implements Runnable, ActionListener 
          textDisplay.setText(
              "\nERROR!  Improper syntax given for the URL to be loaded.");
       }
-      catch (SecurityException e) {  
+      catch (SecurityException e) {
             // Can be thrown when the connection is created.
          textDisplay.setText("\nSECURITY ERROR!  Can't access that URL.");
       }
-      catch (IOException e) {  
+      catch (IOException e) {
             // Can be thrown while data is being read.
          textDisplay.setText(
                "\nINPUT ERROR! Problem reading data from that URL:\n"
                + e.toString());
       }
-      finally {  
+      finally {
             // This part is done, no matter what, before the thread ends.
             // Set up the user interface of the applet so the user can
             // enter another URL.
@@ -198,7 +198,7 @@ public class ReadURLApplet extends JApplet  implements Runnable, ActionListener 
       }
 
    } // end of run() method
-   
-   
+
+
 } // end class ReadURLApplet
 

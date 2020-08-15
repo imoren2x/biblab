@@ -34,8 +34,8 @@ namespace OperatorOvlApplication {
         // Operator overload ==
         public static bool operator == (Box lhs, Box rhs) {
             bool status = false;
-            if (lhs.length == rhs.length) && 
-               (lhs.height == rhs.height) && 
+            if (lhs.length == rhs.length) &&
+               (lhs.height == rhs.height) &&
                (lhs.breadth == rhs.breadth) {
                 status = true;
             }
@@ -57,8 +57,8 @@ namespace OperatorOvlApplication {
         // Operator overload <
         public static bool operator <(Box lhs, Box rhs) {
             bool status = false;
-            if (lhs.length < rhs.length) && 
-               (lhs.height < rhs.height) && 
+            if (lhs.length < rhs.length) &&
+               (lhs.height < rhs.height) &&
                (lhs.breadth < rhs.breadth) {
                 status = true;
             }
@@ -68,8 +68,8 @@ namespace OperatorOvlApplication {
         // Operator overload <
         public static bool operator >(Box lhs, Box rhs) {
             bool status = false;
-            if (lhs.length > rhs.length) && 
-               (lhs.height > rhs.height) && 
+            if (lhs.length > rhs.length) &&
+               (lhs.height > rhs.height) &&
                (lhs.breadth > rhs.breadth) {
                 status = true;
             }
@@ -79,8 +79,8 @@ namespace OperatorOvlApplication {
         // Operator overload <=
         public static bool operator <=(Box lhs, Box rhs) {
             bool status = false;
-            if (lhs.length <= rhs.length) && 
-               (lhs.height <= rhs.height) && 
+            if (lhs.length <= rhs.length) &&
+               (lhs.height <= rhs.height) &&
                (lhs.breadth <= rhs.breadth) {
                 status = true;
             }
@@ -91,7 +91,7 @@ namespace OperatorOvlApplication {
         public static bool operator >=(Box lhs, Box rhs) {
             bool status = false;
             if (lhs.length >= rhs.length) &&
-               (lhs.height >= rhs.height) && 
+               (lhs.height >= rhs.height) &&
                (lhs.breadth >= rhs.breadth) {
                 status = true;
             }

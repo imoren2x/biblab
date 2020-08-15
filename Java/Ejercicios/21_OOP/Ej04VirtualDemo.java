@@ -1,5 +1,5 @@
 /**
- * File name : Employee.java 
+ * File name : Employee.java
  */
 class Employee {
    private String name;
@@ -40,7 +40,7 @@ class Employee {
 }
 
 /**
- * File name : Salary.java 
+ * File name : Salary.java
  */
 class Salary extends Employee {
    private double salary; //Annual salary
@@ -72,7 +72,7 @@ class Salary extends Employee {
 }
 
 /**
- * File name : VirtualDemo.java 
+ * File name : VirtualDemo.java
  */
 public class Ej04VirtualDemo {
    public static void main(String [] args) {

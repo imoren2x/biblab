@@ -11,7 +11,7 @@ $y = 7;
 if ($x == 7) {
 	print '$x is equal to 7!';
 	print "\n";
-} 
+}
 if (($x == 7) || ($y == 7)) {
 	print '$x or $y is equal to 7!';
 	print "\n";

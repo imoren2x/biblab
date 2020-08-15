@@ -1,6 +1,6 @@
 PERL
 ----
- 1 Tipos (constantes, variables, colecciones), 
+ 1 Tipos (constantes, variables, colecciones),
    Operadores (arithmetic, relational, logic, bitwise)
  2 Flow control, functions, recursivity, comments, arg, i/o, files, modules, environment
  3 OOP
@@ -43,44 +43,44 @@ Command-line options:
 	-X				Disable all warnings
 	-e program		run Perl script sent in as program
 	file			run Perl script from a given file
-	
+
 Comments
 	# This is a comment in perl
-	
+
 	#!/usr/bin/perl
-	
+
 	# This is a single line comment
 	print "Hello, world\n";
 
 	=begin comment
 	This is all part of multiline comment.
 	You can use as many lines as you like
-	These comments will be ignored by the 
+	These comments will be ignored by the
 	compiler until the next =cut is encountered.
 	=cut
 
 Single & Double quotes
-	Only double quotes interpolate variables and special 
-	characters such as newlines \n where as single quote 
+	Only double quotes interpolate variables and special
+	characters such as newlines \n where as single quote
 	does not interpolate any variable or special character.
 
 "Here" Documents
 	You can store or print multiline text with a great comfort.
 	NO space between the << and the identifier.
-	
+
 	#!/usr/bin/perl
 
 	$a = 10;
 	$var = <<"EOF";
 	This is the syntax for here document and it will continue
 	until it encounters a EOF in the first line.
-	This is case of double quote so variable value will be 
+	This is case of double quote so variable value will be
 	interpolated. For example value of a = $a
 	EOF
 	print "$var\n";
 
 	$var = <<'EOF';
-	This is case of single quote so variable value will not be 
+	This is case of single quote so variable value will not be
 	interpolated. For example value of a = $a
 	EOF
 	print "$var\n";
@@ -125,14 +125,14 @@ String Literals
 
 Creating variables
 	$age = 25;             # An integer assignment
-	$name = "John Paul";   # A string 
+	$name = "John Paul";   # A string
 	$salary = 1445.50;     # A floating point
 
 Variable Context
 
- 1 Scalar: 
+ 1 Scalar:
 	Assignment to a scalar variable evaluates the right-hand side in a scalar context.
- 2 List: 
+ 2 List:
 	Assignment to an array or a hash evaluates the right-hand side in a list context.
  3 Boolean:
 	Boolean context is simply any place where an expression is being evaluated to see whether it's true or false

@@ -1,10 +1,10 @@
 /**
   * Tipo String:
   * ------------
-  * Programa que emplea los métodos 
-  *  - equals, 
-  *  - equalsIgnoreCase, 
-  *  - compareTo 
+  * Programa que emplea los métodos
+  *  - equals,
+  *  - equalsIgnoreCase,
+  *  - compareTo
   *  - y regionMatches de String.
   */
 
@@ -19,7 +19,7 @@ public class Ej10StringComparar {
       String s3 = "Feliz Cumpleaños";
       String s4 = "feliz cumpleaños";
 
-      String salida = " s1 = " + s1 + "\n s2 = " + s2 + "\n s3 = " + s3 + 
+      String salida = " s1 = " + s1 + "\n s2 = " + s2 + "\n s3 = " + s3 +
          "\n s4 = " + s4 + "\n\n";
 
       // probar igualdad
@@ -27,7 +27,7 @@ public class Ej10StringComparar {
       if ( s1.equals( "hola" ) )  // true
          salida += "s1 es igual a \"hola\"\n";
       else
-         salida += "s1 es distinta de \"hola\"\n"; 
+         salida += "s1 es distinta de \"hola\"\n";
 
       // probar igualdad con ==
 	  salida += "Prueba de igualdad con ==\n";

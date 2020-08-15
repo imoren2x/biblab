@@ -21,7 +21,7 @@ asn_constr_check_f UTF8String_constraint;
 /*
  * Returns length of the given UTF-8 string in characters,
  * or a negative error code:
- * -1:	UTF-8 sequence truncated 
+ * -1:	UTF-8 sequence truncated
  * -2:	Illegal UTF-8 sequence start
  * -3:	Continuation expectation failed
  * -4:	Not minimal length encoding
@@ -34,7 +34,7 @@ ssize_t UTF8String_length(const UTF8String_t *st);
  * Returns the number of characters necessary.
  * Returned value might be greater than dstlen.
  * In case of conversion error, 0 is returned.
- * 
+ *
  * If st points to a valid UTF-8 string, calling
  * 	UTF8String_to_wcs(st, 0, 0);
  * is equivalent to

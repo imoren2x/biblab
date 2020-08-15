@@ -36,7 +36,7 @@ FileStream F = new FileStream("sample.txt", FileMode.Open, FileAccess.Read, File
     Parameter FileAccess
     FileAccess enumerators have members: Read, ReadWrite and Write.
 
-    Parameter FileShare	
+    Parameter FileShare
     FileShare enumerators have the following members:
 
     Parameter Inheritable: It allows a file handle to pass inheritance to the child processes

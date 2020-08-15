@@ -14,7 +14,7 @@
 # >=,ge		7 >= 11
 			# 7 ge 11	Test: Is 7 greater than or equal to 11?	False
 
-# Logical Operator	
+# Logical Operator
 # Defined	Example
 # &&,and	Associates two variables using AND	if (($x && $y) == 5)...
 # ||,or	Associates two variables using OR	if (($x || $y) == 5)...

@@ -7,23 +7,23 @@ import java.util.Scanner;
  * It is to be used with CLMandelbrotTask.java on the worker computer.
  * CLMandelbortWorker should be run as a command-line program on each
  * worker computer involved in the distributed computation.  When it is
- * running, it listens for a connection from the master computer.  The 
- * listening port number can be specified on the command line; if none is 
+ * running, it listens for a connection from the master computer.  The
+ * listening port number can be specified on the command line; if none is
  * specified, a default port number is used.  It is possible to run several
  * copies of this program on the same computer, as long as they listen
  * on different ports.
- * 
+ *
  * After receiving a connection request from the master program, this
  * program expects to receive a sequence of tasks (of type CLMandelbrotTask)
  * from the master program.  It computes each task that it receives and
  * sends the results back to the master.  The process ends when this
  * program receives a CLOSE_CONNECTION_COMMAND from the master program.
  * It then goes back to listening for another connection.  (The connection
- * can also be terminated by a SHUT_DOWN_COMMAND.  When this command is 
- * received, this program shuts down.  However, this feature is not currently 
+ * can also be terminated by a SHUT_DOWN_COMMAND.  When this command is
+ * received, this program shuts down.  However, this feature is not currently
  * used.  Since graceful shutdown is not implemented, you can stop the
  * worker program using CONTROL-C.)
- * 
+ *
  * Note that data sent over the network is encoded as text.  The first
  * word on a line of text identifies the type of data.
  */
@@ -33,7 +33,7 @@ public class CLMandelbrotWorker {
     * Default listening port, if none is specified on the command line.
     */
    private static final int DEFAULT_PORT = 13572;
-   
+
    /**
     * The first and only word on a message representing a close command.
     */
@@ -47,7 +47,7 @@ public class CLMandelbrotWorker {
 
    /**
     * The first word on a message representing a CLMandelbrotTask.  This
-    * is followed by the incoming data (id, maxIterations, y, xmin, dx, and 
+    * is followed by the incoming data (id, maxIterations, y, xmin, dx, and
     * count) for the task. Items on the line are separated by spaces.
     */
    private static final String TASK_COMMAND = "task";
@@ -62,7 +62,7 @@ public class CLMandelbrotWorker {
 
    private static boolean shutdownCommandReceived;
 
-   
+
    /**
     * The main program listens for connections from the master program
     * and does all the communication over the connection.  Note that this
@@ -70,7 +70,7 @@ public class CLMandelbrotWorker {
     * the main program runs).
     */
    public static void main(String[] args) {
-      
+
       /* Get the port number from the command line, if present. */
 
       int port = DEFAULT_PORT;
@@ -89,7 +89,7 @@ public class CLMandelbrotWorker {
       System.out.println("Starting with listening port number " + port);
 
       while (shutdownCommandReceived == false) {
-         
+
          /* Listen for a connection request from the master program. */
 
          ServerSocket listener = null;
@@ -100,12 +100,12 @@ public class CLMandelbrotWorker {
             System.out.println("ERROR: Can't create listening socket on port " + port);
             System.exit(1);
          }
-         
+
          /* Process the connection.   Note that the listener socket is closed as
             long as the connection remains open, since this program can only
             deal with one connection at a time.  A new listener is created
             after the connection closes. */
-         
+
          try {
             Socket connection = listener.accept();
             listener.close();
@@ -122,8 +122,8 @@ public class CLMandelbrotWorker {
       System.out.println("Shutting down normally.");
 
    } // end main()
-   
-   
+
+
    /**
     * Decode a message that was received from the server and that represents
     * a CLMandelbrotTask.
@@ -149,7 +149,7 @@ public class CLMandelbrotWorker {
          throw new IOException("Illegal data found while reading task information.");
       }
    }
-   
+
    /**
     * Encode the result of a task into String form, so that it can be sent
     * as a message back to the master program.
@@ -169,8 +169,8 @@ public class CLMandelbrotWorker {
       }
       return buffer.toString();
    }
-   
-   
+
+
    /**
     * Handle communication over a connection to the master program.  Accept and
     * process CLMandelbrotTasks until a close or shutdown message is received

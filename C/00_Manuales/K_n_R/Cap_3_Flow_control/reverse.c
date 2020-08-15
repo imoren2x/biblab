@@ -10,25 +10,25 @@ void reverse_string(char *s);
 int main()
 {
     char *s = (char*)calloc(MAX,sizeof(char));
-    char *s2 = (char*)calloc(MAX,sizeof(char));    
-    
+    char *s2 = (char*)calloc(MAX,sizeof(char));
+
     printf("Write the string you want to reverse:\n >>");
     //scanf("%s",s);
 	gets(s);
-    
+
     reverse_string(s);
-    
+
     printf("\n%s\n\n",s);
-    
+
     system("pause");
- return 0;   
+ return 0;
 }
 
 void reverse_string(char *s)
 {
      char c;
      int i, j;
-     
+
      for (i = 0, j = strlen(s) - 1; i < j; i++, j--)
      {
          c = s[i];

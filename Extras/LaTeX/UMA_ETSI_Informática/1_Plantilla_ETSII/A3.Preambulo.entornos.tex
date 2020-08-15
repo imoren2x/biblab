@@ -19,7 +19,7 @@
 % Para conocer los parámetros de diseño de las listas, tales como
 %  los márgenes izquierdo, derechos y los diferentes saltos,
 %  véase el archivo ``List layout.png'' que acompaña esta plantilla.
-% Así se conocerá mejor cómo adaptar un entorno según los requisitos 
+% Así se conocerá mejor cómo adaptar un entorno según los requisitos
 %  del usuario.
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -44,7 +44,7 @@
 		{}
 		{
 		% Left and right margins:
-		\leftmargin = #1 
+		\leftmargin = #1
 		\rightmargin = #2
 		%
 		% Separation from preceding and following text:
@@ -61,7 +61,7 @@
 		\labelsep = 1ex
 		\settowidth{\labelwidth}{0cm}
 		}
-		
+
 		 \item}
 	% End new env
 	{\end{list}}
@@ -112,7 +112,7 @@
 % commando stdformat para formatear los entornos descript, enu y itemization.
 \newcommand{\stdformat}
 	{% Declarations for format presentation.
-		%		  
+		%
 		% Separation from preceding and following text:
 		\setlength{\topsep}{0ex}%
 		\setlength{\partopsep}{0ex} %
@@ -121,18 +121,18 @@
 		\labelsep = 1ex
 		\setlength{\labelwidth}{0ex}
 		%
-		%	Left and right margins:	
+		%	Left and right margins:
 		\setlength{\leftmargin}{1cm}%
 		\addtolength{\leftmargin}{\labelsep}
 		\setlength{\rightmargin}{0ex}
-		%  
+		%
 		% Indentation for paragraphs:
 		\setlength{\itemindent}{-\leftmargin}%
 		\addtolength{\itemindent}{1ex}
 		\setlength{\listparindent}{\parindent}%
-		%		
+		%
 		% Separation between paragraphs.
-		\setlength{\parsep}{\parskipenv}% 
+		\setlength{\parsep}{\parskipenv}%
 		\setlength{\itemsep}{1ex}
 	}
 

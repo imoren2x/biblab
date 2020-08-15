@@ -14,9 +14,9 @@ namespace PolymorphismApplication {
             width = b;
         }
 
-        public override int area () { 
+        public override int area () {
             Console.WriteLine("Rectangle class area :");
-            return (width * length); 
+            return (width * length);
         }
     }
 

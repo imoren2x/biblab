@@ -3,13 +3,13 @@
  * Wait and Notify
  *
  * class Chat: Question and Answer
- * 
+ *
  * class T1
  *
  * class T2
- * 
+ *
  * ThTestThreadWaitNotify
- * 
+ *
  */
 
 class Chat {

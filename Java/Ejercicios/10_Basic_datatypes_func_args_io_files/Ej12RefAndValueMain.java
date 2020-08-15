@@ -3,7 +3,7 @@
  *  pero por valor al objeto, de manera que
  *  los metodos son accesibles.
  *
- * Las clases apuntan cuando son asignadas, 
+ * Las clases apuntan cuando son asignadas,
  *  no son clones.
  *
  */
@@ -11,7 +11,7 @@
 public class Ej12RefAndValueMain {
 
 	Ej12RefAndValueRep auxClassAttr;
-	
+
 	/**
 	 * @param args
 	 */
@@ -27,7 +27,7 @@ public class Ej12RefAndValueMain {
 		//No se puede llamar a un metodo no estatico desde un metodo estatico//
 		//Cosas de Compilation time y RunTime//
 		//method2();
-		
+
 		//Entrada//
 		System.out.println(" ");
 		System.out.println("Clase, entrada: ");
@@ -50,8 +50,8 @@ public class Ej12RefAndValueMain {
 		method2(auxClassInMain);
 		auxClassInMain.getStr();
 		System.out.println("CONCLUSION 1: El paso de parametros es por valor, no por referencia.");
-		System.out.println(" ");		
-		
+		System.out.println(" ");
+
 		//Referencia entre clases al asignarlas//
 		System.out.println("Parte 2");
 		System.out.println("auxClassInMain.getStr():");
@@ -78,7 +78,7 @@ public class Ej12RefAndValueMain {
 		auxClassPtr1.getStr();
 		System.out.println("CONCLUSION 2: Las clases apuntan cuando son asignadas, no son clones en memoria.");
 		System.out.println(" ");
-		
+
 		System.out.println("");
 		System.out.println("auxClassPtr2 = auxClassInMain;");
 		auxClassPtr2 = auxClassInMain;//Memory leaks??
@@ -91,16 +91,16 @@ public class Ej12RefAndValueMain {
 		System.out.println("auxClassPtr2.getStr();");
 		auxClassPtr2.getStr();
 		System.out.println("auxClassPtr1.getStr();");
-		auxClassPtr1.getStr();		
+		auxClassPtr1.getStr();
 		System.out.println("auxClassMain.getStr();");
 		auxClassInMain.getStr();
 		System.out.println("CONCLUSION 3: Las clases apuntan cuando son asignadas, no son clones en memoria.");
 		System.out.println(" ");
 	}
-	
+
 
 	/**
-	 * {@literal Este metodo tiene que ser static para poder usarlo en el metodo static main} 
+	 * {@literal Este metodo tiene que ser static para poder usarlo en el metodo static main}
 	 * @param i
 	 * @param str
 	 * @param bool
@@ -112,12 +112,12 @@ public class Ej12RefAndValueMain {
 		bool = !bool;
 		Ej12RefAndValueRep aux = new Ej12RefAndValueRep();
 		aux.setStr("Modification del str hecho por el method1.");
-		
+
 		auxClass = aux;
 		//auxClass.setStr("Modification del str hecho por el method1.");
-		
+
 	}
-	
+
 	public static void method2(Ej12RefAndValueRep auxClass) {
 		auxClass.setStr("Modification del str hecho por el method2.");
 	}

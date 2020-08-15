@@ -43,13 +43,13 @@ public class Employee {
 
    public String toString(){
       return ("Employee :[ Name : " + name + ", dept : " + dept + ", salary :" + salary+" ]");
-   }   
+   }
 }
 
 //CompositePatternDemo.java
 public class CompositePatternDemo {
    public static void main(String[] args) {
-   
+
       Employee CEO = new Employee("John","CEO", 30000);
 
       Employee headSales = new Employee("Robert","Head Sales", 20000);
@@ -72,15 +72,15 @@ public class CompositePatternDemo {
       headMarketing.add(clerk2);
 
       //print all employees of the organization
-      System.out.println(CEO); 
-      
+      System.out.println(CEO);
+
       for (Employee headEmployee : CEO.getSubordinates()) {
          System.out.println(headEmployee);
-         
+
          for (Employee employee : headEmployee.getSubordinates()) {
             System.out.println(employee);
          }
-      }		
+      }
    }
 }
 

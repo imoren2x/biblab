@@ -56,13 +56,13 @@ public class Context {
 //StrategyPatternDemo.java
 public class StrategyPatternDemo {
    public static void main(String[] args) {
-      Context context = new Context(new OperationAdd());		
+      Context context = new Context(new OperationAdd());
       System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
 
-      context = new Context(new OperationSubstract());		
+      context = new Context(new OperationSubstract());
       System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
 
-      context = new Context(new OperationMultiply());		
+      context = new Context(new OperationMultiply());
       System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
    }
 }

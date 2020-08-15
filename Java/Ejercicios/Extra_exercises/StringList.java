@@ -15,11 +15,11 @@ public class StringList {
 
 
    /**
-    * Internally, the list of strings is represented as a linked list of 
-    * nodes belonging to the nested class Node.  The strings in the list 
-    * are stored in increasing order (using the order given by the 
-    * compareTo() method from the string class, which is the same as 
-    * alphabetical order if all the strings are made up of lower 
+    * Internally, the list of strings is represented as a linked list of
+    * nodes belonging to the nested class Node.  The strings in the list
+    * are stored in increasing order (using the order given by the
+    * compareTo() method from the string class, which is the same as
+    * alphabetical order if all the strings are made up of lower
     * case letters).
     */
    private static class Node {
@@ -46,7 +46,7 @@ public class StringList {
       Node runner;    // A pointer for traversing the list.
 
       runner = head;  // Start by looking at the head of the list.
-      
+
       while ( runner != null ) {
             // Go through the list looking at the string in each
             // node.  If the string is the one we are looking for,
@@ -88,7 +88,7 @@ public class StringList {
          return true;
       }
       else {
-             // The string, if it occurs at all, is somewhere beyond the 
+             // The string, if it occurs at all, is somewhere beyond the
              // first element of the list.  Search the list.
          Node runner;     // A node for traversing the list.
          Node previous;   // Always points to the node preceding runner.
@@ -97,7 +97,7 @@ public class StringList {
          while ( runner != null && runner.item.compareTo(deleteItem) < 0 ) {
                 // Move previous and runner along the list until runner
                 // falls off the end or hits a list element that is
-                // greater than or equal to deleteItem.  When this 
+                // greater than or equal to deleteItem.  When this
                 // loop ends, runner indicates the position where
                 // deleteItem must be, if it is in the list.
             previous = runner;
@@ -149,7 +149,7 @@ public class StringList {
          while ( runner != null && runner.item.compareTo(insertItem) < 0 ) {
                 // Move previous and runner along the list until runner
                 // falls off the end or hits a list element that is
-                // greater than or equal to insertItem.  When this 
+                // greater than or equal to insertItem.  When this
                 // loop ends, previous indicates the position where
                 // insertItem must be inserted.
             previous = runner;

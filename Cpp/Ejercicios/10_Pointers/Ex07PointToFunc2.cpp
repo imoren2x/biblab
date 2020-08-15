@@ -23,7 +23,7 @@ int Muestra4();
 int main(  ) {
 	//Pointer to function: definition//
 	int (*pf1)();
-	
+
 	// Puntero a función sin argumentos que devuelve un int.
 	int num;
 
@@ -54,7 +54,7 @@ int main(  ) {
 			pf1();
 			}
 	} while(num != 0);
-	
+
 	return 0;
 }
 

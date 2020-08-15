@@ -34,9 +34,9 @@ public class ShowMyNetwork {
          System.out.println("No network interfaces found.");
          return;
       }
-      
+
       System.out.println("Network interfaces found on this computer:");
-      
+
       while (netInterfaces.hasMoreElements()) {
          NetworkInterface net = (NetworkInterface)netInterfaces.nextElement();
          String name = net.getName();
@@ -48,10 +48,10 @@ public class ShowMyNetwork {
          }
          System.out.println();
       }
-      
+
       System.out.println();
-      
+
    } // end main()
-   
+
 
 }

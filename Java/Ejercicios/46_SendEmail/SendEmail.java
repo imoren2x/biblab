@@ -8,7 +8,7 @@ import javax.activation.*;
 public class SendEmail
 {
    public static void main(String [] args)
-   {    
+   {
       // Recipient's email ID needs to be mentioned.
       String to = "abcd@gmail.com";
 

@@ -10,27 +10,27 @@ public class ListDemo {
 
 
    public static void main(String[] args) {
-      
+
       StringList list;    // The list of strings.
-      
+
       String usersItem;   // An item typed in by the user.
-      
+
       String[] elements;  // The elements in the list, obtained by
                           //    calling list.getElements().  This
                           //    is used to display the list contents
                           //    to the user.
-      
+
       boolean done;       // This will be set to true then the user
                           //   wants to exit from the program.
-      
+
       done = false;
-      
+
       list = new StringList();  // Start with an empty list.
-      
+
       while (done == false) {
-      
+
          // Get and display the elements that are currently in the list.
-      
+
          elements = list.getElements();
          if (elements.length == 0)
             TextIO.putln("\n\nThere are no elements in the list.");
@@ -39,10 +39,10 @@ public class ListDemo {
             for (int i = 0; i < elements.length; i++)
                TextIO.putln("   " + elements[i]);
          }
-      
+
          // Display a menu of available operations, and get the
          // user's choice.
-      
+
          TextIO.putln("\n\nChoose an operation on the list:");
          TextIO.putln("    1.  Add an item.");
          TextIO.putln("    2.  Delete an item.");
@@ -50,11 +50,11 @@ public class ListDemo {
          TextIO.putln("    4.  Exit from this program.");
          TextIO.put("Enter the number of your choice:  ");
          int menuChoice = TextIO.getlnInt();
-         
+
          // Carry out the operation selected by the user.  For
          // items 1 to 3, get a string from the user and call
          // the appropriate method from the list.
-         
+
          switch (menuChoice) {
             case 1:  // Insert an item.
                TextIO.put("\nEnter the item to be added:  ");
@@ -85,14 +85,14 @@ public class ListDemo {
                TextIO.putln("Illegal choice.");
                break;
          } // end switch
-         
-      
+
+
       } // end while
-      
+
       TextIO.putln("\n\nExiting program.");
-   
+
    } // end main()
-   
-   
+
+
 }  // end class ListDemo
 

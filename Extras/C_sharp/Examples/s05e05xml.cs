@@ -8,13 +8,13 @@
   - attributes
   - inner text
   - outer text
- 
+
  XML-Node inherits to XMLElement inherits to DocumentElement
  */
 
 /**
  XmlDocument xmlDoc = new XmlDocument();
- 
+
  <users>
  <user>
  Ignacio

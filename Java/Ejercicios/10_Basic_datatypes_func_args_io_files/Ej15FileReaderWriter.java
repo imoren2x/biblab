@@ -24,23 +24,23 @@ public class Ej15FileReaderWriter {
 					//System.out.println("\n Iteration: " + iteration + "\n");
 					//iteration++;
 					returncode = reader.read(readString, 0, CHARSIZE);
-					//System.out.println( readString.toString() );	
+					//System.out.println( readString.toString() );
 					//System.out.println( Arrays.toString(readString) );
 					System.out.print( String.valueOf(readString) );
 					readString = new char[CHARSIZE];
 				}//endwhile//
 				/**/
 				/*
-				// To store the contents read via File Reader  
-				BufferedReader br = new BufferedReader(reader);                                                   
-				// Read br and store a line in 'data', print data  
-				String data;  
-				while((data = br.readLine()) != null) {  
+				// To store the contents read via File Reader
+				BufferedReader br = new BufferedReader(reader);
+				// Read br and store a line in 'data', print data
+				String data;
+				while((data = br.readLine()) != null) {
 					//data = br.readLine( );
 					System.out.println(data);
 				}
 				*/
-			} catch(IOException e) {  
+			} catch(IOException e) {
 				System.out.println("bad !");
 				e.printStackTrace();
 			}

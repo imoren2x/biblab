@@ -32,9 +32,9 @@ public class TowersOfHanoi {
 
    /**
     * Solve the problem of moving the number of disks specified
-    * by the first parameter from the stack specified by the 
-    * second parameter to the stack specified by the third 
-    * parameter.  The stack specified by the fourth parameter 
+    * by the first parameter from the stack specified by the
+    * second parameter to the stack specified by the third
+    * parameter.  The stack specified by the fourth parameter
     * is available for use as a spare.  Stacks are specified by
     * number: 0, 1, or 2.
     */

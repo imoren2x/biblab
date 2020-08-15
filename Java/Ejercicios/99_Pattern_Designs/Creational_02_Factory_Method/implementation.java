@@ -1,28 +1,28 @@
 public interface Product {  }
 
-public abstract class Creator 
+public abstract class Creator
 {
-	public void anOperation() 
+	public void anOperation()
 	{
 		Product product = factoryMethod();
 	}
-	
+
 	protected abstract Product factoryMethod();
 }
 
 public class ConcreteProduct implements Product {  }
 
-public class ConcreteCreator extends Creator 
+public class ConcreteCreator extends Creator
 {
-	protected Product factoryMethod() 
+	protected Product factoryMethod()
 	{
 		return new ConcreteProduct();
 	}
 }
 
-public class Client 
+public class Client
 {
-	public static void main( String arg[] ) 
+	public static void main( String arg[] )
 	{
 		Creator creator = new ConcreteCreator();
 		creator.anOperation();

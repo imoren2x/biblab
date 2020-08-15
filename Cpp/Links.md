@@ -128,7 +128,7 @@ Channels
 
 * [Polimorfismo](https://www.zator.com/Cpp/E4_11_8.htm)
 
-* https://es.cppreference.com/w/cpp/language/override 
+* https://es.cppreference.com/w/cpp/language/override
 
 Memory leaks
     How to prevent memory leaks

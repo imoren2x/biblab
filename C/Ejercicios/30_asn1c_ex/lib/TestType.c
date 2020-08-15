@@ -14,14 +14,14 @@ memb_str_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
 	const UTF8String_t *st = (const UTF8String_t *)sptr;
 	size_t size;
-	
+
 	if(!sptr) {
 		_ASN_CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
 			td->name, __FILE__, __LINE__);
 		return -1;
 	}
-	
+
 	size = UTF8String_length(st);
 	if((ssize_t)size < 0) {
 		_ASN_CTFAIL(app_key, td, sptr,
@@ -29,7 +29,7 @@ memb_str_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			td->name, __FILE__, __LINE__);
 		return -1;
 	}
-	
+
 	if((size >= 1 && size <= 20)) {
 		/* Constraint check succeeded */
 		return 0;

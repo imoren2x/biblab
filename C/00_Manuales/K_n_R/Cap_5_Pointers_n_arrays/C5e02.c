@@ -20,7 +20,7 @@ int main()
  char c;
  int i1, i2, c1;
  int *px = (int *) malloc(sizeof(int)), *py = (int *) malloc(sizeof(int));
- 
+
  // body
  printf("Escribe un valor entero:\n");
  printf(">> ");
@@ -28,10 +28,10 @@ int main()
  printf("Escribe el otro valor entero:\n");
  printf(">> ");
  scanf("%d",&i2);
- 
+
  printf(" El primer valor es: %d.\n",i1);
  printf(" El segundo valor es: %d.\n",i2);
- 
+
  printf("\n\n");
  printf("Y ahora los intercambio...\n");
  myswap(&i1, &i2);
@@ -40,10 +40,10 @@ int main()
  *py = i2;
  myswap2(px,py);
  printf("\n Con punteros: %d y %d.",*px,*py);
- 
+
  printf(" El primer valor es: %d.\n",i1);
  printf(" El segundo valor es: %d.\n",i2);
- 
+
  printf("\n\n");
  printf("Y ahora sumo una constante a los valores integer\n");
  printf("Escribe el incremento en el primer entero:\n");
@@ -52,8 +52,8 @@ int main()
  i1 += c1;
  printf("\n");
  printf("\nY el resultado es: %d", i1);
- 
- 
+
+
  printf("\n");
  system("pause");
  return 0;
@@ -62,7 +62,7 @@ int main()
 void myswap(int *px, int *py)
 {
  int temp;
- 
+
  temp = *px;
  *px = *py,
  *py = temp;
@@ -71,7 +71,7 @@ void myswap(int *px, int *py)
 void myswap2(int *px, int *py)
 {
  int *temp;
- 
+
  temp = px;
  px = py,
  py = temp;

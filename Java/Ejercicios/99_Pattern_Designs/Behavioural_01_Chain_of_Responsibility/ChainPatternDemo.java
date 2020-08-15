@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * As the name suggests, the chain of responsibility
  *  pattern creates a chain of receiver objects for a request.
  * This pattern decouples sender and receiver of a request
@@ -35,7 +35,7 @@ public abstract class AbstractLogger {
    }
 
    abstract protected void write(String message);
-	
+
 }
 
 //ConsoleLogger.java
@@ -46,7 +46,7 @@ public class ConsoleLogger extends AbstractLogger {
    }
 
    @Override
-   protected void write(String message) {		
+   protected void write(String message) {
       System.out.println("Standard Console::Logger: " + message);
    }
 }
@@ -59,7 +59,7 @@ public class ErrorLogger extends AbstractLogger {
    }
 
    @Override
-   protected void write(String message) {		
+   protected void write(String message) {
       System.out.println("Error Console::Logger: " + message);
    }
 }
@@ -72,14 +72,14 @@ public class FileLogger extends AbstractLogger {
    }
 
    @Override
-   protected void write(String message) {		
+   protected void write(String message) {
       System.out.println("File::Logger: " + message);
    }
 }
 
 //ChainPatternDemo.java
 public class ChainPatternDemo {
-	
+
    private static AbstractLogger getChainOfLoggers(){
 
       AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
@@ -89,19 +89,19 @@ public class ChainPatternDemo {
       errorLogger.setNextLogger(fileLogger);
       fileLogger.setNextLogger(consoleLogger);
 
-      return errorLogger;	
+      return errorLogger;
    }
 
    public static void main(String[] args) {
       AbstractLogger loggerChain = getChainOfLoggers();
 
-      loggerChain.logMessage(AbstractLogger.INFO, 
+      loggerChain.logMessage(AbstractLogger.INFO,
          "This is an information.");
 
-      loggerChain.logMessage(AbstractLogger.DEBUG, 
+      loggerChain.logMessage(AbstractLogger.DEBUG,
          "This is an debug level information.");
 
-      loggerChain.logMessage(AbstractLogger.ERROR, 
+      loggerChain.logMessage(AbstractLogger.ERROR,
          "This is an error information.");
    }
 }

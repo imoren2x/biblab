@@ -3,10 +3,10 @@ void qsort(void* v[], int left, int right, int (*comp)(void*, void*))
 {
 	int i, last;
 	void swap(void* v[], int, int);
-	
+
 	if (left >= right) 	/*no hace nada si el arreglo contiene*/
 	{					/* menos de dos elementos */
-		return; 
+		return;
 	}
 	swap(v, left, (left + right)/2);
 	last = left;
@@ -28,7 +28,7 @@ void qsort(void* v[], int left, int right, int (*comp)(void*, void*))
 int numcmp(char* s1, char* s2)
 {
 	double v1, v2;
-	
+
 	v1 = atof(s1);
 	v2 = atof(s2);
 	if (v1 < v2)
@@ -42,7 +42,7 @@ int numcmp(char* s1, char* s2)
 void swap(void* v[]; int i, int j)
 {
 	void *temp;
-	
+
 	temp = v[i];
 	v[i] = v[j];
 	v[j] = temp;

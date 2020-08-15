@@ -39,7 +39,7 @@ public class Ej06RunEncap{
       encap.setAge(20);
       encap.setIdNum("12343ms");
 
-      System.out.print("Name : " + encap.getName()+ 
+      System.out.print("Name : " + encap.getName()+
                              " Age : "+ encap.getAge());
     }
 }

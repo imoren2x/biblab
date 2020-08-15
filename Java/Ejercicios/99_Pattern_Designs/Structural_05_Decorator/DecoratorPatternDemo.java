@@ -53,19 +53,19 @@ public abstract class ShapeDecorator implements Shape {
 
    public void draw(){
       decoratedShape.draw();
-   }	
+   }
 }
 
 //RedShapeDecorator.java
 public class RedShapeDecorator extends ShapeDecorator {
 
    public RedShapeDecorator(Shape decoratedShape) {
-      super(decoratedShape);		
+      super(decoratedShape);
    }
 
    @Override
    public void draw() {
-      decoratedShape.draw();	       
+      decoratedShape.draw();
       setRedBorder(decoratedShape);
    }
 

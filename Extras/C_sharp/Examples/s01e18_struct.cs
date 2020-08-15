@@ -15,7 +15,7 @@ struct Books {
    public string author;
    public string subject;
    public int book_id;
-};  
+};
 
 public class testStructure {
     public static void Main(string[] args) {
@@ -25,7 +25,7 @@ public class testStructure {
 
         /* book 1 specification */
         Book1.title = "C Programming";
-        Book1.author = "Nuha Ali"; 
+        Book1.author = "Nuha Ali";
         Book1.subject = "C Programming Tutorial";
         Book1.book_id = 6495407;
 
@@ -45,7 +45,7 @@ public class testStructure {
         Console.WriteLine("Book 2 title : {0}", Book2.title);
         Console.WriteLine("Book 2 author : {0}", Book2.author);
         Console.WriteLine("Book 2 subject : {0}", Book2.subject);
-        Console.WriteLine("Book 2 book_id : {0}", Book2.book_id);       
+        Console.WriteLine("Book 2 book_id : {0}", Book2.book_id);
 
         Console.ReadKey();
 

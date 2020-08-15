@@ -20,7 +20,7 @@ class ProductFactory
 	public static void main(String args[]){
 		Factory.instance().registerProduct("ID1", OneProduct.class);
 	}
-	
+
 //2. Registration done inside the product classes:
 
 class OneProduct extends Product

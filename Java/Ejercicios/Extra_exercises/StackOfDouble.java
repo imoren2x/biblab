@@ -1,6 +1,6 @@
 
 /**
- *  An object of type StackOfDouble is a stack of real numbers, with the 
+ *  An object of type StackOfDouble is a stack of real numbers, with the
  *  standard stack operations push(int N), pop(), and isEmpty().
  *  A makeEmpty() operation is also provided to remove all items from the stack.
  *  Internally, the stack is implemented as a linked list.
@@ -16,7 +16,7 @@ public class StackOfDouble {
       Node next;      // Pointer to the node that holds the next item.
    }
 
-   
+
    private Node top;  // Pointer to the Node that is at the top of the stac,
                       //    If top == null, then the stack is empty.
 
@@ -43,15 +43,15 @@ public class StackOfDouble {
       return topItem;
    }
 
-   
+
    /**
     * Returns true if the stack is empty.  Returns false
     * if there are one or more items on the stack.
     */
-   public boolean isEmpty() { 
+   public boolean isEmpty() {
       return top == null;
    }
-   
+
 
 } // end class StackOfDouble
 

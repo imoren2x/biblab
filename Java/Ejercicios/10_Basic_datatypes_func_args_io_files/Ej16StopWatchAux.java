@@ -2,7 +2,7 @@
  * @author imoren2x
  *
  * Methods:
- *  - 
+ *  -
  */
 
 public class Ej16StopWatchAux {
@@ -16,20 +16,20 @@ public class Ej16StopWatchAux {
 	public Ej16StopWatchAux() {
 		super();
 	}
-	
+
 	//Constructor with integer//
 	public Ej16StopWatchAux( int arg ) {
 		super();
-		
+
 		if ( arg == Ej16StopWatchAux.sStartNow ) {
 			start();
 		}
 	}
-	
+
 	//Constructor with boolean//
 	public Ej16StopWatchAux( boolean startNow ) {
 		super();
-		
+
 		if (startNow) {
 			start();
 		}
@@ -107,7 +107,7 @@ public class Ej16StopWatchAux {
 	    }
 	    return elapsed;
 	}
-	
+
 	/*
 	 *     //sample usage
     public static void main(String[] args) {

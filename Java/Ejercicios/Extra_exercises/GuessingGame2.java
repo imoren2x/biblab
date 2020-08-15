@@ -5,16 +5,16 @@
  * wins the game.  If the user makes six incorrect guesses, the user
  * loses the game.   The computer tells the user whether his guess is
  * high or low.  After each game, the computer asks the user whether
- * the user wants to play again.  At the end, the program reports 
+ * the user wants to play again.  At the end, the program reports
  * the number of games that were won by the user.
  */
 public class GuessingGame2 {
- 
+
     static int gamesWon;      // The number of games won by
                               //    the user.
- 
+
     public static void main(String[] args) {
-       gamesWon = 0;  // This is actually redundant, since 0 is 
+       gamesWon = 0;  // This is actually redundant, since 0 is
                       //                  the default initial value.
        TextIO.putln("Let's play a game.  I'll pick a number between");
        TextIO.putln("1 and 100, and you try to guess it.");
@@ -27,9 +27,9 @@ public class GuessingGame2 {
        TextIO.putln();
        TextIO.putln("You won " + gamesWon + " games.");
        TextIO.putln("Thanks for playing.  Goodbye.");
-    } // end of main()            
+    } // end of main()
 
-    
+
     /**
      * This subroutine lets the user play one guessing game and tells
      * the user whether he won or lost.   If the user wins, the member
@@ -68,5 +68,5 @@ public class GuessingGame2 {
         }
         TextIO.putln();
     } // end of playGame()
-                
+
 } // end of class GuessingGame2

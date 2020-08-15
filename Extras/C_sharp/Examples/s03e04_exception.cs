@@ -12,12 +12,12 @@ finally: The finally block is used to execute a given set of statements, whether
 throw: A program throws an exception when a problem shows up. This is done using a throw keyword.
  */
 
-/** 
+/**
  * Exceptions hierarchy
- C# exceptions are represented by classes. 
- Base: System.Exception class. 
+ C# exceptions are represented by classes.
+ Base: System.Exception class.
  Derived:
-  - System.ApplicationException 
+  - System.ApplicationException
   - System.SystemException classes
 
  Exception Class                    Description

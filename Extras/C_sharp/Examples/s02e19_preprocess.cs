@@ -14,7 +14,7 @@ Preprocessor Directive	Description.
 #endregion	It marks the end of a #region block.
  */
 
-#define PI 
+#define PI
 using System;
 
 namespace PreprocessorDAppl {

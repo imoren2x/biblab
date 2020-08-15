@@ -1,6 +1,6 @@
 /* C5e04
  * Esta función trabaja los punteros y los punteros a punteros (dobles punteros)
-	
+
 */
 
 #include <stdio.h>

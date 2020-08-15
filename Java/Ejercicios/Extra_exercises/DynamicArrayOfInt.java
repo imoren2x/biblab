@@ -11,11 +11,11 @@ public class DynamicArrayOfInt {
     * Constructor creates an array with an initial size of 1,
     * but the array size will be increased whenever a reference
     * is made to an array position that does not yet exist.
-    */   
+    */
    public DynamicArrayOfInt() {
       data = new int[1];
    }
-   
+
    /**
     *  Get the value from the specified position in the array.
     *  Since all array elements are initialized to zero, when the
@@ -30,7 +30,7 @@ public class DynamicArrayOfInt {
       else
          return data[position];
    }
-   
+
    /**
     *  Store the value in the specified position in the array.
     *  The data array will increase in size to include this
@@ -41,7 +41,7 @@ public class DynamicArrayOfInt {
              // The specified position is outside the actual size of
              // the data array.  Double the size, or if that still does
              // not include the specified position, set the new size
-             // to 2*position. 
+             // to 2*position.
          int newSize = 2 * data.length;
          if (position >= newSize)
             newSize = 2 * position;

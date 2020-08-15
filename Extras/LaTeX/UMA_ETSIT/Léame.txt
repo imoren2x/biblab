@@ -20,25 +20,25 @@ Microsoft Word, Apache OpenOffice o LibreOffice, puede
 hacerse renombrando los comandos siguientes:
 	\renewcommand{\rmdefault}{phv} % Arial
 	\renewcommand{\sfdefault}{phv} % Arial
-Para ello, tan sólo hay que descomentarlos en el 
+Para ello, tan sólo hay que descomentarlos en el
 archivo "A2.Preambulo.comandos.tex".
 
 Estructura de la plantilla y sus archivos:
-	La plantilla cumple la estructura que la ETSIT establece 
+	La plantilla cumple la estructura que la ETSIT establece
 en un TFG/TFM/PFC.
-	Además, está nombrada para que su utilización desde el entorno 
-de desarrollo sea ordenada y lineal, de manera que los archivos 
+	Además, está nombrada para que su utilización desde el entorno
+de desarrollo sea ordenada y lineal, de manera que los archivos
 respeten el orden secuecial de los capítulos.
-	Para conseguir esta ordenación lineal, se hace uso de Letras 
+	Para conseguir esta ordenación lineal, se hace uso de Letras
 y números adecuadamente. Por ejemplo, A0, A1, B1, B2, D0, D1, E1, ó F.
-	Por ejemplo, el documento maestro "A0.Mi Proyecto fin 
-de carrera.tex" aparece al principio de los archivos para 
-que sea fácilmente localizable. 
-	Además, los archivos de entornos y preámbulos aparecen 
-al principio, los archivos que contienen bibliografía y 
+	Por ejemplo, el documento maestro "A0.Mi Proyecto fin
+de carrera.tex" aparece al principio de los archivos para
+que sea fácilmente localizable.
+	Además, los archivos de entornos y preámbulos aparecen
+al principio, los archivos que contienen bibliografía y
 apéndices al final.
 
-	Se recomienda mantener esta ordenación durante la elaboración 
+	Se recomienda mantener esta ordenación durante la elaboración
 del TFG/TFM/PFC.
 	También se recomienda generar el documento PDF incrementalmente,
 anulando las secciones que no se utilicen desde el archivo principal,

@@ -8,9 +8,9 @@ import java.io.InputStreamReader;
 
 /**
  * This short program demonstrates the URL and URLConnection classes by
- * attempting to open a connection to a URL and read text from it.  The url 
- * must be specified on the command line.  It must be a complete url, including 
- * the "protocol" at the beginning (probably "http://"). If an error occurs, 
+ * attempting to open a connection to a URL and read text from it.  The url
+ * must be specified on the command line.  It must be a complete url, including
+ * the "protocol" at the beginning (probably "http://"). If an error occurs,
  * a message is output. Otherwise, the text from the URL is copied to the screen.
  */
 
@@ -28,11 +28,11 @@ public class ReadURL {
          System.out.println("\n*** Sorry, an error has occurred ***\n");
          System.out.println(e);
          System.out.println();
-      }  
+      }
    }
 
    /**
-    * This subroutine attempts to copy text from the specified URL onto the screen.  
+    * This subroutine attempts to copy text from the specified URL onto the screen.
     * Any error must be handled by the caller of this subroutine.
     * @param urlString contains the URL in text form
     */
@@ -45,10 +45,10 @@ public class ReadURL {
       URLConnection connection = url.openConnection();
       InputStream urlData = connection.getInputStream();
 
-      /* Check that the content is some type of text.  Note: If 
-         getContentType() method were called before getting  the input 
-         stream, it is possible for contentType to be null only because 
-         no connection can be made.  The getInputStream() method will 
+      /* Check that the content is some type of text.  Note: If
+         getContentType() method were called before getting  the input
+         stream, it is possible for contentType to be null only because
+         no connection can be made.  The getInputStream() method will
          throw an error if no connection can be made. */
 
       String contentType = connection.getContentType();
@@ -57,7 +57,7 @@ public class ReadURL {
 
       /* Copy lines of text from the input stream to the screen, until
            end-of-file is encountered  (or an error occurs). */
-      
+
       BufferedReader in;  // For reading from the connection's input stream.
       in = new BufferedReader( new InputStreamReader(urlData) );
 

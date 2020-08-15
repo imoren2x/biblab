@@ -1,10 +1,10 @@
 /*
- * 
+ *
  */
 
-public class PruebaProCon 
+public class PruebaProCon
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		Almacen a = new Almacen();
 		Productor p1 = new Productor(a, 1);

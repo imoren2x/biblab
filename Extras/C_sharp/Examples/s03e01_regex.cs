@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace RegExApplication {
     class Program {
-    
+
         /**
          * Takes a string and regex and shows if it matches or not.
          */

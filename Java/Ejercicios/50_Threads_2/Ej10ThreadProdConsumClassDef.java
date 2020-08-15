@@ -10,15 +10,15 @@ public class Productor extends Thread
 {
 	private Almacen almacen;
 	private int num;
-	public Productor (Almacen a, int num) 
+	public Productor (Almacen a, int num)
 	{
 		almacen = a;
 		this.num = num;
 	}
 
-	public void run() 
+	public void run()
 	{
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < 10; i++)
 		{
 			almacen.guardar(i);
 			System.out.println("Productor..." + this.num + "..Guardado:.." + i);
@@ -36,21 +36,21 @@ public class Productor extends Thread
 Almacen (exactamente el mismo objeto en el que el Productor coloca los números que
 genera) a medida que están disponibles.
  */
- 
-public class Consumidor extends Thread 
+
+public class Consumidor extends Thread
 {
 	private Almacen almacen;
 	private int num;
-	public Consumidor(Almacen a, int num) 
+	public Consumidor(Almacen a, int num)
 	{
 		almacen = a;
 		this.num = num;
 	}
 
-	public void run() 
+	public void run()
 	{
 		int val = 0;
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < 10; i++)
 		{
 			val = almacen.sacar();
 			System.out.println("Consumidor.." + this.num + "..Sacado:...." + val);
@@ -72,18 +72,18 @@ que una condición se satisfaga o informen a otros threads de un cambio en una d
 condición.
 
  */
- 
+
 public class Almacen {
 	private int contenido;
 
 	private boolean hayAlgo = false;
 
-	public synchronized int guardar() 
+	public synchronized int guardar()
 	{
 		...
 	}
 
-	public synchronized void sacar (int val) 
+	public synchronized void sacar (int val)
 	{
 		...
 	}

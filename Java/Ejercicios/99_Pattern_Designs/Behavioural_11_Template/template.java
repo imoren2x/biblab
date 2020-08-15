@@ -76,6 +76,6 @@ public class TemplatePatternDemo {
       game.play();
       System.out.println();
       game = new Football();
-      game.play();		
+      game.play();
    }
 }

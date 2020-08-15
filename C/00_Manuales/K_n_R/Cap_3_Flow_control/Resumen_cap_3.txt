@@ -5,9 +5,9 @@ Capítulo 03. Control de flujo
 3.1 Proposiciones y bloques
 	Una expresión (p.ej., x = 0 ó i++) se convierte en una proposición cuando va seguida de un punto y coma.
 	Por ejemplo, x = 0; o i++; o printf("hola");
-	
+
 3.2 If-else
-	if (expresión) 
+	if (expresión)
 	// si la expresión tiene valor diferente a cero es verdadera y se ejecuta proposición 1
 	{
 		proposición1 //no olvidar poner la coma
@@ -17,7 +17,7 @@ Capítulo 03. Control de flujo
 	{
 		proposición2 //no olvidar poner la coma
 	}
-	
+
 3.3 Else-if
 	if (expresión)
 	{
@@ -31,7 +31,7 @@ Capítulo 03. Control de flujo
 	{
 		proposición
 	}
-	
+
 3.4 Switch
 	switch (expresión)
 	{
@@ -39,10 +39,10 @@ Capítulo 03. Control de flujo
 		case exp-const: proposiciones
 		default: proposiciones
 	}
-	
+
 	break provoca una salida inmediata del switch.
 	return también es una forma válida para salir del switch.
-	
+
 	ejemplo:
 	switch(c) {
 		case '0': case '1': case '2': case '3': case '4':
@@ -50,37 +50,37 @@ Capítulo 03. Control de flujo
 			break;
 		default: nother++; break;
 	}
-	
+
 3.5 Ciclos---while y for
 	while (expresión)
 	{
 		proposición
 	}
-	
+
 	for (expr1: expr2: expr3)
 	{
 		proposición
 	}
-	
-	es equivalente a 
-	
+
+	es equivalente a
+
 	expr1;
 	while ( expr2 )
 	{
 		proposición
 		expr3;
 	}
-	
+
 3.6 Ciclos---do-while
 	do
 	{
 		proposición
 	}
 	while (expresión);
-	
+
 3.7 Break y continue
 	break sale del ciclo o del switch más interno.
-	
+
 	continue hace que se ejecute el siguiente ciclo.
 	Por ejemplo:
 		for ( i = 0; i < n; i++ )
@@ -90,11 +90,11 @@ Capítulo 03. Control de flujo
 			// en el siguiente ciclo realizará la misma comprobación//
 		}
 	La proposición continue se emplea a menudo cuando la parte del ciclo que sigue es complicada.
-	
+
 3.8 Goto y etiquetas
 	for (...)
 	{
 		goto error;
 	}
-	
+
 	error: arregla el desorden

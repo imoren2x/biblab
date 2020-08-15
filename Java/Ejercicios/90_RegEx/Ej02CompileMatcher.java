@@ -23,7 +23,7 @@ public class Ej02CompileMatcher {
       } else {
          System.out.println("NO MATCH");
       }
-	  
+
 	  System.out.println("----------------------------------------------");
 	  System.out.println("Checking with Matcher.find() (comme find en Python)");
 	  if (m.find( )) {
@@ -35,13 +35,13 @@ public class Ej02CompileMatcher {
       } else {
          System.out.println("NO MATCH");
       }
-	  
+
 		/*
 		public boolean lookingAt()
-		Attempts to match the input sequence, starting at 
+		Attempts to match the input sequence, starting at
 			the beginning of the region, against the pattern.
 		*/
-		
+
 	  System.out.println("----------------------------------------------");
 	  System.out.println("Checking with Matcher.lookingAt(): Check the beginning of the String.");
 	  if (m.lookingAt( )) {

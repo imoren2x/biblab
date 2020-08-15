@@ -22,7 +22,7 @@ public class DateServer {
       Socket connection;      // For communication with the connecting program.
 
       /* Accept and process connections forever, or until some error occurs.
-         (Note that errors that occur while communicating with a connected 
+         (Note that errors that occur while communicating with a connected
          program are caught and handled in the sendDate() routine, so
            they will not crash the server.) */
 
@@ -31,7 +31,7 @@ public class DateServer {
          System.out.println("Listening on port " + LISTENING_PORT);
          while (true) {
                 // Accept next connection request and handle it.
-            connection = listener.accept(); 
+            connection = listener.accept();
             sendDate(connection);
          }
       }
@@ -45,13 +45,13 @@ public class DateServer {
 
 
    /**
-    * The parameter, client, is a socket that is already connected to another 
-    * program.  Get an output stream for the connection, send the current time, 
+    * The parameter, client, is a socket that is already connected to another
+    * program.  Get an output stream for the connection, send the current time,
     * and close the connection.
     */
    private static void sendDate(Socket client) {
       try {
-         System.out.println("Connection from " +  
+         System.out.println("Connection from " +
                                       client.getInetAddress().toString() );
          Date now = new Date();  // The current data and time.
          PrintWriter outgoing;   // Stream for sending data.

@@ -3,7 +3,7 @@
  *  in Java and .Net programming environment.
  * This pattern is used to get a way to access the elements
  *  of a collection object in sequential manner without any
- *  need to know its underlying representation. 
+ *  need to know its underlying representation.
  *
  * http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
  * http://www.oodesign.com/iterator-pattern.html
@@ -36,7 +36,7 @@ public class NameRepository implements Container {
 
       @Override
       public boolean hasNext() {
-      
+
          if(index < names.length){
             return true;
          }
@@ -45,24 +45,24 @@ public class NameRepository implements Container {
 
       @Override
       public Object next() {
-      
+
          if(this.hasNext()){
             return names[index++];
          }
          return null;
-      }		
+      }
    }
 }
 
 //IteratorPatternDemo.java
 public class IteratorPatternDemo {
-	
+
    public static void main(String[] args) {
       NameRepository namesRepository = new NameRepository();
 
       for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
          String name = (String)iter.next();
          System.out.println("Name : " + name);
-      } 	
+      }
    }
 }

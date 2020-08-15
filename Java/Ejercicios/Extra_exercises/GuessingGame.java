@@ -20,8 +20,8 @@ public class GuessingGame {
          playAgain = TextIO.getlnBoolean();
       } while (playAgain);
       TextIO.putln("Thanks for playing.  Goodbye.");
-   } // end of main()            
-   
+   } // end of main()
+
 
    /**
     * This subroutine lets the user play one guessing game and tells
@@ -59,5 +59,5 @@ public class GuessingGame {
        }
        TextIO.putln();
    } // end of playGame()
-               
+
 } // end of class GuessingGame

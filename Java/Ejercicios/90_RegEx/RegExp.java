@@ -15,7 +15,7 @@ Matcher m = linePatt.matcher(line);//linea de entrada
 
 
 
-private boolean lineOld(String line, int[] arrayDate) { 
+private boolean lineOld(String line, int[] arrayDate) {
 	Pattern linePatt = Pattern.compile("^([0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})(.*)");
 	//...
 	boolean result = false;

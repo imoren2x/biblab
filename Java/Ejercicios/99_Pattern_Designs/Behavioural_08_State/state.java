@@ -5,7 +5,7 @@
  *  states and a context object whose behavior varies as its state object changes.
  *
  * http://www.tutorialspoint.com/design_pattern/state_pattern.htm
- * 
+ *
  */
 
 //state.java
@@ -18,7 +18,7 @@ public class StartState implements State {
 
    public void doAction(Context context) {
       System.out.println("Player is in start state");
-      context.setState(this);	
+      context.setState(this);
    }
 
    public String toString(){
@@ -31,7 +31,7 @@ public class StopState implements State {
 
    public void doAction(Context context) {
       System.out.println("Player is in stop state");
-      context.setState(this);	
+      context.setState(this);
    }
 
    public String toString(){
@@ -48,7 +48,7 @@ public class Context {
    }
 
    public void setState(State state){
-      this.state = state;		
+      this.state = state;
    }
 
    public State getState(){

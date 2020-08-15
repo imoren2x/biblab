@@ -22,7 +22,7 @@ class Dog implements Comparator<Dog>, Comparable<Dog>{
       return (this.name).compareTo(d.name);
    }
 
-   // Overriding the compare method to sort the age 
+   // Overriding the compare method to sort the age
    public int compare(Dog d, Dog d1){
       return d.age - d1.age;
    }

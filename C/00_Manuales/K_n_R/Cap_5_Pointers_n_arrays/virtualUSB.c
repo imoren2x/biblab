@@ -11,36 +11,36 @@ int main()
      char *endpoint = (char*)calloc(4+1, sizeof(char));
      char c;
      const int pos = 0;
-    
+
      printf("Write the USB packet:\n");
      //scanf("%s",packet);
      strcpy(packet, "0000000000000000111111110101011010110100");
      printf("\n");
-    
+
      printf("Packet: %s", packet);
      printf("\n");
-    
+
      subpacket = &packet[pos];
      c = packet[pos];
      printf("El valor de %d es %s", pos, packet[pos]);
     system("pause");
-    
+
      printf("\n%s",subpacket);
      //address = Getnchars("gilipollas", 7);//it works!
      address = Getnchars(subpacket, 7);//it works!
-    
+
      printf("\n Address: %s", address[0]);
      printf("\n");
-    
+
      subpacket = &packet[47];
      endpoint = Getnchars(subpacket,4);
-    
+
      printf("\nEndPoint: %s", endpoint);
      printf("\n");
-    
+
      system("pause");
-    
-     return 0; 
+
+     return 0;
 }
 
 char* Getnchars( const char* ptrpacket, const unsigned int nchars)

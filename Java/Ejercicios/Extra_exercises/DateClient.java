@@ -37,13 +37,13 @@ public class DateClient {
 
       try {
          connection = new Socket( hostName, LISTENING_PORT );
-         incoming = new BufferedReader( 
+         incoming = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()) );
          String lineFromServer = incoming.readLine();
          if (lineFromServer == null) {
                // A null from incoming.readLine() indicates that
                // end-of-stream was encountered.
-            throw new IOException("Connection was opened, " + 
+            throw new IOException("Connection was opened, " +
                   "but server did not send any data.");
          }
          System.out.println();

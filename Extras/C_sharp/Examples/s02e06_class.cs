@@ -16,7 +16,7 @@ namespace InheritanceApplication {
 
     // Derived class
     class Rectangle: Shape {
-        public int getArea() { 
+        public int getArea() {
             return (width * height);
         }
     }

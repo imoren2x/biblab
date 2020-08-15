@@ -8,8 +8,8 @@ import java.util.Date;
  * connection is opened, the program sends the current time to
  * the connected socket.  The program will continue to receive
  * and process connections until it is killed (by a CONTROL-C,
- * for example). 
- * 
+ * for example).
+ *
  * This version of the program creates a new thread for
  * every connection request.
  */
@@ -29,7 +29,7 @@ public class DateServerWithThreads {
          System.out.println("Listening on port " + LISTENING_PORT);
          while (true) {
                 // Accept next connection request and handle it.
-            connection = listener.accept(); 
+            connection = listener.accept();
             ConnectionHandler handler = new ConnectionHandler(connection);
             handler.start();
          }
@@ -64,11 +64,11 @@ public class DateServerWithThreads {
             client.close();
          }
          catch (Exception e){
-            System.out.println("Error on connection with: " 
+            System.out.println("Error on connection with: "
                   + clientAddress + ": " + e);
          }
       }
    }
-   
+
 
 } //end class DateServer

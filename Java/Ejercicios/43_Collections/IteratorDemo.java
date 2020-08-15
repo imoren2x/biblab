@@ -21,7 +21,7 @@ public class IteratorDemo {
          System.out.print(element + " ");
       }
       System.out.println();
-      
+
 	  // Modify objects being iterated
       ListIterator litr = al.listIterator();
       while(litr.hasNext()) {

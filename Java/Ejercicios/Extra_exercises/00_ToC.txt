@@ -56,7 +56,7 @@ RowsOfChars
 ThreeN2
 
 • Interest.java, from Section 2.2, computes the interest on a specific amount of money over a period of one year.
-	
+
 • TimedComputation.java, from Section 2.3, demonstrates a few basic built-in subroutines
 and functions.
 • EnumDemo.java, from Section 2.3, a very simple first demonstration of enum types.

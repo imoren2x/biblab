@@ -5,7 +5,7 @@
  *  as and when visitor varies. This pattern comes under
  *  behavior pattern category. As per the pattern, element
  *  object has to accept the visitor object so that visitor
- *  object handles the operation on the element object. 
+ *  object handles the operation on the element object.
  *
  * http://www.tutorialspoint.com/design_pattern/visitor_pattern.htm
  * http://www.oodesign.com/visitor-pattern.html
@@ -45,12 +45,12 @@ public class Mouse implements ComputerPart {
 
 //Computer.java
 public class Computer implements ComputerPart {
-	
+
    ComputerPart[] parts;
 
    public Computer(){
-      parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};		
-   } 
+      parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};
+   }
 
 
    @Override

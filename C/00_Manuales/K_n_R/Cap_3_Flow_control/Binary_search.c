@@ -10,11 +10,11 @@ typedef enum bool_e{false,true} bool;
 typedef struct searchresult_s{
         bool boolresult;
         int index; // 0 in case of false.
-    }searchresult_t; 
+    }searchresult_t;
 
 /**
 	\title searchresult_t binsearch(int array[], int number);
-	
+
 	\description binary search algorithm
 */
 searchresult_t binsearch(int array[], int number);

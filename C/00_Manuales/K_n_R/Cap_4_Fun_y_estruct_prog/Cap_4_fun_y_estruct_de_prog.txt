@@ -22,30 +22,30 @@ Capítulo 04. Funciones y estructura del programa
 	El ámbito de una función es el archivo .c o .h donde esté definido y declarado.
 
 	El «scope» es el rango del programa dentro del cual se puede usar el nombre. Por ejemplo, para una variable automática declarada al principio de una función, el alcance es la función dentro de la cual está declarado el nombre. Las variables locales con el mismo nombre que estén en funciones diferentes no tienen relación. Ibídem para los parámetros de una función, los cuales son variables locales.
-	
+
 	Ejemplo:
 	main() {...}
-	
+
 	//Definición de variables//
 	int sp = 0;
 	double val[MAXVAL];
-	
+
 	void push( double f ) {...}
-	
+
 	double pop( void ) {...}
-	
+
 	//Declaración de variables externas//
 	extern int sp;
 	extern double val[];
-	
+
 	Hay que distinguir entre la declaración de una variable externa y su definición. Una declaración expone las propiedades de una variable (principalmente su tipo); una definición también provoca que se reserve un espacio para almacenamiento.
-	
+
 	//Declaración de variables externas//
 	extern int sp;
 	extern double var[];
-	
+
 	Esta declaración no crea las variables ni les reserva espacio en memoria. Su tamaño se determina en otro lugar. Sólo debe existir una definición de una variable externa entre todos los archivos que forman un programa fuente; otros archivos pueden contener declaraciones extern para tener acceso a ellas. (También puede haber declaraciones extern en el archivo que contiene la definición.) Los tamaños de los arrays deben ser especificados con la definición, pero es optativo hacerlo en una declaración extern. La inicialización de una variable externa sólo va con su definición.
-	
+
 4.1.3 Encabezamiento (header)
 	Los archivos header contienen las definiciones y declaraciones compartidas entre archivos.
 
@@ -57,7 +57,7 @@ Capítulo 04. Funciones y estructura del programa
 	4.2.4 static
 	4.2.5 Modificador const
 	4.2.6 Modificador volatile
-	
+
 4.2.1 Almacenamiento automático
 	Sintaxis: [auto] <tipo> <nombre_variable>;
 	Son variables locales, se reservan en tiempo de compilación, se crean en tiempo de ejecución y se destruyen una vez terminada la ejecución de la función, es decir, su ámbito.
@@ -65,7 +65,7 @@ Capítulo 04. Funciones y estructura del programa
 4.2.2 Almacenamiento extern
 	Sintaxis:	extern <tipo> <nombre_variable>;
 				[extern] <tipo> <nombre_de_función>(<lista_parámetros>);
-	Este especificador se usa para indicar que el almacenamiento y valor de una variable o la definición de una función están definidos en otro módulo o fichero fuente. 
+	Este especificador se usa para indicar que el almacenamiento y valor de una variable o la definición de una función están definidos en otro módulo o fichero fuente.
 	Ejemplo:
 		ClaseAlmacenStatic [Eclipse]
 
@@ -78,8 +78,8 @@ Capítulo 04. Funciones y estructura del programa
 4.2.4 Almacenamiento static
 	Sintaxis: 	static <tipo> <nombre_variable>;
 				static <tipo> <nombre_de_función>(<lista_parámetros>);
-	Cuando se usa en la declaración de objetos, este especificador hace que se asigne una dirección de memoria fija para el	objeto mientras el programa se esté ejecutando. 
-	Es decir, su ámbito temporal es total. 
+	Cuando se usa en la declaración de objetos, este especificador hace que se asigne una dirección de memoria fija para el	objeto mientras el programa se esté ejecutando.
+	Es decir, su ámbito temporal es total.
 	Las variables estáticas tienen un ámbito local con respecto a su accesibilidad, pero temporalmente son como las variables externas.
 	Ejemplo:
 		int funcion();
@@ -98,7 +98,7 @@ Capítulo 04. Funciones y estructura del programa
 		}
 
 4.2.5 Modificador const
-	El modificador const crea nuevos tipos de objetos, e indica que el valor de tales objetos no puede ser modificado por el programa. 	
+	El modificador const crea nuevos tipos de objetos, e indica que el valor de tales objetos no puede ser modificado por el programa.
 	Sintaxis:	const <tipo> <variable> = <inicialización>;
 				const <tipo> <variable_agregada> = {<lista_inicialización>};
 				<tipo> <nombre_de_función> (const <tipo>*<nombre-de-variable> );
@@ -109,9 +109,9 @@ Capítulo 04. Funciones y estructura del programa
 	Sintaxis: 	volatile <tipo> <nombre_variable>;
 				<identificador_función> ( volatile <tipo> <nombre_variable> );
 				<identificador_función> volatile;
-	
+
 	Este modificador se usa con objetos que pueden ser modificados desde el exterior del programa, mediante procesos externos. Esta situación es común en programas multihilo o cuando el valor de ciertos objetos puede ser modificado mediante interrupciones o por hardware.
-	
+
 4.3 Recurrencia
 	C permite funciones recursivas (el diccionario de la RAE indica explícitamente que debe decirse "recurrentes" en lugar del barbarismo 'recursivo').
 	Ejemplo:
@@ -142,21 +142,21 @@ Capítulo 04. Funciones y estructura del programa
 		Las comillas indican que el compilador debe buscar en el directorio donde el programa fuente fue encontrado.
 	#include <filename>
 		Los símbolos indican que debe buscarse en el directorio del PATH del sistema operativo.
-	
+
 4.11.2 Substitución de macros (#define y #undef)
 	La sentencia
 		#define nombre texto a reemplazar
 produce que todas las ocurrencias del token nombre sean substituidas por "texto a reemplazar" (sin las comillas). Esta labor la hace el precompilador.
 	Si se desea que se reemplace por varias líneas, hay que usar la barra invertida \.
-	Ejemplo:	
+	Ejemplo:
 		#define nombre texto \
 						a \
 						reemplazar
 	Las substituciones se realizan a lo largo de todo el texto, pero NO tienen lugar si están en cadenas de caracteres (strings) entre comillas ni tampoco si un token contiene el token definido.
-	Ejemplo: 
+	Ejemplo:
 		#define YES yes
 		No se aplicaría a printf("YES") ni tampoco al token YESMAN.
-	
+
 	Macros con argumentos:
 	Es posible definir macros con argumentos.
 	Ejemplo:
@@ -169,7 +169,7 @@ produce que todas las ocurrencias del token nombre sean substituidas por "texto 
 	Ejemplo:
 		#undef getchar
 		int getchar(void){...}
-	
+
 	Macros en strings
 	Los argumentos de una macro no se remplazan dentro de strings entrecomillados. Sin embargo, sí hay una forma de que un argumento pueda incluirse en un string, por ejemplo, para imprimir datos durante la depuración, usando el token #.
 	Ejemplo:
@@ -178,17 +178,17 @@ produce que todas las ocurrencias del token nombre sean substituidas por "texto 
 		dprint(x/y);
 será substituido por
 		printf("x/y" " = &g\n", x/y);
-lo que concatenando los strings termina en 
+lo que concatenando los strings termina en
 		printf("x/y = &g\n", x/y);
-	
+
 	El operador ## de concatenación
 	Este operador proporciona un método para concatenar argumentos en la expansión de la macro.
 	Ejemplo:
 		#define paste(front, back) front ## back
 		paste(name, 1) produce name1
-		
+
 	Las reglas para el encadenamiento de ## son arcanas, pueden verse en el apéndice 1.
-	
+
 4.11.3 Inclusión condicional (#if, #elif, #else, #ifdef, #ifndef, #endif)
 	Es posible controlar la expansión de macros con sentencias condicionales.
 	Ejemplo:
@@ -200,8 +200,8 @@ lo que concatenando los strings termina en
 		#else
 			#define A 3
 		#endif
-	
-	Esta secuencia prueba que el nombre SYSTEM para decidir qué versión de la cabecera incluir:	
+
+	Esta secuencia prueba que el nombre SYSTEM para decidir qué versión de la cabecera incluir:
 	#if SYSTEM == SYSV
 		#define HDR "sysv.h"
 	#elif SYSTEM == BSD

@@ -5,7 +5,7 @@ print "content-type: text/html \n\n";	#The header
 # SET UP THE HTML TABLE
 print "<table border='1'>";
 
-# CREATE AN ARRAY 
+# CREATE AN ARRAY
 @names = qw(Steve Bill Connor Bradley);
 
 # SET A COUNT VARIABLE

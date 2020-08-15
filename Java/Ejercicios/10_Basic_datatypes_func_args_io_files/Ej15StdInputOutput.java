@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * A trivial program that says "Hello World" to the user.
  */
- 
+
 public class Ej15StdInputOutput {
 	public static void main(String[] args) {
 		int count;
@@ -19,7 +19,7 @@ public class Ej15StdInputOutput {
 			System.exit(-1);
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("You've entered: " + usIn + "\n");
 	}
 }

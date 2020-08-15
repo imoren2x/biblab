@@ -1,6 +1,6 @@
 
 /*
-    This program reads standard expressions typed in by the user. 
+    This program reads standard expressions typed in by the user.
     The program constructs an expression tree to represent the
     expression.  It then prints the value of the tree.  It also uses
     the tree to print out a list of commands that could be used
@@ -41,7 +41,7 @@ public class SimpleParser3 {
     *  to be left on the stack).
     */
    abstract private static class ExpNode {
-      abstract double value(); 
+      abstract double value();
       abstract void printStackCommands();
    }
 
@@ -60,11 +60,11 @@ public class SimpleParser3 {
       }
       void printStackCommands() {
              // On a stack machine, just push the number onto the stack.
-         TextIO.putln("  Push " + number); 
+         TextIO.putln("  Push " + number);
       }
    }
 
-   
+
    /**
     * An expression node representing a binary operator.
     */
@@ -105,7 +105,7 @@ public class SimpleParser3 {
       }
    }
 
-   
+
    /**
     * An expression node to represent a unary minus operator.
     */
@@ -133,10 +133,10 @@ public class SimpleParser3 {
 
 
 //   -------------------------------------------------------------------------------
-   
+
 
    /**
-    * An object of type ParseError represents a syntax error found in 
+    * An object of type ParseError represents a syntax error found in
     * the user's input.
     */
    private static class ParseError extends Exception {
@@ -178,7 +178,7 @@ public class SimpleParser3 {
    /**
     * Reads an expression from the current line of input and builds
     * an expression tree that represents the expression.
-    * @return an ExpNode which is a pointer to the root node of the 
+    * @return an ExpNode which is a pointer to the root node of the
     *    expression tree
     * @throws ParseError if a syntax error is found in the input
     */
@@ -210,7 +210,7 @@ public class SimpleParser3 {
    /**
     * Reads a term from the current line of input and builds
     * an expression tree that represents the expression.
-    * @return an ExpNode which is a pointer to the root node of the 
+    * @return an ExpNode which is a pointer to the root node of the
     *    expression tree
     * @throws ParseError if a syntax error is found in the input
     */
@@ -234,7 +234,7 @@ public class SimpleParser3 {
    /**
     * Reads a factor from the current line of input and builds
     * an expression tree that represents the expression.
-    * @return an ExpNode which is a pointer to the root node of the 
+    * @return an ExpNode which is a pointer to the root node of the
     *    expression tree
     * @throws ParseError if a syntax error is found in the input
     */

@@ -7,7 +7,7 @@
  * This simple program is meant to demonstrate the use of subroutines,
  * and especially the case where one routine calls a subroutine
  * which then calls another subroutine.  It is not a useful program.
- * 
+ *
  * (Note:  It doesn't matter in what order the subroutines are
  * listed in the class.  A subroutine can always be used anywhere
  * in the class that defines it, even if the definition occurs
@@ -16,7 +16,7 @@
  */
 
 public class RowsOfChars {
-   
+
    public static void main(String[] args) {
       String inputLine;  // Line of text input by user.
       TextIO.put("Enter a line of text: ");
@@ -24,8 +24,8 @@ public class RowsOfChars {
       TextIO.putln();
       printRowsFromString( inputLine );
    }
-   
-   
+
+
    /**
     * For each character in str, write a line of output
     * containing 25 copies of that character.
@@ -36,8 +36,8 @@ public class RowsOfChars {
          printRow( str.charAt(i), 25 );
       }
    }
-   
-   
+
+
    /**
     * Write one line of output containing N copies of the
     * character ch.  If N &lt;= 0, an empty line is output.
@@ -49,6 +49,6 @@ public class RowsOfChars {
       }
       System.out.println();
    }
-   
-   
+
+
 } //end of class RowsOfChars

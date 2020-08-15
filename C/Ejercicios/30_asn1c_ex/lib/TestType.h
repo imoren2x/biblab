@@ -24,7 +24,7 @@ extern "C" {
 typedef struct TestType {
 	long	 num;
 	UTF8String_t	*str	/* OPTIONAL */;
-	
+
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
 } TestType_t;

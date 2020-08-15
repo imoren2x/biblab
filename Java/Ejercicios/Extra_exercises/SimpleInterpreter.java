@@ -11,7 +11,7 @@
     the form  let <variable> = <expression> , the expression is
     evaluated and the value is assigned to the variable.
     If a variable is used in an expression before it has been
-    assigned a value, an error occurs.  A number must begin with 
+    assigned a value, an error occurs.  A number must begin with
     a digit (i.e., not a decimal point).
 
     Commands are formally defined by the BNF rules:
@@ -58,7 +58,7 @@ public class SimpleInterpreter {
     * The symbolTable contains information about the
     * values of variables.  When a variable is assigned
     * a value, it is recorded in the symbol table.
-    * The key is the name of the variable, and the 
+    * The key is the name of the variable, and the
     * value is an object of type Double that contains
     * the value of the variable.  (The wrapper class
     * Double is used, since a HashMap cannot contain
@@ -68,9 +68,9 @@ public class SimpleInterpreter {
 
 
    public static void main(String[] args) {
-      
+
       // Create the map that represents symbol table.
-      
+
       symbolTable = new HashMap<String,Double>();
 
       // To start, add variables named "pi" and "e" to the symbol
@@ -275,7 +275,7 @@ public class SimpleInterpreter {
 
    /**
     *  Reads a word from input.  A word is any sequence of
-    *  letters and digits, starting with a letter.  When 
+    *  letters and digits, starting with a letter.  When
     *  this subroutine is called, it should already be
     *  known that the next character in the input is
     *  a letter.

@@ -12,31 +12,31 @@
 public class ComputeAverage {
 
    public static void main(String[] args) {
-      
+
       int inputNumber;   // One of the integers input by the user.
       int sum;           // The sum of the positive integers.
       int count;         // The number of positive integers.
       double average;    // The average of the positive integers.
-      
+
       /* Initialize the summation and counting variables. */
-      
+
       sum = 0;
       count = 0;
-      
+
       /* Read and process the user's input. */
-      
+
       TextIO.put("Enter your first positive integer: ");
       inputNumber = TextIO.getlnInt();
-      
+
       while (inputNumber != 0) {
          sum += inputNumber;   // Add inputNumber to running sum.
          count++;              // Count the input by adding 1 to count.
          TextIO.put("Enter your next positive integer, or 0 to end: ");
          inputNumber = TextIO.getlnInt();
       }
-      
+
       /* Display the result. */
-      
+
       if (count == 0) {
          TextIO.putln("You didn't enter any data!");
       }
@@ -46,7 +46,7 @@ public class ComputeAverage {
          TextIO.putln("You entered " + count + " positive integers.");
          TextIO.putf("Their average is %1.3f.\n", average);
       }
- 
+
    } // end main()
-   
+
 } // end class ComputeAverage

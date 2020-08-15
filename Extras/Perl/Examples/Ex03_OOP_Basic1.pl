@@ -4,7 +4,7 @@ sub Point::new {
   my ($class, $x, $y) = @_;
   bless [$x, $y], $class;   # Implicit return
 }
- 
+
 sub Point::distance {
   my ($self, $from) = @_;
   my ($dx, $dy) = ($$self[0] - $$from[0], $$self[1] - $$from[1]);

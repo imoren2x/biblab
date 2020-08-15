@@ -1,12 +1,12 @@
 using System;
-namespace RectangleApplication 
+namespace RectangleApplication
 {
    class Rectangle
    {
       //member variables
       private double length;
       private double width;
-      
+
       public void Acceptdetails()
       {
          Console.WriteLine("Enter Length: ");
@@ -25,7 +25,7 @@ namespace RectangleApplication
          Console.WriteLine("Area: {0}", GetArea());
       }
    }//end class Rectangle
-   
+
    class ExecuteRectangle
    {
       static void Main(string[] args)

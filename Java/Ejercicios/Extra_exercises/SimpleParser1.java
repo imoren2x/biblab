@@ -2,7 +2,7 @@
 /*
     This program evaluates fully parenthesized expressions typed in
     by the user.  The expressions can use positive real numbers and
-    the binary operators +, -, *, and /.  The expressions are 
+    the binary operators +, -, *, and /.  The expressions are
     defined by the BNF rules:
 
             <expression>  ::=  <number>  |
@@ -19,7 +19,7 @@ public class SimpleParser1 {
 
 
    /**
-    * An object of type ParseError represents a syntax error found in 
+    * An object of type ParseError represents a syntax error found in
     * the user's input.
     */
    private static class ParseError extends Exception {
@@ -70,7 +70,7 @@ public class SimpleParser1 {
          return TextIO.getDouble();
       }
       else if ( TextIO.peek() == '(' ) {
-             // The expression must be of the form 
+             // The expression must be of the form
              //         "(" <expression> <operator> <expression> ")"
              // Read all these items, perform the operation, and
              // return the result.
@@ -85,7 +85,7 @@ public class SimpleParser1 {
             throw new ParseError("Missing right parenthesis.");
          }
          TextIO.getAnyChar();  // Read the ")"
-         switch (op) {   //  Apply the operator and return the result. 
+         switch (op) {   //  Apply the operator and return the result.
          case '+':  return leftVal + rightVal;
          case '-':  return leftVal - rightVal;
          case '*':  return leftVal * rightVal;
@@ -95,7 +95,7 @@ public class SimpleParser1 {
          }
       }
       else {
-         throw new ParseError("Encountered unexpected character, \"" + 
+         throw new ParseError("Encountered unexpected character, \"" +
                TextIO.peek() + "\" in input.");
       }
    } // end expressionValue()
@@ -107,7 +107,7 @@ public class SimpleParser1 {
     */
    static char getOperator() throws ParseError {
       TextIO.skipBlanks();
-      char op = TextIO.peek(); 
+      char op = TextIO.peek();
       if ( op == '+' || op == '-' || op == '*' || op == '/' ) {
          TextIO.getAnyChar();
          return op;

@@ -78,7 +78,7 @@ typedef ber_tlv_tag_t (asn_outmost_tag_f)(
 /* The instance of the above function type; used internally. */
 asn_outmost_tag_f asn_TYPE_outmost_tag;
 
-
+
 /*
  * The definitive description of the destination language's structure.
  */

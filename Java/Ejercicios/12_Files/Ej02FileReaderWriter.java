@@ -8,7 +8,7 @@ public class Ej02FileReaderWriter {
       try {
          in = new FileReader("input.txt");
          out = new FileWriter("output.txt");
-         
+
          int c;
          while ((c = in.read()) != -1) {
             out.write(c);
@@ -21,18 +21,18 @@ public class Ej02FileReaderWriter {
             out.close();
          }
       }
-	  
+
 	  //try {
 		// File file = new File("output.txt");
-		
+
 		// System.out.println("Borrando el fichero de salida.");
-		
+
     	// if(file.delete()){
     		// System.out.println(file.getName() + " is deleted!");
     	// } else {
     		// System.out.println("Delete operation is failed.");
     	// }
-		
+
 	  // } catch (IOException e) {
 		// e.printStackTrace();
 	  // }

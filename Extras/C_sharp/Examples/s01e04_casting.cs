@@ -25,7 +25,7 @@ using System;
 namespace TypeConversionApplication {
     class ExplicitConversion {
         static void Main(string[] args) {
-            double d = 5673.74; 
+            double d = 5673.74;
             int i;
 
             // cast double to int.
@@ -35,7 +35,7 @@ namespace TypeConversionApplication {
             Console.WriteLine("\n");
 
 
-            
+
             int i = 75;
             float f = 53.005f;
             double d = 2345.7652;

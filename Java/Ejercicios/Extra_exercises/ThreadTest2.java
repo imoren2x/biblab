@@ -4,7 +4,7 @@
  * chosen by the user.
  */
 public class ThreadTest2 {
-   
+
    /**
     * The starting point for the range of integers that are tested for primality.
     * The range is from (start+1) to (2*start).  Note the value of start is chosen
@@ -12,14 +12,14 @@ public class ThreadTest2 {
     * among the threads.
     */
    private static final int START = 3000000;
-   
+
    /**
     * The total number of primes found.  Each thread counts the number of primes in
     * a different range of integers.  After it finishes counting, it adds its count
     * to the total.
     */
    private static int total;
-   
+
    /**
     * Adds x to total.  This method is synchronized so that it can be safely used by
     * several different threads.
@@ -28,7 +28,7 @@ public class ThreadTest2 {
       total = total + x;
       System.out.println(total + " primes found so far.");
    }
-   
+
    /**
     * A Thread belonging to this class will count primes in a specified range
     * of integers.  The range is from min to max, inclusive, where min and max
@@ -45,12 +45,12 @@ public class ThreadTest2 {
       }
       public void run() {
          count = countPrimes(min,max);
-         System.out.println("There are " + count + 
+         System.out.println("There are " + count +
                                  " primes between " + min + " and " + max);
          addToTotal(count);
       }
    }
-   
+
    /**
     * Counts the primes in the range from (START+1) to (2*START), using a specified number
     * of threads.  The total elapsed time is printed.
@@ -58,7 +58,7 @@ public class ThreadTest2 {
     */
    private static void countPrimesWithThreads(int numberOfThreads) {
       int increment = START/numberOfThreads;
-      System.out.println("\nCounting primes between " + (START+1) + " and " 
+      System.out.println("\nCounting primes between " + (START+1) + " and "
             + (2*START) + " using " + numberOfThreads + " threads...\n");
       long startTime = System.currentTimeMillis();
       CountPrimesThread[] worker = new CountPrimesThread[numberOfThreads];
@@ -80,7 +80,7 @@ public class ThreadTest2 {
       System.out.println("\nThe number of primes is " + total + ".");
       System.out.println("\nTotal elapsed time:  " + (elapsedTime/1000.0) + " seconds.\n");
    }
-   
+
    /**
     * Gets the number of threads from the user and counts primes using that many threads.
     */
@@ -99,7 +99,7 @@ public class ThreadTest2 {
       }
       countPrimesWithThreads(numberOfThreads);
    }
-   
+
    /**
     * Count the primes between min and max, inclusive.
     */
@@ -110,7 +110,7 @@ public class ThreadTest2 {
             count++;
       return count;
    }
-   
+
    /**
     * Test whether x is a prime number.
     * x is assumed to be greater than 1.
@@ -122,5 +122,5 @@ public class ThreadTest2 {
             return false;
       return true;
    }
-   
+
 }

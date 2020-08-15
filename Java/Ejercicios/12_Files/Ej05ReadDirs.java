@@ -9,16 +9,16 @@ public class Ej05ReadDirs {
 
 		String os = System.getProperty("os.name");
 		String dirname = null;
-		
+
 		System.out.println("OS: " + os);
-		
+
 		if (os.equals("Linux")) {
 			dirname = "./";
 		} else if (os.equals("Windows XP")) {
 			dirname = ".\\";
 		}
-            
-		try {      
+
+		try {
 			// create new file object
 			file = new File(dirname);
 

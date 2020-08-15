@@ -1,8 +1,8 @@
 #! usr/bin/perl
 
-# chomp() function 
+# chomp() function
 # Here we have asked two questions, stored the user's input
- # into two separate variables and printed out the results 
+ # into two separate variables and printed out the results
  # all in just a few lines of code. Be sure to take note of
  # the formatting here. The user is required to strike the
  # "enter" key resulting in a line break. We can remove the

@@ -2,9 +2,9 @@
  * Fibonacci: recursive implementation
  *
  * Program receives a number as F(n) to obtain by console.
- * 
+ *
  * @author imoren2x
- * @title 
+ * @title
  *
  */
 
@@ -28,7 +28,7 @@ public class Ej02Fibonacci {
 		//For std input
 		BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 		String usIn = new String();
-		
+
 		if ( args.length == 0 ) {
 			//
 			System.out.print("Escriba un numero entero: >> ");

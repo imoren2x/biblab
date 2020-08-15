@@ -1,7 +1,7 @@
 public class Ej21VarArgsDemo {
 
    public static void main(String args[]) {
-      // Call method with variable args  
+      // Call method with variable args
 	  printMax(34, 3, 3, 2, 56.5);
       printMax(new double[]{1, 2, 3});
    }

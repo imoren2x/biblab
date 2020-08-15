@@ -80,7 +80,7 @@ NOTA: añadir paso de parametros con numero variable de argumentos.
 	6.7 Typedef
 	6.8 Uniones
 	6.9 Campos de bits
-	
+
 7. Entrada y salida
 	7.1 Entrada y salida estándar
 	7.2 Salida con formato: printf
@@ -118,10 +118,10 @@ Capítulo 1. Introducción general
 1.4 Variantes de tipos de datos
 1.5 Estructuras de control
 1.6 Otras palabras reservadas en C
-	
+
 1.1 Palabras reservadas en C
 	auto	break	case	char	const	 continue default
-	do		double	else	enum	extern	 float	  for	
+	do		double	else	enum	extern	 float	  for
 	goto	if		int		long	register return	  short
 	signed	sizeof	static	struct	typedef	 union	  unsigned
 	void	volatile 		while
@@ -181,8 +181,8 @@ Capítulo 2. Tipos, operadores y expresiones
 
 2.2 Constantes
 	Tipo int: 				const a = 1234
-	Tipo long int: 			const a = 12345L 
-	Tipo unsigned long int: const a = 12345UL 
+	Tipo long int: 			const a = 12345L
+	Tipo unsigned long int: const a = 12345UL
 	Tipo float:				const a = 123.4F
 	Tipo double: 			const a = 1E-2
 	Tipo long double: 		const a = 1.234
@@ -194,7 +194,7 @@ Capítulo 2. Tipos, operadores y expresiones
 
 2.2.1 Secuencias de escape
 	Se deben escribir entre comillas simples:
-	
+
 	\a carácter de alarma (campana)		\b retroceso
 	\f avance de hoja					\n nueva línea
 	\r regreso de carro					\t tabulador horizontal
@@ -213,7 +213,7 @@ Capítulo 2. Tipos, operadores y expresiones
 		Ej: n = n & 0x7F //0x7F = 0111 1111
 			//hace cero todos los bits de n, menos los 7 de menor orden
 	| OR de bits
-		Ej: x = x | SET_ON 
+		Ej: x = x | SET_ON
 			//fija a 1 todos los bits de x que son 1 en SET_ON
 	<< Desplazamiento de bits
 		x << 1 un desplazamiento de un bit
@@ -221,16 +221,16 @@ Capítulo 2. Tipos, operadores y expresiones
 		b = ~a
 	^ XOR
 		b ^= a; // b = b ^ a;
-		
+
 2.4.2 Asignación y expresiones
 	expr1 op= expr2
 		expr1 = (expr1) op (expr2)
-		
+
 	Operador ?
 		expr1 ? expr2 : expr3
 			Si expr1 es diferente a 0 (verdadero), ejecuta expr2.
 			Si expr2 es 0 (falso), ejecuta expr3.
- 
+
 
 Capítulo 3. Control de flujo
 ----------------------------
@@ -272,10 +272,10 @@ Capítulo 3. Control de flujo
 		case exp-const: proposiciones
 		default: proposiciones
 	}
-	
+
 	break provoca una salida inmediata del switch.
 	return también es una forma válida para salir del switch.
-	
+
 	Ejemplo:
 		switch(c) {
 			case '0': case '1': case '2': case '3': case '4':
@@ -298,9 +298,9 @@ Capítulo 3. Control de flujo
 	{
 		proposición
 	}
-	
-	es equivalente a 
-	
+
+	es equivalente a
+
 	expr1;
 	while ( expr2 )
 	{
@@ -326,15 +326,15 @@ Capítulo 3. Control de flujo
 			// en el siguiente ciclo realizará la misma comprobación//
 		}
 	La proposición continue se emplea a menudo cuando la parte del ciclo que sigue es complicada.
-	
+
 3.3.5 Goto y etiquetas
 	for (...)
 	{
 		goto error;
 	}
-	
+
 	error: arregla el desorden
-	
+
 Capítulo 04. Funciones y estructura del programa
 ------------------------------------------------
 	4.1 Conceptos principales
@@ -358,30 +358,30 @@ Capítulo 04. Funciones y estructura del programa
 	El ámbito de una función es el archivo .c o .h donde esté definido y declarado.
 
 	El «scope» es el rango del programa dentro del cual se puede usar el nombre. Por ejemplo, para una variable automática declarada al principio de una función, el alcance es la función dentro de la cual está declarado el nombre. Las variables locales con el mismo nombre que estén en funciones diferentes no tienen relación. Ibídem para los parámetros de una función, los cuales son variables locales.
-	
+
 	Ejemplo:
 	main() {...}
-	
+
 	//Definición de variables//
 	int sp = 0;
 	double val[MAXVAL];
-	
+
 	void push( double f ) {...}
-	
+
 	double pop( void ) {...}
-	
+
 	//Declaración de variables externas//
 	extern int sp;
 	extern double val[];
-	
+
 	Hay que distinguir entre la declaración de una variable externa y su definición. Una declaración expone las propiedades de una variable (principalmente su tipo); una definición también provoca que se reserve un espacio para almacenamiento.
-	
+
 	//Declaración de variables externas//
 	extern int sp;
 	extern double var[];
-	
+
 	Esta declaración no crea las variables ni les reserva espacio en memoria. Su tamaño se determina en otro lugar. Sólo debe existir una definición de una variable externa entre todos los archivos que forman un programa fuente; otros archivos pueden contener declaraciones extern para tener acceso a ellas. (También puede haber declaraciones extern en el archivo que contiene la definición.) Los tamaños de los arrays deben ser especificados con la definición, pero es optativo hacerlo en una declaración extern. La inicialización de una variable externa sólo va con su definición.
-	
+
 4.1.3 Encabezamiento (header)
 	Los archivos header contienen las definiciones y declaraciones compartidas entre archivos.
 
@@ -393,9 +393,9 @@ Capítulo 04. Funciones y estructura del programa
 	4.2.4 static
 	4.2.5 Modificador const
 	4.2.6 Modificador volatile
-	
+
 	Para más información, véase el artículo PDF de "Almacenamiento - aspectos físicos y lógicos".
-	
+
 4.2.1 Almacenamiento automático
 	Sintaxis: [auto] <tipo> <nombre_variable>;
 	Son variables locales, se reservan en tiempo de compilación, se crean en tiempo de ejecución y se destruyen una vez terminada la ejecución de la función, es decir, su ámbito.
@@ -403,7 +403,7 @@ Capítulo 04. Funciones y estructura del programa
 4.2.2 Almacenamiento extern
 	Sintaxis:	extern <tipo> <nombre_variable>;
 				[extern] <tipo> <nombre_de_función>(<lista_parámetros>);
-	Este especificador se usa para indicar que el almacenamiento y valor de una variable o la definición de una función están definidos en otro módulo o fichero fuente. 
+	Este especificador se usa para indicar que el almacenamiento y valor de una variable o la definición de una función están definidos en otro módulo o fichero fuente.
 	Ejemplo:
 		ClaseAlmacenStatic [Eclipse]
 
@@ -416,8 +416,8 @@ Capítulo 04. Funciones y estructura del programa
 4.2.4 Almacenamiento static
 	Sintaxis: 	static <tipo> <nombre_variable>;
 				static <tipo> <nombre_de_función>(<lista_parámetros>);
-	Cuando se usa en la declaración de objetos, este especificador hace que se asigne una dirección de memoria fija para el	objeto mientras el programa se esté ejecutando. 
-	Es decir, su ámbito temporal es total. 
+	Cuando se usa en la declaración de objetos, este especificador hace que se asigne una dirección de memoria fija para el	objeto mientras el programa se esté ejecutando.
+	Es decir, su ámbito temporal es total.
 	Las variables estáticas tienen un ámbito local con respecto a su accesibilidad, pero temporalmente son como las variables externas.
 	Ejemplo:
 		int funcion();
@@ -436,7 +436,7 @@ Capítulo 04. Funciones y estructura del programa
 		}
 ////////////EJemeplo hola mundo static////////////////////
 #ifndef STDLIB
-  #define STDLIB 
+  #define STDLIB
     #include <stdio.h>
     #include <stdlib.h>
 #endif
@@ -464,7 +464,7 @@ int func3(int i)
 /////////////////////////////////////////////////////////////
 
 4.2.5 Modificador const
-	El modificador const crea nuevos tipos de objetos, e indica que el valor de tales objetos no puede ser modificado por el programa. 	
+	El modificador const crea nuevos tipos de objetos, e indica que el valor de tales objetos no puede ser modificado por el programa.
 	Sintaxis:	const <tipo> <variable> = <inicialización>;
 				const <tipo> <variable_agregada> = {<lista_inicialización>};
 				<tipo> <nombre_de_función> (const <tipo>*<nombre-de-variable> );
@@ -475,9 +475,9 @@ int func3(int i)
 	Sintaxis: 	volatile <tipo> <nombre_variable>;
 				<identificador_función> ( volatile <tipo> <nombre_variable> );
 				<identificador_función> volatile;
-	
+
 	Este modificador se usa con objetos que pueden ser modificados desde el exterior del programa, mediante procesos externos. Esta situación es común en programas multihilo o cuando el valor de ciertos objetos puede ser modificado mediante interrupciones o por hardware.
-	
+
 4.3 Recurrencia
 	C permite funciones recursivas (el diccionario de la RAE indica explícitamente que debe decirse "recurrentes" en lugar del barbarismo 'recursivo').
 	Ejemplo:
@@ -514,15 +514,15 @@ int func3(int i)
 		#define nombre texto a reemplazar
 produce que todas las ocurrencias del token nombre sean substituidas por "texto a reemplazar" (sin las comillas). Esta labor la hace el precompilador.
 	Si se desea que se reemplace por varias líneas, hay que usar la barra invertida \.
-	Ejemplo:	
+	Ejemplo:
 		#define nombre texto \
 						a \
 						reemplazar
 	Las substituciones se realizan a lo largo de todo el texto, pero NO tienen lugar si están en cadenas de caracteres (strings) entre comillas ni tampoco si un token contiene el token definido.
-	Ejemplo: 
+	Ejemplo:
 		#define YES yes
 		No se aplicaría a printf("YES") ni tampoco al token YESMAN.
-	
+
 	Macros con argumentos:
 	Es posible definir macros con argumentos.
 	Ejemplo:
@@ -535,7 +535,7 @@ produce que todas las ocurrencias del token nombre sean substituidas por "texto 
 	Ejemplo:
 		#undef getchar
 		int getchar(void){...}
-	
+
 	Macros en strings
 	Los argumentos de una macro no se remplazan dentro de strings entrecomillados. Sin embargo, sí hay una forma de que un argumento pueda incluirse en un string, por ejemplo, para imprimir datos durante la depuración, usando el token #.
 	Ejemplo:
@@ -544,17 +544,17 @@ produce que todas las ocurrencias del token nombre sean substituidas por "texto 
 		dprint(x/y);
 será substituido por
 		printf("x/y" " = &g\n", x/y);
-lo que concatenando los strings termina en 
+lo que concatenando los strings termina en
 		printf("x/y = &g\n", x/y);
-	
+
 	El operador ## de concatenación
 	Este operador proporciona un método para concatenar argumentos en la expansión de la macro.
 	Ejemplo:
 		#define paste(front, back) front ## back
 		paste(name, 1) produce name1
-		
+
 	Las reglas para el encadenamiento de ## son arcanas, pueden verse en el apéndice 1.
-	
+
 4.11.3 Inclusión condicional (#if, #elif, #else, #ifdef, #ifndef, #endif)
 	Es posible controlar la expansión de macros con sentencias condicionales.
 	Ejemplo:
@@ -566,8 +566,8 @@ lo que concatenando los strings termina en
 		#else
 			#define A 3
 		#endif
-	
-	Esta secuencia prueba que el nombre SYSTEM para decidir qué versión de la cabecera incluir:	
+
+	Esta secuencia prueba que el nombre SYSTEM para decidir qué versión de la cabecera incluir:
 	#if SYSTEM == SYSV
 		#define HDR "sysv.h"
 	#elif SYSTEM == BSD
@@ -578,7 +578,7 @@ lo que concatenando los strings termina en
 		#define HDR "default.h"
 	#endif
 	#include HDR
-	
+
 Capítulo 5. Punteros y arrays
 ------------------------------
 5. Punteros y arrays
@@ -615,7 +615,7 @@ Capítulo 5. Punteros y arrays
 	void swap(int *px, int *py)
 	swap(&a, &b)
 	swap(pa, pb)
-	
+
 5.3 Punteros y arrays
 	Definición de punteros y arrays:
 	int a[10];
@@ -623,7 +623,7 @@ Capítulo 5. Punteros y arrays
 	 //		| 	|	|	|	|  ...	|	|
 	 //		-----------------------------
 	 //		  0	  1	  2	  3	   ... 	  9
-	
+
 	int *pa; //sin memoria reservada
 	pa = a; // el puntero apunta al array
 	pa = &a[0] // el puntero apunta a la primera posición del array (equivalente al anterior)
@@ -635,18 +635,18 @@ Capítulo 5. Punteros y arrays
 	&a[i] = (a + i) //equivalente
 	pa[i] = *(pa + i) //equivalente
 	a[i] = *(pa + i) //equivalente
-	
+
 	Arrays como argumentos de funciones: se pasa un puntero a la posición inicial del array
 	Strings:
 		strlen("hola, mundo"); //constante cadena//
 		strlen(array);	//char array[100]//
 		strlen(&array[0]);	//igual que el anterior//
 		strlen(ptrarray);	//char *ptr//
-	
+
 	Los dos argumentos son equivalentes:
-	f(int arr[]) {...} 
+	f(int arr[]) {...}
 	f(int *arr ) {...}
-	
+
 5.4 Reserva y liberación de memoria (stdlib.h)
 	Funciones de reserva y liberación de memoria (biblioteca stdlib):
 
@@ -654,7 +654,7 @@ Capítulo 5. Punteros y arrays
 	void *malloc(size_t size);
 	ptr = (int*)malloc(sizeof(int));
 	free(ptr); //Para liberar la memoria reservada.
-	
+
 	Función calloc (consecutive allocation)
 	void* calloc(size_t nmemb, size_t size);
 	int *ptr;
@@ -664,7 +664,7 @@ Capítulo 5. Punteros y arrays
 5.5 Punteros a caracteres y funciones
 	char* pmessage;
 	pmessage = (char*)malloc(strlen("hello, world")*sizeof(char));
-	
+
 	Librería <string.h>
 		void strcpy(char *s, const char*t);
 		int strcmp(char *s, char *t);
@@ -683,11 +683,11 @@ Capítulo 5. Punteros y arrays
 		c = (char**)malloc(sizeof(char*));
 		//Array de punteros
 		char *lineptr[MAXLINES]; /* pointers to text lines */
-	
+
 5.7 Arrays multidimensinales
 	f(int daytab[][13]) {...}
 	f(int (*daytab)[13]) {...}	//equivalente al anterior
-	
+
 	Warning:
 	int (*daytab)[13] 	//puntero a un array de punteros a int repetido 13 veces
 			  0	  1	   ...    12
@@ -696,7 +696,7 @@ Capítulo 5. Punteros y arrays
 			---------------------
 			  |	  |			  |
 			 int int   ...	 int
-			  
+
 	int *daytab[13]		//array de 13 posiciones de punteros a int
 			 0	  1	   ...    12
 			---------------------
@@ -708,24 +708,24 @@ Capítulo 5. Punteros y arrays
 5.8 Punteros contra arrays multidimensionales
 	char *name[] = {"Mes ilegal","Enero","Febrero","Marzo"};
 	c = (char**)malloc(7*sizeof(char*));
-	
+
 5.9 Argumentos en la línea de comandos
 int main(int argc, char *argv[]);
 	int argc: argument count
 		Número de argumentos con los que se invocó desde el prompt.
-		
+
 	char *argv[]: argument vector
 		Puntero a array de punteros a string.
-		
+
 	Ejemplo:
 		C:\>echo hello, world
 
 		argc = 3 (echo + hello, + world)
-		argv	 -----	    -------- 
+		argv	 -----	    --------
 		  · ->  |  0  | -> |"echo\0"|
-				 -----	    ----------- 
+				 -----	    -----------
 				|  1  | -> |"hello,\0" |
-				 -----	    ----------- 
+				 -----	    -----------
 				|  2  | -> |"world\0"  |
 				 -----		-----------
 				| NULL|
@@ -772,7 +772,7 @@ int main(int argc, char *argv[]);
 		//Obtención del valor (en este caso, int) de una función//
 			printf("\n \t %d", (int)(*g));
 			int a = (int)(*g); //importante casting//
-	
+
 	Si se quiere usar como parámetro de una función a la que después se implementa y también se llama desde otra función hay que seguir las siguientes reglas:
 		//Como parámetro formal de una función//
 		int f_fibonacci(int (*f)(const int n), const int n);
@@ -780,7 +780,7 @@ int main(int argc, char *argv[]);
 		int result = f_fibonacci( ( int (*)(const int ) ) f_fibonacci_rec, i_orden);
 		//Implementación de f_fibonacci, llamada a f con sus parámetros//
 		(*f)(n);
-	
+
 	Ejemplo 2:
 		//Función quicksort//
 		//Requiere una función de comparación que depende de lo que se quiera ordenar//
@@ -809,7 +809,7 @@ Capítulo 6. Estructuras
 		   int x;
 		   int y;
 		 };
-	
+
 	Acceso a los campos, también conocidos como miembros del registro, mediante el operador ".",
 		struct point pt1; //declaración de variable registro.
 		pt1.x = 0; 	//Acceso al campo x.
@@ -818,9 +818,9 @@ Capítulo 6. Estructuras
 	Una declaración de estructura que no está seguida por una lista de variables no reserva espacio de almacenamiento sino que simplemente describe una plantilla o la forma de una estructura.
 	Ejemplo:
 		struct point pt; //struct definido anteriormente.
-		
+
 		struct point x = {0, 0};
-	
+
 Anidamiento de registros
 	Los registros pueden anidarse unos a otros.
 	Ejemplo:
@@ -839,7 +839,7 @@ Anidamiento de registros
 		- asignarla como unidad
 		- tomar su dirección con &
 		- tener acceso a sus elementos
-		x No se pueden comparar estructuras 
+		x No se pueden comparar estructuras
 
 	Ejemplo:
 		Función que devuelve un struct point.
@@ -873,7 +873,7 @@ ya que la precedencia de . es mayor que la de *
 			char *keyword, 	//string que contiene la palabra.
 			int count		//número de veces que se ha pulsado
 		} keytab[NKEYS] = {{"auto",0},{"break",0},{"case",1}};
-	
+
 	NOTA: sizeof
 	El lenguage C proporciona un operador unario en tiempo de compilación llamado sizeof que se puede emplear para calcular el tamaño de cualquier objeto:
 		sizeof <objeto> // objeto puede ser variable, array o estructura.
@@ -896,7 +896,7 @@ bien podría requerir 8 B, no 5 B. El operador sizeof regresa el valor apropiado.
 
 6.5 Registros autorreferenciados
 	Los registros pueden autorreferenciarse en sus campos internos.
-	Ejemplo: estructura de árbol 
+	Ejemplo: estructura de árbol
 		struct node_r //el nodo del árbol//
 		{
 			char *palabra; 			//puntero hacia el texto//
@@ -918,7 +918,7 @@ bien podría requerir 8 B, no 5 B. El operador sizeof regresa el valor apropiado.
 			p_nodo left;	//hijo izquierdo//
 			p_nodo right;	//hijo derecho//
 		} node_t;
-		
+
 	Ejemplo 2:
 		Tipo de dato definido para funciones con dos parámetros char* y que devuelven un int.
 			typedef int (*AAF)(char *, char *);
@@ -977,7 +977,7 @@ Igual que las estructuras.
 			#define STATIC		04
 			//Opción 2//
 			enum{ KEYWORD = 01, EXTERNAL = 02, STATIC = 04 };
-			
+
 			Para operar sobre los datos, potencia de dos, se usan los operadores de
 				· corrimiento
 				· enmascaramiento
@@ -995,7 +995,7 @@ Igual que las estructuras.
 				unsigned int is_extern	: 1;
 				unsigned int is_static	: 1;
 			} flags;
-			
+
 			//Ejemplo de uso//
 			flags.is_extern = flags.is_static = 1; //para encender los bits//
 			flags.is_extern = flags.is_static = 0; //para apagar los bits//
@@ -1024,7 +1024,7 @@ Capítulo 7. Entrada y salida
 	7.8.5 Administración de almacenamiento: malloc, calloc y free
 	7.8.6 Funciones matemáticas <math.h>
 	7.8.7 Generación de números aleatorios rand()
-	
+
 7.1 Entrada y salida estándar
 	En el sistema operativo, a nivel de programación en C, existen tres tipos de flujos de datos:
 	1. Entrada estándar (stdin)
@@ -1039,17 +1039,17 @@ Filtros para el redireccionamiento: <, > y | (pipes)
 		Ejemplo:
 			PC:~/pruebas$ comando1 < datos.txt
 			PC:~/pruebas$ programa1 < datos.txt
-			
+
 	2. Redirección de la salida estándar: >
 		Un archivo también puede substituir a la pantalla del ordenador como salida estándar (stdout) mediante la redirección de salida >.
 		Ejemplo:
 			PC:~/pruebas$ echo "hola caracola" > saludos.txt
-	
+
 	NOTA: La entrada y salida estándar pueden combinarse, lo que es interesante para la automatización de tareas varias:
 		Ejemplo:
 			 FibonacciInOut.exe > FibonacciOutData.txt < FibonacciInData.txt
 			//Al comando le entran los datos de 'FibonacciInData.txt' con < y se escriben en 'FibonacciOutData.txt'.
-	
+
 	3. Interconexión (pipeline) entre procesos
 		Dos programas o procesos pueden interconectar sus salidas estándar con su entrada estándar.
 		Ejemplo:
@@ -1060,7 +1060,7 @@ Filtros para el redireccionamiento: <, > y | (pipes)
 7.2 Salida con formato—printf
 	El comando printf tiene la siguiente sintaxis:
 		int printf(char *format, arg1, arg2, ...)
-	Este comando convierte, da formato e imprime sus argumentos en la salida estándar bajo el control de format. 
+	Este comando convierte, da formato e imprime sus argumentos en la salida estándar bajo el control de format.
 	Regresa el número de caracteres impresos.
 	La cadena de formato contiene dos tipos de objetos:
 		· Caracteres ordinarios, que son copiados al flujo de salida.
@@ -1076,7 +1076,7 @@ Filtros para el redireccionamiento: <, > y | (pipes)
  . (punto)			|	Separa el ancho de campo de la precisión
  (número)			|	Ancho de campo del punto decimal
  h ó l				|	Si el entero será impreso como un short (h) o long (l)
- 
+
 
 		Tabla 7.2.2 Especificaciones de conversión de printf()
 ------------------------------------------------------------------------
@@ -1086,15 +1086,15 @@ Filtros para el redireccionamiento: <, > y | (pipes)
  u		|	int; número decimal sin signo
 ---------------------------------------------------------------------------------------------
  c		|	int; carácter sencillo
- s		|	char *; imprime caracteres de una cadena hasta un '\0' o el número de caracteres 
+ s		|	char *; imprime caracteres de una cadena hasta un '\0' o el número de caracteres
 		|		dado por la precisión
----------------------------------------------------------------------------------------------		
+---------------------------------------------------------------------------------------------
  f		|	double; por defecto: [-]m.dddddd (m = mantisa, d = decimal)
  e, E	|	double; [-]m.dddddde±xx ó [-]m.ddddddE±xx
  g, G	|	double; si exponente menor a -4, usa %e ó %E, en otro caso
 		|		usa %f
----------------------------------------------------------------------------------------------	
- p		|	void *; apuntador (representación dependiente de la 
+---------------------------------------------------------------------------------------------
+ p		|	void *; apuntador (representación dependiente de la
 		|		plataforma)
  %		|	No es convertido en ningún argumento, imprime un %
 ---------------------------------------------------------------------------------------------
@@ -1105,7 +1105,7 @@ NOTA: cuidado, no es lo mismo
 	printf(s);		//Falla si s contiene %//
 	printf("%s", s)	//Seguro//
 	El comando entregará resultados incorrectos si no hay suficientes argumentos o si tienen tipos incorrectos.
-	
+
 Función "sprintf"
  int sprintf(char *string, char *format, arg1, arg2...)
 	Realiza las mismas funciones que printf, pero coloca el resultado en string en lugar de la salida estándar.
@@ -1114,7 +1114,7 @@ Función "sprintf"
 	Es la entrada análoga de printf, cuya sintaxis es:
 		int scanf(char *format, ...)
 	El comando hace tres cosas:
-		1. Lee caracteres de la entrada estándar, 
+		1. Lee caracteres de la entrada estándar,
 		2. Los interpreta de acuerdo con las especificaciones de conversión que están en format,
 		3. E indica dónde deben almacenarse la entrada correspondiente convertida, cuyos argumentos DEBEN SER PUNTEROS.
 	Retorna el número de ítems de entrada que coinciden con éxito, lo que puede usarse para determinar cuántos ítems se encontraron.
@@ -1138,15 +1138,15 @@ Ejemplo. Se desea leer líneas de entrada que contienen fechas de la forma
 	La proposición sscanf es
 		int day, year;
 		char monthname[20];
-	
+
 	scanf("%d %s %d", &day, monthname, &year);
-	
+
 	Si tiene la forma
 		mm/dd/yyyy
 	El programa quedaría
 		int day, month, year;
 		scanf("%d/%d/%d", &month, &day, &year);
-	
+
 	Si se desea que el programa lea en cualquiera de las dos formas anteriores:
 	while (getline(line, sizeof(line)) > 0) {
 		if (sscanf(line, "%d %s %d", &day, monthname, &year) == 3)
@@ -1156,7 +1156,7 @@ Ejemplo. Se desea leer líneas de entrada que contienen fechas de la forma
 		else
 		{	printf("invalid: %s\n", line); /* invalid form */	}
 	}
-	
+
 7.5 Acceso a archivos
 	Dentro de la librería <stdio.h> se define la estructura FILE, puntero a ficheros, la cual sirve para acceder a archivos y que contiene información acerca del archivo como
 		· ubicación de un buffer
@@ -1166,7 +1166,7 @@ Ejemplo. Se desea leer líneas de entrada que contienen fechas de la forma
 	Esta estructura se declara de la siguiente manera:
 		FILE *fp; //Puntero a ficheros
 		FILE *fopen(char *nombre, char *modo);
-		
+
 Apertura de ficheros: fopen
 	Su sintaxis es la siguiente:
 		FILE* fopen(const char nombrefichero[], const char modo[]);
@@ -1180,22 +1180,22 @@ Apertura de ficheros: fopen
 				a			Añade; abre o crea un fichero de texto para escribir al final
 								del fichero (EOF)
 				rb 			Abre un fichero en modo binario para lectura
-				wb			Trunca, a longitud cero o crea un fichero en modo binario 
+				wb			Trunca, a longitud cero o crea un fichero en modo binario
 								para escribir
-				ab			Añade; abre o crea un fichero en modo binario para escribir 
+				ab			Añade; abre o crea un fichero en modo binario para escribir
 								al final del fichero (EOF)
 				r+ 			Abre un fichero de texto para actualización (lectura y escritura)
-				w+ 			Trunca, a longitud cero o crea un fichero de texto para 
+				w+ 			Trunca, a longitud cero o crea un fichero de texto para
 								actualización
-				a+ 			Añade; abre o crea un fichero de texto para actualización, 
+				a+ 			Añade; abre o crea un fichero de texto para actualización,
 								escribiendo al final del fichero (EOF)
-				r+b ó rb+ 	Abre un fichero en modo binario para actualización 
+				r+b ó rb+ 	Abre un fichero en modo binario para actualización
 								(lectura y escritura)
-				w+b ó wb+ 	Trunca, a longitud cero o crea un fichero en modo 
+				w+b ó wb+ 	Trunca, a longitud cero o crea un fichero en modo
 								binario para actualización
-				a+b ó ab+ 	Añade; abre o crea un fichero en modo binario 
+				a+b ó ab+ 	Añade; abre o crea un fichero en modo binario
 								para actualización, escribiendo al final del fichero (EOF)
- 
+
 	Parámetros de retorno
 		FILE*	Puntero a un fichero.
 					Si ocurre un error, retorna NULL.
@@ -1211,11 +1211,11 @@ Cierre de ficheros: fclose
 Escritura y lectura de carácter:
 	Lectura:	int fgetc(FILE *f)
 	Escritura:	int fputc(int c, FILE *f) //tipo int, pero admite un char//
-	
+
 	Argumentos de salida:
-		Si el stream está en el final de fichero, el indicador del final de fichero para el stream es activado y fgetc retorna EOF. 
+		Si el stream está en el final de fichero, el indicador del final de fichero para el stream es activado y fgetc retorna EOF.
 		Si ocurre un error de lectura, el indicador de error para el stream es activado y fgetc retorna EOF.
-		
+
 	NOTA: getchar y putchar se definen a partir de fgetc y fputc con la entrada y salida estándar respectivamente.
 		#define getchar()	getc(stdin)
 		#define putchar(c)	putc(c, stdout)
@@ -1223,10 +1223,10 @@ Escritura y lectura de carácter:
 Escritura y lectura de strings: fgets y fputs
 	Lectura: 	char* fgets(char* s, int n, FILE *f) //Lee n-1 caracteres//
 	Escritura:	char* fputs(const char* s, FILE *f)
-	
+
 	Argumento de salida:
 		Retorna cadena si es realizada con éxito, EOF en otro caso.
-		
+
 Escritura y lectura de archivos con formato: fprintf y fscanf
 	Lectura:	int fscanf(FILE *fp, char* formato, ...) //Variable deben ser PUNTEROS//
 	Escritura:	int fprintf(FILE *fp, char* formato, ...)
@@ -1238,10 +1238,10 @@ Escritura y lectura general: fread y fwrite
 
 	Ejemplos:	float d; fwrite( (void*)&d, sizeof(float), 1, f);
 				int ai[10]; fwrite((void*)ai, sizeof(int), TAMARR, f);
-				
+
 Posición actual del puntero a fichero: ftell
 	long ftell(FILE *f)
-	
+
 	int fseek(FILE *f, long offset, int origin)
 		Macrospara origin:		SEEK_SET: principio
 								SEEK_CUR: actual
@@ -1250,7 +1250,7 @@ Posición actual del puntero a fichero: ftell
 
 7.6 Manejo de errores stderr y exit
 	Existe un flujo de datos de salida (stream) especialmente creado para el manejo de errores en los programas: stderr.
-	Para utilizarlo, se usa 
+	Para utilizarlo, se usa
 		Sintaxis: int fprintf(stderr, char* formato, arg1, arg2, ...)
 
 Función de <stdio.h> exit
@@ -1279,7 +1279,7 @@ Función de fin de archivo feof
 	size_t strlen(s) 		return length of s, '\0' not included
 	char *strchr(s,c) 		return pointer to first c in s, or NULL if not present
 	char *strrchr(s,c) 		return pointer to last c in s, or NULL if not present
-	
+
 7.8.2 Prueba y conversión de strings <ctype.h>
 
 	int isalpha(c) non-zero if c is alphabetic, 0 if not
@@ -1290,39 +1290,39 @@ Función de fin de archivo feof
 	int isspace(c) non-zero if c is blank, tab, newline, return, formfeed, vertical tab
 	int toupper(c) return c converted to upper case
 	int tolower(c) return c converted to lower case
-	
+
 7.8.3 Funciones ungetc y ungetch
-	int ungetc(char c, FILE *f)  retorna el carácter apilado después de la conversión. 
+	int ungetc(char c, FILE *f)  retorna el carácter apilado después de la conversión.
 									Si la operación falla, entonces retorna EOF.
 
 7.8.4 Ejecución de órdenes system(char *s)
-	
+
 	int system(const char *cadena) pasa al SO la cadena y devuelve lo mismo que el SO devuelve.
 
 	Ejemplo: system("date") imprime fecha y hora del SO por stdout.
-	
+
 7.8.5 Administración de almacenamiento: malloc, calloc y free
-	
+
 	void malloc(size_t n) devuelve un puntero a n bytes de almacenamiento, NULL en otro case.
-	
+
 	void *calloc(size_t n, size_t size)  retorna o bien NULL o bien un puntero al espacio adjudicado.
-	
+
 	Casting: es necesario hacer un casting
 		int ip = (int*) calloc(n, sizeof(int));
-	
+
 	Liberación de memoria: free(p)
 	Ejemplo:
 		for (p = head; p != NULL; p = p->next) /* WRONG */
 			free(p); //You are not saving p->next//
-		
-		for (p = head; p != NULL; p = q) 
+
+		for (p = head; p != NULL; p = q)
 		{
 			q = p->next;
 			free(p);
 		}
 
 7.8.6 Funciones matemáticas <math.h>
-	
+
 	sin(x) sine of x, x in radians
 	cos(x) cosine of x, x in radians
 	atan2(y,x) arctangent of y/x, in radians
@@ -1332,13 +1332,13 @@ Función de fin de archivo feof
 	pow(x,y) xy
 	sqrt(x) square root of x (x>0)
 	fabs(x) absolute value of x
-	
+
 7.8.7 Generación de números aleatorios rand()
 
 	int rand() devuelve un entero pseudo-aleatorio entre 0 y RAND_MAX (definido en <stdlib.h>)
-	
+
 	#define frand() ((double) rand() / (RAND_MAX + 1))
-	
+
 Semilla de rand()
 	void srand(unsigned int semilla)
 
@@ -1355,14 +1355,14 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 8.1 Descriptores de ficheros.
 	UNIX maneja todos los dispositivos periféricos, tales como teclado o pantalla, como ficheros en el sistema. Esto proporciona un interfaz común entre los manejadores de dispositivos y los programas.
 	Cuando un programa intenta acceder a un archivo, en lectura o escritura, el sistema chequea la existencia del archivo y los derechos del proceso; si todo es correcto, devuelve devuelve al programa un entero llamado descriptor de fichero.
-	
+
 	Cuando el intérprete de comandos (el "shell") ejecuta un programa, tres ficheros se abren, con descriptores de ficheros 0, 1 y 2, llamados entrada estándar (stdin) (0), salida estándar (stdout) (1) y error estándar (stderr) (2).
 	Si un programa lee en 0 y escribe en 1 y 2, puede usar la entrada y la salida sin preocuparse sobre abrir ficheros.
-	
+
 	Un usuario puede redirigir la entrada y la salida entre ficheros usando los operadores de redireccionamiento < y >:
 	Ejemplo:	programa.exe < fichero_entrada > fichero_salida
 		Con este programa, el shell reasigna el descriptor 0 por el del fichero de entrada y el descriptor 1 por el fichero de salida.
-		
+
 8.2 Entrada y salida de bajo nivel—read y write
 	La entrada y la salida usa las system calls de lectura y escritura, las cuales son accedidas desde programas C a través de las dos funciones llamadas read y write.
 
@@ -1376,7 +1376,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 						Si devuelve 0, se ha llegado al final del fichero.
 						Si devuelve -1, ha ocurrido algún error.
 					En escritura, el número de bytes devueltos debe ser igual al número de bytes escritos. Si no es así, habrá ocurrido un error.
-	
+
 	Cualquier número de bytes puede ser leído o escrito en una llamada. El valor más común es 1, lo que significa un carácter cada vez ("unbuffered"), y un número como 1024 o 4096 corresponde a un tamaño físico en un dispositivo periférico. Mayores tamaños de acceso serán más eficientes porque menos systems calls se realizarán.
 
 	Ejemplo: Copiar la entrada estándar a la salida estándar.
@@ -1409,17 +1409,17 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 			static char buf[BUFSIZ];
 			static char *bufp = buf;
 			static int n = 0;
-			if (n == 0) 
+			if (n == 0)
 			{ /* buffer is empty */
 			n = read(0, buf, sizeof buf);
 			bufp = buf;
 			}
 			return (--n >= 0) ? (unsigned char) *bufp++ : EOF;
 		}
- 
+
 8.3 Open, creat, close, unlink
 	Además de las entradas y salidas estándar, hay que abrir ficheros explícitamente para leerlos y escribirlos. Para ello hay dos system calls, open y creat (sic).
-	
+
 	int open(char *name, int flags, int perms);
 		char *name	String que contiene el nombre de fichero.
 		int flags	Especifica cómo el fichero debe ser abierto.
@@ -1431,7 +1431,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 					Si hay algún error, devuelve -1.
 		Ejemplo:
 			fd = open(name, O_RDONLY,0);
-	
+
 	int creat(char *name, int perms);
 		int			Devuelve un descriptor si pudo crear el fichero, -1 eoc.
 					Si el archivo ya existía, lo truncará a longitud cero, descartando el contenido anterior. No es un error hacer un creat de un archivo existente.
@@ -1440,7 +1440,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 	En el sistema de fichero de UNIX, hay nueve bits asociados a la información de permiso con un fichero que controla el acceso a lectura, escritura y ejecución para el propietario del archivo, el grupo y el resto. Así, un número octal de tres dígitos es conveniente para especificar los 141 permisos.
 	Por ejemplo, 0775 especifica la lectura, escritura y ejecución de permisos para el propietario, y lectura y ejecución para el grupo y el resto de personas.
 
-	Ejemplo: 
+	Ejemplo:
 		/**
 			\title Una versión simplificada de cp de UNIX.
 			\description Copia sólo un fichero, no permite al segundo argumento ser un directorio e inventa permisos en lugar de copiarlos.
@@ -1449,9 +1449,9 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		#include <fcntl.h>
 		#include "syscalls.h"
 		#define PERMS 0666 /* RW for owner, group, others */
-		
+
 		void error(char *, ...);
-		
+
 		/* cp: copy f1 to f2 */
 		main(int argc, char *argv[])
 		{
@@ -1470,7 +1470,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 			}
 			return 0;
 		}
-		
+
 		#include <stdio.h>
 		#include <stdarg.h>
 		/* error: print an error message and die */
@@ -1484,12 +1484,12 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 			va_end(args);
 			exit(1);
 		}
-		
+
 	close (int fd)	rompe la conexión entre un descriptor de fichero y un archivo abierto, y libera el descriptor de fichero para usarlo con cualquier otro archivo.
 	exit ó return 	Cierra todos los ficheros.
-	
+
 	unlink(char *name)	borra el fichero name del sistema de ficheros.
-	
+
 8.4 Acceso aleatorio—lseek
 	La system call lseek proporciona una forma de moverse a lo largo del archivo sin leer o escribir datos.
 	long lseek(int fd, long offset, int origin);
@@ -1506,8 +1506,8 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		lseek(fd, 0L, 2)
 	y para volver atrás al principio
 		lseek(fd, 0L, 0) //0L = (long)0//
-	
-	
+
+
 	#include "syscalls.h"
 	/*get: read n bytes from position pos */
 	int get(int fd, long pos, char *buf, int n)
@@ -1517,15 +1517,15 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		else
 		return -1;
 	}
-	
+
 8.5 Ejemplo: una relación de fopen y getc
 
 	#define NULL 0
 	#define EOF (-1)
 	#define BUFSIZ 1024
 	#define OPEN_MAX 20 /* max #files open at once */
-	
-	typedef struct _iobuf 
+
+	typedef struct _iobuf
 	{
 		int cnt; /* characters left */
 		char *ptr; /* next character position */
@@ -1534,12 +1534,12 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		int fd; /* file descriptor */
 	} FILE;
 	extern FILE _iob[OPEN_MAX];
-	
+
 	#define stdin (&_iob[0])
 	#define stdout (&_iob[1])
 	#define stderr (&_iob[2])
-	
-	enum _flags 
+
+	enum _flags
 	{
 		_READ = 01, /* file open for reading */
 		_WRITE = 02, /* file open for writing */
@@ -1547,14 +1547,14 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		_EOF = 010, /* EOF has occurred on this file */
 		_ERR = 020 /* error occurred on this file */
 	};
-	
+
 	int _fillbuf(FILE *);
 	int _flushbuf(int, FILE *);
-	
+
 	#define feof(p) ((p)->flag & _EOF) != 0)
 	#define ferror(p) ((p)->flag & _ERR) != 0)
 	#define fileno(p) ((p)->fd)
-	
+
 	#define getc(p) (--(p)->cnt >= 0 \
 					? (unsigned char) *(p)->ptr++ : _fillbuf(p))
 	#define putc(x,p) (--(p)->cnt >= 0 \
@@ -1562,7 +1562,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 
 	#define getchar() getc(stdin)
 	#define putcher(x) putc((x), stdout)
-	
+
 	/** fopen*/
 	#include <fcntl.h>
 	#include "syscalls.h"
@@ -1597,7 +1597,7 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		fp->flag = (*mode == 'r') ? _READ : _WRITE;
 		return fp;
 	}
-	
+
 	#include "syscalls.h"
 	/* _fillbuf: allocate and fill input buffer */
 	int _fillbuf(FILE *fp)
@@ -1620,14 +1620,14 @@ Capítulo 8. La interfaz con el sistema UNIX (syscalls.h)
 		return EOF;
 	}
 	return (unsigned char) *fp->ptr++;
-	
-	FILE _iob[OPEN_MAX] = 
+
+	FILE _iob[OPEN_MAX] =
 	{ /* stdin, stdout, stderr */
 		{ 0, (char *) 0, (char *) 0, _READ, 0 },
 		{ 0, (char *) 0, (char *) 0, _WRITE, 1 },
-		{ 0, (char *) 0, (char *) 0, _WRITE, | _UNBUF, 2 
+		{ 0, (char *) 0, (char *) 0, _WRITE, | _UNBUF, 2
 	}
-	
+
 Webs sobre C
 www.zator.com
 www.elrincondelc.com

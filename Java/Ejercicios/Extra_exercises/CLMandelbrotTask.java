@@ -4,7 +4,7 @@
  * It is to be used with CLMandelbrotWorker.java and CLMandelbrotMaster.java.
  * This class must be present on both the master computer (along with
  * CLMandelbrotMaster) and on the worker computers.
- * 
+ *
  * CLMandelbrotTask is a simple container that holds the data for one "task"
  * which consists of computing one row of data for a Mandelbrot image.  It
  * also contains the output of the task, and a method for doing the computation.
@@ -15,19 +15,19 @@
  */
 public class CLMandelbrotTask {
 
-   public int id;             // Identifies this task.  Each task that is 
+   public int id;             // Identifies this task.  Each task that is
                               // part of the overall computation has a
                               // different id.
-   
+
    public int maxIterations;  // Input for the computation.
-   public double y;    
+   public double y;
    public double xmin;
    public double dx;
    public int count;
-   
+
    public int[] results;      // Holds the results of the computation after
                               //  compute() has been executed.
-   
+
 
    /**
     * Performs the task represented by this data.  Used the values
@@ -41,8 +41,8 @@ public class CLMandelbrotTask {
       for (int i = 0; i < count; i++)
          results[i] = countIterations(xmin + i*dx,y);
    }
-   
-   
+
+
    /**
     * Called by compute() to compute each entry in the results array.
     */

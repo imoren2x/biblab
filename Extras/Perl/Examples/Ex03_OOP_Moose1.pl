@@ -1,8 +1,8 @@
 use MooseX::Declare;
- 
+
 class Point3D extends Point {
     has 'z' => (isa => 'Num', is => 'rw');
- 
+
     after clear {
         $self->z(0);
     }

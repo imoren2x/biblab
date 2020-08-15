@@ -16,7 +16,7 @@
 
 //Person.java
 public class Person {
-	
+
    private String name;
    private String gender;
    private String maritalStatus;
@@ -24,7 +24,7 @@ public class Person {
    public Person(String name, String gender, String maritalStatus){
       this.name = name;
       this.gender = gender;
-      this.maritalStatus = maritalStatus;		
+      this.maritalStatus = maritalStatus;
    }
 
    public String getName() {
@@ -35,7 +35,7 @@ public class Person {
    }
    public String getMaritalStatus() {
       return maritalStatus;
-   }	
+   }
 }
 
 //Criteria.java
@@ -53,8 +53,8 @@ public class CriteriaMale implements Criteria {
 
    @Override
    public List<Person> meetCriteria(List<Person> persons) {
-      List<Person> malePersons = new ArrayList<Person>(); 
-      
+      List<Person> malePersons = new ArrayList<Person>();
+
       for (Person person : persons) {
          if(person.getGender().equalsIgnoreCase("MALE")){
             malePersons.add(person);
@@ -72,8 +72,8 @@ public class CriteriaFemale implements Criteria {
 
    @Override
    public List<Person> meetCriteria(List<Person> persons) {
-      List<Person> femalePersons = new ArrayList<Person>(); 
-      
+      List<Person> femalePersons = new ArrayList<Person>();
+
       for (Person person : persons) {
          if(person.getGender().equalsIgnoreCase("FEMALE")){
             femalePersons.add(person);
@@ -91,8 +91,8 @@ public class CriteriaSingle implements Criteria {
 
    @Override
    public List<Person> meetCriteria(List<Person> persons) {
-      List<Person> singlePersons = new ArrayList<Person>(); 
-      
+      List<Person> singlePersons = new ArrayList<Person>();
+
       for (Person person : persons) {
          if(person.getMaritalStatus().equalsIgnoreCase("SINGLE")){
             singlePersons.add(person);
@@ -112,13 +112,13 @@ public class AndCriteria implements Criteria {
 
    public AndCriteria(Criteria criteria, Criteria otherCriteria) {
       this.criteria = criteria;
-      this.otherCriteria = otherCriteria; 
+      this.otherCriteria = otherCriteria;
    }
 
    @Override
    public List<Person> meetCriteria(List<Person> persons) {
-   
-      List<Person> firstCriteriaPersons = criteria.meetCriteria(persons);		
+
+      List<Person> firstCriteriaPersons = criteria.meetCriteria(persons);
       return otherCriteria.meetCriteria(firstCriteriaPersons);
    }
 }
@@ -133,7 +133,7 @@ public class OrCriteria implements Criteria {
 
    public OrCriteria(Criteria criteria, Criteria otherCriteria) {
       this.criteria = criteria;
-      this.otherCriteria = otherCriteria; 
+      this.otherCriteria = otherCriteria;
    }
 
    @Override
@@ -145,7 +145,7 @@ public class OrCriteria implements Criteria {
          if(!firstCriteriaItems.contains(person)){
             firstCriteriaItems.add(person);
          }
-      }	
+      }
       return firstCriteriaItems;
    }
 }
@@ -182,9 +182,9 @@ public class CriteriaPatternDemo {
    }
 
    public static void printPersons(List<Person> persons){
-   
+
       for (Person person : persons) {
          System.out.println("Person : [ Name : " + person.getName() + ", Gender : " + person.getGender() + ", Marital Status : " + person.getMaritalStatus() + " ]");
       }
-   }      
+   }
 }

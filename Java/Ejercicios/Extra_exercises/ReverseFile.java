@@ -12,7 +12,7 @@ public class ReverseFile {
 
       TextReader data;     // Character input stream for reading data.
       PrintWriter result;  // Character output stream for writing data.
-      
+
       ArrayList<Double> numbers;  // An ArrayList for holding the data.
 
       numbers = new ArrayList<Double>();
@@ -34,21 +34,21 @@ public class ReverseFile {
          data.close();  // Close the input file.
          return;        // End the program.
       }
-      
+
       try {
-      
+
           // Read numbers from the input file, adding them to the ArrayList.
-          
+
           while ( data.eof() == false ) {  // Read until end-of-file.
              double inputNumber = data.getlnDouble();
              numbers.add( inputNumber );
           }
-       
+
           // Output the numbers in reverse order.
-          
+
           for (int i = numbers.size()-1; i >= 0; i--)
              result.println(numbers.get(i));
-             
+
           System.out.println("Done!");
 
        }
@@ -61,7 +61,7 @@ public class ReverseFile {
           data.close();
           result.close();
        }
-         
+
    }  // end of main()
 
 } // end class ReverseFile

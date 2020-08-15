@@ -4,9 +4,9 @@
 2.2 Tipos y tamaños de datos en C
 	char 1 byte
 	int  4 u 8 bytes
-	float 
+	float
 	double
-	
+
 	Propiedades:
 	short/long/signed/unsigned
 
@@ -59,14 +59,14 @@
 	void squeeze ( char s[], int c )
 
 2.9 Operadores para manejo de bits
-	& AND de bits 
+	& AND de bits
 
 	ejemplo: n = n & 0177 hace cero todos los bits de n, menos los 7 de menor orden
 
 	| OR de bits
 	x = x | SET_ON fija en uno a todos los bits de x que son uno en SET_ON
 
-	<< 
+	<<
 	x << 1 un desplazamiento de un bit
 
 	~ complemento a uno (unario)
@@ -87,7 +87,7 @@
 
 	Si expr1 y expr2 son expresiones, entonces
 	 expr1 op= expr2
-	es equivalente a 
+	es equivalente a
 	 expr1 = (expr1) op (expr2)
 
 2.11 Expresiones condicionales

@@ -3,18 +3,18 @@ import java.io.*;
 
 /**
  * This program is one end of a simple command-line interface chat program.
- * It acts as a server which waits for a connection from the CLChatClient 
- * program.  The port on which the server listens can be specified as a 
+ * It acts as a server which waits for a connection from the CLChatClient
+ * program.  The port on which the server listens can be specified as a
  * command-line argument.  If it is not, then the port specified by the
- * constant DEFAULT_PORT is used.  Note that if a port number of zero is 
+ * constant DEFAULT_PORT is used.  Note that if a port number of zero is
  * specified, then the server will listen on any available port.
- * This program only supports one connection.  As soon as a connection is 
+ * This program only supports one connection.  As soon as a connection is
  * opened, the listening socket is closed down.  The two ends of the connection
  * each send a HANDSHAKE string to the other, so that both ends can verify
- * that the program on the other end is of the right type.  Then the connected 
- * programs alternate sending messages to each other.  The client always sends 
- * the first message.  The user on either end can close the connection by 
- * entering the string "quit" when prompted for a message.  Note that the first 
+ * that the program on the other end is of the right type.  Then the connected
+ * programs alternate sending messages to each other.  The client always sends
+ * the first message.  The user on either end can close the connection by
+ * entering the string "quit" when prompted for a message.  Note that the first
  * character of any string sent over the connection must be 0 or 1; this
  * character is interpreted as a command.
  */
@@ -26,8 +26,8 @@ public class CLChatServer {
    static final int DEFAULT_PORT = 1728;
 
    /**
-    * Handshake string. Each end of the connection sends this  string to the 
-    * other just after the connection is opened.  This is done to confirm that 
+    * Handshake string. Each end of the connection sends this  string to the
+    * other just after the connection is opened.  This is done to confirm that
     * the program on the other side of the connection is a CLChat program.
     */
    static final String HANDSHAKE = "CLChat";
@@ -42,7 +42,7 @@ public class CLChatServer {
     */
    static final char CLOSE = '1';
 
-   
+
    public static void main(String[] args) {
 
       int port;   // The port on which the server listens.
@@ -54,14 +54,14 @@ public class CLChatServer {
       PrintWriter outgoing;     // Stream for sending data to client.
       String messageOut;        // A message to be sent to the client.
       String messageIn;         // A message received from the client.
-      
+
       BufferedReader userInput; // A wrapper for System.in, for reading
                                 // lines of input from the user.
 
       /* First, get the port number from the command line,
             or use the default port if none is specified. */
 
-      if (args.length == 0) 
+      if (args.length == 0)
          port = DEFAULT_PORT;
       else {
          try {
@@ -83,8 +83,8 @@ public class CLChatServer {
          listener = new ServerSocket(port);
          System.out.println("Listening on port " + listener.getLocalPort());
          connection = listener.accept();
-         listener.close();  
-         incoming = new BufferedReader( 
+         listener.close();
+         incoming = new BufferedReader(
                         new InputStreamReader(connection.getInputStream()) );
          outgoing = new PrintWriter(connection.getOutputStream());
          outgoing.println(HANDSHAKE);  // Send handshake to client.
@@ -102,8 +102,8 @@ public class CLChatServer {
       }
 
       /* Exchange messages with the other end of the connection until one side
-         or the other closes the connection.  This server program waits for 
-         the first message from the client.  After that, messages alternate 
+         or the other closes the connection.  This server program waits for
+         the first message from the client.  After that, messages alternate
          strictly back and forth. */
 
       try {
@@ -113,9 +113,9 @@ public class CLChatServer {
             System.out.println("WAITING...");
             messageIn = incoming.readLine();
             if (messageIn.length() > 0) {
-                   // The first character of the message is a command. If 
-                   // the command is CLOSE, then the connection is closed.  
-                   // Otherwise, remove the command character from the 
+                   // The first character of the message is a command. If
+                   // the command is CLOSE, then the connection is closed.
+                   // Otherwise, remove the command character from the
                    // message and proceed.
                if (messageIn.charAt(0) == CLOSE) {
                   System.out.println("Connection closed at other end.");

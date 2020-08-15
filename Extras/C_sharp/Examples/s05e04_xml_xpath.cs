@@ -15,7 +15,7 @@ namespace ParsingXml {
                 if((titleNode != null) && (dateNode != null))
                     Console.WriteLine(dateNode.InnerText + ": " + titleNode.InnerText);
             }
-            Console.ReadKey();   
+            Console.ReadKey();
         }
     }
 }

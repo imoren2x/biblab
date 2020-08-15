@@ -29,7 +29,7 @@ namespace LineApplication {
         }
 
         static void Main(string[] args) {
-            Line line = new Line();    
+            Line line = new Line();
 
             // set line length
             line.setLength(6.0);

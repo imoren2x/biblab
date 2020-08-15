@@ -12,7 +12,7 @@ print "content-type: text/html \n\n";
 # SET A VARIABLE
 $count = 0;
 while ($count <= 7) {
-		
+
 	# SET A CONDITIONAL STATEMENT TO INTERRUPT @ 4
 	if ($count == 4) {
 		print "Skip Four!\n";

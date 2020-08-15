@@ -4,8 +4,8 @@ public class Ej01ThrowsThrow {
 		// Method implementation
 		throw new ArrayStoreException();
 	}
-	
-	
+
+
 	public static void main(String args[]) {
 		deposit(3.4);
 	}

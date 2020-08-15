@@ -6,7 +6,7 @@
 public class Ej16StopWatch {
 
 	/**
-	 * 
+	 *
 	 */
 	public Ej16StopWatch() {
 		super();
@@ -17,7 +17,7 @@ public class Ej16StopWatch {
 	 */
 	public static void main(String[] args) {
 		Ej16StopWatchAux sw = new Ej16StopWatchAux(Ej16StopWatchAux.sStartNow);
-		
+
 		sleep(1);
 		System.out.println("StopWatch value: " + sw.getElapsedTimeFloat() + " s.");
 		sleep(2);
@@ -28,7 +28,7 @@ public class Ej16StopWatch {
 		sleep(1);
 		System.out.println("StopWatch value: " + sw.getElapsedTimeFloat() + " s.");
 	}
-	
+
 	public static void sleep(long time) {
 
 		try {
@@ -37,7 +37,7 @@ public class Ej16StopWatch {
 			t.printStackTrace();
 		}
 	}
-	
-	
+
+
 }
 

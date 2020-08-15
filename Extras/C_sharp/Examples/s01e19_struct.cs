@@ -43,7 +43,7 @@ public class testStructure {
         Book1.display();
 
         /* print Book2 info */
-        Book2.display(); 
+        Book2.display();
 
         Console.ReadKey();
     }

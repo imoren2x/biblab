@@ -19,7 +19,7 @@ int main()
  char c;
  int *p1, *p2;
  int i1, i2;
- 
+
  //Modificar: crear función de captura: ahorra líneas//
  // body
  printf("Escribe un valor entero:\n");
@@ -30,21 +30,21 @@ int main()
  printf(">> ");
  p2 = (int*)malloc(sizeof(int));
  scanf("%d",p2);
- 
+
  printf(" El primer valor es: %d.\n",*p1);
  printf(" El segundo valor es: %d.\n",*p2);
- 
+
  printf("\n\n");
  printf("Y ahora los intercambio...\n");
  myswap(p1, p2);
- 
+
  printf(" El primer valor es: %d.\n",*p1);
  printf(" El segundo valor es: %d.\n",*p2);
- 
+
  // Freeing memory //
  free(p1);
  free(p2);
- 
+
  printf("\n");
  system("pause");
  return 0;
@@ -53,7 +53,7 @@ int main()
 void myswap(int *px, int *py)
 {
  int temp;
- 
+
  temp = *px;
  *px = *py,
  *py = temp;

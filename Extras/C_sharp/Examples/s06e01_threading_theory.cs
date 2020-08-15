@@ -98,7 +98,7 @@ Makes the thread pause for a period of time.
 20	public static void SpinWait(int iterations)
 Causes a thread to wait the number of times defined by the iterations parameter
 
-21	
+21
 public static byte VolatileRead(ref byte address)
 
 public static double VolatileRead(ref double address)
@@ -109,7 +109,7 @@ public static Object VolatileRead(ref Object address)
 
 Reads the value of a field. The value is the latest written by any processor in a computer, regardless of the number of processors or the state of processor cache. This method has different overloaded forms. Only some are given above.
 
-22	
+22
 public static void VolatileWrite(ref byte address,byte value)
 
 public static void VolatileWrite(ref double address, double value)

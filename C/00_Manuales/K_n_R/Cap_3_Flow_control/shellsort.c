@@ -22,7 +22,7 @@ int main()
     v[7] = 3;
     v[8] = 2;
     v[9] = 1;
-    
+
     printf("This is the vector to be sorted:\n>>");
     for (i = 0; i < LENGTH; i++)
     {
@@ -35,8 +35,8 @@ int main()
     {
         printf("%d ",v[i]);
     }
-    
-        
+
+
     printf("\n");
     system("pause");
     return 0;
@@ -47,9 +47,9 @@ int main()
 void shellsort(int *v)
 {
      int gap, i, j, temp, n;
-     
+
      n = LENGTH;
-     
+
      for (gap = n/2; gap > 0; gap /= 2)
      {
          for (i = gap; i < n; i++)

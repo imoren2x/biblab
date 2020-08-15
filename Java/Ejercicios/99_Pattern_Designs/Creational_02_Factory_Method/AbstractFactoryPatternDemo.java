@@ -2,7 +2,7 @@
 /*
  * http://www.tutorialspoint.com/design_pattern/abstract_factory_pattern.htm
  * http://www.oodesign.com/abstract-factory-pattern.html
- * 
+ *
  */
 //Shape.java
 public interface Shape {
@@ -76,27 +76,27 @@ public abstract class AbstractFactory {
 
 //ShapeFactory.java
 public class ShapeFactory extends AbstractFactory {
-	
+
    @Override
    public Shape getShape(String shapeType){
-   
+
       if(shapeType == null){
          return null;
-      }		
-      
+      }
+
       if(shapeType.equalsIgnoreCase("CIRCLE")){
          return new Circle();
-         
+
       }else if(shapeType.equalsIgnoreCase("RECTANGLE")){
          return new Rectangle();
-         
+
       }else if(shapeType.equalsIgnoreCase("SQUARE")){
          return new Square();
       }
-      
+
       return null;
    }
-   
+
    @Override
    Color getColor(String color) {
       return null;
@@ -105,29 +105,29 @@ public class ShapeFactory extends AbstractFactory {
 
 //ColorFactory.java
 public class ColorFactory extends AbstractFactory {
-	
+
    @Override
    public Shape getShape(String shapeType){
       return null;
    }
-   
+
    @Override
    Color getColor(String color) {
-   
+
       if(color == null){
          return null;
-      }		
-      
+      }
+
       if(color.equalsIgnoreCase("RED")){
          return new Red();
-         
+
       }else if(color.equalsIgnoreCase("GREEN")){
          return new Green();
-         
+
       }else if(color.equalsIgnoreCase("BLUE")){
          return new Blue();
       }
-      
+
       return null;
    }
 }
@@ -135,14 +135,14 @@ public class ColorFactory extends AbstractFactory {
 //FactoryProducer.java
 public class FactoryProducer {
    public static AbstractFactory getFactory(String choice){
-   
+
       if(choice.equalsIgnoreCase("SHAPE")){
          return new ShapeFactory();
-         
+
       }else if(choice.equalsIgnoreCase("COLOR")){
          return new ColorFactory();
       }
-      
+
       return null;
    }
 }
@@ -166,8 +166,8 @@ public class AbstractFactoryPatternDemo {
 
       //call draw method of Shape Rectangle
       shape2.draw();
-      
-      //get an object of Shape Square 
+
+      //get an object of Shape Square
       Shape shape3 = shapeFactory.getShape("SQUARE");
 
       //call draw method of Shape Square

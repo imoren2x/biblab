@@ -23,7 +23,7 @@ print "Original String: $mystring\n";
 $suboffsetANDlength = substr($mystring, 7, 10);
 print "Offset of 7 and length of 10: $suboffsetANDlength\n";
 
-# CHANGE $mystring, OFFSET OF 7 AND LENGTH 10 AND 
+# CHANGE $mystring, OFFSET OF 7 AND LENGTH 10 AND
 # REPLACE SUB STR WITH "I want"
 $suboffsetANDlength = substr($mystring, 7, 10, "I want");
 print "mystring is now: $mystring\n";

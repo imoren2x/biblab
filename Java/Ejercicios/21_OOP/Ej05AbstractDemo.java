@@ -71,7 +71,7 @@ class Salary extends Employee {
 }
 
 /**
- * File name : AbstractDemo.java 
+ * File name : AbstractDemo.java
  *
  */
 public class Ej05AbstractDemo {

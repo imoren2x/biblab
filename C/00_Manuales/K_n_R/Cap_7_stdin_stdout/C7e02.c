@@ -6,9 +6,9 @@ int main()
 {
     FILE *f;
     int result;
-    
+
     f = fopen("holamundo.txt", "wt");
-    
+
     result = fprintf(f, "Hola, mundo!\n");//12
     result = fprintf(f, "Hello, world!\n");//13
     result = fprintf(f, "Orbis, te saluto!");//17
@@ -18,7 +18,7 @@ int main()
     fprintf(f, "\n imoren2x");
 
 //fwrite("Hola, mundo!!!", 20, 100, f);//función para escritura general.
-    
+
 	result = fclose(f);
     system("pause");
     return 0;

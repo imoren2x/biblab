@@ -17,14 +17,14 @@ public class Hand {
    public Hand() {
       hand = new ArrayList();
    }
-   
+
    /**
     * Remove all cards from the hand, leaving it empty.
     */
    public void clear() {
       hand.clear();
    }
-   
+
    /**
     * Add a card to the hand.  It is added at the end of the current hand.
     * @param c the non-null card to be added.
@@ -35,16 +35,16 @@ public class Hand {
          throw new NullPointerException("Can't add a null card to a hand.");
       hand.add(c);
    }
-   
+
    /**
     * Remove a card from the hand, if present.
-    * @param c the card to be removed.  If c is null or if the card is not in 
+    * @param c the card to be removed.  If c is null or if the card is not in
     * the hand, then nothing is done.
     */
    public void removeCard(Card c) {
       hand.remove(c);
    }
-   
+
    /**
     * Remove the card in a specified position from the hand.
     * @param position the position of the card that is to be removed, where
@@ -66,7 +66,7 @@ public class Hand {
    public int getCardCount() {
       return hand.size();
    }
-   
+
    /**
     * Gets the card in a specified position in the hand.  (Note that this card
     * is not removed from the hand!)
@@ -79,7 +79,7 @@ public class Hand {
                + position);
        return (Card)hand.get(position);
    }
-   
+
    /**
     * Sorts the cards in the hand so that cards of the same suit are
     * grouped together, and within a suit the cards are sorted by value.
@@ -103,7 +103,7 @@ public class Hand {
       }
       hand = newHand;
    }
-   
+
    /**
     * Sorts the cards in the hand so that cards of the same value are
     * grouped together.  Cards with the same value are sorted by suit.
@@ -127,5 +127,5 @@ public class Hand {
       }
       hand = newHand;
    }
-   
+
 }

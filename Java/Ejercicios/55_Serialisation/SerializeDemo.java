@@ -1,5 +1,5 @@
 /**
-public final Object readObject() throws IOException, 
+public final Object readObject() throws IOException,
                                  ClassNotFoundException
 
 public final void writeObject(Object x) throws IOException

@@ -21,7 +21,7 @@ public class WordCount {
     * Represents the data we need about a word:  the word and
     * the number of times it has been encountered.
     */
-   private static class WordData { 
+   private static class WordData {
       String word;
       int count;
       WordData(String w) {
@@ -34,7 +34,7 @@ public class WordCount {
 
 
    /**
-    * A comparator for comparing objects of type WordData according to 
+    * A comparator for comparing objects of type WordData according to
     * their counts.  This is used for sorting the list of words by frequency.
     */
    private static class CountCompare implements Comparator<WordData> {
@@ -65,15 +65,15 @@ public class WordCount {
       TextIO.getln();  // Wait for user to press return.
 
       try {
-         
+
          if (TextIO.readUserSelectedFile() == false) {
             System.out.println("No input file selected.  Exiting.");
             System.exit(1);
          }
-         
+
          // Create a TreeMap to hold the data.  Read the file and record
          // data in the map about the words that are found in the file.
-         
+
          TreeMap<String,WordData> words = new TreeMap<String,WordData>();
          String word = readNextWord();
          while (word != null) {
@@ -85,8 +85,8 @@ public class WordCount {
                data.count++;
             word = readNextWord();
          }
-         
-         System.out.println("Number of different words found in file:  " 
+
+         System.out.println("Number of different words found in file:  "
                + words.size());
          System.out.println();
          if (words.size() == 0) {
@@ -94,19 +94,19 @@ public class WordCount {
             System.out.println("Exiting without saving data.");
             System.exit(0);
          }
-         
+
          // Copy the word data into an array list, and sort the list
          // into order of decreasing frequency.
-         
+
          ArrayList<WordData> wordsByFrequency = new ArrayList<WordData>( words.values() );
          Collections.sort( wordsByFrequency, new CountCompare() );
-         
+
          // Output the data from the map and from the list.
-         
+
          TextIO.writeUserSelectedFile(); // If user cancels, output automatically
                                          // goes to standard output.
          TextIO.putln(words.size() + " words found in file:\n");
-         TextIO.putln("List of words in alphabetical order" 
+         TextIO.putln("List of words in alphabetical order"
                + " (with counts in parentheses):\n");
          for ( WordData data : words.values() )
             TextIO.putln("   " + data.word + " (" + data.count + ")");
@@ -126,7 +126,7 @@ public class WordCount {
 
    /**
     * Read the next word from TextIO, if there is one.  First, skip past
-    * any non-letters in the input.  If an end-of-file is encountered before 
+    * any non-letters in the input.  If an end-of-file is encountered before
     * a word is found, return null.  Otherwise, read and return the word.
     * A word is defined as a sequence of letters.  Also, a word can include
     * an apostrophe if the apostrophe is surrounded by letters on each side.

@@ -1,14 +1,14 @@
 /**
  * This program reads numbers from a file.  It computes the sum and the average
  * of the numbers that it reads.  The file should contain nothing but numbers of type
- * double; if this is not the case, the output will be the sum and average of however 
+ * double; if this is not the case, the output will be the sum and average of however
  * many numbers were successfully read from the file.  The name of the file will
  * be input by the user.
  */
 public class ReadNumbersFromFile {
-   
+
    public static void main(String[] args) {
-            
+
       while (true) {
          String fileName;  // The name of the file, to be input by the user.
          TextIO.put("Enter the name of the file: ");
@@ -21,16 +21,16 @@ public class ReadNumbersFromFile {
             TextIO.putln("Please try again.\n");
          }
       }
-      
+
       // At this point, TextIO is reading from the file.
-      
+
       double number;  // A number read from the data file.
       double sum;     // The sum of all the numbers read so far.
       int count;      // The number of numbers that were read.
-      
+
       sum = 0;
       count = 0;
-      
+
       try {
          while (true) { // Loop ends when an exception occurs.
              number = TextIO.getDouble();
@@ -43,9 +43,9 @@ public class ReadNumbersFromFile {
          // We don't consider this to be an error, so there is nothing to do
          // in this catch clause.  We just proceed with the rest of the program.
       }
-      
+
       // At this point, we've read the entire file, so we can print the results.
-      
+
       TextIO.putln();
       TextIO.putln("Number of data values read: " + count);
       TextIO.putln("The sum of the data values: " + sum);
@@ -53,7 +53,7 @@ public class ReadNumbersFromFile {
          TextIO.putln("Can't compute an average of 0 values.");
       else
          TextIO.putln("The average of the values:  " + (sum/count));
-      
+
    }
 
 }

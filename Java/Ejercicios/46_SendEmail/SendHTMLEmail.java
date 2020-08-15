@@ -9,7 +9,7 @@ public class SendHTMLEmail
 {
    public static void main(String [] args)
    {
-      
+
       // Recipient's email ID needs to be mentioned.
       String to = "abcd@gmail.com";
 

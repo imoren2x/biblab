@@ -9,14 +9,14 @@
  *		Flow definition
  */
 
-public class Ej10FiguresClassDef extends Object 
+public class Ej10FiguresClassDef extends Object
 {
 	private int x; //x coordenate//
 	private int y; //y coordenate//
 	private int ap; //apotheme//
 	private static boolean instantiated; //static variable instantiated//
 	private int[] aProp;
-	
+
 	/**
 	 * Constructor: no arguments.
 	 *		(0, 0) is taken as origin.
@@ -45,12 +45,12 @@ public class Ej10FiguresClassDef extends Object
 	{
 		return this.x;
 	}
-	
+
 	public int getY()
 	{
 		return this.y;
 	}
-	
+
 	public int getAp()
 	{
 		return this.ap;
@@ -60,7 +60,7 @@ public class Ej10FiguresClassDef extends Object
 	{
 		return Ej10FiguresClassDef.instantiated;
 	}
-	
+
 	/**
 	 * Finalize method
 	 */

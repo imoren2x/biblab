@@ -19,7 +19,7 @@ public class TerminalExpression implements Expression {
     private String data;
 
     public TerminalExpression(String data){
-        this.data = data; 
+        this.data = data;
     }
 
     @Override
@@ -38,13 +38,13 @@ public class OrExpression implements Expression {
     private Expression expr1 = null;
     private Expression expr2 = null;
 
-    public OrExpression(Expression expr1, Expression expr2) { 
+    public OrExpression(Expression expr1, Expression expr2) {
         this.expr1 = expr1;
         this.expr2 = expr2;
     }
 
     @Override
-    public boolean interpret(String context) {		
+    public boolean interpret(String context) {
         return expr1.interpret(context) || expr2.interpret(context);
     }
 }
@@ -55,13 +55,13 @@ public class AndExpression implements Expression {
     private Expression expr1 = null;
     private Expression expr2 = null;
 
-    public AndExpression(Expression expr1, Expression expr2) { 
+    public AndExpression(Expression expr1, Expression expr2) {
         this.expr1 = expr1;
         this.expr2 = expr2;
     }
 
     @Override
-    public boolean interpret(String context) {		
+    public boolean interpret(String context) {
         return expr1.interpret(context) && expr2.interpret(context);
     }
 }
@@ -73,14 +73,14 @@ public class InterpreterPatternDemo {
     public static Expression getMaleExpression(){
       Expression robert = new TerminalExpression("Robert");
       Expression john = new TerminalExpression("John");
-      return new OrExpression(robert, john);		
+      return new OrExpression(robert, john);
     }
 
     //Rule: Julie is a married women
     public static Expression getMarriedWomanExpression(){
         Expression julie = new TerminalExpression("Julie");
         Expression married = new TerminalExpression("Married");
-        return new AndExpression(julie, married);		
+        return new AndExpression(julie, married);
     }
 
    public static void main(String[] args) {

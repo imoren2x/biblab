@@ -2,13 +2,13 @@
  *
  */
 
-public class Ejemplo extends Applet implements Runnable 
+public class Ejemplo extends Applet implements Runnable
 {
 	private Thread esteThread = null;
-	
-	public void start() 
+
+	public void start()
 	{
-	if (esteThread == null) 
+	if (esteThread == null)
 	{
 		esteThread = new Thread(this);
 		esteThread.start();
@@ -16,16 +16,16 @@ public class Ejemplo extends Applet implements Runnable
 	//...
 	}
 
-	public void run() 
+	public void run()
 	{
 		Thread curThread = Thread.currentThread();
-		while (esteThread == curThread) 
+		while (esteThread == curThread)
 		{
 			//. . .//
 		}
 	}
 
-	public void stop() 
+	public void stop()
 	{
 		esteThread = null;
 	}

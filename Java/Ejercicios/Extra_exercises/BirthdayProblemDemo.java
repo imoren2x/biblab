@@ -10,24 +10,24 @@
 public class BirthdayProblemDemo {
 
    public static void main(String[] args) {
-   
+
        System.out.println("This program simulates taking people at random");
        System.out.println("until two have been found who were born on the");
        System.out.println("same day of the year.\n");
-       
+
        do {
           birthdayProblem();
           TextIO.put("\nAgain? (Y/N):  ");
        } while ( TextIO.getlnBoolean() );
-       
+
        System.out.println("\n\nOK.  Goodbye.");
-       
+
    } // end main()
-   
-   
+
+
    /**
-    * Simulate choosing people at random and checking the day of the year they 
-    * were born on.  If the birthday is the same as one that was seen previously, 
+    * Simulate choosing people at random and checking the day of the year they
+    * were born on.  If the birthday is the same as one that was seen previously,
     * stop, and output the number of people who were checked.
     */
    private static void birthdayProblem() {
@@ -41,7 +41,7 @@ public class BirthdayProblemDemo {
       int count;       // The number of people who have been checked.
 
       used = new boolean[365];  // Initally, all entries are false.
-      
+
       count = 0;
 
       while (true) {
@@ -56,10 +56,10 @@ public class BirthdayProblemDemo {
          used[birthday] = true;
       }
 
-      System.out.println("A duplicate birthday was found after " 
+      System.out.println("A duplicate birthday was found after "
                                                 + count + " tries.");
 
    } // end birthdayProblem()
- 
-   
+
+
 } // end class BirthdayProblemDemo

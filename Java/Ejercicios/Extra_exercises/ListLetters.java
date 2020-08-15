@@ -5,18 +5,18 @@
  */
 
 public class ListLetters {
-   
+
    public static void main(String[] args) {
-   
+
       String str;  // Line of text entered by the user.
       int count;   // Number of different letters found in str.
       char letter; // A letter of the alphabet.
-      
+
       TextIO.putln("Please type in a line of text.");
       str = TextIO.getln();
-      
+
       str = str.toUpperCase();
-      
+
       count = 0;
       TextIO.putln("Your input contains the following letters:");
       TextIO.putln();
@@ -32,11 +32,11 @@ public class ListLetters {
               }
           }
       }
-      
+
       TextIO.putln();
       TextIO.putln();
       TextIO.putln("There were " + count + " different letters.");
-   
+
    } // end main()
-   
+
 } // end class ListLetters

@@ -8,7 +8,7 @@ public class ThreadClassDemo {
       thread1.setName("hello");
       System.out.println("Starting hello thread...");
       thread1.start();
-      
+
       Runnable bye = new DisplayMessage("Goodbye");
       Thread thread2 = new Thread(bye);
       thread2.setPriority(Thread.MIN_PRIORITY);
@@ -26,7 +26,7 @@ public class ThreadClassDemo {
       }
       System.out.println("Starting thread4...");
       Thread thread4 = new GuessANumber(75);
-      
+
 	  thread4.start();
       System.out.println("main() is ending...");
    }
@@ -39,7 +39,7 @@ class GuessANumber extends Thread {
    public GuessANumber(int number) {
       this.number = number;
    }
-   
+
    public void run() {
       int counter = 0;
       int guess = 0;

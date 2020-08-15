@@ -3,7 +3,7 @@
  *  relationship between objects such as if one object is modified,
  *  its depenedent objects are to be notified automatically.
  * Observer pattern falls under behavioral pattern category.
- * 
+ *
  * http://www.tutorialspoint.com/design_pattern/observer_pattern.htm
  * http://www.oodesign.com/observer-pattern.html
  */
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Subject {
-	
+
    private List<Observer> observers = new ArrayList<Observer>();
    private int state;
 
@@ -27,14 +27,14 @@ public class Subject {
    }
 
    public void attach(Observer observer){
-      observers.add(observer);		
+      observers.add(observer);
    }
 
    public void notifyAllObservers(){
       for (Observer observer : observers) {
          observer.update();
       }
-   } 	
+   }
 }
 
 //Observer.java
@@ -53,7 +53,7 @@ public class BinaryObserver extends Observer{
 
    @Override
    public void update() {
-      System.out.println( "Binary String: " + Integer.toBinaryString( subject.getState() ) ); 
+      System.out.println( "Binary String: " + Integer.toBinaryString( subject.getState() ) );
    }
 }
 
@@ -67,7 +67,7 @@ public class OctalObserver extends Observer{
 
    @Override
    public void update() {
-     System.out.println( "Octal String: " + Integer.toOctalString( subject.getState() ) ); 
+     System.out.println( "Octal String: " + Integer.toOctalString( subject.getState() ) );
    }
 }
 
@@ -81,6 +81,6 @@ public class HexaObserver extends Observer{
 
    @Override
    public void update() {
-      System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() ); 
+      System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() );
    }
 }

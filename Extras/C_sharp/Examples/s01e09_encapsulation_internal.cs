@@ -17,7 +17,7 @@ namespace RectangleApplication {
         }
 
    }//end class Rectangle
-   
+
     class ExecuteRectangle {
         static void Main(string[] args) {
             Rectangle r = new Rectangle();

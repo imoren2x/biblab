@@ -18,16 +18,16 @@ public interface Order {
 
 //Stock.java
 public class Stock {
-	
+
    private String name = "ABC";
    private int quantity = 10;
 
    public void buy(){
-      System.out.println("Stock [ Name: "+name+", 
+      System.out.println("Stock [ Name: "+name+",
          Quantity: " + quantity +" ] bought");
    }
    public void sell(){
-      System.out.println("Stock [ Name: "+name+", 
+      System.out.println("Stock [ Name: "+name+",
          Quantity: " + quantity +" ] sold");
    }
 }
@@ -63,10 +63,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Broker {
-    private List<Order> orderList = new ArrayList<Order>(); 
+    private List<Order> orderList = new ArrayList<Order>();
 
     public void takeOrder(Order order){
-        orderList.add(order);		
+        orderList.add(order);
     }
 
     public void placeOrders(){

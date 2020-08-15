@@ -23,7 +23,7 @@ foreach $food (@Foods) {
 	push(@foods,  "\L$food");
 }
 
-# SORT 
+# SORT
 @foods = sort(@foods);
 
 # PRINT THE NEW ARRAY

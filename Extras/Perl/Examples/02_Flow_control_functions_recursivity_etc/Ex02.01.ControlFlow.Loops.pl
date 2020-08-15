@@ -24,7 +24,7 @@ goto statement	Perl supports a goto command with three forms: goto label, goto e
 INFINITE LOOP
 
 #!/usr/local/bin/perl
- 
+
 for( ; ; )
 {
    printf "This loop will run forever.\n";

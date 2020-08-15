@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
- 
+
 $name = "Ali";
 $age = 10;
 

@@ -1,15 +1,15 @@
 public class ThTestThreadDeadlockSolution {
    public static Object Lock1 = new Object();
    public static Object Lock2 = new Object();
-   
+
    public static void main(String args[]) {
-   
+
       ThreadDemo1 T1 = new ThreadDemo1();
       ThreadDemo2 T2 = new ThreadDemo2();
       T1.start();
       T2.start();
    }
-   
+
    private static class ThreadDemo1 extends Thread {
       public void run() {
          synchronized (Lock1) {
@@ -35,5 +35,5 @@ public class ThTestThreadDeadlockSolution {
             }
          }
       }
-   } 
+   }
 }

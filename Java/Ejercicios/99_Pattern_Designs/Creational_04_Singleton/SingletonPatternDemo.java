@@ -2,7 +2,7 @@
 /*
  * http://www.tutorialspoint.com/design_pattern/singleton_pattern.htm
  * http://www.oodesign.com/singleton-pattern.html
- * 
+ *
  */
 
 
