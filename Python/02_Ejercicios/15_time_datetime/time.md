@@ -67,7 +67,7 @@ Tiempo Epoch a partir de struct.time
     Es la inversa de time.gmtime(), time.localtime().
 
 Current processor time
-	As floating point number expressed in seconds.
+    As floating point number expressed in seconds.
 
 
 Módulo datetime

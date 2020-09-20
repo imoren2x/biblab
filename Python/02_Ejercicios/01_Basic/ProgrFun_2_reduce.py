@@ -10,16 +10,16 @@ reduce para sumar todos los elementos de una lista.
 """
 
 def sumar(x, y):
-	"""
-	Funcion que suma dos elementos.
-	"""
-	print (x+y)
-	return x + y
+    """
+    Funcion que suma dos elementos.
+    """
+    print (x+y)
+    return x + y
 
 
 if __name__ == "__main__":
-	print "Funcion suma"
-	l = [1, 2, 3, 4, 5, 6]
-	print "Entrada: ", l
-	l2 = reduce(sumar, l)
-	print "Salida:  ", l2
+    print "Funcion suma"
+    l = [1, 2, 3, 4, 5, 6]
+    print "Entrada: ", l
+    l2 = reduce(sumar, l)
+    print "Salida:  ", l2

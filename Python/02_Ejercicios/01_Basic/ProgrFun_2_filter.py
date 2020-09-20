@@ -13,16 +13,16 @@ y en caso contrario se descarta.
 
 
 def true_si_es_par(n):
-	"""
-	Funcion que devuelve un booleano.
-	Condicion necesaria para la funcion filter.
-	"""
-	return (n % 2.0 == 0)
+    """
+    Funcion que devuelve un booleano.
+    Condicion necesaria para la funcion filter.
+    """
+    return (n % 2.0 == 0)
 
 
 if __name__ == "__main__":
-	print "Funcion true_si_es_par"
-	l = [1, 2, 3, 4, 5, 6]
-	print "Entrada: ", l
-	l2 = filter(true_si_es_par, l)
-	print "Salida:  ", l2
+    print "Funcion true_si_es_par"
+    l = [1, 2, 3, 4, 5, 6]
+    print "Entrada: ", l
+    l2 = filter(true_si_es_par, l)
+    print "Salida:  ", l2

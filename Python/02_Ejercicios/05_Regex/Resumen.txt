@@ -2,33 +2,33 @@ Capítulo 13. Expresiones regulares
 ---------------------------------
 
 13.1 Expresiones regulares
-	13.1.1 Clases de caracteres . [^-] \ \d \D ...
-	13.1.2 Grupo ()
-	13.1.3 OR |
-	13.1.4 Repetición {} {,} + * ?
-	13.1.5 Posición ^ $
-	13.1.6 Miscelánea
+    13.1.1 Clases de caracteres . [^-] \ \d \D ...
+    13.1.2 Grupo ()
+    13.1.3 OR |
+    13.1.4 Repetición {} {,} + * ?
+    13.1.5 Posición ^ $
+    13.1.6 Miscelánea
 13.2 Usando el módulo re de Python
 ------------O------------
 
 13.1 Expresiones regulares
 Una expresión regular, regex or regexp, consiste en patrones que describen conjuntos de cadenas de caracteres.
 Su utilidad tiene varias aplicaciones:
-	- buscar dichos patrones en un fichero
-	- comprobar que una cadena cumple una expresión regular
-	- dividir o agrupar la cadena como indica la expresión regular
-	- substituir cadenas que cumplen un patrón por otro texto
+    - buscar dichos patrones en un fichero
+    - comprobar que una cadena cumple una expresión regular
+    - dividir o agrupar la cadena como indica la expresión regular
+    - substituir cadenas que cumplen un patrón por otro texto
 
 Hay quince metacaracteres para indicar las expresiones regulares:
-	. ( ) \ | [ ] - { } ^ $ + * ?
+    . ( ) \ | [ ] - { } ^ $ + * ?
 
 La función de cada correponde a
-	1. Clases de caracteres: . [^-] \ \d \D ...
-	2. OR |
-	3. Grupo ()
-	4. Repetición {} {,} + * ?
-	5. Posición ^ $
-	6. Miscelánea
+    1. Clases de caracteres: . [^-] \ \d \D ...
+    2. OR |
+    3. Grupo ()
+    4. Repetición {} {,} + * ?
+    5. Posición ^ $
+    6. Miscelánea
 
 13.1.1 Clases de caracteres . [^-] \ \d \D ...
 1. Punto .
@@ -37,12 +37,12 @@ Equivale a [^\n] en Unix y a [^\r\n] en Windows.
 
 2. Rango de caracteres [] [-] [^-]
 Identifica un juego de caracteres que puede estar definido
-	- como una lista,
-		p.ej., gr[ea]y aceptaría gray o grey
-	- por un rango con el carácter guión -
-		p.ej., bg[a-z] aceptaría cualquier carácter minúsculo.
-	- como caracteres no admitidos (complemento a los admitidos)
-		p.ej., gr[^ea]y no aceptaría grey ni gray, pero sí griy o gruy
+    - como una lista,
+        p.ej., gr[ea]y aceptaría gray o grey
+    - por un rango con el carácter guión -
+        p.ej., bg[a-z] aceptaría cualquier carácter minúsculo.
+    - como caracteres no admitidos (complemento a los admitidos)
+        p.ej., gr[^ea]y no aceptaría grey ni gray, pero sí griy o gruy
 Para indicar caracteres, si se emplea la x indica hexadecimal (p.ej., \xA9).
 Ejemplos:
 
@@ -50,62 +50,62 @@ Ejemplos:
 Indica que el carácter no debe ser interpretado como metacarácter. Por ejemplo, \^ \[ ...
 
 4. Caracteres shorthand \d \D \w \W \s \S
-	1. Dígito \d \D
-		\d equivale a [0-9]
-		\D equivale a [^0-9]
-	2. Palabra \w \W
-		\w equivale a [a-zA-Z0-9_]
-		\W equivale a [a-zA-Z0-9_]
-	3. Espacio \s \S
-		\s equivale a [ \t\n\r\f\v]
-		\S equivale a [^ \t\n\r\f\v]
+    1. Dígito \d \D
+        \d equivale a [0-9]
+        \D equivale a [^0-9]
+    2. Palabra \w \W
+        \w equivale a [a-zA-Z0-9_]
+        \W equivale a [a-zA-Z0-9_]
+    3. Espacio \s \S
+        \s equivale a [ \t\n\r\f\v]
+        \S equivale a [^ \t\n\r\f\v]
 
 13.1.2 OR de patrones |
 Indican que cualquier cadena a ambos lados es igualmente válida.
-	P.ej,. a|A indica a minúscula o Mayúscula
+    P.ej,. a|A indica a minúscula o Mayúscula
 
 13.1.3 Grupo ()
 Los paréntesis sirven para delimitar grupos en las expresiones regulares.
 Las aplicaciones más habituales son:
-	- Extraer los grupos de la expresión regular en la cadena a parsear.
-		Por ej., (.*)(abc)(.*)
-	- Emplear grupos con la barra | para indicar posibles elecciones.
-		Por ej., (a|b|c)
+    - Extraer los grupos de la expresión regular en la cadena a parsear.
+        Por ej., (.*)(abc)(.*)
+    - Emplear grupos con la barra | para indicar posibles elecciones.
+        Por ej., (a|b|c)
 
 13.1.4 Repetición {} {,} + * ?
 Estos caracteres indican que el carácter a la izquierda se repetirá según se indica.
-	{n} se repetirá n veces.
-		p.ej., a{3} aceptará aaa
-	{n,m} se repetirá de n a m veces.
-		p.ej., a{2,3} aceptará aa ó aaa
-	+ uno o más veces
-		p.ej., a+ aceptará a aa aaa ...
-	* cero ó más veces
-		p.ej., .* aceptará cuálquier cadena de caracteres
-	? cero ó una vez
-		También se emplea para indicar caracteres opcionales.
-		p.ej., colou?r admitiría color o colour
+    {n} se repetirá n veces.
+        p.ej., a{3} aceptará aaa
+    {n,m} se repetirá de n a m veces.
+        p.ej., a{2,3} aceptará aa ó aaa
+    + uno o más veces
+        p.ej., a+ aceptará a aa aaa ...
+    * cero ó más veces
+        p.ej., .* aceptará cuálquier cadena de caracteres
+    ? cero ó una vez
+        También se emplea para indicar caracteres opcionales.
+        p.ej., colou?r admitiría color o colour
 
 13.1.5 Posición ^ $
 Indican que la expresión regular estará al principio o al final, ^ ó $ respectivamente.
-	Ejemplo: ^abc$ indica que la cadena es abc, principio y final.
+    Ejemplo: ^abc$ indica que la cadena es abc, principio y final.
 
 13.1.6 Miscelánea
 Special characters
-	\t to match a tab character (ASCII 0x09),
-	\r for carriage return (0x0D)
-	\n for line feed (0x0A).
-	\a (bell, 0x07),
-	\e (escape, 0x1B),
-	\f (form feed, 0x0C) and
-	\v (vertical tab, 0x0B).
-	\xFF character in hexadecimal encoding
-	\uXXXX character in unicode encoding
-	Remember that Windows text files use \r\n to terminate lines,
-	while UNIX text files use \n.
+    \t to match a tab character (ASCII 0x09),
+    \r for carriage return (0x0D)
+    \n for line feed (0x0A).
+    \a (bell, 0x07),
+    \e (escape, 0x1B),
+    \f (form feed, 0x0C) and
+    \v (vertical tab, 0x0B).
+    \xFF character in hexadecimal encoding
+    \uXXXX character in unicode encoding
+    Remember that Windows text files use \r\n to terminate lines,
+    while UNIX text files use \n.
 Word boundary
-	\b word boundary
-	\B
+    \b word boundary
+    \B
 \b[1-9][0-9]{3}\b number between 1000 and 9999
 \b[1-9][0-9]{2,4}\b number between 100 and 99999
 
@@ -117,59 +117,59 @@ q(?=u) q(?!u) (?<=a)b (?<!a)b
 
 13.2 Módulo re de Python
 Python dispone de un módulo de expresiones regulares que permite realizar todo tipo de operaciones:
-	- Crear objecto Regex: compile:
-	- Comprobar: match, search
-	- Buscar: , findall, finditer:
-	- Dividir: split
-	- Substituir: sub
+    - Crear objecto Regex: compile:
+    - Comprobar: match, search
+    - Buscar: , findall, finditer:
+    - Dividir: split
+    - Substituir: sub
 Antes, es importante entender dos flags:
-	re.IGNORECASE:
-		Se ignoran si las letras son mayúsculas o minúsculas.
-	re.VERBOSE:
-		Se ignoran los espacios y los comentarios en la cadena de la expresión regular.
+    re.IGNORECASE:
+        Se ignoran si las letras son mayúsculas o minúsculas.
+    re.VERBOSE:
+        Se ignoran los espacios y los comentarios en la cadena de la expresión regular.
 
 13.2.1 Crear objeto Regex: re.compile
 Crea un objeto RegexObject, que permite reutilizar un patrón.
 Sobre este objeto RegexObject se aplican los métodos .match, .search, .split, .sub, etc.
 Sintaxis:
-	regex = re.compile(pattern, flags=0)
+    regex = re.compile(pattern, flags=0)
 
 13.2.2 Match y search:
 Crea un objecto MatchObject o None si la expresión regular matchea con la cadena bajo prueba o no, respectivamente.
 Si el objeto se castea a boolean, indica si ha habido match o no.
 Sintaxis:
-	matchObj = re.match(pattern, string, flags=0)
-	matchObj = re.search(pattern, string, flags=0)
+    matchObj = re.match(pattern, string, flags=0)
+    matchObj = re.search(pattern, string, flags=0)
 La comprobación entre el patrón y la cadena se hace sólo al principio.
 Search lo busca a lo largo de toda la cadena, no sólo al principio.
 
 Métodos de MatchObject:
-	.start()/.end()	Posición en que comienza y finaliza la subcadena reconocida.
-	.group()/.groups() Grupos que propiciaron el reconocimiento de la cadena.
-		.group(0)/.group() subcadena reconocida por la expresión regular al completo.
-		.groups() devuelve todos los grupos menos el cero.
+    .start()/.end() Posición en que comienza y finaliza la subcadena reconocida.
+    .group()/.groups() Grupos que propiciaron el reconocimiento de la cadena.
+        .group(0)/.group() subcadena reconocida por la expresión regular al completo.
+        .groups() devuelve todos los grupos menos el cero.
 
 13.2.3 Buscar: findall, finditer
 Findall:
-	Devuelve una lista de todas las cadenas cumplen el patrón.
+    Devuelve una lista de todas las cadenas cumplen el patrón.
 
 Finditer:
-	Devuelve un iterador con el que consultar uno a uno los distintos MatchObject.
+    Devuelve un iterador con el que consultar uno a uno los distintos MatchObject.
 
 13.2.4 Dividir: split
-	Sintaxis: re.split(pattern, string, maxsplit=0, flags=0)
+    Sintaxis: re.split(pattern, string, maxsplit=0, flags=0)
 Parte la cadena y devuelve una lista con el resultado.
 Para partirla, sigue las siguientes reglas:
-	- Parte la cadena hasta maxsplit veces. Si es cero, tantas veces como sea necesaria.
-	- Si el patrón en está en un grupo, éste se incluye como elemento de la lista.
-		Por ejemplo, re.split('([a-f]+)', '0a3B9') devuelve ['0', 'a', '3B9']
+    - Parte la cadena hasta maxsplit veces. Si es cero, tantas veces como sea necesaria.
+    - Si el patrón en está en un grupo, éste se incluye como elemento de la lista.
+        Por ejemplo, re.split('([a-f]+)', '0a3B9') devuelve ['0', 'a', '3B9']
 
 13.2.5 re.sub
-	Return the string obtained by replacing the leftmost non-overlapping occurrences of pattern in string by the replacement repl.
+    Return the string obtained by replacing the leftmost non-overlapping occurrences of pattern in string by the replacement repl.
 Sintaxis: re.sub(pattern, repl, string, count=0, flags=0)
 
 Referencias:
-	http://docs.python.org/2/library/re.html
-	http://regular-expressions.info/
-	http://www.regexplanet.com/advanced/python/index.html
-	http://www.regexplanet.com/advanced/java/index.html
+    http://docs.python.org/2/library/re.html
+    http://regular-expressions.info/
+    http://www.regexplanet.com/advanced/python/index.html
+    http://www.regexplanet.com/advanced/java/index.html

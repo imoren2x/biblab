@@ -10,7 +10,7 @@ from random import seed, uniform
 #Global variables#
 q = Queue()
 ITERMAX = 5
-UNIMAX 	= 1
+UNIMAX  = 1
 kTIMEOUT = 15.0 #15.0 seconds
 
 def consume():

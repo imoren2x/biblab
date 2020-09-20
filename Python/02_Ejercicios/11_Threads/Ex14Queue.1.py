@@ -20,22 +20,22 @@ class MiThread(threading.Thread):
             except Queue.Empty:
                 print "Fin"
                 break
-			#End try#
+            #End try#
             print obj
-		#End while#
-	#End run#
+        #End while#
+    #End run#
 ### End MiThread ###
 
 
 if __name__ == "__main__":
-	"""
-	"""
-	for i in range(10):
-		q.put(i)
+    """
+    """
+    for i in range(10):
+        q.put(i)
 
-	t = MiThread(q)
-	t.start()
-	t.join()
+    t = MiThread(q)
+    t.start()
+    t.join()
 
 """
 Ref:

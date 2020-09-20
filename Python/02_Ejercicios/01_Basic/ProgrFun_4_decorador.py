@@ -8,34 +8,34 @@
 """
 
 def mi_decorador(funcion):
-	def nueva(*args):
-		print "Llamada a la funcion", funcion.__name__
-		retorno = funcion(*args)
-		return retorno
+    def nueva(*args):
+        print "Llamada a la funcion", funcion.__name__
+        retorno = funcion(*args)
+        return retorno
 
-	return nueva
+    return nueva
 
 @mi_decorador
 def imp(s):
-	print s
+    print s
 
 if __name__ == "__main__":
-	imp("hola")
+    imp("hola")
 
-	imp2("hola")
+    imp2("hola")
 
-	"""
-	Si quisiéramos aplicar más de un decorador bastaría
-	añadir una nueva línea con el nuevo decorador.
-		@otro_decorador
-		@mi_decorador
-		def imp(s):
-			print s
+    """
+    Si quisiéramos aplicar más de un decorador bastaría
+    añadir una nueva línea con el nuevo decorador.
+        @otro_decorador
+        @mi_decorador
+        def imp(s):
+            print s
 
-	Es importante advertir que los decoradores se ejecutarán de abajo a
-	arriba. Es decir, en este ejemplo primero se ejecutaría
-	mi_decorador y después otro_decorador.
-	"""
+    Es importante advertir que los decoradores se ejecutarán de abajo a
+    arriba. Es decir, en este ejemplo primero se ejecutaría
+    mi_decorador y después otro_decorador.
+    """
 
 """
 Referencias:

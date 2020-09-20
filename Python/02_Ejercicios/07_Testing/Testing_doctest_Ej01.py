@@ -30,8 +30,8 @@ def cuadradosMal(lista):
 
 
 def _test():
-	doctest.testmod() 	#name = (módulo a probar), por defecto actual
-						#verbose = True
+    doctest.testmod()   #name = (módulo a probar), por defecto actual
+                        #verbose = True
 
 
 if __name__ == "__main__":

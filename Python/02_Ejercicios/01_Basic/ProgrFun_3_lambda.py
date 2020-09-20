@@ -13,14 +13,14 @@ de la función.
 """
 
 if __name__ == "__main__":
-	print "Funcion filter si es par"
-	l = [1, 2, 3, 4, 5, 6]
-	print "Entrada: ", l
-	l2 = filter(lambda n: n % 2.0 == 0, l)
-	print "Salida:  ", l2
+    print "Funcion filter si es par"
+    l = [1, 2, 3, 4, 5, 6]
+    print "Entrada: ", l
+    l2 = filter(lambda n: n % 2.0 == 0, l)
+    print "Salida:  ", l2
 
-	print "Funcion suma"
-	l = [1, 2, 3, 4, 5, 6]
-	print "Entrada: ", l
-	l2 = reduce(lambda x, y: x + y, l)
-	print "Salida:  ", l2
+    print "Funcion suma"
+    l = [1, 2, 3, 4, 5, 6]
+    print "Entrada: ", l
+    l2 = reduce(lambda x, y: x + y, l)
+    print "Salida:  ", l2

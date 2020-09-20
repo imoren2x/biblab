@@ -8,6 +8,6 @@ import modulo
 
 
 if __name__ == "__main__":
-	"""
-	"""
-	modulo.mi_funcion()
+    """
+    """
+    modulo.mi_funcion()

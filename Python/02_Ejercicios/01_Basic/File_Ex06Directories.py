@@ -11,17 +11,17 @@ import math
 
 
 def main():
-	"""
-	"""
-	print("Creando directorio.")
-	os.mkdir("newdir")
-	os.chdir(".\newdir")
-	os.getcwd()
-	os.rmdir( "/tmp/test"  )
+    """
+    """
+    print("Creando directorio.")
+    os.mkdir("newdir")
+    os.chdir(".\newdir")
+    os.getcwd()
+    os.rmdir( "/tmp/test"  )
 ###End main###
 
 if __name__ == "__main__":
-	"""
-	"""
-	main()
+    """
+    """
+    main()
 ###
