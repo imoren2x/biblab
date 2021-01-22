@@ -1,0 +1,9 @@
+REM Ignaciopath
+C:\Program Files\Notepad++
+C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64
+C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts
+C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\python.exe"
+C:\Program Files\Git\usr\bin
+
+set CSC="C:\Program Files (x86)\Microsoft Visual Studio\2017\Express\MSBuild\15.0\Bin\Roslyn\csc.exe"
+set CSI="C:\Program Files (x86)\Microsoft Visual Studio\2017\Express\MSBuild\15.0\Bin\Roslyn\csi.exe"

@@ -1,0 +1,7 @@
+darek log analysis
+
+www.w3schools.com/colors/colors_mixer.asp
+www.lifewire.com/contrasting-foreground-background-colors-4061363
+webaim.org/resources/contrastchecker
+stackoverflow.com/questions/22605395/syntax-highlighting-in-notepad-how-to-highlight-timestamps-in-log-files
+superuser.com/questions/220815/notepad-rule-based-line-highlighting
