@@ -5,7 +5,7 @@
 
 import os
 import sys
-from Log import Log
+from LogWrapper import Log
 
 def main():
   """

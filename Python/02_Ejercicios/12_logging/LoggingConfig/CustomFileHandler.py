@@ -1,14 +1,14 @@
 """
-Logger
+Logger.
 """
 #pylint: disable=E1101
 import os
 import logging
 
 
-class pysysfwFileHandler(logging.FileHandler):
+class CustomFileHandler(logging.FileHandler):
     """
-    File Logger Pysysfw
+    Customised File Handler.
     """
 
     def __init__(self, filename, mode='a'):
