@@ -1,8 +1,8 @@
 #!/usr/bin/python
-#-*- coding: latin-1 -*-
+#-*- coding: utf-8 -*-
 
 """
-Regular expression examples
+Regular expression example
 """
 
 import os
@@ -10,43 +10,52 @@ import sys
 import time
 import re
 
+# log_example: 2020-05-29 14:05:32.425 MAIN     INFO    Application starts
+REGEX_STR = r'(?P<Datetime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s{1,5}(?P<Logger>\w{2,6})\s{1,5}(?P<Level>\w{2,8})\s{1,5}(?P<msg>.*)'
+REGEX = re.compile(REGEX_STR)
+
+FILENAME_STR = "File_to_process_regex.txt"
+LINES = [
+    '2021-05-17 08:11:57.548 MAIN WARNING dalvikvm: Unable to resolve superclass of Lay; (790)',
+    "2021-05-17 08:11:57.548 DUT  WARNING dalvikvm: Link of class 'Lay;' failed",
+    '2021-05-17 08:11:57.548 MAIN DEBUG dalvikvm: DexOpt: unable to opt direct call 0x1e94 at 0x2c in Lf;.a',
+    '2021-05-17 08:11:57.558 DUT  DEBUG dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 0ms',
+    'Hola, caracola',
+    'Hello, world',
+    'Orbis, te saluton!'
+]
+
 def main():
-    regex_tuple_list = [
-        ("(.*)(a)(.+)(i)(.*)", "Fui con Patri a la Dordogne."),
-        ("(.*)(a)(.+)(i)(.*)", "Patri a la patti.", ),
-        ("(.*)(a)(.+)(i)(.*)", "Fui con Patri a la Dordogne.Un lugar muy bello. A Patri le encanto el bosque verde.", ),
-        (r'(.*?) are (.*?) .*', "Cats are smarter than dogs"),  # , re.M|re.I),
-        ("http://.+\.net", "http://mundogeek.net"),
-    ]
+    """
+    """
+    filelines = []
+    # with open(FILENAME_STR, 'r') as file_d:
+        # filelines = file_d.readlines()
+    filelines = LINES
 
-    print("Script BEGINS\n####\n")
-    for regex_tuple in regex_tuple_list:
-        regex_str = regex_tuple[0]
-        regex_input = regex_tuple[1]
-        match_options = regex_tuple[2] if len(regex_tuple) == 3 else None
-        print("Regular Expression pattern: %s" % regex_str)
-        print("Input pattern: %s" % regex_input)
-        regex = re.compile(regex_str)
-        match_obj = regex.match(regex_input, match_options) if match_options \
-            else regex.match(regex_input)
-        # match_obj = re.match(regex_str, regex_input, match_options) if match_options \
-        #     else re.match(regex_str, regex_input)
-        if not bool(match_obj):
-            print("Input does not match regular expression")
-            print("---------\n")
-            continue
+    print(r'Regex pattern: %s\n' % REGEX_STR)
+    for fileline in filelines:
+        # Process the line with the regex
+        match_obj = REGEX.match(fileline) # regex.match(fileline, options)
+        if bool(match_obj) is True:
+            print("Lines matches")
+            print("%-20s %s " % ("group()/group(0):", match_obj.group()))
+            print("%-20s %s" % ("The groups are:", str(match_obj.groups())))
+            print("%-20s %s" % ("Group 'Datetime':", match_obj.group('Datetime')))
+            print("%-20s %s" % ("Group 'Logger':", match_obj.group('Logger')))
+            print("%-20s %s" % ("Group 'Level':", match_obj.group('Level')))
+            print("%-20s %s" % ("Group 'msg':", match_obj.group('msg')))
+        else:
+            print("Line does not match")
+            print(fileline)
 
-        print("Input matches regular expression")
-        print("group()/group(0): %s " % match_obj.group())
-        print "The start position is: %s" %(match_obj.start())
-        print "The ending position is: %s" %(match_obj.end())
-        print "The groups are: %s" %(str(match_obj.groups()))
+        print("")
 
-        print("---------\n")
-
+    return
 
 def sub():
-
+    """
+    """
     phone = "2004-959-559 # This is Phone Number"
 
     print("Original phone number")
