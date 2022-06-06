@@ -13,7 +13,9 @@ import collections
 
 PROGRAM_SYNTAX = "%prog -e/--extension <string> [-b/--basedir <string>] [-d/--dry-run] [-v/--verbose]"
 
-DEBUG = False
+DEBUG = False  # Trigger traces at the end of each stage.
+
+# Some common extensions: .py,.h,.c,.java,.cpp,.hpp,.cs,.txt,.log,.md,.tcl,.pl,.tex
 
 """
 
