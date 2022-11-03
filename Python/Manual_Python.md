@@ -240,15 +240,15 @@ True, False
 | Método                                | Retorna           | Descripción | Example |
 |---------------------------------------|-------------------|-------------|---------|
 | ```L.append(<object>)```  | ```return None``` | Añadir un elemento en la cola. |    |
-| ```L.remove(value)``` |                         |     |   |
-| ```L.extend(iterable)```  |                     |     |    |
-| ```L.count(value)```  |                     |     |    |
-| ```L.index(value[, start[, stop]])``` |                     |     |    |
-| ```L.insert(index, object)```  |                     |     |    |
+| ```L.remove(value)```     | ```return None``` | Retirar un elemento en la cola. |    |
+| ```L.extend(iterable)```  | ```return None``` | Extender una lista a partir de otra. |    |
+| ```L.count(value)```      | ```return int```  | Número de apariciones de un elemento. |    |
+| ```L.index(value[, start[, stop]])``` | ```return int``` | Índice de un valor en la lista. |    |
+| ```L.insert(index, object)```  | ```return None``` | Inserta un objeto en la posición _index_. |    |
 | ```L.pop([index])```  | ```return <element>``` | Devuelve un elemento y lo elimina.    |    |
-| ```L.reverse()``` |                     |     |    |
+| ```L.reverse()``` | ```return None```          | Invierte el orden de la lista. |    |
 | ```L.sort(cmp=None, key=None, reverse=False)``` | ```None``` | Python 2    |    |
-| ```L.sort(*, key=None, reverse=False)``` | ```None``` | Python 3, eq. a ```sorted``` |    |
+| ```L.sort(*, key=None, reverse=False)```       | ```None``` | Python 3, eq. a ```sorted``` |    |
 
 ##### References:
 * [Python 3 Tutorial Data structures]
@@ -348,10 +348,29 @@ Los tipos son objetos, con sus métodos.
 * Referencia: [Python 3 Tutorial Data structures, dictionaries]
 
 #### 1.1.4.4 Conjuntos: ```set({})```
-TODO
+El tipo ```set({})``` es una colección no-ordenada de elementos, equivalente a un conjunto matemático. \
+Su aplicación normal es comprobar la pertenencia al conjunto, retirar duplicados de una secuencia, intersección, unión, diferencia y diferencia simétrica.
+
+El tipo ```set({})``` es mutable, pueden añadirse y eliminarse elementos; el tipo ```frozenset({})``` es inmutable.
+
+| Método                                | Retorna           | Descripción | Example |
+|---------------------------------------|-------------------|-------------|---------|
+| ```set([iterable]) / frozenset([iterable])```  | ```return set``` | Definición de un conjunto. |    |
+| ```len(s)```     | ```return int``` | Cardinalidad del conjunto s. |    |
+<!-- | ```L.extend(iterable)```  | ```return None``` | Extender una lista a partir de otra. |    | -->
+<!-- | ```L.count(value)```      | ```return int```  | Número de apariciones de un elemento. |    | -->
+<!-- | ```L.index(value[, start[, stop]])``` | ```return int``` | Índice de un valor en la lista. |    | -->
+<!-- | ```L.insert(index, object)```  | ```return None``` | Inserta un objeto en la posición _index_. |    | -->
+<!-- | ```L.pop([index])```  | ```return <element>``` | Devuelve un elemento y lo elimina.    |    | -->
+<!-- | ```L.reverse()``` | ```return None```          | Invierte el orden de la lista. |    | -->
+<!-- | ```L.sort(cmp=None, key=None, reverse=False)``` | ```None``` | Python 2    |    | -->
+<!-- | ```L.sort(*, key=None, reverse=False)```       | ```None``` | Python 3, eq. a ```sorted``` |    | -->
+
+* Referencia: [Built-in Types / Set Types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)
 
 ### 1.1.5 Tipos mutables y tipos inmutables
-TODO
+
+https://book.pythontips.com/en/latest/mutation.html
 
 
 ## 1.2 Operadores aritméticos, de bits, booleanos y relacionales
@@ -371,11 +390,12 @@ Operadores aritméticos:
 
 Operadores de bits (bitwise):
 ```
-&       and
-|       or
-^       xor
-~       not
-<< >>   desplazamiento (inserta ceros)
+x & y   bitwise and of x and y
+x | y   bitwise or of x and y
+x ^ y   bitwise xor of x and y
+~x      The bits of x inverted (not)
+x << n  x shifted left by n bits (x * pow(2, n))
+x >> n  x shifted right by n bits (math.floor(x / pow(2, n)))
 ```
 
 Operadores booleanos:
@@ -598,10 +618,8 @@ def saludar(nombre):
 
 References:
 
-* [Juanjo Conti (AR): Decoradores en Python I]
-* [Juanjo Conti (AR): Decoradores en Python II]
-* [Juanjo Conti (AR): Decoradores en Python III]
-* [Juanjo Conti (AR): Decoradores en Python ampliados]
+* [Juanjo Conti (AR): Decoradores en Python I], [Juanjo Conti (AR): Decoradores en Python II], [Juanjo Conti (AR): Decoradores en Python III], [Juanjo Conti (AR): Decoradores en Python ampliados]
+* [RealPython: Primer on Python decorators]
 
 ### 1.4.3 Funciones de orden superior
 ```python
@@ -2669,6 +2687,21 @@ Tiene muchas más ventajas:
 | argparse/optparse         |                           |
 | databases                 |                           |
 
+# Artículos varios
+
+## YouTube: 5 Things You're Doing Wrong When Programming in Python
+* URL: https://www.youtube.com/watch?v=fMRzuwlqfzs
+
+| Time                      | Description           |
+|---------------------------|-----------------------|
+| [0:00](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=0s) | Intro |
+| [0:22](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=22s) | Not using if name = “__main__” |
+| [2:12](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=132s) | Using bare excepts |
+| [4:40](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=280s) | Not logging errors correctly |
+| [6:57](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=417s) | Using lists when you should use sets/dicts |
+| [9:02](https://www.youtube.com/watch?v=fMRzuwlqfzs&t=542s) | Mutable defaults |
+
+
 # References
 
 General:
@@ -2699,6 +2732,7 @@ Decoradores:
 * [Juanjo Conti (AR): Decoradores en Python II]
 * [Juanjo Conti (AR): Decoradores en Python III]
 * [Juanjo Conti (AR): Decoradores en Python ampliados]
+* [RealPython: Primer on Python decorators]:https://realpython.com/primer-on-python-decorators
 
 Data types:
 * [functools.reduce]
@@ -2742,6 +2776,7 @@ Regular expressions:
 
 Misc
 * [Matti Pastell » IIR filter design with Python and SciPy]
+
 
 [Python 3: String methods]: https://docs.python.org/3/library/stdtypes.html#string-methods
 

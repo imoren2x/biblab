@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 
 """
  Un decorador no es es más que una función
@@ -9,7 +9,7 @@
 
 def mi_decorador(funcion):
     def nueva(*args):
-        print "Llamada a la funcion", funcion.__name__
+        print("Llamada a la funcion %s" % funcion.__name__)
         retorno = funcion(*args)
         return retorno
 
@@ -17,7 +17,11 @@ def mi_decorador(funcion):
 
 @mi_decorador
 def imp(s):
-    print s
+    print(s)
+
+def imp2(s):
+    print(s)
+
 
 if __name__ == "__main__":
     imp("hola")
